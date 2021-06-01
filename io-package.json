@@ -1,0 +1,77 @@
+{
+    "common": {
+        "name": "solax",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "Solax Inverter API Cloud Connection",
+        "titleLang": {
+            "en": "Solax Inverter API Cloud Connection",
+            "de": "Solax Inverter API Cloud-Verbindung",
+            "ru": "Подключение к облаку Solax Inverter API",
+            "pt": "Solax Inverter API Cloud Connection",
+            "nl": "Solax Inverter API Cloud-verbinding",
+            "fr": "Connexion au cloud de l'API Solax Inverter",
+            "it": "Connessione cloud Solax Inverter API",
+            "es": "Conexión en la nube de API de inversor Solax",
+            "pl": "Solax Inverter API Cloud Connection",
+            "zh-cn": "Solax逆变器API云连接"
+        },
+        "desc": {
+            "en": "Solax Inverter API Cloud Connection",
+            "de": "Solax Inverter API Cloud-Verbindung",
+            "ru": "Подключение к облаку Solax Inverter API",
+            "pt": "Solax Inverter API Cloud Connection",
+            "nl": "Solax Inverter API Cloud-verbinding",
+            "fr": "Connexion au cloud de l'API Solax Inverter",
+            "it": "Connessione cloud Solax Inverter API",
+            "es": "Conexión en la nube de API de inversor Solax",
+            "pl": "Solax Inverter API Cloud Connection",
+            "zh-cn": "Solax逆变器API云连接"
+        },
+        "authors": [
+            "simatec <nais@gmx.net>"
+        ],
+        "keywords": [
+            "Solax",
+            "PV",
+            "Photovoltaics",
+            "Inverter"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "solax.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/simatec/ioBroker.solax/master/admin/solax.png",
+        "readme": "https://github.com/simatec/ioBroker.solax/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "energy",
+        "compact": true,
+        "materialize": true,
+        "dependencies": [
+            {
+                "js-controller": ">=1.4.2"
+            }
+        ]
+    },
+    "native": {
+        "option1": true,
+        "option2": "42"
+    },
+    "objects": [],
+    "instanceObjects": []
+}
