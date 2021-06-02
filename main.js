@@ -84,9 +84,9 @@ async function setInverterType(type) {
     return (inverterType);
 }
 
-async function setInverterstate(state) {
+async function setInverterstate(solaxState) {
     let inverterState = '';
-    switch (state) {
+    switch (solaxState) {
         case 100:
             inverterState = 'Wait Mode';
             break;
@@ -152,11 +152,11 @@ async function requestAPI() {
                 responseType: 'json'
             });
 
-            adapter.log.debug('solaxRequest.data: ' + JSON.stringify(solaxRequest.data));
-            adapter.log.debug('solaxRequest.data.result: ' + JSON.stringify(solaxRequest.data.result));
-
             if (solaxRequest.data && solaxRequest.data.result) {
                 adapter.log.info('API Request successfully completed');
+
+                adapter.log.debug('solaxRequest.data: ' + JSON.stringify(solaxRequest.data));
+                adapter.log.debug('solaxRequest.data.result: ' + JSON.stringify(solaxRequest.data.result));
 
                 const inverterState = await setInverterstate(solaxRequest.data.result.inverterStatus);
                 const inverterType = await setInverterType(solaxRequest.data.result.inverterType);
@@ -165,15 +165,18 @@ async function requestAPI() {
                 await adapter.setStateAsync('info.exception', solaxRequest.data.exception, true);
                 await adapter.setStateAsync('info.inverterSN', solaxRequest.data.result.inverterSN ? solaxRequest.data.result.inverterSN : 'unknown', true);
                 await adapter.setStateAsync('info.sn', solaxRequest.data.result.sn ? solaxRequest.data.result.sn : 'unknown', true);
+
                 await adapter.setStateAsync('info.inverterType', inverterType, true);
                 await adapter.setStateAsync('info.inverterStatus', inverterState, true);
                 await adapter.setStateAsync('info.uploadTime', solaxRequest.data.result.uploadTime ? solaxRequest.data.result.uploadTime : 'unknown', true);
+                
                 await adapter.setStateAsync('info.success', solaxRequest.data.success, true);
 
                 // set State for inverter data
                 await adapter.setStateAsync('data.acpower', solaxRequest.data.result.acpower ? solaxRequest.data.result.acpower : 0, true);
                 await adapter.setStateAsync('data.yieldtoday', solaxRequest.data.result.yieldtoday ? solaxRequest.data.result.yieldtoday : 0, true);
                 await adapter.setStateAsync('data.yieldtotal', solaxRequest.data.result.yieldtotal ? solaxRequest.data.result.yieldtotal : 0, true);
+
                 await adapter.setStateAsync('data.feedinpower', solaxRequest.data.result.feedinpower ? solaxRequest.data.result.feedinpower : 0, true);
                 await adapter.setStateAsync('data.feedinenergy', solaxRequest.data.result.feedinenergy ? solaxRequest.data.result.feedinenergy : 0, true);
                 await adapter.setStateAsync('data.consumeenergy', solaxRequest.data.result.consumeenergy ? solaxRequest.data.result.consumeenergy : 0, true);
@@ -181,6 +184,7 @@ async function requestAPI() {
                 await adapter.setStateAsync('data.feedinpowerM2', solaxRequest.data.result.feedinpowerM2 ? solaxRequest.data.result.feedinpowerM2 : 0, true);
                 await adapter.setStateAsync('data.soc', solaxRequest.data.result.soc ? solaxRequest.data.result.soc : 0, true);
                 await adapter.setStateAsync('data.peps1', solaxRequest.data.result.peps1 ? solaxRequest.data.result.peps1 : 0, true);
+
                 await adapter.setStateAsync('data.peps2', solaxRequest.data.result.peps2 ? solaxRequest.data.result.peps2 : 0, true);
                 await adapter.setStateAsync('data.peps3', solaxRequest.data.result.peps3 ? solaxRequest.data.result.peps3 : 0, true);
 
@@ -203,6 +207,8 @@ async function requestAPI() {
                 });
 
                 await adapter.setStateAsync('data.json', JSON.stringify(json), true);
+            } else {
+                adapter.log.debug('SolaX API is currently unavailable');
             }
         } catch (err) {
             adapter.log.console.warn('request error: ' + err);
@@ -212,7 +218,6 @@ async function requestAPI() {
     });
 }
 async function setDayHistory() {
-    adapter.log.debug('start day history')
     try {
         await adapter.getStateAsync('history.yield_6_days_ago', async (err, state) => {
             if (state && state.val >= 0) {
@@ -258,6 +263,7 @@ async function main() {
     adapter.log.debug('Solax is started');
 
     schedule.cancelJob('requestInterval');
+    schedule.cancelJob('dayHistory');
 
     if (adapter.config.apiToken && adapter.config.serialNumber) {
         const requestInterval = adapter.config.requestInterval || 5;

@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "solax",
-        "version": "0.1.0",
+        "version": "0.1.1",
         "news": {
+            "0.1.1": {
+                "en": "small Bugfixes",
+                "de": "kleine Bugfixes",
+                "ru": "небольшие исправления",
+                "pt": "pequenas correções de bugs",
+                "nl": "kleine bugfixes",
+                "fr": "petites corrections de bugs",
+                "it": "piccole correzioni di bug",
+                "es": "pequeñas correcciones de errores",
+                "pl": "małe poprawki",
+                "zh-cn": "小错误修正"
+            },
             "0.1.0": {
                 "en": "first beta",
                 "de": "erste Beta",

@@ -37,7 +37,10 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 
-### 0.1.0
+### 0.1.1 (02.06.2021)
+* (simatec) small Bugfixes
+
+### 0.1.0 (02.06.2021)
 * (simatec) first beta
 
 ## License
