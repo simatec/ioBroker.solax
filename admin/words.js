@@ -2,40 +2,10 @@
 'use strict';
 
 systemDictionary = {
-    'solax adapter settings': {
-        'en': 'Adapter settings for solax',
-        'de': 'Adaptereinstellungen für solax',
-        'ru': 'Настройки адаптера для solax',
-        'pt': 'Configurações do adaptador para solax',
-        'nl': 'Adapterinstellingen voor solax',
-        'fr': "Paramètres d'adaptateur pour solax",
-        'it': "Impostazioni dell'adattatore per solax",
-        'es': 'Ajustes del adaptador para solax',
-        'pl': 'Ustawienia adaptera dla solax',
-        'zh-cn': 'solax的适配器设置'
-    },
-    'option1': {
-        'en': 'option1',
-        'de': 'Option 1',
-        'ru': 'Опция 1',
-        'pt': 'Opção 1',
-        'nl': 'Optie 1',
-        'fr': 'Option 1',
-        'it': 'opzione 1',
-        'es': 'Opción 1',
-        'pl': 'opcja 1',
-        'zh-cn': '选项1'
-    },
-    'option2': {
-        'en': 'option2',
-        'de': 'Option 2',
-        'ru': 'option2',
-        'pt': 'opção 2',
-        'nl': 'Optie 2',
-        'fr': 'Option 2',
-        'it': 'opzione 2',
-        'es': 'opcion 2',
-        'pl': 'Opcja 2',
-        'zh-cn': '选项2'
-    }
+    "Token ID": {                                    "en": "Token ID",                                        "de": "Token-ID",                                        "ru": "Идентификатор токена",                            "pt": "ID do token",                                     "nl": "Token-ID",                                        "fr": "Identifiant du jeton",                            "it": "ID token",                                        "es": "ID de token",                                     "pl": "Identyfikator tokena",                            "zh-cn": "令牌标识"},
+    "Get the Token ID from Solax": {                 "en": "Get the Token ID from Solax",                     "de": "Holen Sie sich die Token-ID von Solax",           "ru": "Получите идентификатор токена от Solax",          "pt": "Obtenha o Token ID da Solax",                     "nl": "Haal de token-ID op van Solax",                   "fr": "Obtenez le Token ID de Solax",                    "it": "Ottieni l'ID token da Solax",                     "es": "Obtenga el ID de token de Solax",                 "pl": "Uzyskaj identyfikator tokena od Solax",           "zh-cn": "从 Solax 获取令牌 ID"},
+    "solax adapter settings": {                      "en": "Adapter settings for solax",                      "de": "Adaptereinstellungen für Solax",                  "ru": "Настройки адаптера для solax",                    "pt": "Configurações do adaptador para solax",           "nl": "Adapterinstellingen voor solax",                  "fr": "Paramètres d'adaptateur pour solax",              "it": "Impostazioni dell'adattatore per solax",          "es": "Ajustes del adaptador para solax",                "pl": "Ustawienia adaptera dla solax",                   "zh-cn": "solax的适配器设置"},
+    "serial Number": {                               "en": "serial Number of communication module",           "de": "Seriennummer des Kommunikationsmoduls",           "ru": "серийный номер коммуникационного модуля",         "pt": "número de série do módulo de comunicação",        "nl": "serienummer van communicatiemodule",              "fr": "Numéro de série du module de communication",      "it": "numero di serie del modulo di comunicazione",     "es": "número de serie del módulo de comunicación",      "pl": "Numer seryjny modułu komunikacyjnego",            "zh-cn": "通讯模块序号"},
+    "Request Interval": {                            "en": "Request Interval",                                "de": "Abfrageintervall",                                "ru": "Интервал запроса",                                "pt": "Intervalo de solicitação",                        "nl": "Verzoekinterval",                                 "fr": "Intervalle de demande",                           "it": "Intervallo di richiesta",                         "es": "Intervalo de solicitud",                          "pl": "Interwał żądania",                                "zh-cn": "请求间隔"},
+    "Request Interval (minutes)": {                  "en": "Request Interval (minutes)",                      "de": "Abfrageintervall (Minuten)",                      "ru": "Интервал запроса (минут)",                        "pt": "Intervalo de solicitação (minutos)",              "nl": "Verzoekinterval (minuten)",                       "fr": "Intervalle de demande (minutes)",                 "it": "Intervallo di richiesta (minuti)",                "es": "Intervalo de solicitud (minutos)",                "pl": "Interwał żądania (minuty)",                       "zh-cn": "请求间隔（分钟）"},
 };

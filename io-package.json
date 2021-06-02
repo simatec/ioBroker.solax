@@ -1,19 +1,19 @@
 {
     "common": {
         "name": "solax",
-        "version": "0.0.1",
+        "version": "0.1.0",
         "news": {
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "zh-cn": "首次出版"
+            "0.1.0": {
+                "en": "first beta",
+                "de": "erste Beta",
+                "ru": "первая бета",
+                "pt": "primeiro beta",
+                "nl": "eerste bèta",
+                "fr": "première bêta",
+                "it": "prima beta",
+                "es": "primera beta",
+                "pl": "pierwsza wersja beta",
+                "zh-cn": "第一个测试版"
             }
         },
         "title": "Solax",
@@ -81,5 +81,385 @@
         "requestInterval": 5
     },
     "objects": [],
-    "instanceObjects": []
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Solax Inverter Informations"
+            },
+            "native": {}
+        },
+        {
+            "_id": "data",
+            "type": "channel",
+            "common": {
+                "name": "Solax Inverter data"
+            },
+            "native": {}
+        },
+        {
+            "_id": "history",
+            "type": "channel",
+            "common": {
+                "name": "History data"
+            },
+            "native": {}
+        },
+        {
+            "_id": "history.yield_1_days_ago",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC-Energy 1 days ago",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "KWh",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "history.yield_2_days_ago",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC-Energy 2 days ago",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "KWh",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "history.yield_3_days_ago",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC-Energy 3 days ago",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "KWh",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "history.yield_4_days_ago",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC-Energy 4 days ago",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "KWh",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "history.yield_5_days_ago",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC-Energy 5 days ago",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "KWh",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "history.yield_6_days_ago",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC-Energy 6 days ago",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "KWh",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "history.yield_7_days_ago",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC-Energy 7 days ago",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "KWh",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.exception",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "API connection",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.success",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "API success",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.inverterSN",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Unique identifier of inverter (Serial No.)",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.sn",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Unique identifier of communication module (Registration No.)",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.acpower",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC-Power total",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "W",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.yieldtoday",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC-Energy out Daily",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "KWh",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.yieldtotal",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC-Energy out total",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "KWh",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.feedinpower",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "GCP-Power total",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "W",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.feedinenergy",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "GCP-Energy to Grid total",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "KWh",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.consumeenergy",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "GCP-Energy from Grid total",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "KWh",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.feedinpowerM2",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "address to meter AC-Power total",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "W",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.soc",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter DC-Battery Energy SOC",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "%",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.peps1",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC EPS-Power L1",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "W",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.peps2",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC EPS-Power L2",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "W",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.peps3",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter AC EPS-Power L3",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "W",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.inverterType",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter type",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.inverterStatus",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter status",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.uploadTime",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Update time",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.json",
+            "type": "state",
+            "common": {
+                "name": "json data",
+                "type": "string",
+                "role": "json",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        }
+    ]
 }

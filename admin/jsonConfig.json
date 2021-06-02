@@ -8,9 +8,11 @@
       "visible": false,
       "sm": 12,
       "md": 8,
-      "lg": 5,
+      "lg": 4,
+      "help": "Get the Token ID from Solax",
+      "helpLink": "https://www.solaxcloud.com/#/login",
       "type": "password",
-      "label": "API Token"
+      "label": "Token ID"
     },
     "serialNumber": {
       "newLine": false,
@@ -18,15 +20,19 @@
       "visible": false,
       "sm": 12,
       "md": 8,
-      "lg": 5,
-      "type": "password",
+      "lg": 4,
+      "help": "serial Number",
+      "type": "text",
       "label": "serial Number"
     },
     "requestInterval": {
       "newLine": true,
       "sm": 12,
       "md": 6,
-      "lg": 5,
+      "lg": 4,
+      "min": 1,
+      "max": 120,
+      "help": "Request Interval (minutes)",
       "type": "number",
       "label": "Request Interval"
     }

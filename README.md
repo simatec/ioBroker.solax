@@ -3,8 +3,8 @@
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.solax.svg)](https://www.npmjs.com/package/iobroker.solax)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.solax.svg)](https://www.npmjs.com/package/iobroker.solax)
-![Number of Installations (latest)](http://iobroker.live/badges/solax-installed.svg)
-![Number of Installations (stable)](http://iobroker.live/badges/solax-stable.svg)
+<!--![Number of Installations (latest)](http://iobroker.live/badges/solax-installed.svg)
+![Number of Installations (stable)](http://iobroker.live/badges/solax-stable.svg)-->
 [![Dependency Status](https://img.shields.io/david/simatec/iobroker.solax.svg)](https://david-dm.org/simatec/iobroker.solax)
 [![Known Vulnerabilities](https://snyk.io/test/github/simatec/ioBroker.solax/badge.svg)](https://snyk.io/test/github/simatec/ioBroker.solax)
 
@@ -13,6 +13,10 @@
 ## solax adapter for ioBroker
 
 Solax Inverter API Cloud Connection
+
+This adapter calls the data of your inverter from the manufacturer Solax into the iobroker.
+
+What you need for this is an account with Solax, your token ID and the serial number of your WiFi module.
 
 **************************************************************************************************************
 
@@ -31,8 +35,8 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 
-### 0.0.1
-* (simatec) initial release
+### 0.1.0
+* (simatec) first beta
 
 ## License
 MIT License
