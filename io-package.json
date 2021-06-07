@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "solax",
-        "version": "0.1.1",
+        "version": "0.2.0",
         "news": {
+            "0.2.0": {
+                "en": "powerdc 1-4 added, battPower added, many small bugfixes",
+                "de": "powerdc 1-4 hinzugefügt, battPower hinzugefügt, viele kleine Bugfixes",
+                "ru": "Добавлен powerdc 1-4, добавлен battPower, много мелких исправлений",
+                "pt": "powerdc 1-4 adicionado, battPower adicionado, muitas pequenas correções de bugs",
+                "nl": "powerdc 1-4 toegevoegd, battPower toegevoegd, veel kleine bugfixes",
+                "fr": "powerdc 1-4 ajouté, battPower ajouté, de nombreuses petites corrections de bugs",
+                "it": "powerdc 1-4 aggiunto, battPower aggiunto, molte piccole correzioni di bug",
+                "es": "powerdc 1-4 agregado, battPower agregado, muchas pequeñas correcciones de errores",
+                "pl": "Dodano powerdc 1-4, dodano battPower, wiele drobnych poprawek",
+                "zh-cn": "powerdc 1-4 添加，battPower 添加，许多小错误修正"
+            },
             "0.1.1": {
                 "en": "small Bugfixes",
                 "de": "kleine Bugfixes",
@@ -414,6 +426,76 @@
             "common": {
                 "role": "indicator",
                 "name": "Inverter AC EPS-Power L3",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "W",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.batPower",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter DC-Battery power total",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "W",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.powerdc1",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter DC PV power MPPT1",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "W",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.powerdc2",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter DC PV power MPPT2",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "W",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.powerdc3",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter DC PV power MPPT3",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "W",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "data.powerdc4",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "Inverter DC PV power MPPT4",
                 "type": "number",
                 "read": true,
                 "write": false,

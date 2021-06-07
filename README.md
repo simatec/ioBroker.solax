@@ -37,6 +37,11 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 
+### 0.2.0 (07.06.2021)
+* (simatec) powerdc 1-4 added
+* (simatec) battPower added
+* (simatec) many small bugfixes
+
 ### 0.1.1 (02.06.2021)
 * (simatec) small Bugfixes
 
