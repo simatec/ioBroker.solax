@@ -4,16 +4,16 @@
         "version": "0.3.0",
         "news": {
             "0.3.0": {
-                "en": "state settings changed, sentry plugin added, readme added",
-                "de": "State Einstellungen geändert, Sentry-Plugin hinzugefügt, Readme hinzugefügt",
-                "ru": "изменены настройки состояния, добавлен плагин sentry, добавлен readme",
-                "pt": "configurações de estado alteradas, plugin de sentinela adicionado, readme adicionado",
-                "nl": "statusinstellingen gewijzigd, sentry-plug-in toegevoegd, readme toegevoegd",
-                "fr": "paramètres d'état modifiés, plugin sentinelle ajouté, readme ajouté",
-                "it": "impostazioni dello stato modificate, plugin sentinella aggiunto, readme aggiunto",
-                "es": "la configuración del estado cambió, se agregó el complemento de centinela, se agregó el archivo Léame",
-                "pl": "zmieniono ustawienia stanu, dodano wtyczkę sentry, dodano readme",
-                "zh-cn": "状态设置已更改，已添加哨兵插件，已添加自述文件"
+                "en": "state settings changed, sentry plugin added, readme added, sunposition added, nightmode added",
+                "de": "State Einstellungen geändert, Sentry-Plugin hinzugefügt, Readme hinzugefügt, Sonnenstand hinzugefügt, Nachtmodus hinzugefügt",
+                "ru": "изменены настройки состояния, добавлен плагин часового, добавлен readme, добавлено положение солнца, добавлен ночной режим",
+                "pt": "configurações de estado alteradas, plugin de sentinela adicionado, readme adicionado, sunposition adicionado, nightmode adicionado",
+                "nl": "statusinstellingen gewijzigd, schildwacht-plug-in toegevoegd, leesmij toegevoegd, zonnepositie toegevoegd, nachtmodus toegevoegd",
+                "fr": "paramètres d'état modifiés, plugin sentinelle ajouté, readme ajouté, position solaire ajoutée, mode nuit ajouté",
+                "it": "impostazioni dello stato modificate, plugin sentinella aggiunto, readme aggiunto, sunposition aggiunta, modalità notturna aggiunta",
+                "es": "configuración de estado cambiada, complemento de centinela agregado, readme agregado, sunposition agregado, modo de noche agregado",
+                "pl": "zmieniono ustawienia stanu, dodano wtyczkę sentry, dodano readme, dodano pozycję słońca, dodano tryb nocny",
+                "zh-cn": "状态设置已更改，已添加哨兵插件，已添加自述文件，已添加日光位置，已添加夜间模式"
             },
             "0.2.0": {
                 "en": "powerdc 1-4 added, battPower added, many small bugfixes",
@@ -114,7 +114,10 @@
     "native": {
         "apiToken": "",
         "serialNumber": "",
-        "requestInterval": 5
+        "requestInterval": 5,
+        "systemGeoData": true,
+        "longitude": "",
+        "latitude": ""
     },
     "objects": [],
     "instanceObjects": [
@@ -123,6 +126,14 @@
             "type": "channel",
             "common": {
                 "name": "Solax Inverter Informations"
+            },
+            "native": {}
+        },
+        {
+            "_id": "suninfo",
+            "type": "channel",
+            "common": {
+                "name": "Sun Informations"
             },
             "native": {}
         },
@@ -139,6 +150,34 @@
             "type": "channel",
             "common": {
                 "name": "History data"
+            },
+            "native": {}
+        },
+        {
+            "_id": "suninfo.Altitude",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "suninfo Altitude",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "°",
+                "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "suninfo.Azimut",
+            "type": "state",
+            "common": {
+                "role": "indicator",
+                "name": "suninfo Azimut",
+                "type": "number",
+                "read": true,
+                "write": false,
+                "unit": "°",
+                "def": ""
             },
             "native": {}
         },

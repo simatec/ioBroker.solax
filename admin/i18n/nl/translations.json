@@ -3,6 +3,9 @@
     "Request Interval": "Verzoekinterval",
     "Request Interval (minutes)": "Verzoekinterval (minuten)",
     "Token ID": "Token-ID",
+    "Use astro data from the system settings": "Gebruik astrodata uit de systeeminstellingen",
+    "latitude": "breedtegraad",
+    "longitude": "Lengtegraad",
     "serial Number": "serienummer van communicatiemodule",
     "solax adapter settings": "Adapterinstellingen voor solax"
 }

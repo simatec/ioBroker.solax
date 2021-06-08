@@ -3,6 +3,9 @@
     "Request Interval": "请求间隔",
     "Request Interval (minutes)": "请求间隔（分钟）",
     "Token ID": "令牌标识",
+    "Use astro data from the system settings": "使用系统设置中的astro数据",
+    "latitude": "纬度",
+    "longitude": "经度",
     "serial Number": "通讯模块序号",
     "solax adapter settings": "solax的适配器设置"
 }

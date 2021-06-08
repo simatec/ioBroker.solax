@@ -35,6 +35,34 @@
       "help": "Request Interval (minutes)",
       "type": "number",
       "label": "Request Interval"
+    },
+    "systemGeoData": {
+      "newLine": true,
+      "type": "checkbox",
+      "label": "Use astro data from the system settings",
+      "sm": 12,
+      "md": 6,
+      "lg": 4
+    },
+    "longitude": {
+      "newLine": true,
+      "hidden": "data.systemGeoData",
+      "sm": 12,
+      "md": 8,
+      "lg": 4,
+      "help": "longitude",
+      "type": "text",
+      "label": "longitude"
+    },
+    "latitude": {
+      "newLine": false,
+      "hidden": "data.systemGeoData",
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "help": "latitude",
+      "type": "text",
+      "label": "latitude"
     }
   }
 }

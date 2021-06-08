@@ -3,6 +3,9 @@
     "Request Interval": "Intervalle de demande",
     "Request Interval (minutes)": "Intervalle de demande (minutes)",
     "Token ID": "Identifiant du jeton",
+    "Use astro data from the system settings": "Utiliser les données astronomiques des paramètres système",
+    "latitude": "latitude",
+    "longitude": "longitude",
     "serial Number": "Numéro de série du module de communication",
     "solax adapter settings": "Paramètres d'adaptateur pour solax"
 }

@@ -49,6 +49,8 @@ When the adapter crashes or an other Code error happens, this error message that
 * (simatec) state settings changed
 * (simatec) sentry plugin added
 * (simatec) readme added
+* (simatec) sunposition added
+* (simatec) nightmode added
 
 ### 0.2.0 (07.06.2021)
 * (simatec) powerdc 1-4 added

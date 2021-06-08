@@ -25,9 +25,10 @@
                 var id = $key.attr('id');
                 if ($key.attr('type') === 'checkbox') {
                     // do not call onChange direct, because onChange could expect some arguments
-                    $key.prop('checked', settings[id])
-                        .on('change', () => onChange())
-                        ;
+                    $key.prop('checked', settings[id]).on('change', function () {
+                        showHideSettings();
+                        onChange();
+                    });
                 } else {
                     // do not call onChange direct, because onChange could expect some arguments
                     $key.val(settings[id])
@@ -36,6 +37,7 @@
                         ;
                 }
             });
+            showHideSettings();
             onChange(false);
             if (M) M.updateTextFields();
         }
@@ -52,6 +54,14 @@
                 }
             });
             callback(obj);
+        }
+
+        function showHideSettings() {
+            if ($('#systemGeoData').prop('checked')) {
+                $('.systemData').hide();
+            } else {
+                $('.systemData').show();
+            }
         }
     </script>
 
@@ -71,7 +81,8 @@
             <div class="input-field col s4">
                 <input class="value" id="apiToken" type="password">
                 <label for="apiToken" class="translate">Token ID</label>
-                <span><a href="https://www.eu.solaxcloud.com/#/api" target="_blank" class="translate">Get the Token ID from Solax</a></span>
+                <span><a href="https://www.eu.solaxcloud.com/#/api" target="_blank" class="translate">Get the Token ID
+                        from Solax</a></span>
             </div>
             <div class="col s4 input-field">
                 <input type="text" class="value" id="serialNumber" />
@@ -81,9 +92,25 @@
         </div>
         <div class="row">
             <div class="col s4 input-field">
-                <input type="number" class="value" id="requestInterval" min="1" max="120" step="1"/>
+                <input type="number" class="value" id="requestInterval" min="1" max="120" step="1" />
                 <label for="requestInterval" class="translate">Request Interval</label>
                 <span class="translate">Request Interval (minutes)</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4 input-field">
+                <input type="checkbox" class="value" id="systemGeoData" />
+                <label for="systemGeoData" class="translate">Use astro data from the system settings</label>
+            </div>
+        </div>
+        <div class="row systemData">
+            <div class="col s4 input-field">
+                <input type="text" class="value" id="longitude" />
+                <label for="longitude" class="translate">longitude</label>
+            </div>
+            <div class="col s4 input-field">
+                <input type="text" class="value" id="latitude" />
+                <label for="latitude" class="translate">latitude</label>
             </div>
         </div>
 

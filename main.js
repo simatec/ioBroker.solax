@@ -6,8 +6,12 @@ const utils = require('@iobroker/adapter-core');
 const axios = require('axios').default;
 // @ts-ignore
 const schedule = require('node-schedule');
+// @ts-ignore
+const SunCalc = require('suncalc2');
 
 let replayTime;
+let longitude;
+let latitude;
 
 /**
  * The adapter instance
@@ -37,6 +41,114 @@ function startAdapter(options) {
             }
         },
     }));
+}
+
+async function getSystemData() {
+    // @ts-ignore
+    return new Promise(async (resolve, reject) => {
+        if (adapter.config.systemGeoData) {
+            try {
+                await adapter.getForeignObjectAsync("system.config", async (err, state) => {
+
+                    if (err) {
+                        adapter.log.error(err);
+                        // @ts-ignore
+                        resolve();
+                    } else {
+                        longitude = state.common.longitude;
+                        latitude = state.common.latitude;
+                        adapter.log.debug('System longitude: ' + state.common.longitude + ' System latitude: ' + state.common.latitude);
+                        // @ts-ignore
+                        resolve();
+                    }
+                });
+            } catch (err) {
+                adapter.log.warn('Astro data from the system settings cannot be called up. Please check configuration!')
+                // @ts-ignore
+                resolve();
+            }
+        } else {
+            try {
+                longitude = adapter.config.longitude;
+                latitude = adapter.config.latitude;
+                adapter.log.debug('longitude: ' + adapter.config.longitude + ' latitude: ' + adapter.config.latitude);
+                // @ts-ignore
+                resolve();
+            } catch (err) {
+                adapter.log.warn('Astro data from the system settings cannot be called up. Please check configuration!')
+                // @ts-ignore
+                resolve();
+            }
+        }
+    });
+}
+
+function getDate(d) {
+    d = d || new Date();
+    return (('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2));
+}
+
+async function nightCalc(_isNight) {
+    // @ts-ignore
+    return new Promise(async (resolve, reject) => {
+        adapter.log.debug('nightCalc started ...');
+
+        try {
+            const times = SunCalc.getTimes(new Date(), latitude, longitude);
+
+            const nauticalDusk = ('0' + times.nauticalDusk.getHours()).slice(-2) + ':' + ('0' + times.nauticalDusk.getMinutes()).slice(-2);
+            const nauticalDawn = ('0' + times.nauticalDawn.getHours()).slice(-2) + ':' + ('0' + times.nauticalDawn.getMinutes()).slice(-2);
+
+            adapter.log.debug(`nightEnd: ${times.nightEnd}`);
+            adapter.log.debug(`night: ${times.night}`);
+
+            adapter.log.debug(`nauticalDusk: ${nauticalDusk}`);
+            adapter.log.debug(`nauticalDawn: ${nauticalDawn}`);
+
+            const currentTime = getDate();
+            adapter.log.debug(`current local Time: ${currentTime}`);
+
+            if (currentTime > nauticalDusk || currentTime < nauticalDawn) {
+                _isNight = true;
+            } else {
+                _isNight = false;
+            }
+        } catch (e) {
+            adapter.log.warn('cannot calculate astrodata ... please check your config for latitude und longitude!!');
+        }
+        // @ts-ignore
+        resolve(_isNight);
+    });
+}
+
+async function sunPos() {
+    // @ts-ignore
+    return new Promise(async (resolve, reject) => {
+        let currentPos;
+        try {
+            currentPos = SunCalc.getPosition(new Date(), latitude, longitude);
+            adapter.log.debug('calculate astrodata ...');
+        } catch (e) {
+            adapter.log.error('cannot calculate astrodata ... please check your config for latitude und longitude!!');
+        }
+        // get sunrise azimuth in degrees
+        let currentAzimuth = currentPos.azimuth * 180 / Math.PI + 180;
+
+        // get sunrise altitude in degrees
+        const currentAltitude = currentPos.altitude * 180 / Math.PI;
+
+        const azimuth = Math.round(10 * currentAzimuth) / 10;
+        const altitude = Math.round(10 * currentAltitude) / 10;
+
+        adapter.log.debug('Sun Azimut: ' + azimuth + '°');
+        await adapter.setStateAsync('suninfo.Azimut', azimuth, true);
+
+        adapter.log.debug('Sun Altitude: ' + altitude + '°');
+        await adapter.setStateAsync('suninfo.Altitude', altitude, true);
+
+        // @ts-ignore
+        resolve();
+    });
 }
 
 async function setInverterType(type) {
@@ -159,12 +271,12 @@ async function requestAPI() {
             if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === true) {
                 num = 0;
                 resolve(solaxRequest);
-            } else if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === false && num <= 3) {
+            } else if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === false && num <= 5) {
                 num++;
                 replayTime = setTimeout(async () => {
                     return await fillData();
                 }, 5000);
-            } else if (num > 3) {
+            } else if (num > 5) {
                 adapter.log.debug(`${num} request attempts were started: ${solaxRequest.data.result ? solaxRequest.data.result : ''}`)
                 num = 0;
                 resolve(solaxRequest);
@@ -333,7 +445,13 @@ async function setDayHistory() {
 }
 
 async function main() {
+
+    let _isNight = false;
+
     adapter.log.debug('Solax is started');
+    await getSystemData();
+    _isNight = await nightCalc(_isNight);
+    await sunPos();
 
     schedule.cancelJob('requestInterval');
     schedule.cancelJob('dayHistory');
@@ -345,8 +463,15 @@ async function main() {
         adapter.log.debug(`Request Interval: ${requestInterval} minute(s)`);
 
         schedule.scheduleJob('requestInterval', `20 */${requestInterval} * * * *`, async () => {
-            adapter.log.debug('API Request started ...');
-            fillData();
+
+            _isNight = await nightCalc(_isNight);
+            await sunPos();
+            adapter.log.debug('is Night: ' + _isNight)
+
+            if (!_isNight) {
+                adapter.log.debug('API Request started ...');
+                fillData();
+            }
         });
 
         schedule.scheduleJob('dayHistory', '40 59 23 * * *', async () => await setDayHistory());
