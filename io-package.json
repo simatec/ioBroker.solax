@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "solax",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "news": {
+            "0.3.0": {
+                "en": "state settings changed, sentry plugin added, readme added",
+                "de": "State Einstellungen geändert, Sentry-Plugin hinzugefügt, Readme hinzugefügt",
+                "ru": "изменены настройки состояния, добавлен плагин sentry, добавлен readme",
+                "pt": "configurações de estado alteradas, plugin de sentinela adicionado, readme adicionado",
+                "nl": "statusinstellingen gewijzigd, sentry-plug-in toegevoegd, readme toegevoegd",
+                "fr": "paramètres d'état modifiés, plugin sentinelle ajouté, readme ajouté",
+                "it": "impostazioni dello stato modificate, plugin sentinella aggiunto, readme aggiunto",
+                "es": "la configuración del estado cambió, se agregó el complemento de centinela, se agregó el archivo Léame",
+                "pl": "zmieniono ustawienia stanu, dodano wtyczkę sentry, dodano readme",
+                "zh-cn": "状态设置已更改，已添加哨兵插件，已添加自述文件"
+            },
             "0.2.0": {
                 "en": "powerdc 1-4 added, battPower added, many small bugfixes",
                 "de": "powerdc 1-4 hinzugefügt, battPower hinzugefügt, viele kleine Bugfixes",

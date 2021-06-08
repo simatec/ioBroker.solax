@@ -10,7 +10,7 @@
       "md": 8,
       "lg": 4,
       "help": "Get the Token ID from Solax",
-      "helpLink": "https://www.solaxcloud.com/#/login",
+      "helpLink": "https://www.eu.solaxcloud.com/#/api",
       "type": "password",
       "label": "Token ID"
     },

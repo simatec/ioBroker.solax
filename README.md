@@ -20,6 +20,14 @@ This adapter calls the data of your inverter from the manufacturer Solax into th
 
 What you need for this is an account with Solax, your token ID and the serial number of your WiFi module.
 
+### your API-Token
+
+<span><img src="docs/en/img/solax-api.png"></span>
+
+### your serial number
+
+<span><img src="docs/en/img/wifi-stick.png"></span>
+
 **************************************************************************************************************
 
 ### What is Sentry.io and what is reported to the servers of that company?
@@ -36,6 +44,11 @@ When the adapter crashes or an other Code error happens, this error message that
 **************************************************************************************************************
 
 ## Changelog
+
+### 0.3.0 (08.06.2021)
+* (simatec) state settings changed
+* (simatec) sentry plugin added
+* (simatec) readme added
 
 ### 0.2.0 (07.06.2021)
 * (simatec) powerdc 1-4 added
