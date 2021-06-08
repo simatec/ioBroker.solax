@@ -22,7 +22,7 @@ What you need for this is an account with Solax, your token ID and the serial nu
 
 ### your API-Token
 
-<span><img src="docs/en/img/solax-api.png"></span>
+<span><img src="docs/en/img/solax_api.png"></span>
 
 ### your serial number
 
