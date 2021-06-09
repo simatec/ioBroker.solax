@@ -45,7 +45,7 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 
-### 0.3.0 (08.06.2021)
+### 0.3.0 (09.06.2021)
 * (simatec) state settings changed
 * (simatec) sentry plugin added
 * (simatec) readme added

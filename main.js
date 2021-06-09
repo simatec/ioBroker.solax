@@ -10,8 +10,221 @@ const schedule = require('node-schedule');
 const SunCalc = require('suncalc2');
 
 let replayTime;
+let jsonTimer;
+let createTimer;
 let longitude;
 let latitude;
+
+const deviceObjects = {
+    'acpower': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'Inverter AC-Power total',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'W',
+            'def': 0
+        },
+        'native': {}
+    },
+    'yieldtoday': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'Inverter AC-Energy out Daily',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'KWh',
+            'def': 0
+        },
+        'native': {}
+    },
+    'yieldtotal': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'Inverter AC-Energy out total',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'KWh',
+            'def': 0
+        },
+        'native': {}
+    },
+    'feedinpower': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'GCP-Power total',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'W',
+            'def': 0
+        },
+        'native': {}
+    },
+    'feedinenergy': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'GCP-Energy to Grid total',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'KWh',
+            'def': 0
+        },
+        'native': {}
+    },
+    'consumeenergy': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'GCP-Energy from Grid total',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'KWh',
+            'def': 0
+        },
+        'native': {}
+    },
+    'feedinpowerM2': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'address to meter AC-Power total',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'W',
+            'def': 0
+        },
+        'native': {}
+    },
+    'soc': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'Inverter DC-Battery Energy SOC',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': '%',
+            'def': 0
+        },
+        'native': {}
+    },
+    'peps1': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'Inverter AC EPS-Power L1',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'W',
+            'def': 0
+        },
+        'native': {}
+    },
+    'peps2': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'Inverter AC EPS-Power L2',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'W',
+            'def': 0
+        },
+        'native': {}
+    },
+    'peps3': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'Inverter AC EPS-Power L3',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'W',
+            'def': 0
+        },
+        'native': {}
+    },
+    'batPower': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'Inverter DC-Battery power total',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'W',
+            'def': 0
+        },
+        'native': {}
+    },
+    'powerdc1': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'Inverter DC PV power MPPT1',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'W',
+            'def': 0
+        },
+        'native': {}
+    },
+    'powerdc2': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'Inverter DC PV power MPPT2',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'W',
+            'def': 0
+        },
+        'native': {}
+    },
+    'powerdc3': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'Inverter DC PV power MPPT3',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'W',
+            'def': 0
+        },
+        'native': {}
+    },
+    'powerdc4': {
+        'type': 'state',
+        'common': {
+            'role': 'indicator',
+            'name': 'Inverter DC PV power MPPT4',
+            'type': 'number',
+            'read': true,
+            'write': false,
+            'unit': 'W',
+            'def': 0
+        },
+        'native': {}
+    }
+}
 
 /**
  * The adapter instance
@@ -35,6 +248,8 @@ function startAdapter(options) {
                 schedule.cancelJob('requestInterval');
                 schedule.cancelJob('dayHistory');
                 clearTimeout(replayTime);
+                clearTimeout(jsonTimer);
+                clearTimeout(createTimer);
                 callback();
             } catch (e) {
                 callback();
@@ -45,10 +260,10 @@ function startAdapter(options) {
 
 async function getSystemData() {
     // @ts-ignore
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
         if (adapter.config.systemGeoData) {
             try {
-                await adapter.getForeignObjectAsync("system.config", async (err, state) => {
+                await adapter.getForeignObjectAsync('system.config', async (err, state) => {
 
                     if (err) {
                         adapter.log.error(err);
@@ -90,7 +305,7 @@ function getDate(d) {
 
 async function nightCalc(_isNight) {
     // @ts-ignore
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
         adapter.log.debug('nightCalc started ...');
 
         try {
@@ -98,9 +313,6 @@ async function nightCalc(_isNight) {
 
             const nauticalDusk = ('0' + times.nauticalDusk.getHours()).slice(-2) + ':' + ('0' + times.nauticalDusk.getMinutes()).slice(-2);
             const nauticalDawn = ('0' + times.nauticalDawn.getHours()).slice(-2) + ':' + ('0' + times.nauticalDawn.getMinutes()).slice(-2);
-
-            adapter.log.debug(`nightEnd: ${times.nightEnd}`);
-            adapter.log.debug(`night: ${times.night}`);
 
             adapter.log.debug(`nauticalDusk: ${nauticalDusk}`);
             adapter.log.debug(`nauticalDawn: ${nauticalDawn}`);
@@ -123,7 +335,7 @@ async function nightCalc(_isNight) {
 
 async function sunPos() {
     // @ts-ignore
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
         let currentPos;
         try {
             currentPos = SunCalc.getPosition(new Date(), latitude, longitude);
@@ -131,19 +343,16 @@ async function sunPos() {
         } catch (e) {
             adapter.log.error('cannot calculate astrodata ... please check your config for latitude und longitude!!');
         }
-        // get sunrise azimuth in degrees
-        let currentAzimuth = currentPos.azimuth * 180 / Math.PI + 180;
 
-        // get sunrise altitude in degrees
+        const currentAzimuth = currentPos.azimuth * 180 / Math.PI + 180;
         const currentAltitude = currentPos.altitude * 180 / Math.PI;
-
         const azimuth = Math.round(10 * currentAzimuth) / 10;
         const altitude = Math.round(10 * currentAltitude) / 10;
 
-        adapter.log.debug('Sun Azimut: ' + azimuth + '°');
-        await adapter.setStateAsync('suninfo.Azimut', azimuth, true);
-
         adapter.log.debug('Sun Altitude: ' + altitude + '°');
+        adapter.log.debug('Sun Azimut: ' + azimuth + '°');
+
+        await adapter.setStateAsync('suninfo.Azimut', azimuth, true);
         await adapter.setStateAsync('suninfo.Altitude', altitude, true);
 
         // @ts-ignore
@@ -250,10 +459,22 @@ async function setInverterstate(solaxState) {
     return (inverterState);
 }
 
+async function createdStates(api) {
+    return new Promise(async (resolve) => {
+        for (const obj in deviceObjects) {
+            if (api.result[`${obj}`]) {
+                await adapter.setObjectNotExistsAsync('data.' + obj, deviceObjects[obj]);
+            }
+        }
+        // @ts-ignore
+        createTimer = setTimeout(async () => resolve(), 2000);
+    });
+}
+
 let num = 0;
 
 async function requestAPI() {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
         //const solaxURL = (`https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
         const solaxURL = (`https://www.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
 
@@ -289,12 +510,14 @@ async function requestAPI() {
 
 async function fillData() {
     // @ts-ignore
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
         try {
             const solaxRequest = await requestAPI();
 
             if (solaxRequest.data && solaxRequest.data.result) {
                 adapter.log.debug('API Request successfully completed');
+
+                await createdStates(solaxRequest.data);
 
                 adapter.log.debug(`solaxRequest: ${JSON.stringify(solaxRequest.data)}`);
 
@@ -312,7 +535,10 @@ async function fillData() {
                     // set State for inverter data  => success = true
                     await adapter.setStateAsync('data.yieldtoday', solaxRequest.data.result.yieldtoday ? solaxRequest.data.result.yieldtoday : 0, true);
                     await adapter.setStateAsync('data.yieldtotal', solaxRequest.data.result.yieldtotal ? solaxRequest.data.result.yieldtotal : 0, true);
-                    await adapter.setStateAsync('data.batPower', solaxRequest.data.result.batPower ? solaxRequest.data.result.batPower : 0, true);
+
+                    if (solaxRequest.data.result.batPower) {
+                        await adapter.setStateAsync('data.batPower', solaxRequest.data.result.batPower ? solaxRequest.data.result.batPower : 0, true);
+                    }
                 }
 
                 // set State for inverter informations
@@ -320,21 +546,25 @@ async function fillData() {
                 await adapter.setStateAsync('info.success', solaxRequest.data.success, true);
 
                 // set State for inverter data
-                await adapter.setStateAsync('data.acpower', solaxRequest.data.result.acpower ? solaxRequest.data.result.acpower : 0, true);
-                await adapter.setStateAsync('data.feedinpower', solaxRequest.data.result.feedinpower ? solaxRequest.data.result.feedinpower : 0, true);
-                await adapter.setStateAsync('data.feedinenergy', solaxRequest.data.result.feedinenergy ? solaxRequest.data.result.feedinenergy : 0, true);
-                await adapter.setStateAsync('data.consumeenergy', solaxRequest.data.result.consumeenergy ? solaxRequest.data.result.consumeenergy : 0, true);
-
-                await adapter.setStateAsync('data.feedinpowerM2', solaxRequest.data.result.feedinpowerM2 ? solaxRequest.data.result.feedinpowerM2 : 0, true);
-                await adapter.setStateAsync('data.soc', solaxRequest.data.result.soc ? solaxRequest.data.result.soc : 0, true);
-                await adapter.setStateAsync('data.peps1', solaxRequest.data.result.peps1 ? solaxRequest.data.result.peps1 : 0, true);
-                await adapter.setStateAsync('data.peps2', solaxRequest.data.result.peps2 ? solaxRequest.data.result.peps2 : 0, true);
-
-                await adapter.setStateAsync('data.peps3', solaxRequest.data.result.peps3 ? solaxRequest.data.result.peps3 : 0, true);
-                await adapter.setStateAsync('data.powerdc1', solaxRequest.data.result.powerdc1 ? solaxRequest.data.result.powerdc1 : 0, true);
-                await adapter.setStateAsync('data.powerdc2', solaxRequest.data.result.powerdc2 ? solaxRequest.data.result.powerdc2 : 0, true);
-                await adapter.setStateAsync('data.powerdc3', solaxRequest.data.result.powerdc3 ? solaxRequest.data.result.powerdc3 : 0, true);
-                await adapter.setStateAsync('data.powerdc4', solaxRequest.data.result.powerdc4 ? solaxRequest.data.result.powerdc4 : 0, true);
+                await adapter.getForeignObjects(adapter.namespace + '.data.*', 'state', async (err, list) => {
+                    if (err) {
+                        adapter.log.error(err);
+                    } else {
+                        for (const i in list) {
+                            const resID = list[i]._id;
+                            const objectID = resID.split('.');
+                            const resultID = objectID[3];
+                            
+                            if (resultID !== 'yieldtoday' && resultID !== 'yieldtotal' && resultID !== 'batPower') {
+                                await adapter.getState(`data.${resultID}`, async (err, state) => {
+                                    if (state && state.val >= 0) {
+                                        await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                });
 
                 let _batPower;
                 let _yieldtotal;
@@ -372,26 +602,14 @@ async function fillData() {
                 // created json
                 let json = ({
                     "inverterStatus": inverterState,
-                    "uploadTime": solaxRequest.data.success === true && solaxRequest.data.result.uploadTime ? solaxRequest.data.result.uploadTime : _uploadTime,
-                    "acpower": solaxRequest.data.result.acpower || 0,
-                    "yieldtoday": solaxRequest.data.success === true && solaxRequest.data.result.yieldtoday ? solaxRequest.data.result.yieldtoday : _yieldtoday,
-                    "yieldtotal": solaxRequest.data.success === true && solaxRequest.data.result.yieldtotal ? solaxRequest.data.result.yieldtotal : _yieldtotal,
-                    "feedinpower": solaxRequest.data.result.feedinpower || 0,
-                    "feedinenergy": solaxRequest.data.result.feedinenergy || 0,
-                    "consumeenergy": solaxRequest.data.result.consumeenergy || 0,
-                    "feedinpowerM2": solaxRequest.data.result.feedinpowerM2 || 0,
-                    "soc": solaxRequest.data.result.soc || 0,
-                    "peps1": solaxRequest.data.result.peps1 || 0,
-                    "peps2": solaxRequest.data.result.peps2 || 0,
-                    "peps3": solaxRequest.data.result.peps3 || 0,
-                    "powerdc1": solaxRequest.data.result.powerdc1 || 0,
-                    "powerdc2": solaxRequest.data.result.powerdc2 || 0,
-                    "powerdc3": solaxRequest.data.result.powerdc3 || 0,
-                    "powerdc4": solaxRequest.data.result.powerdc4 || 0,
-                    "batPower": solaxRequest.data.success === true && solaxRequest.data.result.batPower ? solaxRequest.data.result.batPower : _batPower
+                    "uploadTime": solaxRequest.data.success === true && solaxRequest.data.result.uploadTime ? solaxRequest.data.result.uploadTime : _uploadTime
                 });
 
-                await adapter.setStateAsync('data.json', JSON.stringify(json), true);
+                jsonTimer = setTimeout(async () => {
+                    await createdJSON(json);
+                    await adapter.setStateAsync('data.json', JSON.stringify(json), true);
+                }, 2000);
+
             } else {
                 adapter.log.debug('SolaX API is currently unavailable');
             }
@@ -402,6 +620,31 @@ async function fillData() {
         resolve();
     });
 }
+
+async function createdJSON(json) {
+    return new Promise(async (resolve) => {
+        await adapter.getForeignObjects(adapter.namespace + '.data.*', 'state', async (err, list) => {
+            if (err) {
+                adapter.log.error(err);
+            } else {
+                for (const i in list) {
+                    const resID = list[i]._id;
+                    const objectID = resID.split('.');
+                    const resultID = objectID[3];
+
+                    await adapter.getState(`data.${resultID}`, async (err, state) => {
+                        if (state && state.val >= 0) {
+                            json[`${resultID}`] = state.val;
+                        }
+                    });
+                }
+            }
+        });
+        // @ts-ignore
+        createTimer = setTimeout(async () => resolve(json), 2000);
+    });
+}
+
 async function setDayHistory() {
     try {
         await adapter.getStateAsync('history.yield_6_days_ago', async (err, state) => {
@@ -449,6 +692,7 @@ async function main() {
     let _isNight = false;
 
     adapter.log.debug('Solax is started');
+
     await getSystemData();
     _isNight = await nightCalc(_isNight);
     await sunPos();
