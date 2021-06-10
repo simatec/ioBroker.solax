@@ -12,6 +12,7 @@ const SunCalc = require('suncalc2');
 let replayTime;
 let jsonTimer;
 let createTimer;
+let setDataTimer;
 let longitude;
 let latitude;
 
@@ -250,6 +251,7 @@ function startAdapter(options) {
                 clearTimeout(replayTime);
                 clearTimeout(jsonTimer);
                 clearTimeout(createTimer);
+                clearTimeout(setDataTimer);
                 callback();
             } catch (e) {
                 callback();
@@ -464,10 +466,13 @@ async function createdStates(api) {
         for (const obj in deviceObjects) {
             if (api.result[`${obj}`]) {
                 await adapter.setObjectNotExistsAsync('data.' + obj, deviceObjects[obj]);
+            } else if (!api.result[`${obj}`]) {
+                delete api.result[`${obj}`];
             }
+
         }
         // @ts-ignore
-        createTimer = setTimeout(async () => resolve(), 2000);
+        createTimer = setTimeout(async () => resolve(api), 2000);
     });
 }
 
@@ -546,69 +551,14 @@ async function fillData() {
                 await adapter.setStateAsync('info.success', solaxRequest.data.success, true);
 
                 // set State for inverter data
-                await adapter.getForeignObjects(adapter.namespace + '.data.*', 'state', async (err, list) => {
-                    if (err) {
-                        adapter.log.error(err);
-                    } else {
-                        for (const i in list) {
-                            const resID = list[i]._id;
-                            const objectID = resID.split('.');
-                            const resultID = objectID[3];
-                            
-                            if (resultID !== 'yieldtoday' && resultID !== 'yieldtotal' && resultID !== 'batPower') {
-                                await adapter.getState(`data.${resultID}`, async (err, state) => {
-                                    if (state && state.val >= 0) {
-                                        await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
-                                    }
-                                });
-                            }
-                        }
-                    }
-                });
-
-                let _batPower;
-                let _yieldtotal;
-                let _yieldtoday;
-                let _uploadTime;
-
-                if (solaxRequest.data.success === false) {
-                    adapter.log.debug(`solaxRequest: ${solaxRequest.data.result ? solaxRequest.data.result : ''}`);
-
-                    await adapter.getStateAsync('data.batPower', async (err, state) => {
-                        if (state && state.val >= 0) {
-                            _batPower = state.val;
-                        }
-                    });
-
-                    await adapter.getStateAsync('data.yieldtotal', async (err, state) => {
-                        if (state && state.val >= 0) {
-                            _yieldtotal = state.val;
-                        }
-                    });
-
-                    await adapter.getStateAsync('data.yieldtoday', async (err, state) => {
-                        if (state && state.val >= 0) {
-                            _yieldtoday = state.val;
-                        }
-                    });
-
-                    await adapter.getStateAsync('data.uploadTime', async (err, state) => {
-                        if (state && state.val >= 0) {
-                            _uploadTime = state.val;
-                        }
-                    });
-                }
+                await setData(solaxRequest)
 
                 // created json
-                let json = ({
-                    "inverterStatus": inverterState,
-                    "uploadTime": solaxRequest.data.success === true && solaxRequest.data.result.uploadTime ? solaxRequest.data.result.uploadTime : _uploadTime
-                });
-
                 jsonTimer = setTimeout(async () => {
+                    let json = {}
                     await createdJSON(json);
                     await adapter.setStateAsync('data.json', JSON.stringify(json), true);
-                }, 2000);
+                }, 1000);
 
             } else {
                 adapter.log.debug('SolaX API is currently unavailable');
@@ -621,9 +571,41 @@ async function fillData() {
     });
 }
 
-async function createdJSON(json) {
+async function setData(solaxRequest) {
     return new Promise(async (resolve) => {
         await adapter.getForeignObjects(adapter.namespace + '.data.*', 'state', async (err, list) => {
+
+            if (err) {
+                adapter.log.error(err);
+            } else {
+                let num = 0;
+                for (const i in list) {
+                    num++;
+                    const resID = list[i]._id;
+                    const objectID = resID.split('.');
+                    const resultID = objectID[3];
+
+                    if (resultID !== 'yieldtoday' && resultID !== 'yieldtotal' && resultID !== 'batPower') {
+                        await adapter.getState(`data.${resultID}`, async (err, state) => {
+                            if (state && state.val >= 0) {
+                                await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
+                            }
+                        });
+                    }
+                    if (num == Object.keys(list).length) {
+                        // @ts-ignore
+                        setDataTimer = setTimeout(async () => resolve(), 1000);
+                    }
+                }
+            }
+        });
+    });
+}
+
+async function createdJSON(json) {
+    return new Promise(async (resolve) => {
+
+        await adapter.getForeignObjects(adapter.namespace + '.info.*', 'state', async (err, list) => {
             if (err) {
                 adapter.log.error(err);
             } else {
@@ -632,16 +614,37 @@ async function createdJSON(json) {
                     const objectID = resID.split('.');
                     const resultID = objectID[3];
 
-                    await adapter.getState(`data.${resultID}`, async (err, state) => {
-                        if (state && state.val >= 0) {
+                    await adapter.getState(`info.${resultID}`, async (err, state) => {
+                        if (state && state.val) {
                             json[`${resultID}`] = state.val;
                         }
                     });
                 }
             }
+            await adapter.getForeignObjects(adapter.namespace + '.data.*', 'state', async (err, list) => {
+                if (err) {
+                    adapter.log.error(err);
+                } else {
+                    let num = 0;
+                    for (const i in list) {
+                        num++;
+                        const resID = list[i]._id;
+                        const objectID = resID.split('.');
+                        const resultID = objectID[3];
+
+                        await adapter.getState(`data.${resultID}`, async (err, state) => {
+                            if (state && state.val >= 0) {
+                                json[`${resultID}`] = state.val;
+                            }
+                        });
+                        if (num == Object.keys(list).length) {
+                            // @ts-ignore
+                            createTimer = setTimeout(async () => resolve(json), 2000);
+                        }
+                    }
+                }
+            });
         });
-        // @ts-ignore
-        createTimer = setTimeout(async () => resolve(json), 2000);
     });
 }
 
