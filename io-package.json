@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "solax",
-        "version": "0.3.0",
+        "version": "0.3.1",
         "news": {
+            "0.3.1": {
+                "en": "fix for latest repo, API-Token encrypted",
+                "de": "Fix für latest Repo, API-Token verschlüsselt",
+                "ru": "исправление для последнего репо, API-токен зашифрован",
+                "pt": "correção para repo mais recente, API-Token criptografado",
+                "nl": "fix voor nieuwste repo, API-token versleuteld",
+                "fr": "correctif pour le dernier dépôt, API-Token crypté",
+                "it": "correzione per l'ultimo repository, token API crittografato",
+                "es": "corrección para el último repositorio, API-Token cifrado",
+                "pl": "poprawka dla najnowszego repozytorium, zaszyfrowany API-Token",
+                "zh-cn": "修复最新的 repo，API-Token 加密"
+            },
             "0.3.0": {
                 "en": "state settings changed, sentry plugin added, readme added, sunposition added, nightmode added",
                 "de": "State Einstellungen geändert, Sentry-Plugin hinzugefügt, Readme hinzugefügt, Sonnenstand hinzugefügt, Nachtmodus hinzugefügt",
@@ -104,7 +116,8 @@
         "dataSource": "poll",
         "dependencies": [
             {
-                "js-controller": ">=3.0.0"
+                "js-controller": ">=3.0.0",
+                "admin": ">=4.0.9"
             }
         ],
         "adminUI": {
@@ -117,13 +130,15 @@
         }
     },
     "native": {
-        "apiToken": "",
         "serialNumber": "",
         "requestInterval": 5,
         "systemGeoData": true,
         "longitude": "",
         "latitude": ""
     },
+    "encryptedNative": [
+        "apiToken"
+    ],
     "objects": [],
     "instanceObjects": [
         {

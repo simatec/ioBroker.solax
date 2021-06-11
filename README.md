@@ -3,12 +3,12 @@
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.solax.svg)](https://www.npmjs.com/package/iobroker.solax)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.solax.svg)](https://www.npmjs.com/package/iobroker.solax)
+![Number of Installations (latest)](http://iobroker.live/badges/solax-installed.svg)
 [![Dependency Status](https://img.shields.io/david/simatec/iobroker.solax.svg)](https://david-dm.org/simatec/iobroker.solax)
 [![Known Vulnerabilities](https://snyk.io/test/github/simatec/ioBroker.solax/badge.svg)](https://snyk.io/test/github/simatec/ioBroker.solax)
 ![Test and Release](https://github.com/simatec/ioBroker.solax/workflows/Test%20and%20Release/badge.svg)
 
-<!--![Number of Installations (latest)](http://iobroker.live/badges/solax-installed.svg)
-![Number of Installations (stable)](http://iobroker.live/badges/solax-stable.svg)-->
+<!--![Number of Installations (stable)](http://iobroker.live/badges/solax-stable.svg)-->
 
 [![NPM](https://nodei.co/npm/iobroker.solax.png?downloads=true)](https://nodei.co/npm/iobroker.solax/)
 
@@ -44,6 +44,10 @@ When the adapter crashes or an other Code error happens, this error message that
 **************************************************************************************************************
 
 ## Changelog
+
+### 0.3.1 (11.06.2021)
+* (simatec) fix for latest repo
+* (simatec) API-Token encrypted
 
 ### 0.3.0 (09.06.2021)
 * (simatec) state settings changed
