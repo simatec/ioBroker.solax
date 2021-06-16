@@ -487,7 +487,7 @@ async function requestAPI() {
             const solaxRequest = await axios({
                 method: 'get',
                 baseURL: solaxURL,
-                timeout: 3000,
+                timeout: 2000,
                 headers: {
                     'User-Agent': 'axios/0.21.1'
                 },
@@ -501,7 +501,7 @@ async function requestAPI() {
                 num++;
                 replayTime = setTimeout(async () => {
                     return await fillData();
-                }, 3000);
+                }, 5000);
             } else if (num > 5) {
                 adapter.log.debug(`${num} request attempts were started: ${solaxRequest.data.result ? solaxRequest.data.result : ''}`)
                 num = 0;
