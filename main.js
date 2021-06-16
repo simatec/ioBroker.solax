@@ -480,14 +480,14 @@ let num = 0;
 
 async function requestAPI() {
     return new Promise(async (resolve) => {
-        //const solaxURL = (`https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
-        const solaxURL = (`https://www.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
+        const solaxURL = (`https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
+        //const solaxURL = (`https://www.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
 
         try {
             const solaxRequest = await axios({
                 method: 'get',
                 baseURL: solaxURL,
-                timeout: 1500,
+                timeout: 3000,
                 headers: {
                     'User-Agent': 'axios/0.21.1'
                 },
@@ -501,7 +501,7 @@ async function requestAPI() {
                 num++;
                 replayTime = setTimeout(async () => {
                     return await fillData();
-                }, 5000);
+                }, 3000);
             } else if (num > 5) {
                 adapter.log.debug(`${num} request attempts were started: ${solaxRequest.data.result ? solaxRequest.data.result : ''}`)
                 num = 0;
