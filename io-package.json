@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "solax",
-        "version": "0.3.1",
+        "version": "0.3.2",
         "news": {
+            "0.3.2": {
+                "en": "fix for latest repo",
+                "de": "Fix für latest Repo",
+                "ru": "исправление для последнего репо",
+                "pt": "correção para repo mais recente",
+                "nl": "fix voor nieuwste repo",
+                "fr": "correctif pour le dernier dépôt",
+                "it": "correzione per l'ultimo repository",
+                "es": "corrección para el último repositorio",
+                "pl": "poprawka dla najnowszego repozytorium",
+                "zh-cn": "修复最新的 repo"
+            },
             "0.3.1": {
                 "en": "fix for latest repo, API-Token encrypted",
                 "de": "Fix für latest Repo, API-Token verschlüsselt",
@@ -116,8 +128,7 @@
         "dataSource": "poll",
         "dependencies": [
             {
-                "js-controller": ">=3.0.0",
-                "admin": ">=4.0.9"
+                "js-controller": ">=3.0.0"
             }
         ],
         "adminUI": {
@@ -316,7 +327,7 @@
             "_id": "info.success",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "indicator.state",
                 "name": "API success",
                 "type": "boolean",
                 "read": true,

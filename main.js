@@ -265,7 +265,7 @@ async function getSystemData() {
     return new Promise(async (resolve) => {
         if (adapter.config.systemGeoData) {
             try {
-                await adapter.getForeignObjectAsync('system.config', async (err, state) => {
+                adapter.getForeignObject('system.config', async (err, state) => {
 
                     if (err) {
                         adapter.log.error(err);
@@ -476,12 +476,11 @@ async function createdStates(api) {
     });
 }
 
-let num = 0;
+//let num = 0;
 
 async function requestAPI() {
     return new Promise(async (resolve) => {
         const solaxURL = (`https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
-        //const solaxURL = (`https://www.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
 
         try {
             const solaxRequest = await axios({
@@ -495,6 +494,13 @@ async function requestAPI() {
             });
 
             if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === true) {
+                resolve(solaxRequest);
+            } else {
+                adapter.log.debug('API request not possible at the moment')
+                resolve(solaxRequest);
+            }
+            /*
+            if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === true) {
                 num = 0;
                 resolve(solaxRequest);
             } else if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === false && num <= 5) {
@@ -507,6 +513,7 @@ async function requestAPI() {
                 num = 0;
                 resolve(solaxRequest);
             }
+            */
         } catch (err) {
             adapter.log.debug(`request error: ${err}`);
         }

@@ -45,6 +45,9 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 
+### 0.3.2 (28.07.2021)
+* (simatec) fix for latest repo
+
 ### 0.3.1 (11.06.2021)
 * (simatec) fix for latest repo
 * (simatec) API-Token encrypted
