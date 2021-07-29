@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "solax",
-        "version": "0.3.2",
+        "version": "0.3.3",
         "news": {
+            "0.3.3": {
+                "en": "Objects formatted, await functions fixed, query interval changed, Dependencies updated",
+                "de": "Objekte formatiert, Wait-Funktionen korrigiert, Abfrageintervall geändert, Abhängigkeiten aktualisiert",
+                "ru": "Отформатированы объекты, исправлены функции ожидания, изменен интервал запроса, обновлены зависимости",
+                "pt": "Objetos formatados, funções de espera corrigidas, intervalo de consulta alterado, Dependências atualizadas",
+                "nl": "Objecten geformatteerd, wachtfuncties vast, query-interval gewijzigd, afhankelijkheden bijgewerkt",
+                "fr": "Objets formatés, fonctions d'attente corrigées, intervalle de requête modifié, dépendances mises à jour",
+                "it": "Oggetti formattati, funzioni di attesa riparate, intervallo di query modificato, dipendenze aggiornate",
+                "es": "Objetos formateados, funciones en espera fijadas, intervalo de consulta modificado, dependencias actualizadas",
+                "pl": "Sformatowanie obiektów, naprawienie funkcji oczekujących, zmiana interwału zapytań, aktualizacja zależności",
+                "zh-cn": "对象已格式化，等待函数已修复，查询间隔已更改，依赖项已更新"
+            },
             "0.3.2": {
                 "en": "fix for latest repo",
                 "de": "Fix für latest Repo",
@@ -38,42 +50,6 @@
                 "es": "configuración de estado cambiada, complemento de centinela agregado, readme agregado, sunposition agregado, modo de noche agregado",
                 "pl": "zmieniono ustawienia stanu, dodano wtyczkę sentry, dodano readme, dodano pozycję słońca, dodano tryb nocny",
                 "zh-cn": "状态设置已更改，已添加哨兵插件，已添加自述文件，已添加日光位置，已添加夜间模式"
-            },
-            "0.2.0": {
-                "en": "powerdc 1-4 added, battPower added, many small bugfixes",
-                "de": "powerdc 1-4 hinzugefügt, battPower hinzugefügt, viele kleine Bugfixes",
-                "ru": "Добавлен powerdc 1-4, добавлен battPower, много мелких исправлений",
-                "pt": "powerdc 1-4 adicionado, battPower adicionado, muitas pequenas correções de bugs",
-                "nl": "powerdc 1-4 toegevoegd, battPower toegevoegd, veel kleine bugfixes",
-                "fr": "powerdc 1-4 ajouté, battPower ajouté, de nombreuses petites corrections de bugs",
-                "it": "powerdc 1-4 aggiunto, battPower aggiunto, molte piccole correzioni di bug",
-                "es": "powerdc 1-4 agregado, battPower agregado, muchas pequeñas correcciones de errores",
-                "pl": "Dodano powerdc 1-4, dodano battPower, wiele drobnych poprawek",
-                "zh-cn": "powerdc 1-4 添加，battPower 添加，许多小错误修正"
-            },
-            "0.1.1": {
-                "en": "small Bugfixes",
-                "de": "kleine Bugfixes",
-                "ru": "небольшие исправления",
-                "pt": "pequenas correções de bugs",
-                "nl": "kleine bugfixes",
-                "fr": "petites corrections de bugs",
-                "it": "piccole correzioni di bug",
-                "es": "pequeñas correcciones de errores",
-                "pl": "małe poprawki",
-                "zh-cn": "小错误修正"
-            },
-            "0.1.0": {
-                "en": "first beta",
-                "de": "erste Beta",
-                "ru": "первая бета",
-                "pt": "primeiro beta",
-                "nl": "eerste bèta",
-                "fr": "première bêta",
-                "it": "prima beta",
-                "es": "primera beta",
-                "pl": "pierwsza wersja beta",
-                "zh-cn": "第一个测试版"
             }
         },
         "title": "Solax",
@@ -188,7 +164,7 @@
             "_id": "suninfo.Altitude",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "value.sun.elevation",
                 "name": "suninfo Altitude",
                 "type": "number",
                 "read": true,
@@ -202,7 +178,7 @@
             "_id": "suninfo.Azimut",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "value.sun.azimuth",
                 "name": "suninfo Azimut",
                 "type": "number",
                 "read": true,
@@ -216,7 +192,7 @@
             "_id": "history.yield_1_days_ago",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "value.power.consumption",
                 "name": "Inverter AC-Energy 1 days ago",
                 "type": "number",
                 "read": true,
@@ -230,7 +206,7 @@
             "_id": "history.yield_2_days_ago",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "value.power.consumption",
                 "name": "Inverter AC-Energy 2 days ago",
                 "type": "number",
                 "read": true,
@@ -244,7 +220,7 @@
             "_id": "history.yield_3_days_ago",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "value.power.consumption",
                 "name": "Inverter AC-Energy 3 days ago",
                 "type": "number",
                 "read": true,
@@ -258,7 +234,7 @@
             "_id": "history.yield_4_days_ago",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "value.power.consumption",
                 "name": "Inverter AC-Energy 4 days ago",
                 "type": "number",
                 "read": true,
@@ -272,7 +248,7 @@
             "_id": "history.yield_5_days_ago",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "value.power.consumption",
                 "name": "Inverter AC-Energy 5 days ago",
                 "type": "number",
                 "read": true,
@@ -286,7 +262,7 @@
             "_id": "history.yield_6_days_ago",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "value.power.consumption",
                 "name": "Inverter AC-Energy 6 days ago",
                 "type": "number",
                 "read": true,
@@ -300,7 +276,7 @@
             "_id": "history.yield_7_days_ago",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "value.power.consumption",
                 "name": "Inverter AC-Energy 7 days ago",
                 "type": "number",
                 "read": true,
@@ -314,7 +290,7 @@
             "_id": "info.exception",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "text",
                 "name": "API connection",
                 "type": "string",
                 "read": true,
@@ -340,7 +316,7 @@
             "_id": "info.inverterSN",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "text",
                 "name": "Unique identifier of inverter (Serial No.)",
                 "type": "string",
                 "read": true,
@@ -353,7 +329,7 @@
             "_id": "info.sn",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "text",
                 "name": "Unique identifier of communication module (Registration No.)",
                 "type": "string",
                 "read": true,
@@ -366,7 +342,7 @@
             "_id": "info.inverterType",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "text",
                 "name": "Inverter type",
                 "type": "string",
                 "read": true,
@@ -379,7 +355,7 @@
             "_id": "info.inverterStatus",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "text",
                 "name": "Inverter status",
                 "type": "string",
                 "read": true,
@@ -392,7 +368,7 @@
             "_id": "info.uploadTime",
             "type": "state",
             "common": {
-                "role": "indicator",
+                "role": "value.time",
                 "name": "Update time",
                 "type": "string",
                 "read": true,

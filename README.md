@@ -45,6 +45,12 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 
+### 0.3.3 (29.07.2021)
+* (simatec) Formatted objects
+* (simatec) await functions fixed
+* (simatec) query interval changed
+* (simatec) Dependencies updated
+
 ### 0.3.2 (28.07.2021)
 * (simatec) fix for latest repo
 

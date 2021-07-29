@@ -11,6 +11,7 @@ const SunCalc = require('suncalc2');
 
 let replayTime;
 let jsonTimer;
+let requestTimer;
 let createTimer;
 let setDataTimer;
 let longitude;
@@ -20,7 +21,7 @@ const deviceObjects = {
     'acpower': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power',
             'name': 'Inverter AC-Power total',
             'type': 'number',
             'read': true,
@@ -33,7 +34,7 @@ const deviceObjects = {
     'yieldtoday': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power.consumption',
             'name': 'Inverter AC-Energy out Daily',
             'type': 'number',
             'read': true,
@@ -46,7 +47,7 @@ const deviceObjects = {
     'yieldtotal': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power.consumption',
             'name': 'Inverter AC-Energy out total',
             'type': 'number',
             'read': true,
@@ -59,7 +60,7 @@ const deviceObjects = {
     'feedinpower': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power',
             'name': 'GCP-Power total',
             'type': 'number',
             'read': true,
@@ -72,7 +73,7 @@ const deviceObjects = {
     'feedinenergy': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power.consumption',
             'name': 'GCP-Energy to Grid total',
             'type': 'number',
             'read': true,
@@ -85,7 +86,7 @@ const deviceObjects = {
     'consumeenergy': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power.consumption',
             'name': 'GCP-Energy from Grid total',
             'type': 'number',
             'read': true,
@@ -98,7 +99,7 @@ const deviceObjects = {
     'feedinpowerM2': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power',
             'name': 'address to meter AC-Power total',
             'type': 'number',
             'read': true,
@@ -111,7 +112,7 @@ const deviceObjects = {
     'soc': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value',
             'name': 'Inverter DC-Battery Energy SOC',
             'type': 'number',
             'read': true,
@@ -124,7 +125,7 @@ const deviceObjects = {
     'peps1': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power',
             'name': 'Inverter AC EPS-Power L1',
             'type': 'number',
             'read': true,
@@ -137,7 +138,7 @@ const deviceObjects = {
     'peps2': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power',
             'name': 'Inverter AC EPS-Power L2',
             'type': 'number',
             'read': true,
@@ -150,7 +151,7 @@ const deviceObjects = {
     'peps3': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power',
             'name': 'Inverter AC EPS-Power L3',
             'type': 'number',
             'read': true,
@@ -163,7 +164,7 @@ const deviceObjects = {
     'batPower': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power',
             'name': 'Inverter DC-Battery power total',
             'type': 'number',
             'read': true,
@@ -176,7 +177,7 @@ const deviceObjects = {
     'powerdc1': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power',
             'name': 'Inverter DC PV power MPPT1',
             'type': 'number',
             'read': true,
@@ -189,7 +190,7 @@ const deviceObjects = {
     'powerdc2': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power',
             'name': 'Inverter DC PV power MPPT2',
             'type': 'number',
             'read': true,
@@ -202,7 +203,7 @@ const deviceObjects = {
     'powerdc3': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power',
             'name': 'Inverter DC PV power MPPT3',
             'type': 'number',
             'read': true,
@@ -215,7 +216,7 @@ const deviceObjects = {
     'powerdc4': {
         'type': 'state',
         'common': {
-            'role': 'indicator',
+            'role': 'value.power',
             'name': 'Inverter DC PV power MPPT4',
             'type': 'number',
             'read': true,
@@ -246,12 +247,12 @@ function startAdapter(options) {
 
         unload: (callback) => {
             try {
-                schedule.cancelJob('requestInterval');
                 schedule.cancelJob('dayHistory');
                 clearTimeout(replayTime);
                 clearTimeout(jsonTimer);
                 clearTimeout(createTimer);
                 clearTimeout(setDataTimer);
+                clearInterval(requestTimer);
                 callback();
             } catch (e) {
                 callback();
@@ -476,7 +477,7 @@ async function createdStates(api) {
     });
 }
 
-//let num = 0;
+let num = 0;
 
 async function requestAPI() {
     return new Promise(async (resolve) => {
@@ -492,14 +493,15 @@ async function requestAPI() {
                 },
                 responseType: 'json'
             });
-
+            /*
             if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === true) {
                 resolve(solaxRequest);
             } else {
                 adapter.log.debug('API request not possible at the moment')
                 resolve(solaxRequest);
             }
-            /*
+            */
+
             if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === true) {
                 num = 0;
                 resolve(solaxRequest);
@@ -513,7 +515,6 @@ async function requestAPI() {
                 num = 0;
                 resolve(solaxRequest);
             }
-            */
         } catch (err) {
             adapter.log.debug(`request error: ${err}`);
         }
@@ -655,35 +656,42 @@ async function createdJSON(json) {
     });
 }
 
-async function setDayHistory() {
+function setDayHistory() {
     try {
-        await adapter.getStateAsync('history.yield_6_days_ago', async (err, state) => {
+        adapter.getState('history.yield_6_days_ago', (err, state) => {
             if (state && state.val >= 0) {
-                await adapter.setStateAsync('history.yield_7_days_ago', state.val, true);
+                adapter.setState('history.yield_7_days_ago', state.val, true);
+                adapter.log.debug('history yield 7 days ago: ' + state.val);
             }
-            await adapter.getStateAsync('history.yield_5_days_ago', async (err, state) => {
+            adapter.getState('history.yield_5_days_ago', (err, state) => {
                 if (state && state.val >= 0) {
-                    await adapter.setStateAsync('history.yield_6_days_ago', state.val, true);
+                    adapter.setState('history.yield_6_days_ago', state.val, true);
+                    adapter.log.debug('history yield 6 days ago: ' + state.val);
                 }
-                await adapter.getStateAsync('history.yield_4_days_ago', async (err, state) => {
+                adapter.getState('history.yield_4_days_ago', (err, state) => {
                     if (state && state.val >= 0) {
-                        await adapter.setStateAsync('history.yield_5_days_ago', state.val, true);
+                        adapter.setState('history.yield_5_days_ago', state.val, true);
+                        adapter.log.debug('history yield 5 days ago: ' + state.val);
                     }
-                    await adapter.getStateAsync('history.yield_3_days_ago', async (err, state) => {
+                    adapter.getState('history.yield_3_days_ago', (err, state) => {
                         if (state && state.val >= 0) {
-                            await adapter.setStateAsync('history.yield_4_days_ago', state.val, true);
+                            adapter.setState('history.yield_4_days_ago', state.val, true);
+                            adapter.log.debug('history yield 4 days ago: ' + state.val);
                         }
-                        await adapter.getStateAsync('history.yield_2_days_ago', async (err, state) => {
+                        adapter.getState('history.yield_2_days_ago', (err, state) => {
                             if (state && state.val >= 0) {
-                                await adapter.setStateAsync('history.yield_3_days_ago', state.val, true);
+                                adapter.setState('history.yield_3_days_ago', state.val, true);
+                                adapter.log.debug('history yield 3 days ago: ' + state.val);
                             }
-                            await adapter.getStateAsync('history.yield_1_days_ago', async (err, state) => {
+                            adapter.getState('history.yield_1_days_ago', (err, state) => {
                                 if (state && state.val >= 0) {
-                                    await adapter.setStateAsync('history.yield_2_days_ago', state.val, true);
+                                    adapter.setState('history.yield_2_days_ago', state.val, true);
+                                    adapter.log.debug('history yield 2 days ago: ' + state.val);
                                 }
-                                await adapter.getStateAsync('data.yieldtoday', async (err, state) => {
+                                adapter.getState('data.yieldtoday', (err, state) => {
                                     if (state && state.val >= 0) {
-                                        await adapter.setStateAsync('history.yield_1_days_ago', state.val, true);
+                                        adapter.setState('history.yield_1_days_ago', state.val, true);
+                                        adapter.log.debug('history yield 1 days ago: ' + state.val);
                                     }
                                 });
                             });
@@ -716,8 +724,7 @@ async function main() {
         const requestInterval = adapter.config.requestInterval || 5;
         adapter.log.debug(`Request Interval: ${requestInterval} minute(s)`);
 
-        schedule.scheduleJob('requestInterval', `20 */${requestInterval} * * * *`, async () => {
-
+        requestTimer = setInterval(async () => {
             _isNight = await nightCalc(_isNight);
             await sunPos();
             adapter.log.debug('is Night: ' + _isNight)
@@ -726,9 +733,9 @@ async function main() {
                 adapter.log.debug('API Request started ...');
                 fillData();
             }
-        });
+        }, requestInterval * 60000);
 
-        schedule.scheduleJob('dayHistory', '40 59 23 * * *', async () => await setDayHistory());
+        schedule.scheduleJob('dayHistory', '40 59 23 * * *', async () => setDayHistory());
     } else {
         adapter.log.warn('system settings cannot be called up. Please check configuration!');
     }
