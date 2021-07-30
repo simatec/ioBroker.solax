@@ -573,141 +573,120 @@ async function fillData() {
 
 async function setData(solaxRequest) {
     return new Promise(async (resolve) => {
-        adapter.getForeignObjects(adapter.namespace + '.data.*', 'state', async (err, list) => {
 
-            if (err) {
-                adapter.log.error(err);
-            } else {
-                let num = 0;
-                for (const i in list) {
-                    num++;
-                    const resID = list[i]._id;
-                    const objectID = resID.split('.');
-                    const resultID = objectID[3];
+        const list = await adapter.getForeignObjectsAsync(adapter.namespace + '.data.*', 'state');
 
-                    if (resultID !== 'yieldtoday' && resultID !== 'yieldtotal' && resultID !== 'batPower') {
-                        /*
-                        await adapter.getState(`data.${resultID}`, async (err, state) => {
-                            if (state && state.val >= 0) {
-                                await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
-                            }
-                        });
-                        */
-                        const state = await adapter.getStateAsync(`data.${resultID}`);
-                        if (state && state.val >= 0) {
-                            await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
-                        }
-                    }
-                    if (num == Object.keys(list).length) {
-                        // @ts-ignore
-                        setDataTimer = setTimeout(async () => resolve(), 1000);
+        if (list) {
+            let num = 0;
+            for (const i in list) {
+                num++;
+                const resID = list[i]._id;
+                const objectID = resID.split('.');
+                const resultID = objectID[3];
+
+                if (resultID !== 'yieldtoday' && resultID !== 'yieldtotal' && resultID !== 'batPower') {
+                    const state = await adapter.getStateAsync(`data.${resultID}`);
+
+                    if (state && state.val >= 0) {
+                        await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
                     }
                 }
+
+                if (num == Object.keys(list).length) {
+                    // @ts-ignore
+                    setDataTimer = setTimeout(async () => resolve(), 1000);
+                }
             }
-        });
+        }
     });
 }
 
 async function createdJSON(json) {
     return new Promise(async (resolve) => {
 
-        adapter.getForeignObjects(adapter.namespace + '.info.*', 'state', async (err, list) => {
-            if (err) {
-                adapter.log.error(err);
-            } else {
-                for (const i in list) {
-                    const resID = list[i]._id;
-                    const objectID = resID.split('.');
-                    const resultID = objectID[3];
-                    /*
-                    await adapter.getState(`info.${resultID}`, async (err, state) => {
-                        if (state && state.val) {
-                            json[`${resultID}`] = state.val;
-                        }
-                    });
-                    */
-                    const state = await adapter.getStateAsync(`info.${resultID}`);
-                    if (state && state.val >= 0) {
-                        json[`${resultID}`] = state.val;
-                    }
+        const infoList = await adapter.getForeignObjectsAsync(adapter.namespace + '.info.*', 'state');
+
+        if (infoList) {
+            for (const i in infoList) {
+                const resID = infoList[i]._id;
+                const objectID = resID.split('.');
+                const resultID = objectID[3];
+
+                const state = await adapter.getStateAsync(`info.${resultID}`);
+
+                if (state && state.val >= 0) {
+                    json[`${resultID}`] = state.val;
                 }
             }
-            adapter.getForeignObjects(adapter.namespace + '.data.*', 'state', async (err, list) => {
-                if (err) {
-                    adapter.log.error(err);
-                } else {
-                    let num = 0;
-                    for (const i in list) {
-                        num++;
-                        const resID = list[i]._id;
-                        const objectID = resID.split('.');
-                        const resultID = objectID[3];
-                        /*
-                        await adapter.getState(`data.${resultID}`, async (err, state) => {
-                            if (state && state.val >= 0) {
-                                json[`${resultID}`] = state.val;
-                            }
-                        });
-                        */
-                        const state = await adapter.getStateAsync(`data.${resultID}`);
-                        if (state && state.val >= 0) {
-                            json[`${resultID}`] = state.val;
-                        }
-                        if (num == Object.keys(list).length) {
-                            // @ts-ignore
-                            createTimer = setTimeout(async () => resolve(json), 2000);
-                        }
-                    }
+        }
+        const dataList = await adapter.getForeignObjectsAsync(adapter.namespace + '.data.*', 'state');
+
+        if (dataList) {
+            let num = 0;
+            for (const i in dataList) {
+                num++;
+                const resID = dataList[i]._id;
+                const objectID = resID.split('.');
+                const resultID = objectID[3];
+
+                const state = await adapter.getStateAsync(`data.${resultID}`);
+
+                if (state && state.val >= 0) {
+                    json[`${resultID}`] = state.val;
                 }
-            });
-        });
+
+                if (num == Object.keys(dataList).length) {
+                    // @ts-ignore
+                    createTimer = setTimeout(async () => resolve(json), 2000);
+                }
+            }
+        }
     });
 }
 
-function setDayHistory() {
+async function setDayHistory() {
     try {
-        adapter.getState('history.yield_6_days_ago', (err, state) => {
-            if (state && state.val >= 0) {
-                adapter.setState('history.yield_7_days_ago', state.val, true);
-                adapter.log.debug('history yield 7 days ago: ' + state.val);
-            }
-            adapter.getState('history.yield_5_days_ago', (err, state) => {
-                if (state && state.val >= 0) {
-                    adapter.setState('history.yield_6_days_ago', state.val, true);
-                    adapter.log.debug('history yield 6 days ago: ' + state.val);
-                }
-                adapter.getState('history.yield_4_days_ago', (err, state) => {
-                    if (state && state.val >= 0) {
-                        adapter.setState('history.yield_5_days_ago', state.val, true);
-                        adapter.log.debug('history yield 5 days ago: ' + state.val);
-                    }
-                    adapter.getState('history.yield_3_days_ago', (err, state) => {
-                        if (state && state.val >= 0) {
-                            adapter.setState('history.yield_4_days_ago', state.val, true);
-                            adapter.log.debug('history yield 4 days ago: ' + state.val);
-                        }
-                        adapter.getState('history.yield_2_days_ago', (err, state) => {
-                            if (state && state.val >= 0) {
-                                adapter.setState('history.yield_3_days_ago', state.val, true);
-                                adapter.log.debug('history yield 3 days ago: ' + state.val);
-                            }
-                            adapter.getState('history.yield_1_days_ago', (err, state) => {
-                                if (state && state.val >= 0) {
-                                    adapter.setState('history.yield_2_days_ago', state.val, true);
-                                    adapter.log.debug('history yield 2 days ago: ' + state.val);
-                                }
-                                adapter.getState('data.yieldtoday', (err, state) => {
-                                    if (state && state.val >= 0) {
-                                        adapter.setState('history.yield_1_days_ago', state.val, true);
-                                        adapter.log.debug('history yield 1 days ago: ' + state.val);
-                                    }
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-        });
+        const stateYield_6 = await adapter.getStateAsync('history.yield_6_days_ago');
+        if (stateYield_6 && stateYield_6.val >= 0) {
+            await adapter.setStateAsync('history.yield_7_days_ago', stateYield_6.val, true);
+            adapter.log.debug('history yield 7 days ago: ' + stateYield_6.val);
+        }
+
+        const stateYield_5 = await adapter.getStateAsync('history.yield_5_days_ago');
+        if (stateYield_5 && stateYield_5.val >= 0) {
+            await adapter.setStateAsync('history.yield_6_days_ago', stateYield_5.val, true);
+            adapter.log.debug('history yield 6 days ago: ' + stateYield_5.val);
+        }
+
+        const stateYield_4 = await adapter.getStateAsync('history.yield_4_days_ago');
+        if (stateYield_4 && stateYield_4.val >= 0) {
+            await adapter.setStateAsync('history.yield_5_days_ago', stateYield_4.val, true);
+            adapter.log.debug('history yield 5 days ago: ' + stateYield_4.val);
+        }
+
+        const stateYield_3 = await adapter.getStateAsync('history.yield_3_days_ago');
+        if (stateYield_3 && stateYield_3.val >= 0) {
+            await adapter.setStateAsync('history.yield_4_days_ago', stateYield_3.val, true);
+            adapter.log.debug('history yield 4 days ago: ' + stateYield_3.val);
+        }
+
+        const stateYield_2 = await adapter.getStateAsync('history.yield_2_days_ago');
+        if (stateYield_2 && stateYield_2.val >= 0) {
+            await adapter.setStateAsync('history.yield_3_days_ago', stateYield_2.val, true);
+            adapter.log.debug('history yield 3 days ago: ' + stateYield_2.val);
+        }
+
+        const stateYield_1 = await adapter.getStateAsync('history.yield_1_days_ago');
+        if (stateYield_1 && stateYield_1.val >= 0) {
+            await adapter.setStateAsync('history.yield_2_days_ago', stateYield_1.val, true);
+            adapter.log.debug('history yield 2 days ago: ' + stateYield_1.val);
+        }
+
+        const stateYield_today = await adapter.getStateAsync('data.yieldtoday');
+        if (stateYield_today && stateYield_today.val >= 0) {
+            await adapter.setStateAsync('history.yield_1_days_ago', stateYield_today.val, true);
+            adapter.log.debug('history yield 1 days ago: ' + stateYield_today.val);
+        }
     } catch (err) {
         adapter.log.warn(err)
     }
@@ -742,7 +721,7 @@ async function main() {
             }
         }, requestInterval * 60000);
 
-        schedule.scheduleJob('dayHistory', '40 59 23 * * *', async () => setDayHistory());
+        schedule.scheduleJob('dayHistory', '50 59 23 * * *', async () => await setDayHistory());
     } else {
         adapter.log.warn('system settings cannot be called up. Please check configuration!');
     }
