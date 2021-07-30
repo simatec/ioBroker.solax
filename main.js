@@ -645,51 +645,26 @@ async function createdJSON(json) {
 }
 
 async function setDayHistory() {
-    try {
-        const stateYield_6 = await adapter.getStateAsync('history.yield_6_days_ago');
-        if (stateYield_6 && stateYield_6.val >= 0) {
-            await adapter.setStateAsync('history.yield_7_days_ago', stateYield_6.val, true);
-            adapter.log.debug('history yield 7 days ago: ' + stateYield_6.val);
-        }
+    for (let c = 6; c >= 0; c--) {
+        try {
+            let state;
 
-        const stateYield_5 = await adapter.getStateAsync('history.yield_5_days_ago');
-        if (stateYield_5 && stateYield_5.val >= 0) {
-            await adapter.setStateAsync('history.yield_6_days_ago', stateYield_5.val, true);
-            adapter.log.debug('history yield 6 days ago: ' + stateYield_5.val);
-        }
+            if (c == 0) {
+                state = await adapter.getStateAsync(`data.yieldtoday`);
+            } else {
+                state = await adapter.getStateAsync(`history.yield_${c}_days_ago`);
+            }
 
-        const stateYield_4 = await adapter.getStateAsync('history.yield_4_days_ago');
-        if (stateYield_4 && stateYield_4.val >= 0) {
-            await adapter.setStateAsync('history.yield_5_days_ago', stateYield_4.val, true);
-            adapter.log.debug('history yield 5 days ago: ' + stateYield_4.val);
+            if (state && state.val >= 0) {
+                const _c = c + 1;
+                await adapter.setStateAsync(`history.yield_${_c}_days_ago`, state.val, true);
+                adapter.log.debug(`history yield ${_c} days ago: ${state.val} KW/h`);
+            }
+        } catch (err) {
+            adapter.log.warn(err)
         }
-
-        const stateYield_3 = await adapter.getStateAsync('history.yield_3_days_ago');
-        if (stateYield_3 && stateYield_3.val >= 0) {
-            await adapter.setStateAsync('history.yield_4_days_ago', stateYield_3.val, true);
-            adapter.log.debug('history yield 4 days ago: ' + stateYield_3.val);
-        }
-
-        const stateYield_2 = await adapter.getStateAsync('history.yield_2_days_ago');
-        if (stateYield_2 && stateYield_2.val >= 0) {
-            await adapter.setStateAsync('history.yield_3_days_ago', stateYield_2.val, true);
-            adapter.log.debug('history yield 3 days ago: ' + stateYield_2.val);
-        }
-
-        const stateYield_1 = await adapter.getStateAsync('history.yield_1_days_ago');
-        if (stateYield_1 && stateYield_1.val >= 0) {
-            await adapter.setStateAsync('history.yield_2_days_ago', stateYield_1.val, true);
-            adapter.log.debug('history yield 2 days ago: ' + stateYield_1.val);
-        }
-
-        const stateYield_today = await adapter.getStateAsync('data.yieldtoday');
-        if (stateYield_today && stateYield_today.val >= 0) {
-            await adapter.setStateAsync('history.yield_1_days_ago', stateYield_today.val, true);
-            adapter.log.debug('history yield 1 days ago: ' + stateYield_today.val);
-        }
-    } catch (err) {
-        adapter.log.warn(err)
     }
+
 }
 
 async function main() {
