@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "solax",
-        "version": "0.3.3",
+        "version": "0.3.4",
         "news": {
+            "0.3.4": {
+                "en": "code cleanig, await functions fixed"
+            },
             "0.3.3": {
                 "en": "Objects formatted, await functions fixed, query interval changed, Dependencies updated",
                 "de": "Objekte formatiert, Wait-Funktionen korrigiert, Abfrageintervall geändert, Abhängigkeiten aktualisiert",
@@ -105,6 +108,11 @@
         "dependencies": [
             {
                 "js-controller": ">=3.0.0"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=4.0.9"
             }
         ],
         "adminUI": {

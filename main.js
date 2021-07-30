@@ -266,7 +266,7 @@ async function getSystemData() {
     return new Promise(async (resolve) => {
         if (adapter.config.systemGeoData) {
             try {
-                adapter.getForeignObject('system.config', async (err, state) => {
+                adapter.getForeignObject('system.config', (err, state) => {
 
                     if (err) {
                         adapter.log.error(err);
@@ -493,14 +493,6 @@ async function requestAPI() {
                 },
                 responseType: 'json'
             });
-            /*
-            if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === true) {
-                resolve(solaxRequest);
-            } else {
-                adapter.log.debug('API request not possible at the moment')
-                resolve(solaxRequest);
-            }
-            */
 
             if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === true) {
                 num = 0;
@@ -581,7 +573,7 @@ async function fillData() {
 
 async function setData(solaxRequest) {
     return new Promise(async (resolve) => {
-        await adapter.getForeignObjects(adapter.namespace + '.data.*', 'state', async (err, list) => {
+        adapter.getForeignObjects(adapter.namespace + '.data.*', 'state', async (err, list) => {
 
             if (err) {
                 adapter.log.error(err);
@@ -594,11 +586,17 @@ async function setData(solaxRequest) {
                     const resultID = objectID[3];
 
                     if (resultID !== 'yieldtoday' && resultID !== 'yieldtotal' && resultID !== 'batPower') {
+                        /*
                         await adapter.getState(`data.${resultID}`, async (err, state) => {
                             if (state && state.val >= 0) {
                                 await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
                             }
                         });
+                        */
+                        const state = await adapter.getStateAsync(`data.${resultID}`);
+                        if (state && state.val >= 0) {
+                            await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
+                        }
                     }
                     if (num == Object.keys(list).length) {
                         // @ts-ignore
@@ -613,7 +611,7 @@ async function setData(solaxRequest) {
 async function createdJSON(json) {
     return new Promise(async (resolve) => {
 
-        await adapter.getForeignObjects(adapter.namespace + '.info.*', 'state', async (err, list) => {
+        adapter.getForeignObjects(adapter.namespace + '.info.*', 'state', async (err, list) => {
             if (err) {
                 adapter.log.error(err);
             } else {
@@ -621,15 +619,20 @@ async function createdJSON(json) {
                     const resID = list[i]._id;
                     const objectID = resID.split('.');
                     const resultID = objectID[3];
-
+                    /*
                     await adapter.getState(`info.${resultID}`, async (err, state) => {
                         if (state && state.val) {
                             json[`${resultID}`] = state.val;
                         }
                     });
+                    */
+                    const state = await adapter.getStateAsync(`info.${resultID}`);
+                    if (state && state.val >= 0) {
+                        json[`${resultID}`] = state.val;
+                    }
                 }
             }
-            await adapter.getForeignObjects(adapter.namespace + '.data.*', 'state', async (err, list) => {
+            adapter.getForeignObjects(adapter.namespace + '.data.*', 'state', async (err, list) => {
                 if (err) {
                     adapter.log.error(err);
                 } else {
@@ -639,12 +642,17 @@ async function createdJSON(json) {
                         const resID = list[i]._id;
                         const objectID = resID.split('.');
                         const resultID = objectID[3];
-
+                        /*
                         await adapter.getState(`data.${resultID}`, async (err, state) => {
                             if (state && state.val >= 0) {
                                 json[`${resultID}`] = state.val;
                             }
                         });
+                        */
+                        const state = await adapter.getStateAsync(`data.${resultID}`);
+                        if (state && state.val >= 0) {
+                            json[`${resultID}`] = state.val;
+                        }
                         if (num == Object.keys(list).length) {
                             // @ts-ignore
                             createTimer = setTimeout(async () => resolve(json), 2000);
@@ -715,7 +723,6 @@ async function main() {
     _isNight = await nightCalc(_isNight);
     await sunPos();
 
-    schedule.cancelJob('requestInterval');
     schedule.cancelJob('dayHistory');
 
     if (adapter.config.apiToken && adapter.config.serialNumber) {
