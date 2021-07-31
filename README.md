@@ -45,6 +45,9 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 
+### 0.3.5 (31.07.2021)
+* (simatec) await/async functions fixed
+
 ### 0.3.4 (30.07.2021)
 * (simatec) code cleanig
 * (simatec) await functions fixed

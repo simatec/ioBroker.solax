@@ -1,10 +1,31 @@
 {
     "common": {
         "name": "solax",
-        "version": "0.3.4",
+        "version": "0.3.5",
         "news": {
+            "0.3.5": {
+                "en": "await/async functions fixed",
+                "de": "Wait/Async-Funktionen behoben",
+                "ru": "исправлены функции await / async",
+                "pt": "funções de espera / assíncrona corrigidas",
+                "nl": "wacht/asynchrone functies opgelost",
+                "fr": "Fonctions d'attente/async corrigées",
+                "it": "Funzioni di attesa/asincrone risolte",
+                "es": "funciones de espera / asincrónica arregladas",
+                "pl": "Naprawiono funkcje await/async",
+                "zh-cn": "等待/异步功能已修复"
+            },
             "0.3.4": {
-                "en": "code cleanig, await functions fixed"
+                "en": "code cleanig, await functions fixed",
+                "de": "Code Cleanig, Wait-Funktionen behoben",
+                "ru": "очистка кода, исправлены функции ожидания",
+                "pt": "limpeza de código, funções de espera corrigidas",
+                "nl": "code opschonen, wacht functies vast",
+                "fr": "nettoyage du code, attente des fonctions corrigées",
+                "it": "pulizia del codice, attesa funzioni risolte",
+                "es": "limpieza de código, funciones de espera arregladas",
+                "pl": "czyszczenie kodu, naprawiono funkcje oczekiwania",
+                "zh-cn": "代码清理，等待功能修复"
             },
             "0.3.3": {
                 "en": "Objects formatted, await functions fixed, query interval changed, Dependencies updated",

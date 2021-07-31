@@ -266,20 +266,20 @@ async function getSystemData() {
     return new Promise(async (resolve) => {
         if (adapter.config.systemGeoData) {
             try {
-                adapter.getForeignObject('system.config', (err, state) => {
+                const state = await adapter.getForeignObjectAsync('system.config', 'state');
 
-                    if (err) {
-                        adapter.log.error(err);
-                        // @ts-ignore
-                        resolve();
-                    } else {
-                        longitude = state.common.longitude;
-                        latitude = state.common.latitude;
-                        adapter.log.debug('System longitude: ' + state.common.longitude + ' System latitude: ' + state.common.latitude);
-                        // @ts-ignore
-                        resolve();
-                    }
-                });
+                if (state) {
+                    longitude = state.common.longitude;
+                    latitude = state.common.latitude;
+                    adapter.log.debug('System longitude: ' + state.common.longitude + ' System latitude: ' + state.common.latitude);
+                    // @ts-ignore
+                    resolve();
+
+                } else {
+                    adapter.log.error('Astro data from the system settings cannot be called up. Please check configuration!');
+                    // @ts-ignore
+                    resolve();
+                }
             } catch (err) {
                 adapter.log.warn('Astro data from the system settings cannot be called up. Please check configuration!')
                 // @ts-ignore
@@ -619,6 +619,7 @@ async function createdJSON(json) {
                 }
             }
         }
+
         const dataList = await adapter.getForeignObjectsAsync(adapter.namespace + '.data.*', 'state');
 
         if (dataList) {
@@ -664,7 +665,6 @@ async function setDayHistory() {
             adapter.log.warn(err)
         }
     }
-
 }
 
 async function main() {
