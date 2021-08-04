@@ -44,6 +44,13 @@ When the adapter crashes or an other Code error happens, this error message that
 **************************************************************************************************************
 
 ## Changelog
+<!--
+	Placeholder for the next version (at the beginning of the line):
+	### __WORK IN PROGRESS__
+-->
+
+### __WORK IN PROGRESS__
+* (simatec) deps fixed
 
 ### 0.3.5 (31.07.2021)
 * (simatec) await/async functions fixed

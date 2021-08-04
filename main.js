@@ -1,9 +1,8 @@
 'use strict';
+// Version 0.3.5 
 
 // @ts-ignore
 const utils = require('@iobroker/adapter-core');
-// @ts-ignore
-const axios = require('axios').default;
 // @ts-ignore
 const schedule = require('node-schedule');
 // @ts-ignore
@@ -481,6 +480,9 @@ let num = 0;
 
 async function requestAPI() {
     return new Promise(async (resolve) => {
+        // @ts-ignore
+        const axios = require('axios').default;
+
         const solaxURL = (`https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
 
         try {
