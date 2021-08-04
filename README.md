@@ -49,7 +49,7 @@ When the adapter crashes or an other Code error happens, this error message that
 	### __WORK IN PROGRESS__
 -->
 
-### __WORK IN PROGRESS__
+### 0.3.6 (2021-08-04)
 * (simatec) deps fixed
 
 ### 0.3.5 (31.07.2021)
