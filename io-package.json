@@ -1,435 +1,435 @@
 {
-    "common": {
-        "name": "solax",
-        "version": "0.3.6",
-        "news": {
-            "0.3.6": {
-                "en": "deps fixed",
-                "de": "Tiefen behoben",
-                "ru": "фиксированная глубина",
-                "pt": "deps corrigido",
-                "nl": "dieptes vast",
-                "fr": "deps corrigé",
-                "it": "le quote sono state risolte",
-                "es": "deps fijo",
-                "pl": "naprawiono deps",
-                "zh-cn": "固定"
-            },
-            "0.3.5": {
-                "en": "await/async functions fixed",
-                "de": "Wait/Async-Funktionen behoben",
-                "ru": "исправлены функции await / async",
-                "pt": "funções de espera / assíncrona corrigidas",
-                "nl": "wacht/asynchrone functies opgelost",
-                "fr": "Fonctions d'attente/async corrigées",
-                "it": "Funzioni di attesa/asincrone risolte",
-                "es": "funciones de espera / asincrónica arregladas",
-                "pl": "Naprawiono funkcje await/async",
-                "zh-cn": "等待/异步功能已修复"
-            },
-            "0.3.4": {
-                "en": "code cleanig, await functions fixed",
-                "de": "Code Cleanig, Wait-Funktionen behoben",
-                "ru": "очистка кода, исправлены функции ожидания",
-                "pt": "limpeza de código, funções de espera corrigidas",
-                "nl": "code opschonen, wacht functies vast",
-                "fr": "nettoyage du code, attente des fonctions corrigées",
-                "it": "pulizia del codice, attesa funzioni risolte",
-                "es": "limpieza de código, funciones de espera arregladas",
-                "pl": "czyszczenie kodu, naprawiono funkcje oczekiwania",
-                "zh-cn": "代码清理，等待功能修复"
-            },
-            "0.3.3": {
-                "en": "Objects formatted, await functions fixed, query interval changed, Dependencies updated",
-                "de": "Objekte formatiert, Wait-Funktionen korrigiert, Abfrageintervall geändert, Abhängigkeiten aktualisiert",
-                "ru": "Отформатированы объекты, исправлены функции ожидания, изменен интервал запроса, обновлены зависимости",
-                "pt": "Objetos formatados, funções de espera corrigidas, intervalo de consulta alterado, Dependências atualizadas",
-                "nl": "Objecten geformatteerd, wachtfuncties vast, query-interval gewijzigd, afhankelijkheden bijgewerkt",
-                "fr": "Objets formatés, fonctions d'attente corrigées, intervalle de requête modifié, dépendances mises à jour",
-                "it": "Oggetti formattati, funzioni di attesa riparate, intervallo di query modificato, dipendenze aggiornate",
-                "es": "Objetos formateados, funciones en espera fijadas, intervalo de consulta modificado, dependencias actualizadas",
-                "pl": "Sformatowanie obiektów, naprawienie funkcji oczekujących, zmiana interwału zapytań, aktualizacja zależności",
-                "zh-cn": "对象已格式化，等待函数已修复，查询间隔已更改，依赖项已更新"
-            },
-            "0.3.2": {
-                "en": "fix for latest repo",
-                "de": "Fix für latest Repo",
-                "ru": "исправление для последнего репо",
-                "pt": "correção para repo mais recente",
-                "nl": "fix voor nieuwste repo",
-                "fr": "correctif pour le dernier dépôt",
-                "it": "correzione per l'ultimo repository",
-                "es": "corrección para el último repositorio",
-                "pl": "poprawka dla najnowszego repozytorium",
-                "zh-cn": "修复最新的 repo"
-            },
-            "0.3.1": {
-                "en": "fix for latest repo, API-Token encrypted",
-                "de": "Fix für latest Repo, API-Token verschlüsselt",
-                "ru": "исправление для последнего репо, API-токен зашифрован",
-                "pt": "correção para repo mais recente, API-Token criptografado",
-                "nl": "fix voor nieuwste repo, API-token versleuteld",
-                "fr": "correctif pour le dernier dépôt, API-Token crypté",
-                "it": "correzione per l'ultimo repository, token API crittografato",
-                "es": "corrección para el último repositorio, API-Token cifrado",
-                "pl": "poprawka dla najnowszego repozytorium, zaszyfrowany API-Token",
-                "zh-cn": "修复最新的 repo，API-Token 加密"
-            },
-            "0.3.0": {
-                "en": "state settings changed, sentry plugin added, readme added, sunposition added, nightmode added",
-                "de": "State Einstellungen geändert, Sentry-Plugin hinzugefügt, Readme hinzugefügt, Sonnenstand hinzugefügt, Nachtmodus hinzugefügt",
-                "ru": "изменены настройки состояния, добавлен плагин часового, добавлен readme, добавлено положение солнца, добавлен ночной режим",
-                "pt": "configurações de estado alteradas, plugin de sentinela adicionado, readme adicionado, sunposition adicionado, nightmode adicionado",
-                "nl": "statusinstellingen gewijzigd, schildwacht-plug-in toegevoegd, leesmij toegevoegd, zonnepositie toegevoegd, nachtmodus toegevoegd",
-                "fr": "paramètres d'état modifiés, plugin sentinelle ajouté, readme ajouté, position solaire ajoutée, mode nuit ajouté",
-                "it": "impostazioni dello stato modificate, plugin sentinella aggiunto, readme aggiunto, sunposition aggiunta, modalità notturna aggiunta",
-                "es": "configuración de estado cambiada, complemento de centinela agregado, readme agregado, sunposition agregado, modo de noche agregado",
-                "pl": "zmieniono ustawienia stanu, dodano wtyczkę sentry, dodano readme, dodano pozycję słońca, dodano tryb nocny",
-                "zh-cn": "状态设置已更改，已添加哨兵插件，已添加自述文件，已添加日光位置，已添加夜间模式"
-            }
-        },
-        "title": "Solax",
-        "titleLang": {
-            "en": "Solax",
-            "de": "Solax",
-            "ru": "Solax",
-            "pt": "Solax",
-            "nl": "Solax",
-            "fr": "Solax",
-            "it": "Solax",
-            "es": "Solax",
-            "pl": "Solax",
-            "zh-cn": "Solax"
-        },
-        "desc": {
-            "en": "Solax Inverter API Cloud Connection",
-            "de": "Solax Inverter API Cloud-Verbindung",
-            "ru": "Подключение к облаку Solax Inverter API",
-            "pt": "Solax Inverter API Cloud Connection",
-            "nl": "Solax Inverter API Cloud-verbinding",
-            "fr": "Connexion au cloud de l'API Solax Inverter",
-            "it": "Connessione cloud Solax Inverter API",
-            "es": "Conexión en la nube de API de inversor Solax",
-            "pl": "Solax Inverter API Cloud Connection",
-            "zh-cn": "Solax逆变器API云连接"
-        },
-        "authors": [
-            "simatec <nais@gmx.net>"
-        ],
-        "keywords": [
-            "Solax",
-            "PV",
-            "Photovoltaics",
-            "Inverter"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "main.js",
-        "icon": "solax.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/simatec/ioBroker.solax/master/admin/solax.png",
-        "readme": "https://github.com/simatec/ioBroker.solax/blob/master/README.md",
-        "loglevel": "info",
-        "mode": "daemon",
-        "type": "energy",
-        "compact": true,
-        "materialize": true,
-        "messagebox": true,
-        "stopBeforeUpdate": true,
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "dependencies": [
-            {
-                "js-controller": ">=3.0.0"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=4.0.9"
-            }
-        ],
-        "adminUI": {
-            "config": "json"
-        },
-        "plugins": {
-            "sentry": {
-                "dsn": "https://e2417bfe108541dd89d2d4b2e09703f3@sentry.iobroker.net/133"
-            }
-        },
-        "installedFrom": "simatec/ioBroker.solax#b8a3845cffe68be330a570d2904f7fde412f5c94"
+  "common": {
+    "name": "solax",
+    "version": "0.3.7",
+    "news": {
+      "0.3.7": {
+        "en": "Dependencies updated\ntest and release updated",
+        "de": "Abhängigkeiten aktualisiert\nTest und Release aktualisiert",
+        "ru": "Зависимости обновлены\nтест и выпуск обновлены",
+        "pt": "Dependências atualizadas\nteste e lançamento atualizados",
+        "nl": "Afhankelijkheden bijgewerkt\ntest en release bijgewerkt",
+        "fr": "Dépendances mises à jour\ntest et version mis à jour",
+        "it": "Dipendenze aggiornate\ntest e rilascio aggiornati",
+        "es": "Dependencias actualizadas\nprueba y lanzamiento actualizado",
+        "pl": "Zaktualizowano zależności\nzaktualizowano test i wydanie",
+        "zh-cn": "更新了依赖项\n测试和发布更新"
+      },
+      "0.3.6": {
+        "en": "deps fixed",
+        "de": "Tiefen behoben",
+        "ru": "фиксированная глубина",
+        "pt": "deps corrigido",
+        "nl": "dieptes vast",
+        "fr": "deps corrigé",
+        "it": "le quote sono state risolte",
+        "es": "deps fijo",
+        "pl": "naprawiono deps",
+        "zh-cn": "固定"
+      },
+      "0.3.5": {
+        "en": "await/async functions fixed",
+        "de": "Wait/Async-Funktionen behoben",
+        "ru": "исправлены функции await / async",
+        "pt": "funções de espera / assíncrona corrigidas",
+        "nl": "wacht/asynchrone functies opgelost",
+        "fr": "Fonctions d'attente/async corrigées",
+        "it": "Funzioni di attesa/asincrone risolte",
+        "es": "funciones de espera / asincrónica arregladas",
+        "pl": "Naprawiono funkcje await/async",
+        "zh-cn": "等待/异步功能已修复"
+      },
+      "0.3.4": {
+        "en": "code cleanig, await functions fixed",
+        "de": "Code Cleanig, Wait-Funktionen behoben",
+        "ru": "очистка кода, исправлены функции ожидания",
+        "pt": "limpeza de código, funções de espera corrigidas",
+        "nl": "code opschonen, wacht functies vast",
+        "fr": "nettoyage du code, attente des fonctions corrigées",
+        "it": "pulizia del codice, attesa funzioni risolte",
+        "es": "limpieza de código, funciones de espera arregladas",
+        "pl": "czyszczenie kodu, naprawiono funkcje oczekiwania",
+        "zh-cn": "代码清理，等待功能修复"
+      },
+      "0.3.3": {
+        "en": "Objects formatted, await functions fixed, query interval changed, Dependencies updated",
+        "de": "Objekte formatiert, Wait-Funktionen korrigiert, Abfrageintervall geändert, Abhängigkeiten aktualisiert",
+        "ru": "Отформатированы объекты, исправлены функции ожидания, изменен интервал запроса, обновлены зависимости",
+        "pt": "Objetos formatados, funções de espera corrigidas, intervalo de consulta alterado, Dependências atualizadas",
+        "nl": "Objecten geformatteerd, wachtfuncties vast, query-interval gewijzigd, afhankelijkheden bijgewerkt",
+        "fr": "Objets formatés, fonctions d'attente corrigées, intervalle de requête modifié, dépendances mises à jour",
+        "it": "Oggetti formattati, funzioni di attesa riparate, intervallo di query modificato, dipendenze aggiornate",
+        "es": "Objetos formateados, funciones en espera fijadas, intervalo de consulta modificado, dependencias actualizadas",
+        "pl": "Sformatowanie obiektów, naprawienie funkcji oczekujących, zmiana interwału zapytań, aktualizacja zależności",
+        "zh-cn": "对象已格式化，等待函数已修复，查询间隔已更改，依赖项已更新"
+      },
+      "0.3.2": {
+        "en": "fix for latest repo",
+        "de": "Fix für latest Repo",
+        "ru": "исправление для последнего репо",
+        "pt": "correção para repo mais recente",
+        "nl": "fix voor nieuwste repo",
+        "fr": "correctif pour le dernier dépôt",
+        "it": "correzione per l'ultimo repository",
+        "es": "corrección para el último repositorio",
+        "pl": "poprawka dla najnowszego repozytorium",
+        "zh-cn": "修复最新的 repo"
+      },
+      "0.3.1": {
+        "en": "fix for latest repo, API-Token encrypted",
+        "de": "Fix für latest Repo, API-Token verschlüsselt",
+        "ru": "исправление для последнего репо, API-токен зашифрован",
+        "pt": "correção para repo mais recente, API-Token criptografado",
+        "nl": "fix voor nieuwste repo, API-token versleuteld",
+        "fr": "correctif pour le dernier dépôt, API-Token crypté",
+        "it": "correzione per l'ultimo repository, token API crittografato",
+        "es": "corrección para el último repositorio, API-Token cifrado",
+        "pl": "poprawka dla najnowszego repozytorium, zaszyfrowany API-Token",
+        "zh-cn": "修复最新的 repo，API-Token 加密"
+      }
     },
-    "native": {
-        "serialNumber": "",
-        "requestInterval": 5,
-        "systemGeoData": true,
-        "longitude": "",
-        "latitude": ""
+    "title": "Solax",
+    "titleLang": {
+      "en": "Solax",
+      "de": "Solax",
+      "ru": "Solax",
+      "pt": "Solax",
+      "nl": "Solax",
+      "fr": "Solax",
+      "it": "Solax",
+      "es": "Solax",
+      "pl": "Solax",
+      "zh-cn": "Solax"
     },
-    "encryptedNative": [
-        "apiToken"
+    "desc": {
+      "en": "Solax Inverter API Cloud Connection",
+      "de": "Solax Inverter API Cloud-Verbindung",
+      "ru": "Подключение к облаку Solax Inverter API",
+      "pt": "Solax Inverter API Cloud Connection",
+      "nl": "Solax Inverter API Cloud-verbinding",
+      "fr": "Connexion au cloud de l'API Solax Inverter",
+      "it": "Connessione cloud Solax Inverter API",
+      "es": "Conexión en la nube de API de inversor Solax",
+      "pl": "Solax Inverter API Cloud Connection",
+      "zh-cn": "Solax逆变器API云连接"
+    },
+    "authors": [
+      "simatec <nais@gmx.net>"
     ],
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Solax Inverter Informations"
-            },
-            "native": {}
-        },
-        {
-            "_id": "suninfo",
-            "type": "channel",
-            "common": {
-                "name": "Sun Informations"
-            },
-            "native": {}
-        },
-        {
-            "_id": "data",
-            "type": "channel",
-            "common": {
-                "name": "Solax Inverter data"
-            },
-            "native": {}
-        },
-        {
-            "_id": "history",
-            "type": "channel",
-            "common": {
-                "name": "History data"
-            },
-            "native": {}
-        },
-        {
-            "_id": "suninfo.Altitude",
-            "type": "state",
-            "common": {
-                "role": "value.sun.elevation",
-                "name": "suninfo Altitude",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "unit": "°",
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "suninfo.Azimut",
-            "type": "state",
-            "common": {
-                "role": "value.sun.azimuth",
-                "name": "suninfo Azimut",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "unit": "°",
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "history.yield_1_days_ago",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Inverter AC-Energy 1 days ago",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "unit": "KWh",
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "history.yield_2_days_ago",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Inverter AC-Energy 2 days ago",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "unit": "KWh",
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "history.yield_3_days_ago",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Inverter AC-Energy 3 days ago",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "unit": "KWh",
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "history.yield_4_days_ago",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Inverter AC-Energy 4 days ago",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "unit": "KWh",
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "history.yield_5_days_ago",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Inverter AC-Energy 5 days ago",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "unit": "KWh",
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "history.yield_6_days_ago",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Inverter AC-Energy 6 days ago",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "unit": "KWh",
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "history.yield_7_days_ago",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Inverter AC-Energy 7 days ago",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "unit": "KWh",
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.exception",
-            "type": "state",
-            "common": {
-                "role": "text",
-                "name": "API connection",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.success",
-            "type": "state",
-            "common": {
-                "role": "indicator.state",
-                "name": "API success",
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.inverterSN",
-            "type": "state",
-            "common": {
-                "role": "text",
-                "name": "Unique identifier of inverter (Serial No.)",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.sn",
-            "type": "state",
-            "common": {
-                "role": "text",
-                "name": "Unique identifier of communication module (Registration No.)",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.inverterType",
-            "type": "state",
-            "common": {
-                "role": "text",
-                "name": "Inverter type",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.inverterStatus",
-            "type": "state",
-            "common": {
-                "role": "text",
-                "name": "Inverter status",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.uploadTime",
-            "type": "state",
-            "common": {
-                "role": "value.time",
-                "name": "Update time",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {}
-        },
-        {
-            "_id": "data.json",
-            "type": "state",
-            "common": {
-                "name": "json data",
-                "type": "string",
-                "role": "json",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        }
-    ]
+    "keywords": [
+      "Solax",
+      "PV",
+      "Photovoltaics",
+      "Inverter"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "main.js",
+    "icon": "solax.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/simatec/ioBroker.solax/master/admin/solax.png",
+    "readme": "https://github.com/simatec/ioBroker.solax/blob/master/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "energy",
+    "compact": true,
+    "materialize": true,
+    "messagebox": true,
+    "stopBeforeUpdate": true,
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "dependencies": [
+      {
+        "js-controller": ">=3.0.0"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=4.0.9"
+      }
+    ],
+    "adminUI": {
+      "config": "json"
+    },
+    "plugins": {
+      "sentry": {
+        "dsn": "https://e2417bfe108541dd89d2d4b2e09703f3@sentry.iobroker.net/133"
+      }
+    },
+    "installedFrom": "simatec/ioBroker.solax#b8a3845cffe68be330a570d2904f7fde412f5c94"
+  },
+  "native": {
+    "serialNumber": "",
+    "requestInterval": 5,
+    "systemGeoData": true,
+    "longitude": "",
+    "latitude": ""
+  },
+  "encryptedNative": [
+    "apiToken"
+  ],
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Solax Inverter Informations"
+      },
+      "native": {}
+    },
+    {
+      "_id": "suninfo",
+      "type": "channel",
+      "common": {
+        "name": "Sun Informations"
+      },
+      "native": {}
+    },
+    {
+      "_id": "data",
+      "type": "channel",
+      "common": {
+        "name": "Solax Inverter data"
+      },
+      "native": {}
+    },
+    {
+      "_id": "history",
+      "type": "channel",
+      "common": {
+        "name": "History data"
+      },
+      "native": {}
+    },
+    {
+      "_id": "suninfo.Altitude",
+      "type": "state",
+      "common": {
+        "role": "value.sun.elevation",
+        "name": "suninfo Altitude",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "unit": "°",
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "suninfo.Azimut",
+      "type": "state",
+      "common": {
+        "role": "value.sun.azimuth",
+        "name": "suninfo Azimut",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "unit": "°",
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "history.yield_1_days_ago",
+      "type": "state",
+      "common": {
+        "role": "value.power.consumption",
+        "name": "Inverter AC-Energy 1 days ago",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "unit": "KWh",
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "history.yield_2_days_ago",
+      "type": "state",
+      "common": {
+        "role": "value.power.consumption",
+        "name": "Inverter AC-Energy 2 days ago",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "unit": "KWh",
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "history.yield_3_days_ago",
+      "type": "state",
+      "common": {
+        "role": "value.power.consumption",
+        "name": "Inverter AC-Energy 3 days ago",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "unit": "KWh",
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "history.yield_4_days_ago",
+      "type": "state",
+      "common": {
+        "role": "value.power.consumption",
+        "name": "Inverter AC-Energy 4 days ago",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "unit": "KWh",
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "history.yield_5_days_ago",
+      "type": "state",
+      "common": {
+        "role": "value.power.consumption",
+        "name": "Inverter AC-Energy 5 days ago",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "unit": "KWh",
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "history.yield_6_days_ago",
+      "type": "state",
+      "common": {
+        "role": "value.power.consumption",
+        "name": "Inverter AC-Energy 6 days ago",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "unit": "KWh",
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "history.yield_7_days_ago",
+      "type": "state",
+      "common": {
+        "role": "value.power.consumption",
+        "name": "Inverter AC-Energy 7 days ago",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "unit": "KWh",
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.exception",
+      "type": "state",
+      "common": {
+        "role": "text",
+        "name": "API connection",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.success",
+      "type": "state",
+      "common": {
+        "role": "indicator.state",
+        "name": "API success",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.inverterSN",
+      "type": "state",
+      "common": {
+        "role": "text",
+        "name": "Unique identifier of inverter (Serial No.)",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.sn",
+      "type": "state",
+      "common": {
+        "role": "text",
+        "name": "Unique identifier of communication module (Registration No.)",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.inverterType",
+      "type": "state",
+      "common": {
+        "role": "text",
+        "name": "Inverter type",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.inverterStatus",
+      "type": "state",
+      "common": {
+        "role": "text",
+        "name": "Inverter status",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.uploadTime",
+      "type": "state",
+      "common": {
+        "role": "value.time",
+        "name": "Update time",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "data.json",
+      "type": "state",
+      "common": {
+        "name": "json data",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    }
+  ]
 }
