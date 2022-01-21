@@ -6,6 +6,8 @@
       "newLine": true,
       "repeat": false,
       "visible": false,
+      "hidden": "data.localConnection && data.expertSettings",
+      "disabled": "data.localConnection",
       "sm": 12,
       "md": 8,
       "lg": 4,
@@ -18,6 +20,8 @@
       "newLine": false,
       "repeat": false,
       "visible": false,
+      "hidden": "data.localConnection && data.expertSettings",
+      "disabled": "data.localConnection'",
       "sm": 12,
       "md": 8,
       "lg": 4,
@@ -27,12 +31,54 @@
     },
     "requestInterval": {
       "newLine": true,
+      "hidden": "data.localConnection && data.expertSettings",
+      "disabled": "data.localConnection",
       "sm": 12,
       "md": 6,
       "lg": 4,
       "min": 1,
       "max": 120,
       "help": "Request Interval (minutes)",
+      "type": "number",
+      "label": "Request Interval"
+    },
+    "hostIP": {
+      "newLine": true,
+      "repeat": false,
+      "visible": false,
+      "hidden": "!data.localConnection || !data.expertSettings",
+      "disabled": "!data.localConnection",
+      "sm": 12,
+      "md": 8,
+      "lg": 4,
+      "help": "Host IP Wifi Modul",
+      "type": "text",
+      "label": "Host IP Wifi Modul"
+    },
+    "passwordWifi": {
+      "newLine": false,
+      "repeat": false,
+      "visible": false,
+      "hidden": "!data.localConnection || !data.expertSettings",
+      "disabled": "!data.localConnection",
+      "sm": 12,
+      "md": 8,
+      "lg": 4,
+      "help": "Webinterface Password Wifi-Modul",
+      "type": "password",
+      "label": "Webinterface Password Wifi-Modul"
+    },
+    "requestIntervalLocal": {
+      "newLine": true,
+      "hidden": "!data.localConnection || !data.expertSettings",
+      "disabled": "!data.localConnection",
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "min": 5,
+      "max": 3600,
+      "default": 10,
+      "help": "Request Interval (seconds)",
       "type": "number",
       "label": "Request Interval"
     },
@@ -63,6 +109,46 @@
       "help": "latitude",
       "type": "text",
       "label": "latitude"
+    },
+    "_helpLine": {
+      "newLine": true,
+      "type": "divider",
+      "color": "secondary"
+    },
+    "expertSettings": {
+      "newLine": true,
+      "type": "checkbox",
+      "label": "Expert Settings (Please read the Documentation before!)",
+      "sm": 12,
+      "md": 6,
+      "lg": 4
+    },
+    "localConnection": {
+      "newLine": true,
+      "type": "checkbox",
+      "hidden": "!data.expertSettings",
+      "confirm": {
+        "text": "Caution! Incorrect settings and a firmware version > 2.033.20 can cause the inverter and the Wifi Stick to crash! \n\nPlease check the firmware version before activating the local query. Downgrading the firmware to version 2.033.20 is described in the adapter's readme.",
+        "condition": "data.localConnection",
+        "title": "Please confirm!",
+        "type": "warning",
+        "ok": "I have read the warning",
+        "cancel": ""
+      },
+      "label": "Local Connection to Wifi Pocket Stick",
+      "sm": 12,
+      "md": 6,
+      "lg": 4
+    },
+    "_helpLink": {
+      "newLine": true,
+      "hidden": "!data.expertSettings",
+      "type": "staticLink",
+      "variant": "outlined",
+      "color": "primary",
+      "button": true,
+      "label": "Readme Expert Settings",
+      "href": "https://github.com/simatec/ioBroker.solax/blob/master/README.md"
     }
   }
 }
