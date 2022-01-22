@@ -166,7 +166,8 @@
     "hostIP": "",
     "requestIntervalLocal": 10,
     "expertSettings": false,
-    "localConnection": false
+    "localConnection": false,
+    "countsOfOffline": 5
   },
   "encryptedNative": [
     "apiToken",

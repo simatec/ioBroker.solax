@@ -82,6 +82,20 @@
       "type": "number",
       "label": "Request Interval"
     },
+    "countsOfOffline": {
+      "newLine": false,
+      "hidden": "!data.localConnection || !data.expertSettings",
+      "disabled": "!data.localConnection",
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "min": 1,
+      "max": 100,
+      "default": 5,
+      "help": "Count of failed queries until detected as offline",
+      "type": "number",
+      "label": "Count of failed queries until detected as offline"
+    },
     "systemGeoData": {
       "newLine": true,
       "type": "checkbox",

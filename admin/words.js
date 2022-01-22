@@ -21,4 +21,16 @@ systemDictionary = {
     "longitude": {                                   "en": "longitude",                                       "de": "Längengrad",                                      "ru": "долгота",                                         "pt": "longitude",                                       "nl": "Lengtegraad",                                     "fr": "longitude",                                       "it": "longitudine",                                     "es": "longitud",                                        "pl": "długość geograficzna",                            "zh-cn": "经度"},
     "serial Number": {                               "en": "serial Number of communication module",           "de": "Seriennummer des Kommunikationsmoduls",           "ru": "серийный номер коммуникационного модуля",         "pt": "Número de série do módulo de comunicação",        "nl": "serienummer van communicatiemodule",              "fr": "Numéro de série du module de communication",      "it": "seriale Numero del modulo di comunicazione",      "es": "Número de serie del módulo de comunicación",      "pl": "Numer seryjny modułu komunikacyjnego",            "zh-cn": "通讯模块序号"},
     "solax adapter settings": {                      "en": "Adapter settings for solax",                      "de": "Adaptereinstellungen für Solax",                  "ru": "Настройки адаптера для солакса",                  "pt": "Configurações do adaptador para solax",           "nl": "Adapterinstellingen voor solax",                  "fr": "Réglages de l'adaptateur pour solax",             "it": "Impostazioni dell'adattatore per solax",          "es": "Configuración del adaptador para solax",          "pl": "Ustawienia adaptera do solax",                    "zh-cn": "solax 的适配器设置"},
+    "Count of failed queries until detected as offline": {
+        "en": "Count of failed queries until detected as offline",
+        "de": "Anzahl der fehlgeschlagenen Abfragen, bis sie als offline erkannt werden",
+        "ru": "Подсчет неудачных запросов до тех пор, пока они не будут обнаружены как оффлайн.",
+        "pt": "Contagem de consultas com falha até serem detectadas como offline",
+        "nl": "Aantal mislukte zoekopdrachten totdat deze als offline worden gedetecteerd",
+        "fr": "Nombre de requêtes ayant échoué jusqu'à ce qu'elles soient détectées comme étant hors ligne",
+        "it": "Conteggio delle query non riuscite fino a quando non vengono rilevate come offline",
+        "es": "Recuento de consultas fallidas hasta que se detectan como sin conexión",
+        "pl": "Liczba nieudanych zapytań do wykrycia jako offline",
+        "zh-cn": "在检测为脱机之前失败的查询计数"
+      },
 };

@@ -1,5 +1,4 @@
 'use strict';
-// Version 0.3.5 
 
 // @ts-ignore
 const utils = require('@iobroker/adapter-core');
@@ -7,10 +6,13 @@ const utils = require('@iobroker/adapter-core');
 const schedule = require('node-schedule');
 // @ts-ignore
 const SunCalc = require('suncalc2');
+// @ts-ignore
+const axios = require('axios').default;
 
 let replayTime;
 let jsonTimer;
 let requestTimer;
+let astroTimer;
 let createTimer;
 let setDataTimer;
 let longitude;
@@ -252,6 +254,7 @@ function startAdapter(options) {
                 clearTimeout(createTimer);
                 clearTimeout(setDataTimer);
                 clearInterval(requestTimer);
+                clearInterval(astroTimer);
                 callback();
             } catch (e) {
                 callback();
@@ -480,9 +483,6 @@ let num = 0;
 
 async function requestAPI() {
     return new Promise(async (resolve) => {
-        // @ts-ignore
-        const axios = require('axios').default;
-
         const solaxURL = (`https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
 
         try {
@@ -669,38 +669,298 @@ async function setDayHistory() {
     }
 }
 
+/*************************** Expert Local Mode **********************/
+
+let requestTimeOut;
+let offlineCounter = 0;
+let isOnline = false;
+const stateCache = [];
+
+//{"type":"X1-Boost-Air-Mini","SN":"XXXXXXXXXX","ver":"2.033.20","Data":[0.3,0,67.1,0,0.3,227.5,11,21,0,0.2,0,21,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49.99,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Information":[0.6,4,"X1-Boost-Air-Mini","XXXXXXXXXX",1,2.15,0,1.35,0]}
+
+const root_dataPoints = {
+    type: { name: 'info.inverter_type', description: 'Inverter Type', type: 'string', role: 'text' },
+    SN: { name: 'info.comm_module_sn', description: 'Unique identifier of communication module (Registration No.)', type: 'string', role: 'text' },
+    ver: { name: 'info.comm_firmware_version', description: 'Firmware of communication module', type: 'string', role: 'text' },
+};
+
+const information_dataPoints = {
+    0: { name: 'info.total_size_of_power', description: 'Total Size of Power', type: 'number', unit: 'kW', role: 'value.power' },
+    //1: { name:'info.comm_module_sn', description:'Unique identifier of communication module (Registration No.)', type: 'string'},
+    //2: { name:'info.comm_firmware_version', description:'Firmware of communication module', type: 'string'},
+    3: { name: 'info.inverter_sn', description: 'Unique identifier of inverter (Serial No.)', type: 'string', role: 'text' },
+    //4: { name:'info.comm_firmware_version', description:'Firmware of communication module', type: 'string'},
+    //5: { name:'info.comm_firmware_version', description:'Firmware of communication module', type: 'string'},
+    //6: { name:'info.comm_firmware_version', description:'Firmware of communication module', type: 'string'},
+    //7: { name:'info.comm_firmware_version', description:'Firmware of communication module', type: 'string'},
+    //8: { name:'info.comm_firmware_version', description:'Firmware of communication module', type: 'string'},
+};
+
+const data_dataPoints = {
+    isOnline: { name: 'info.online', description: 'Inverter Online', type: 'boolean', role: 'switch' },
+    0: { name: 'data.pv1_current', description: 'PV1 Current', type: 'number', unit: 'A', role: 'value.power' },                                // 'PV1 Current': (0, 'A'),
+    1: { name: 'data.pv2_current', description: 'PV2 Current', type: 'number', unit: 'A', role: 'value.power' },                                // 'PV2 Current': (1, 'A'),
+    2: { name: 'data.pv1_voltage', description: 'PV1 Voltage', type: 'number', unit: 'V', role: 'value.power' },                                // 'PV1 Voltage': (2, 'V'),
+    3: { name: 'data.pv2_voltage', description: 'PV2 Voltage', type: 'number', unit: 'V', role: 'value.power' },                                // 'PV2 Voltage': (3, 'V'),
+    4: { name: 'data.output_current', description: 'Output Current', type: 'number', unit: 'A', role: 'value.power' },                          // 'Output Current': (4, 'A'),
+    5: { name: 'data.ac_voltage', description: 'AC Voltage', type: 'number', unit: 'V', role: 'value.power' },                                  // 'AC Voltage': (5, 'V'),
+    6: { name: 'data.acpower', description: 'Inverter AC-Power total', type: 'number', unit: 'W', role: 'value.power' },                        // 'AC Power': (6, 'W'),
+    7: { name: 'data.inverter_temp', description: 'Inverter Temperature', type: 'number', unit: '°C', role: 'value.temperature' },              // 'Inverter Temperature': (7, '°C'),
+    8: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', unit: 'kWh', role: 'value.power.consumption' },  // 'Today's Energy': (8, 'kWh'),
+    9: { name: 'data.yieldtotal', description: 'Inverter AC-Energy out total', type: 'number', unit: 'kWh', role: 'value.power.consumption' },  // 'Total Energy': (9, 'kWh'),
+    10: { name: 'data.exported_power', description: 'Exported Power', type: 'number', unit: 'W', role: 'value.power' },                         // 'Exported Power': (10, 'W'),
+    11: { name: 'data.pv1_power', description: 'PV1 Power', type: 'number', unit: 'W', role: 'value.power' },                                   // 'PV1 Power': (11, 'W'),
+    12: { name: 'data.pv2_power', description: 'PV2 Power', type: 'number', unit: 'W', role: 'value.power' },                                   // 'PV2 Power': (12, 'W'),
+
+    // ssdsd.INV1BATTERYVOLTAGE = apiData.Data[13];
+    // ssdsd.INV1BATTERYCURRENT = apiData.Data[14];
+    // ssdsd.INV1BATTERYPOWER = apiData.Data[15];
+    // ssdsd.INV1BATTERYTEMPERATURE = apiData.Data[16];
+    // ssdsd.INV1BATTERYCAPACITYREMAINING = apiData.Data[21];
+
+    41: { name: 'data.total_feed_in_energy', description: 'Total Feed-in Energy', type: 'number', unit: 'kWh', role: 'value.power.consumption' },   // 'Total Feed-in Energy': (41, 'kWh'),
+    42: { name: 'data.total_consumption', description: 'Total Consumption', type: 'number', unit: 'kWh', role: 'value.power.consumption' },         // 'Total Consumption': (42, 'kWh'),
+    43: { name: 'data.power_now', description: 'Power Now', type: 'number', unit: 'W', role: 'value.power' },                                       // 'Power Now': (43, 'W'),
+    50: { name: 'data.grid_frequency', description: 'Grid Frequency', type: 'number', unit: 'Hz', role: 'value.power' },                            // 'Grid Frequency': (50, 'Hz'),
+    68: { name: 'data.inverter_mode', description: 'Inverter Mode', type: 'string', role: 'text' },                                                 // 'Inverter Mode': (68, '')
+};
+
+async function createdLocalStates() {
+    return new Promise(async (resolve) => {
+        await adapter.setObjectNotExistsAsync(data_dataPoints['isOnline'].name, {
+            'type': 'state',
+            'common': {
+                'role': data_dataPoints['isOnline'].role,
+                'name': data_dataPoints['isOnline'].description,
+                'type': data_dataPoints['isOnline'].type,
+                'read': true,
+                'write': false
+            },
+            'native': {}
+        });
+        // @ts-ignore
+        resolve();
+    });
+}
+
+async function requestLocalAPI() {
+    await createdLocalStates();
+    try {
+        const source = axios.CancelToken.source();
+        requestTimeOut = setTimeout(() => {
+            source.cancel();
+        }, 3000)
+
+        const url = `http://${adapter.config.hostIP}:80/?optType=ReadRealTimeData&pwd=${adapter.config.passwordWifi}`;
+        const apiData = (await axios.post(url, null, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
+
+        clearTimeout(requestTimeOut);
+        offlineCounter = 0;
+        isOnline = true;
+
+        for (const key in apiData) {
+            const dataPoint = root_dataPoints[key];
+            if (!dataPoint) {
+                continue;
+            }
+
+            setDataPoint(dataPoint, apiData[key])
+        }
+
+        for (const key in apiData.Data) {
+            const dataPoint = data_dataPoints[key];
+            if (!dataPoint) {
+                continue;
+            }
+
+            let data = apiData.Data[key]
+
+            if (key == '68') {
+                data = await getInverterMode(data)
+            }
+
+            setDataPoint(dataPoint, data)
+        }
+
+        for (const key in apiData.Information) {
+            const dataPoint = information_dataPoints[key];
+            if (!dataPoint) {
+                continue;
+            }
+
+            setDataPoint(dataPoint, apiData.Information[key])
+        }
+
+    } catch (e) {
+        if (offlineCounter == adapter.config.countsOfOffline) {
+            isOnline = false;
+            resetValues();
+        }
+        else {
+            offlineCounter++;
+        }
+    }
+
+    if (requestTimeOut) {
+        clearTimeout(requestTimeOut);
+    }
+
+    await adapter.setStateAsync(`${data_dataPoints['isOnline'].name}`, isOnline, true);
+}
+
+async function setDataPoint(dataPoint, data) {
+    const dataPointPath = dataPoint.name;
+
+    // @ts-ignore
+    if (!stateCache.includes(dataPoint.name)) {
+        await adapter.setObjectNotExistsAsync(dataPointPath, {
+            'type': 'state',
+            'common': {
+                'role': dataPoint.role,
+                'name': dataPoint.description,
+                'type': dataPoint.type,
+                'unit': dataPoint.unit,
+                'read': true,
+                'write': false
+            },
+            'native': {}
+        });
+
+        stateCache.push(dataPoint.name);
+    }
+
+    await adapter.setStateAsync(dataPointPath, data, true);
+}
+
+async function getInverterMode(modeNumber) {
+    let inverterMode;
+    switch (modeNumber) {
+        case 0:
+            inverterMode = 'Wait Mode';
+            break;
+        case 1:
+            inverterMode = 'Check Mode';
+            break;
+        case 2:
+            inverterMode = 'Normal Mode';
+            break;
+        case 3:
+            inverterMode = 'Fault Mode';
+            break;
+        case 4:
+            inverterMode = 'Permanent Fault Mode';
+            break;
+        case 5:
+            inverterMode = 'Update Mode';
+            break;
+        case 6:
+            inverterMode = 'EPS Check Mode';
+            break;
+        case 7:
+            inverterMode = 'EPS Mode';
+            break;
+        case 8:
+            inverterMode = 'Self-Test Mode';
+            break;
+        case 9:
+            inverterMode = 'Idle Mode';
+            break;
+        case 10:
+            inverterMode = 'Standby Mode';
+            break;
+        case 11:
+            inverterMode = 'Pv Wake Up Bat Mode';
+            break;
+        case 12:
+            inverterMode = 'Gen Check Mode';
+            break;
+        case 13:
+            inverterMode = 'Gen Run Mode';
+            break;
+        default:
+            inverterMode = 'unknown';
+    }
+    return inverterMode;
+}
+
+async function resetValues() {
+    const valuesOfReset = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 43, 50, 68]
+
+    for (const value of valuesOfReset) {
+        const dataPoint = data_dataPoints[value];
+
+        if (value == 68) {
+            setDataPoint(dataPoint, await getInverterMode(-1))
+        } else {
+            setDataPoint(dataPoint, 0)
+        }
+    }
+}
+
+/*************************** End Expert Local Mode **********************/
+
 async function main() {
+    let adapterMode = 'cloud';
+
+    if (adapter.config.expertSettings === true && adapter.config.localConnection === true) {
+        adapterMode = 'local';
+    }
 
     let _isNight = false;
 
-    adapter.log.debug('Solax is started');
+    adapter.log.debug(`Solax is started in ${adapterMode}-mode`);
 
     await getSystemData();
     _isNight = await nightCalc(_isNight);
     await sunPos();
 
+    astroTimer = setInterval(async () => {
+        _isNight = await nightCalc(_isNight);
+        await sunPos();
+        adapter.log.debug('is Night: ' + _isNight);
+    }, 5 * 60 * 1000);
+
     schedule.cancelJob('dayHistory');
 
-    if (adapter.config.apiToken && adapter.config.serialNumber) {
-        fillData();
-
-        const requestInterval = adapter.config.requestInterval || 5;
-        adapter.log.debug(`Request Interval: ${requestInterval} minute(s)`);
-
-        requestTimer = setInterval(async () => {
-            _isNight = await nightCalc(_isNight);
-            await sunPos();
-            adapter.log.debug('is Night: ' + _isNight)
-
-            if (!_isNight) {
-                adapter.log.debug('API Request started ...');
+    switch (adapterMode) {
+        case 'cloud':
+            if (adapter.config.apiToken && adapter.config.serialNumber) {
                 fillData();
-            }
-        }, requestInterval * 60000);
 
-        schedule.scheduleJob('dayHistory', '50 59 23 * * *', async () => await setDayHistory());
-    } else {
-        adapter.log.warn('system settings cannot be called up. Please check configuration!');
+                const requestInterval = adapter.config.requestInterval || 5;
+                adapter.log.debug(`Request Interval: ${requestInterval} minute(s)`);
+
+                requestTimer = setInterval(async () => {
+                    if (!_isNight) {
+                        adapter.log.debug('API Request started ...');
+                        fillData();
+                    }
+                }, requestInterval * 60000);
+
+                schedule.scheduleJob('dayHistory', '50 59 23 * * *', async () => await setDayHistory());
+            } else {
+                adapter.log.warn('system settings cannot be called up. Please check configuration!');
+            }
+            break;
+        case 'local':
+            if (adapter.config.hostIP && adapter.config.passwordWifi) {
+                requestLocalAPI();
+
+                const requestIntervalLocal = adapter.config.requestIntervalLocal || 10;
+                adapter.log.debug(`Request Interval: ${requestIntervalLocal} seconds`);
+
+                requestTimer = setInterval(async () => {
+                    if (!_isNight) {
+                        adapter.log.debug('Local Request started ...');
+                        requestLocalAPI();
+                    }
+                }, requestIntervalLocal * 1000);
+
+                schedule.scheduleJob('dayHistory', '50 59 23 * * *', async () => await setDayHistory());
+            } else {
+                adapter.log.warn('system settings cannot be called up. Please check configuration!');
+            }
+            break;
     }
 }
 
