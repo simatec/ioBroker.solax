@@ -4,11 +4,13 @@
 [![NPM version](http://img.shields.io/npm/v/iobroker.solax.svg)](https://www.npmjs.com/package/iobroker.solax)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.solax.svg)](https://www.npmjs.com/package/iobroker.solax)
 ![Number of Installations (latest)](http://iobroker.live/badges/solax-installed.svg)
-[![Dependency Status](https://img.shields.io/david/simatec/iobroker.solax.svg)](https://david-dm.org/simatec/iobroker.solax)
+![Number of Installations (stable)](http://iobroker.live/badges/solax-stable.svg)
 [![Known Vulnerabilities](https://snyk.io/test/github/simatec/ioBroker.solax/badge.svg)](https://snyk.io/test/github/simatec/ioBroker.solax)
 ![Test and Release](https://github.com/simatec/ioBroker.solax/workflows/Test%20and%20Release/badge.svg)
 
-<!--![Number of Installations (stable)](http://iobroker.live/badges/solax-stable.svg)-->
+[![License](https://img.shields.io/github/license/simatec/ioBroker.solax?style=flat)](https://github.com/simatec/ioBroker.solax/blob/master/LICENSE)
+[![Donate](https://img.shields.io/badge/donate-paypal-blue?style=flat)](https://paypal.me/mk1676)
+
 
 [![NPM](https://nodei.co/npm/iobroker.solax.png?downloads=true)](https://nodei.co/npm/iobroker.solax/)
 
