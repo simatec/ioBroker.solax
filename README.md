@@ -44,10 +44,13 @@ When the adapter crashes or an other Code error happens, this error message that
 **************************************************************************************************************
 
 ## Changelog
-<!--
-	Placeholder for the next version (at the beginning of the line):
-	### __WORK IN PROGRESS__
--->
+<!-- ### __WORK IN PROGRESS__ -->
+
+### __WORK IN PROGRESS__
+* (simatec) local request for Wifi Pocket Stick added
+* (simatec) Dependencies updated
+* (simatec) test and release updated
+
 ### 0.3.7 (2021-11-17)
 * (simatec) Dependencies updated
 * (simatec) test and release updated
