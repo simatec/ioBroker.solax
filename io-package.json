@@ -102,16 +102,16 @@
       "zh-cn": "Solax"
     },
     "desc": {
-      "en": "Solax Inverter API Cloud Connection",
-      "de": "Solax Inverter API Cloud-Verbindung",
-      "ru": "Подключение к облаку Solax Inverter API",
-      "pt": "Solax Inverter API Cloud Connection",
-      "nl": "Solax Inverter API Cloud-verbinding",
-      "fr": "Connexion au cloud de l'API Solax Inverter",
-      "it": "Connessione cloud Solax Inverter API",
-      "es": "Conexión en la nube de API de inversor Solax",
-      "pl": "Solax Inverter API Cloud Connection",
-      "zh-cn": "Solax逆变器API云连接"
+      "en": "Solax Inverter API Cloud or Local Connection",
+      "de": "Solax Inverter API Cloud oder lokale Verbindung",
+      "ru": "Облачное или локальное подключение API-интерфейса Solax Inverter",
+      "pt": "Solax Inverter API Cloud ou Conexão Local",
+      "nl": "Solax Inverter API Cloud of lokale verbinding",
+      "fr": "Solax Inverter API Cloud ou connexion locale",
+      "it": "Solax Inverter API Cloud o Connessione locale",
+      "es": "Solax Inverter API Nube o conexión local",
+      "pl": "Solax Inverter API Cloud lub połączenie lokalne",
+      "zh-cn": "Solax 逆变器 API 云或本地连接"
     },
     "authors": [
       "simatec <nais@gmx.net>"
@@ -140,12 +140,12 @@
     "dataSource": "poll",
     "dependencies": [
       {
-        "js-controller": ">=3.0.0"
+        "js-controller": ">=3.3.0"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=4.0.9"
+        "admin": ">=5.1.0"
       }
     ],
     "adminUI": {
@@ -155,18 +155,22 @@
       "sentry": {
         "dsn": "https://e2417bfe108541dd89d2d4b2e09703f3@sentry.iobroker.net/133"
       }
-    },
-    "installedFrom": "simatec/ioBroker.solax#b8a3845cffe68be330a570d2904f7fde412f5c94"
+    }
   },
   "native": {
     "serialNumber": "",
     "requestInterval": 5,
     "systemGeoData": true,
     "longitude": "",
-    "latitude": ""
+    "latitude": "",
+    "hostIP": "",
+    "requestIntervalLocal": 10,
+    "expertSettings": false,
+    "localConnection": false
   },
   "encryptedNative": [
-    "apiToken"
+    "apiToken",
+    "passwordWifi"
   ],
   "objects": [],
   "instanceObjects": [

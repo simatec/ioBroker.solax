@@ -1,11 +1,21 @@
 {
-    "Get the Token ID from Solax": "从 Solax 获取令牌 ID",
+    "Expert Settings (Please read the Documentation before!)": "专家设置（请先阅读文档！）",
+    "Get the Token ID from Solax": "从 Solax 获取 Token ID",
+    "I have read the warning": "我已阅读警告",
+    "I prefer to use the API cloud": "我更喜欢使用 API 云",
+    "Local Connection to Wifi Pocket Stick": "本地连接到 Wifi Pocket Stick",
+    "Local IP Wifi Pocket Stick": "本地 IP Wifi 袖珍棒",
+    "Please confirm!": "请确认！",
+    "Readme Expert Settings": "自述专家设置",
     "Request Interval": "请求间隔",
     "Request Interval (minutes)": "请求间隔（分钟）",
-    "Token ID": "令牌标识",
-    "Use astro data from the system settings": "使用系统设置中的astro数据",
+    "Request Interval (seconds)": "请求间隔（秒）",
+    "Token ID": "令牌 ID",
+    "Use astro data from the system settings": "使用系统设置中的天文数据",
+    "Warning Local-Mode": "警告！错误的设置和固件版本 > 2.033.20 会导致逆变器和 Wifi Stick 崩溃！请在激活本地查询之前检查固件版本。适配器的自述文件中描述了将固件降级到版本 2.033.20。",
+    "Webinterface Password Wifi Pocket Stick": "网页界面 密码 Wifi Pocket Stick",
     "latitude": "纬度",
     "longitude": "经度",
     "serial Number": "通讯模块序号",
-    "solax adapter settings": "solax的适配器设置"
+    "solax adapter settings": "solax 的适配器设置"
 }

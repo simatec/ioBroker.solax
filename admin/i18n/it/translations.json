@@ -1,11 +1,21 @@
 {
+    "Expert Settings (Please read the Documentation before!)": "Impostazioni avanzate (leggi prima la documentazione!)",
     "Get the Token ID from Solax": "Ottieni l'ID token da Solax",
+    "I have read the warning": "Ho letto l'avviso",
+    "I prefer to use the API cloud": "Preferisco usare il cloud API",
+    "Local Connection to Wifi Pocket Stick": "Connessione locale al Wi-Fi Pocket Stick",
+    "Local IP Wifi Pocket Stick": "Chiavetta tascabile IP Wi-Fi locale",
+    "Please confirm!": "Si prega di confermare!",
+    "Readme Expert Settings": "Leggimi Impostazioni avanzate",
     "Request Interval": "Intervallo di richiesta",
     "Request Interval (minutes)": "Intervallo di richiesta (minuti)",
+    "Request Interval (seconds)": "Intervallo di richiesta (secondi)",
     "Token ID": "ID token",
     "Use astro data from the system settings": "Usa i dati astronomici dalle impostazioni di sistema",
+    "Warning Local-Mode": "Attenzione! Impostazioni errate e una versione del firmware > 2.033.20 possono causare il crash dell'inverter e del Wifi Stick! Verificare la versione del firmware prima di attivare la query locale. Il downgrade del firmware alla versione 2.033.20 è descritto nel readme dell'adattatore.",
+    "Webinterface Password Wifi Pocket Stick": "Chiavetta tascabile Wi-Fi password interfaccia web",
     "latitude": "latitudine",
     "longitude": "longitudine",
-    "serial Number": "numero di serie del modulo di comunicazione",
+    "serial Number": "seriale Numero del modulo di comunicazione",
     "solax adapter settings": "Impostazioni dell'adattatore per solax"
 }

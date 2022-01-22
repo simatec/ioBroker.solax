@@ -1,11 +1,21 @@
 {
+    "Expert Settings (Please read the Documentation before!)": "Экспертные настройки (Пожалуйста, прочитайте документацию перед этим!)",
     "Get the Token ID from Solax": "Получите идентификатор токена от Solax",
+    "I have read the warning": "я прочитал предупреждение",
+    "I prefer to use the API cloud": "Я предпочитаю использовать облако API",
+    "Local Connection to Wifi Pocket Stick": "Локальное подключение к Wi-Fi Pocket Stick",
+    "Local IP Wifi Pocket Stick": "Локальный карманный джойстик IP Wifi",
+    "Please confirm!": "Пожалуйста подтвердите!",
+    "Readme Expert Settings": "Экспертные настройки Readme",
     "Request Interval": "Интервал запроса",
-    "Request Interval (minutes)": "Интервал запроса (минут)",
+    "Request Interval (minutes)": "Интервал запроса (минуты)",
+    "Request Interval (seconds)": "Интервал запроса (секунды)",
     "Token ID": "Идентификатор токена",
-    "Use astro data from the system settings": "Использовать астрономические данные из системных настроек",
+    "Use astro data from the system settings": "Используйте астрономические данные из системных настроек",
+    "Warning Local-Mode": "Осторожность! Неправильные настройки и версия прошивки > 2.033.20 могут привести к сбою инвертора и Wifi Stick! Перед активацией локального запроса проверьте версию прошивки. Понижение прошивки до версии 2.033.20 описано в ридми адаптера.",
+    "Webinterface Password Wifi Pocket Stick": "Пароль веб-интерфейса Wi-Fi Pocket Stick",
     "latitude": "широта",
     "longitude": "долгота",
     "serial Number": "серийный номер коммуникационного модуля",
-    "solax adapter settings": "Настройки адаптера для solax"
+    "solax adapter settings": "Настройки адаптера для солакса"
 }

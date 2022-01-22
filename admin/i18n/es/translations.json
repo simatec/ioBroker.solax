@@ -1,11 +1,21 @@
 {
-    "Get the Token ID from Solax": "Obtenga el ID de token de Solax",
+    "Expert Settings (Please read the Documentation before!)": "Configuración experta (¡Lea la documentación antes!)",
+    "Get the Token ID from Solax": "Obtenga la identificación del token de Solax",
+    "I have read the warning": "he leido la advertencia",
+    "I prefer to use the API cloud": "Prefiero usar la nube API",
+    "Local Connection to Wifi Pocket Stick": "Conexión local a Wifi Pocket Stick",
+    "Local IP Wifi Pocket Stick": "Dispositivo de bolsillo WiFi IP local",
+    "Please confirm!": "¡Por favor confirmar!",
+    "Readme Expert Settings": "Léame Configuración experta",
     "Request Interval": "Intervalo de solicitud",
     "Request Interval (minutes)": "Intervalo de solicitud (minutos)",
-    "Token ID": "ID de token",
-    "Use astro data from the system settings": "Usa datos astronómicos de la configuración del sistema",
+    "Request Interval (seconds)": "Intervalo de solicitud (segundos)",
+    "Token ID": "identificador de token",
+    "Use astro data from the system settings": "Usar datos astronómicos de la configuración del sistema",
+    "Warning Local-Mode": "¡Precaución! ¡Una configuración incorrecta y una versión de firmware > 2.033.20 pueden hacer que el inversor y el Wifi Stick se bloqueen! Verifique la versión del firmware antes de activar la consulta local. La degradación del firmware a la versión 2.033.20 se describe en el archivo Léame del adaptador.",
+    "Webinterface Password Wifi Pocket Stick": "Interfaz web Contraseña Wifi Pocket Stick",
     "latitude": "latitud",
     "longitude": "longitud",
-    "serial Number": "número de serie del módulo de comunicación",
-    "solax adapter settings": "Ajustes del adaptador para solax"
+    "serial Number": "Número de serie del módulo de comunicación",
+    "solax adapter settings": "Configuración del adaptador para solax"
 }

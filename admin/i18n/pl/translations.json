@@ -1,11 +1,21 @@
 {
+    "Expert Settings (Please read the Documentation before!)": "Ustawienia eksperckie (przedtem przeczytaj dokumentację!)",
     "Get the Token ID from Solax": "Uzyskaj identyfikator tokena od Solax",
+    "I have read the warning": "Przeczytałem ostrzeżenie",
+    "I prefer to use the API cloud": "Wolę korzystać z chmury API",
+    "Local Connection to Wifi Pocket Stick": "Lokalne połączenie z Wifi Pocket Stick",
+    "Local IP Wifi Pocket Stick": "Lokalny kij kieszonkowy IP Wifi",
+    "Please confirm!": "Proszę potwierdzić!",
+    "Readme Expert Settings": "Ustawienia eksperta Readme",
     "Request Interval": "Interwał żądania",
     "Request Interval (minutes)": "Interwał żądania (minuty)",
+    "Request Interval (seconds)": "Interwał żądania (sekundy)",
     "Token ID": "Identyfikator tokena",
-    "Use astro data from the system settings": "Użyj danych astro z ustawień systemowych",
+    "Use astro data from the system settings": "Użyj danych astro z ustawień systemu",
+    "Warning Local-Mode": "Ostrożność! Nieprawidłowe ustawienia i wersja oprogramowania > 2.033.20 mogą spowodować awarię falownika i karty Wifi Stick! Przed aktywacją zapytania lokalnego sprawdź wersję oprogramowania układowego. Aktualizacja oprogramowania układowego do wersji 2.033.20 jest opisana w pliku readme karty.",
+    "Webinterface Password Wifi Pocket Stick": "Webinterface Hasło Wifi Pocket Stick",
     "latitude": "szerokość",
     "longitude": "długość geograficzna",
     "serial Number": "Numer seryjny modułu komunikacyjnego",
-    "solax adapter settings": "Ustawienia adaptera dla solax"
+    "solax adapter settings": "Ustawienia adaptera do solax"
 }

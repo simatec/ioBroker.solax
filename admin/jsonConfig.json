@@ -51,9 +51,9 @@
       "sm": 12,
       "md": 8,
       "lg": 4,
-      "help": "Host IP Wifi Modul",
+      "help": "Local IP Wifi Pocket Stick",
       "type": "text",
-      "label": "Host IP Wifi Modul"
+      "label": "Local IP Wifi Pocket Stick"
     },
     "passwordWifi": {
       "newLine": false,
@@ -64,9 +64,9 @@
       "sm": 12,
       "md": 8,
       "lg": 4,
-      "help": "Webinterface Password Wifi-Modul",
+      "help": "Webinterface Password Wifi Pocket Stick",
       "type": "password",
-      "label": "Webinterface Password Wifi-Modul"
+      "label": "Webinterface Password Wifi Pocket Stick"
     },
     "requestIntervalLocal": {
       "newLine": true,
@@ -121,24 +121,24 @@
       "label": "Expert Settings (Please read the Documentation before!)",
       "sm": 12,
       "md": 6,
-      "lg": 4
+      "lg": 8
     },
     "localConnection": {
       "newLine": true,
       "type": "checkbox",
       "hidden": "!data.expertSettings",
       "confirm": {
-        "text": "Caution! Incorrect settings and a firmware version > 2.033.20 can cause the inverter and the Wifi Stick to crash! \n\nPlease check the firmware version before activating the local query. Downgrading the firmware to version 2.033.20 is described in the adapter's readme.",
+        "text": "Warning Local-Mode",
         "condition": "data.localConnection",
         "title": "Please confirm!",
         "type": "warning",
         "ok": "I have read the warning",
-        "cancel": ""
+        "cancel": "I prefer to use the API cloud"
       },
       "label": "Local Connection to Wifi Pocket Stick",
       "sm": 12,
       "md": 6,
-      "lg": 4
+      "lg": 8
     },
     "_helpLink": {
       "newLine": true,

@@ -1,11 +1,21 @@
 {
-    "Get the Token ID from Solax": "Obtenez le Token ID de Solax",
+    "Expert Settings (Please read the Documentation before!)": "Paramètres experts (veuillez lire la documentation avant !)",
+    "Get the Token ID from Solax": "Obtenir le Token ID de Solax",
+    "I have read the warning": "j'ai lu l'avertissement",
+    "I prefer to use the API cloud": "Je préfère utiliser le cloud API",
+    "Local Connection to Wifi Pocket Stick": "Connexion locale au Wi-Fi Pocket Stick",
+    "Local IP Wifi Pocket Stick": "Clé de poche Wifi IP locale",
+    "Please confirm!": "Veuillez confirmer!",
+    "Readme Expert Settings": "Lisez-moi les paramètres experts",
     "Request Interval": "Intervalle de demande",
     "Request Interval (minutes)": "Intervalle de demande (minutes)",
-    "Token ID": "Identifiant du jeton",
-    "Use astro data from the system settings": "Utiliser les données astronomiques des paramètres système",
+    "Request Interval (seconds)": "Intervalle de demande (secondes)",
+    "Token ID": "ID de jeton",
+    "Use astro data from the system settings": "Utiliser les données astro à partir des paramètres système",
+    "Warning Local-Mode": "Mise en garde! Des réglages incorrects et une version du firmware > 2.033.20 peuvent faire planter l'onduleur et la clé Wifi ! Veuillez vérifier la version du micrologiciel avant d'activer la requête locale. La rétrogradation du micrologiciel vers la version 2.033.20 est décrite dans le fichier Lisez-moi de l'adaptateur.",
+    "Webinterface Password Wifi Pocket Stick": "Interface Web Mot de passe Wifi Pocket Stick",
     "latitude": "latitude",
     "longitude": "longitude",
     "serial Number": "Numéro de série du module de communication",
-    "solax adapter settings": "Paramètres d'adaptateur pour solax"
+    "solax adapter settings": "Réglages de l'adaptateur pour solax"
 }
