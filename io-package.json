@@ -334,32 +334,6 @@
       "native": {}
     },
     {
-      "_id": "info.exception",
-      "type": "state",
-      "common": {
-        "role": "text",
-        "name": "API connection",
-        "type": "string",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.success",
-      "type": "state",
-      "common": {
-        "role": "indicator.state",
-        "name": "API success",
-        "type": "boolean",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {}
-    },
-    {
       "_id": "info.inverterSN",
       "type": "state",
       "common": {

@@ -9,14 +9,11 @@ const SunCalc = require('suncalc2');
 // @ts-ignore
 const axios = require('axios').default;
 
-let replayTime;
-let jsonTimer;
 let requestTimer;
 let astroTimer;
-let createTimer;
-let setDataTimer;
 let longitude;
 let latitude;
+let timerSleep = 0;
 
 const deviceObjects = {
     'acpower': {
@@ -229,17 +226,9 @@ const deviceObjects = {
     }
 }
 
-/**
- * The adapter instance
- * @type {ioBroker.Adapter}
- */
 let adapter;
 const adapterName = require('./package.json').name.split('.').pop();
 
-/**
- * Starts the adapter instance
- * @param {Partial<utils.AdapterOptions>} [options]
- */
 function startAdapter(options) {
     return adapter = utils.adapter(Object.assign({}, options, {
         name: adapterName,
@@ -249,12 +238,10 @@ function startAdapter(options) {
         unload: (callback) => {
             try {
                 schedule.cancelJob('dayHistory');
-                clearTimeout(replayTime);
-                clearTimeout(jsonTimer);
-                clearTimeout(createTimer);
-                clearTimeout(setDataTimer);
                 clearInterval(requestTimer);
                 clearInterval(astroTimer);
+                clearTimeout(timerSleep);
+                clearTimeout(requestTimeOut);
                 callback();
             } catch (e) {
                 callback();
@@ -263,8 +250,14 @@ function startAdapter(options) {
     }));
 }
 
+async function sleep(ms) {
+    return new Promise(async (resolve) => {
+        // @ts-ignore
+        timerSleep = setTimeout(async () => resolve(), ms);
+    });
+}
+
 async function getSystemData() {
-    // @ts-ignore
     return new Promise(async (resolve) => {
         if (adapter.config.systemGeoData) {
             try {
@@ -309,7 +302,6 @@ function getDate(d) {
 }
 
 async function nightCalc(_isNight) {
-    // @ts-ignore
     return new Promise(async (resolve) => {
         adapter.log.debug('nightCalc started ...');
 
@@ -333,13 +325,11 @@ async function nightCalc(_isNight) {
         } catch (e) {
             adapter.log.warn('cannot calculate astrodata ... please check your config for latitude und longitude!!');
         }
-        // @ts-ignore
         resolve(_isNight);
     });
 }
 
 async function sunPos() {
-    // @ts-ignore
     return new Promise(async (resolve) => {
         let currentPos;
         try {
@@ -474,8 +464,32 @@ async function createdStates(api) {
             }
 
         }
-        // @ts-ignore
-        createTimer = setTimeout(async () => resolve(api), 2000);
+        await adapter.setObjectNotExistsAsync('info.success', {
+            'type': 'state',
+            'common': {
+                'role': 'indicator.state',
+                'name': 'API success',
+                'type': 'boolean',
+                'read': true,
+                'write': false,
+                'def': ''
+            },
+            'native': {}
+        });
+        await adapter.setObjectNotExistsAsync('info.exception', {
+            'type': 'state',
+            'common': {
+                'role': 'text',
+                'name': 'API connection',
+                'type': 'string',
+                'read': true,
+                'write': false,
+                'def': ''
+            },
+            'native': {}
+        });
+        await sleep(2000);
+        resolve(api);
     });
 }
 
@@ -501,9 +515,8 @@ async function requestAPI() {
                 resolve(solaxRequest);
             } else if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === false && num <= 5) {
                 num++;
-                replayTime = setTimeout(async () => {
-                    return await fillData();
-                }, 5000);
+                await sleep(5000);
+                return await fillData();
             } else if (num > 5) {
                 adapter.log.debug(`${num} request attempts were started: ${solaxRequest.data.result ? solaxRequest.data.result : ''}`)
                 num = 0;
@@ -516,7 +529,6 @@ async function requestAPI() {
 }
 
 async function fillData() {
-    // @ts-ignore
     return new Promise(async (resolve) => {
         try {
             const solaxRequest = await requestAPI();
@@ -556,11 +568,10 @@ async function fillData() {
                 await setData(solaxRequest)
 
                 // created json
-                jsonTimer = setTimeout(async () => {
-                    let json = {}
-                    await createdJSON(json);
-                    await adapter.setStateAsync('data.json', JSON.stringify(json), true);
-                }, 1000);
+                await sleep(1000);
+                let json = {}
+                await createdJSON(json);
+                await adapter.setStateAsync('data.json', JSON.stringify(json), true);
 
             } else {
                 adapter.log.debug('SolaX API is currently unavailable');
@@ -595,8 +606,9 @@ async function setData(solaxRequest) {
                 }
 
                 if (num == Object.keys(list).length) {
+                    await sleep(1000);
                     // @ts-ignore
-                    setDataTimer = setTimeout(async () => resolve(), 1000);
+                    resolve();
                 }
             }
         }
@@ -616,7 +628,7 @@ async function createdJSON(json) {
 
                 const state = await adapter.getStateAsync(`info.${resultID}`);
 
-                if (state && state.val >= 0) {
+                if (state && state.val) {
                     json[`${resultID}`] = state.val;
                 }
             }
@@ -634,13 +646,13 @@ async function createdJSON(json) {
 
                 const state = await adapter.getStateAsync(`data.${resultID}`);
 
-                if (state && state.val >= 0) {
+                if (state && state.val && resultID != 'json') {
                     json[`${resultID}`] = state.val;
                 }
 
                 if (num == Object.keys(dataList).length) {
-                    // @ts-ignore
-                    createTimer = setTimeout(async () => resolve(json), 2000);
+                    await sleep(2000);
+                    resolve(json);
                 }
             }
         }
@@ -679,38 +691,36 @@ const stateCache = [];
 //{"type":"X1-Boost-Air-Mini","SN":"XXXXXXXXXX","ver":"2.033.20","Data":[0.3,0,67.1,0,0.3,227.5,11,21,0,0.2,0,21,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49.99,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Information":[0.6,4,"X1-Boost-Air-Mini","XXXXXXXXXX",1,2.15,0,1.35,0]}
 
 const root_dataPoints = {
-    type: { name: 'info.inverter_type', description: 'Inverter Type', type: 'string', role: 'text' },
-    SN: { name: 'info.comm_module_sn', description: 'Unique identifier of communication module (Registration No.)', type: 'string', role: 'text' },
-    ver: { name: 'info.comm_firmware_version', description: 'Firmware of communication module', type: 'string', role: 'text' },
+    type: { name: 'info.inverterType', description: 'Inverter Type', type: 'string', role: 'text' },
+    SN: { name: 'info.sn', description: 'Unique identifier of communication module (Registration No.)', type: 'string', role: 'text' },
+    ver: { name: 'info.firmwareVersion', description: 'Firmware of communication module', type: 'string', role: 'text' },
 };
 
 const information_dataPoints = {
-    0: { name: 'info.total_size_of_power', description: 'Total Size of Power', type: 'number', unit: 'kW', role: 'value.power' },
-    //1: { name:'info.comm_module_sn', description:'Unique identifier of communication module (Registration No.)', type: 'string'},
-    //2: { name:'info.comm_firmware_version', description:'Firmware of communication module', type: 'string'},
-    3: { name: 'info.inverter_sn', description: 'Unique identifier of inverter (Serial No.)', type: 'string', role: 'text' },
-    //4: { name:'info.comm_firmware_version', description:'Firmware of communication module', type: 'string'},
-    //5: { name:'info.comm_firmware_version', description:'Firmware of communication module', type: 'string'},
-    //6: { name:'info.comm_firmware_version', description:'Firmware of communication module', type: 'string'},
-    //7: { name:'info.comm_firmware_version', description:'Firmware of communication module', type: 'string'},
-    //8: { name:'info.comm_firmware_version', description:'Firmware of communication module', type: 'string'},
+    0: { name: 'info.totalSize', description: 'Total Size of Power', type: 'number', unit: 'kW', role: 'value.power' },
+    3: { name: 'info.inverterSN', description: 'Unique identifier of inverter (Serial No.)', type: 'string', role: 'text' },
 };
 
 const data_dataPoints = {
     isOnline: { name: 'info.online', description: 'Inverter Online', type: 'boolean', role: 'switch' },
-    0: { name: 'data.pv1_current', description: 'PV1 Current', type: 'number', unit: 'A', role: 'value.power' },                                // 'PV1 Current': (0, 'A'),
-    1: { name: 'data.pv2_current', description: 'PV2 Current', type: 'number', unit: 'A', role: 'value.power' },                                // 'PV2 Current': (1, 'A'),
-    2: { name: 'data.pv1_voltage', description: 'PV1 Voltage', type: 'number', unit: 'V', role: 'value.power' },                                // 'PV1 Voltage': (2, 'V'),
-    3: { name: 'data.pv2_voltage', description: 'PV2 Voltage', type: 'number', unit: 'V', role: 'value.power' },                                // 'PV2 Voltage': (3, 'V'),
-    4: { name: 'data.output_current', description: 'Output Current', type: 'number', unit: 'A', role: 'value.power' },                          // 'Output Current': (4, 'A'),
-    5: { name: 'data.ac_voltage', description: 'AC Voltage', type: 'number', unit: 'V', role: 'value.power' },                                  // 'AC Voltage': (5, 'V'),
-    6: { name: 'data.acpower', description: 'Inverter AC-Power total', type: 'number', unit: 'W', role: 'value.power' },                        // 'AC Power': (6, 'W'),
-    7: { name: 'data.inverter_temp', description: 'Inverter Temperature', type: 'number', unit: '°C', role: 'value.temperature' },              // 'Inverter Temperature': (7, '°C'),
-    8: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', unit: 'kWh', role: 'value.power.consumption' },  // 'Today's Energy': (8, 'kWh'),
-    9: { name: 'data.yieldtotal', description: 'Inverter AC-Energy out total', type: 'number', unit: 'kWh', role: 'value.power.consumption' },  // 'Total Energy': (9, 'kWh'),
-    10: { name: 'data.exported_power', description: 'Exported Power', type: 'number', unit: 'W', role: 'value.power' },                         // 'Exported Power': (10, 'W'),
-    11: { name: 'data.pv1_power', description: 'PV1 Power', type: 'number', unit: 'W', role: 'value.power' },                                   // 'PV1 Power': (11, 'W'),
-    12: { name: 'data.pv2_power', description: 'PV2 Power', type: 'number', unit: 'W', role: 'value.power' },                                   // 'PV2 Power': (12, 'W'),
+    0: { name: 'data.currentdc1', description: 'PV1 Current', type: 'number', unit: 'A', role: 'value.power' },                                // 'PV1 Current': (0, 'A'),
+    1: { name: 'data.currentdc1', description: 'PV2 Current', type: 'number', unit: 'A', role: 'value.power' },                                // 'PV2 Current': (1, 'A'),
+    2: { name: 'data.voltagedc1', description: 'PV1 Voltage', type: 'number', unit: 'V', role: 'value.power' },                                // 'PV1 Voltage': (2, 'V'),
+    3: { name: 'data.voltagedc2', description: 'PV2 Voltage', type: 'number', unit: 'V', role: 'value.power' },                                // 'PV2 Voltage': (3, 'V'),
+    4: { name: 'data.outputcurrent', description: 'Output Current', type: 'number', unit: 'A', role: 'value.power' },                          // 'Output Current': (4, 'A'),
+    5: { name: 'data.acvoltage', description: 'AC Voltage', type: 'number', unit: 'V', role: 'value.power' },                                  // 'AC Voltage': (5, 'V'),
+    6: { name: 'data.acpower', description: 'Inverter AC-Power total', type: 'number', unit: 'W', role: 'value.power' },                       // 'AC Power': (6, 'W'),
+    7: { name: 'data.inverterTemp', description: 'Inverter Temperature', type: 'number', unit: '°C', role: 'value.temperature' },              // 'Inverter Temperature': (7, '°C'),
+    8: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', unit: 'kWh', role: 'value.power.consumption' }, // 'Today's Energy': (8, 'kWh'),
+    9: { name: 'data.yieldtotal', description: 'Inverter AC-Energy out total', type: 'number', unit: 'kWh', role: 'value.power.consumption' }, // 'Total Energy': (9, 'kWh'),
+    10: { name: 'data.exportedPower', description: 'Exported Power', type: 'number', unit: 'W', role: 'value.power' },                         // 'Exported Power': (10, 'W'),
+    11: { name: 'data.powerdc1', description: 'Inverter DC PV power MPPT1', type: 'number', unit: 'W', role: 'value.power' },                  // 'PV1 Power': (11, 'W'),
+    12: { name: 'data.powerdc2', description: 'Inverter DC PV power MPPT2', type: 'number', unit: 'W', role: 'value.power' },                  // 'PV2 Power': (12, 'W'),
+    41: { name: 'data.totalFeed', description: 'Total Feed-in Energy', type: 'number', unit: 'kWh', role: 'value.power.consumption' },         // 'Total Feed-in Energy': (41, 'kWh'),
+    42: { name: 'data.totalconsumption', description: 'Total Consumption', type: 'number', unit: 'kWh', role: 'value.power.consumption' },     // 'Total Consumption': (42, 'kWh'),
+    43: { name: 'data.powernow', description: 'Power Now', type: 'number', unit: 'W', role: 'value.power' },                                   // 'Power Now': (43, 'W'),
+    50: { name: 'data.gridfrequency', description: 'Grid Frequency', type: 'number', unit: 'Hz', role: 'value.power' },                        // 'Grid Frequency': (50, 'Hz'),
+    68: { name: 'info.inverterStatus', description: 'Inverter Mode', type: 'string', role: 'text' },                                           // 'Inverter Mode': (68, '')
 
     // ssdsd.INV1BATTERYVOLTAGE = apiData.Data[13];
     // ssdsd.INV1BATTERYCURRENT = apiData.Data[14];
@@ -718,38 +728,24 @@ const data_dataPoints = {
     // ssdsd.INV1BATTERYTEMPERATURE = apiData.Data[16];
     // ssdsd.INV1BATTERYCAPACITYREMAINING = apiData.Data[21];
 
-    41: { name: 'data.total_feed_in_energy', description: 'Total Feed-in Energy', type: 'number', unit: 'kWh', role: 'value.power.consumption' },   // 'Total Feed-in Energy': (41, 'kWh'),
-    42: { name: 'data.total_consumption', description: 'Total Consumption', type: 'number', unit: 'kWh', role: 'value.power.consumption' },         // 'Total Consumption': (42, 'kWh'),
-    43: { name: 'data.power_now', description: 'Power Now', type: 'number', unit: 'W', role: 'value.power' },                                       // 'Power Now': (43, 'W'),
-    50: { name: 'data.grid_frequency', description: 'Grid Frequency', type: 'number', unit: 'Hz', role: 'value.power' },                            // 'Grid Frequency': (50, 'Hz'),
-    68: { name: 'data.inverter_mode', description: 'Inverter Mode', type: 'string', role: 'text' },                                                 // 'Inverter Mode': (68, '')
 };
 
-async function createdLocalStates() {
-    return new Promise(async (resolve) => {
-        await adapter.setObjectNotExistsAsync(data_dataPoints['isOnline'].name, {
-            'type': 'state',
-            'common': {
-                'role': data_dataPoints['isOnline'].role,
-                'name': data_dataPoints['isOnline'].description,
-                'type': data_dataPoints['isOnline'].type,
-                'read': true,
-                'write': false
-            },
-            'native': {}
-        });
-        // @ts-ignore
-        resolve();
-    });
-}
-
 async function requestLocalAPI() {
-    await createdLocalStates();
+    await adapter.setObjectNotExistsAsync(data_dataPoints['isOnline'].name, {
+        'type': 'state',
+        'common': {
+            'role': data_dataPoints['isOnline'].role,
+            'name': data_dataPoints['isOnline'].description,
+            'type': data_dataPoints['isOnline'].type,
+            'read': true,
+            'write': false
+        },
+        'native': {}
+    });
+
     try {
         const source = axios.CancelToken.source();
-        requestTimeOut = setTimeout(() => {
-            source.cancel();
-        }, 3000)
+        requestTimeOut = setTimeout(async () => source.cancel(), 3000);
 
         const url = `http://${adapter.config.hostIP}:80/?optType=ReadRealTimeData&pwd=${adapter.config.passwordWifi}`;
         const apiData = (await axios.post(url, null, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
@@ -760,35 +756,29 @@ async function requestLocalAPI() {
 
         for (const key in apiData) {
             const dataPoint = root_dataPoints[key];
-            if (!dataPoint) {
-                continue;
-            }
-
-            setDataPoint(dataPoint, apiData[key])
+            if (!dataPoint) continue;
+            await setDataPoint(dataPoint, apiData[key])
         }
 
         for (const key in apiData.Data) {
             const dataPoint = data_dataPoints[key];
-            if (!dataPoint) {
-                continue;
-            }
-
+            if (!dataPoint) continue;
             let data = apiData.Data[key]
 
             if (key == '68') {
                 data = await getInverterMode(data)
             }
-
-            setDataPoint(dataPoint, data)
+            await setDataPoint(dataPoint, data)
         }
 
         for (const key in apiData.Information) {
             const dataPoint = information_dataPoints[key];
-            if (!dataPoint) {
-                continue;
-            }
+            if (!dataPoint) continue;
+            await setDataPoint(dataPoint, apiData.Information[key])
+        }
 
-            setDataPoint(dataPoint, apiData.Information[key])
+        if (isOnline) {
+            await adapter.setStateAsync('info.uploadTime', new Date().toString(), true);
         }
 
     } catch (e) {
@@ -801,11 +791,15 @@ async function requestLocalAPI() {
         }
     }
 
-    if (requestTimeOut) {
-        clearTimeout(requestTimeOut);
-    }
+    if (requestTimeOut) clearTimeout(requestTimeOut);
 
     await adapter.setStateAsync(`${data_dataPoints['isOnline'].name}`, isOnline, true);
+
+    // created json
+    await sleep(1000);
+    let json = {}
+    await createdJSON(json);
+    await adapter.setStateAsync('data.json', JSON.stringify(json), true);
 }
 
 async function setDataPoint(dataPoint, data) {
@@ -890,9 +884,9 @@ async function resetValues() {
         const dataPoint = data_dataPoints[value];
 
         if (value == 68) {
-            setDataPoint(dataPoint, await getInverterMode(-1))
-        } else {
-            setDataPoint(dataPoint, 0)
+            await setDataPoint(dataPoint, await getInverterMode(-1))
+        } else if (value != 8) {
+            await setDataPoint(dataPoint, 0)
         }
     }
 }
