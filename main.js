@@ -679,6 +679,7 @@ async function setDayHistory() {
             adapter.log.warn(err)
         }
     }
+    await adapter.setStateAsync('data.yieldtoday', 0, true);
 }
 
 /*************************** Expert Local Mode **********************/
