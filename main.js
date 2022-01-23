@@ -900,6 +900,7 @@ async function main() {
     if (adapter.config.expertSettings === true && adapter.config.localConnection === true) {
         adapterMode = 'local';
     }
+    await adapter.setStateAsync('info.connectType', adapterMode, true);
 
     let _isNight = false;
 

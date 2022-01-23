@@ -409,6 +409,19 @@
         "write": false
       },
       "native": {}
+    },
+    {
+      "_id": "info.connectType",
+      "type": "state",
+      "common": {
+        "role": "text",
+        "name": "Connect Type for Request",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
     }
   ]
 }
