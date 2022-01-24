@@ -452,8 +452,10 @@ async function createdJSON() {
     });
 }
 
-async function setDayHistory() {
-    for (let c = 6; c >= 0; c--) {
+async function setDayHistory(days) {
+    const historyDays = days - 1;
+
+    for (let c = historyDays; c >= 0; c--) {
         try {
             let state;
 
@@ -633,7 +635,7 @@ async function delHistoryStates(days) {
                 await adapter.delObjectAsync(historyID);
                 adapter.log.debug(`Delete old History State "${historyName}"`);
             } catch (e) {
-                adapter.log.warn();(`Cannot Delete old History State "${historyName}"`);
+                adapter.log.warn(); (`Cannot Delete old History State "${historyName}"`);
             }
         }
     }
@@ -694,7 +696,7 @@ async function main() {
                     }
                 }, requestInterval * 60000);
 
-                schedule.scheduleJob('dayHistory', '50 59 23 * * *', async () => await setDayHistory());
+                schedule.scheduleJob('dayHistory', '50 59 23 * * *', async () => await setDayHistory(adapter.config.historyDays));
             } else {
                 adapter.log.warn('system settings cannot be called up. Please check configuration!');
             }
@@ -713,7 +715,7 @@ async function main() {
                     }
                 }, requestIntervalLocal * 1000);
 
-                schedule.scheduleJob('dayHistory', '50 59 23 * * *', async () => await setDayHistory());
+                schedule.scheduleJob('dayHistory', '50 59 23 * * *', async () => await setDayHistory(adapter.config.historyDays));
             } else {
                 adapter.log.warn('system settings cannot be called up. Please check configuration!');
             }
