@@ -9,222 +9,13 @@ const SunCalc = require('suncalc2');
 // @ts-ignore
 const axios = require('axios').default;
 
+const createStates = require('./lib/createObjects.js');
+
 let requestTimer;
 let astroTimer;
 let longitude;
 let latitude;
 let timerSleep = 0;
-
-const deviceObjects = {
-    'acpower': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power',
-            'name': 'Inverter AC-Power total',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'W',
-            'def': 0
-        },
-        'native': {}
-    },
-    'yieldtoday': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power.consumption',
-            'name': 'Inverter AC-Energy out Daily',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'KWh',
-            'def': 0
-        },
-        'native': {}
-    },
-    'yieldtotal': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power.consumption',
-            'name': 'Inverter AC-Energy out total',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'KWh',
-            'def': 0
-        },
-        'native': {}
-    },
-    'feedinpower': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power',
-            'name': 'GCP-Power total',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'W',
-            'def': 0
-        },
-        'native': {}
-    },
-    'feedinenergy': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power.consumption',
-            'name': 'GCP-Energy to Grid total',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'KWh',
-            'def': 0
-        },
-        'native': {}
-    },
-    'consumeenergy': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power.consumption',
-            'name': 'GCP-Energy from Grid total',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'KWh',
-            'def': 0
-        },
-        'native': {}
-    },
-    'feedinpowerM2': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power',
-            'name': 'address to meter AC-Power total',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'W',
-            'def': 0
-        },
-        'native': {}
-    },
-    'soc': {
-        'type': 'state',
-        'common': {
-            'role': 'value',
-            'name': 'Inverter DC-Battery Energy SOC',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': '%',
-            'def': 0
-        },
-        'native': {}
-    },
-    'peps1': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power',
-            'name': 'Inverter AC EPS-Power L1',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'W',
-            'def': 0
-        },
-        'native': {}
-    },
-    'peps2': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power',
-            'name': 'Inverter AC EPS-Power L2',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'W',
-            'def': 0
-        },
-        'native': {}
-    },
-    'peps3': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power',
-            'name': 'Inverter AC EPS-Power L3',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'W',
-            'def': 0
-        },
-        'native': {}
-    },
-    'batPower': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power',
-            'name': 'Inverter DC-Battery power total',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'W',
-            'def': 0
-        },
-        'native': {}
-    },
-    'powerdc1': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power',
-            'name': 'Inverter DC PV power MPPT1',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'W',
-            'def': 0
-        },
-        'native': {}
-    },
-    'powerdc2': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power',
-            'name': 'Inverter DC PV power MPPT2',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'W',
-            'def': 0
-        },
-        'native': {}
-    },
-    'powerdc3': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power',
-            'name': 'Inverter DC PV power MPPT3',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'W',
-            'def': 0
-        },
-        'native': {}
-    },
-    'powerdc4': {
-        'type': 'state',
-        'common': {
-            'role': 'value.power',
-            'name': 'Inverter DC PV power MPPT4',
-            'type': 'number',
-            'read': true,
-            'write': false,
-            'unit': 'W',
-            'def': 0
-        },
-        'native': {}
-    }
-}
 
 let adapter;
 const adapterName = require('./package.json').name.split('.').pop();
@@ -406,6 +197,48 @@ async function setInverterType(type) {
 async function setInverterstate(solaxState) {
     let inverterState = '';
     switch (solaxState) {
+        case 0:
+            inverterState = 'Wait Mode';
+            break;
+        case 1:
+            inverterState = 'Check Mode';
+            break;
+        case 2:
+            inverterState = 'Normal Mode';
+            break;
+        case 3:
+            inverterState = 'Fault Mode';
+            break;
+        case 4:
+            inverterState = 'Permanent Fault Mode';
+            break;
+        case 5:
+            inverterState = 'Update Mode';
+            break;
+        case 6:
+            inverterState = 'EPS Check Mode';
+            break;
+        case 7:
+            inverterState = 'EPS Mode';
+            break;
+        case 8:
+            inverterState = 'Self-Test Mode';
+            break;
+        case 9:
+            inverterState = 'Idle Mode';
+            break;
+        case 10:
+            inverterState = 'Standby Mode';
+            break;
+        case 11:
+            inverterState = 'Pv Wake Up Bat Mode';
+            break;
+        case 12:
+            inverterState = 'Gen Check Mode';
+            break;
+        case 13:
+            inverterState = 'Gen Run Mode';
+            break;
         case '100':
             inverterState = 'Wait Mode';
             break;
@@ -454,44 +287,7 @@ async function setInverterstate(solaxState) {
     return (inverterState);
 }
 
-async function createdStates(api) {
-    return new Promise(async (resolve) => {
-        for (const obj in deviceObjects) {
-            if (api.result[`${obj}`]) {
-                await adapter.setObjectNotExistsAsync('data.' + obj, deviceObjects[obj]);
-            } else if (!api.result[`${obj}`]) {
-                delete api.result[`${obj}`];
-            }
-
-        }
-        await adapter.setObjectNotExistsAsync('info.success', {
-            'type': 'state',
-            'common': {
-                'role': 'indicator.state',
-                'name': 'API success',
-                'type': 'boolean',
-                'read': true,
-                'write': false,
-                'def': ''
-            },
-            'native': {}
-        });
-        await adapter.setObjectNotExistsAsync('info.exception', {
-            'type': 'state',
-            'common': {
-                'role': 'text',
-                'name': 'API connection',
-                'type': 'string',
-                'read': true,
-                'write': false,
-                'def': ''
-            },
-            'native': {}
-        });
-        await sleep(2000);
-        resolve(api);
-    });
-}
+/*************************** Cloud Mode **********************/
 
 let num = 0;
 
@@ -536,7 +332,7 @@ async function fillData() {
             if (solaxRequest.data && solaxRequest.data.result) {
                 adapter.log.debug('API Request successfully completed');
 
-                await createdStates(solaxRequest.data);
+                await createStates.createdDataStates(solaxRequest.data, adapter);
 
                 adapter.log.debug(`solaxRequest: ${JSON.stringify(solaxRequest.data)}`);
 
@@ -567,12 +363,7 @@ async function fillData() {
                 // set State for inverter data
                 await setData(solaxRequest)
 
-                // created json
-                await sleep(1000);
-                let json = {}
-                await createdJSON(json);
-                await adapter.setStateAsync('data.json', JSON.stringify(json), true);
-
+                await createdJSON();
             } else {
                 adapter.log.debug('SolaX API is currently unavailable');
             }
@@ -615,9 +406,11 @@ async function setData(solaxRequest) {
     });
 }
 
-async function createdJSON(json) {
-    return new Promise(async (resolve) => {
+/*************************** Cloud Mode End **********************/
 
+async function createdJSON() {
+    return new Promise(async (resolve) => {
+        let json = {};
         const infoList = await adapter.getForeignObjectsAsync(adapter.namespace + '.info.*', 'state');
 
         if (infoList) {
@@ -628,7 +421,7 @@ async function createdJSON(json) {
 
                 const state = await adapter.getStateAsync(`info.${resultID}`);
 
-                if (state && state.val) {
+                if (state && state.val !== null) {
                     json[`${resultID}`] = state.val;
                 }
             }
@@ -651,7 +444,7 @@ async function createdJSON(json) {
                 }
 
                 if (num == Object.keys(dataList).length) {
-                    await sleep(2000);
+                    await adapter.setStateAsync('data.json', JSON.stringify(json), true);
                     resolve(json);
                 }
             }
@@ -670,7 +463,7 @@ async function setDayHistory() {
                 state = await adapter.getStateAsync(`history.yield_${c}_days_ago`);
             }
 
-            if (state && state.val >= 0) {
+            if (state && state.val !== null) {
                 const _c = c + 1;
                 await adapter.setStateAsync(`history.yield_${_c}_days_ago`, state.val, true);
                 adapter.log.debug(`history yield ${_c} days ago: ${state.val} KW/h`);
@@ -732,18 +525,6 @@ const data_dataPoints = {
 };
 
 async function requestLocalAPI() {
-    await adapter.setObjectNotExistsAsync(data_dataPoints['isOnline'].name, {
-        'type': 'state',
-        'common': {
-            'role': data_dataPoints['isOnline'].role,
-            'name': data_dataPoints['isOnline'].description,
-            'type': data_dataPoints['isOnline'].type,
-            'read': true,
-            'write': false
-        },
-        'native': {}
-    });
-
     try {
         const source = axios.CancelToken.source();
         requestTimeOut = setTimeout(async () => source.cancel(), 3000);
@@ -767,7 +548,7 @@ async function requestLocalAPI() {
             let data = apiData.Data[key]
 
             if (key == '68') {
-                data = await getInverterMode(data)
+                data = await setInverterstate(data)
             }
             await setDataPoint(dataPoint, data)
         }
@@ -796,11 +577,7 @@ async function requestLocalAPI() {
 
     await adapter.setStateAsync(`${data_dataPoints['isOnline'].name}`, isOnline, true);
 
-    // created json
-    await sleep(1000);
-    let json = {}
-    await createdJSON(json);
-    await adapter.setStateAsync('data.json', JSON.stringify(json), true);
+    await createdJSON();
 }
 
 async function setDataPoint(dataPoint, data) {
@@ -827,57 +604,6 @@ async function setDataPoint(dataPoint, data) {
     await adapter.setStateAsync(dataPointPath, data, true);
 }
 
-async function getInverterMode(modeNumber) {
-    let inverterMode;
-    switch (modeNumber) {
-        case 0:
-            inverterMode = 'Wait Mode';
-            break;
-        case 1:
-            inverterMode = 'Check Mode';
-            break;
-        case 2:
-            inverterMode = 'Normal Mode';
-            break;
-        case 3:
-            inverterMode = 'Fault Mode';
-            break;
-        case 4:
-            inverterMode = 'Permanent Fault Mode';
-            break;
-        case 5:
-            inverterMode = 'Update Mode';
-            break;
-        case 6:
-            inverterMode = 'EPS Check Mode';
-            break;
-        case 7:
-            inverterMode = 'EPS Mode';
-            break;
-        case 8:
-            inverterMode = 'Self-Test Mode';
-            break;
-        case 9:
-            inverterMode = 'Idle Mode';
-            break;
-        case 10:
-            inverterMode = 'Standby Mode';
-            break;
-        case 11:
-            inverterMode = 'Pv Wake Up Bat Mode';
-            break;
-        case 12:
-            inverterMode = 'Gen Check Mode';
-            break;
-        case 13:
-            inverterMode = 'Gen Run Mode';
-            break;
-        default:
-            inverterMode = 'unknown';
-    }
-    return inverterMode;
-}
-
 async function resetValues() {
     const valuesOfReset = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 43, 50, 68]
 
@@ -885,7 +611,7 @@ async function resetValues() {
         const dataPoint = data_dataPoints[value];
 
         if (value == 68) {
-            await setDataPoint(dataPoint, await getInverterMode(-1))
+            await setDataPoint(dataPoint, await setInverterstate(-1))
         } else if (value != 8) {
             await setDataPoint(dataPoint, 0)
         }
@@ -900,7 +626,22 @@ async function main() {
     if (adapter.config.expertSettings === true && adapter.config.localConnection === true) {
         adapterMode = 'local';
     }
-    await adapter.setStateAsync('info.connectType', adapterMode, true);
+
+    const _connectType = await adapter.getStateAsync('info.connectType');
+
+    if (_connectType && _connectType.val !== adapterMode) {
+        adapter.log.debug(`Delete old ${_connectType.val} Data Objects`);
+        await adapter.delObjectAsync('data', { recursive: true });
+
+        adapter.log.debug(`Delete old ${_connectType.val} Info Objects`);
+        await adapter.delObjectAsync('info', { recursive: true });
+
+        await adapter.setStateAsync('info.connectType', adapterMode, true);
+    }
+    await createStates.createdSpecialStates(adapter);
+    await createStates.createdInfoStates(adapter, adapterMode);
+    await createStates.createdHistoryStates(adapter, adapter.config.historyDays);
+    
 
     let _isNight = false;
 

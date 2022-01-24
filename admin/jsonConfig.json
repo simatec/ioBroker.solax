@@ -75,7 +75,7 @@
       "sm": 12,
       "md": 6,
       "lg": 4,
-      "min": 5,
+      "min": 1,
       "max": 3600,
       "default": 10,
       "help": "Request Interval (seconds)",
@@ -95,6 +95,18 @@
       "help": "Count of failed queries until detected as offline",
       "type": "number",
       "label": "Count of failed queries until detected as offline"
+    },
+    "historyDays": {
+      "newLine": true,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "min": 1,
+      "max": 365,
+      "default": 10,
+      "help": "Days of Historydata",
+      "type": "number",
+      "label": "Days of Historydata"
     },
     "systemGeoData": {
       "newLine": true,
