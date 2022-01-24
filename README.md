@@ -9,10 +9,8 @@
 ![Test and Release](https://github.com/simatec/ioBroker.solax/workflows/Test%20and%20Release/badge.svg)
 
 [![License](https://img.shields.io/github/license/simatec/ioBroker.solax?style=flat)](https://github.com/simatec/ioBroker.solax/blob/master/LICENSE)
-[![Donate](https://img.shields.io/badge/donate-paypal-blue?style=flat)](https://paypal.me/mk1676)
+[![Donate](https://img.shields.io/badge/paypal-donate%20|%20spenden-blue.svg)](https://paypal.me/mk1676)
 
-
-[![NPM](https://nodei.co/npm/iobroker.solax.png?downloads=true)](https://nodei.co/npm/iobroker.solax/)
 
 **************************************************************************************************************
 
@@ -54,6 +52,10 @@ When the adapter crashes or an other Code error happens, this error message that
 * (simatec) local request for Wifi Pocket Stick added
 * (simatec) Dependencies updated
 * (simatec) test and release updated
+* (simatec) Number of days of history data added
+* (simatec) Expert-Mode added
+* (simatec) Docu updated
+* (simatec) Bugfixes
 
 ### 0.3.7 (2021-11-17)
 * (simatec) Dependencies updated

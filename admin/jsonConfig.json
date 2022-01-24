@@ -94,7 +94,7 @@
       "default": 5,
       "help": "Count of failed queries until detected as offline",
       "type": "number",
-      "label": "Count of failed queries until detected as offline"
+      "label": "Count of failed queries"
     },
     "historyDays": {
       "newLine": true,
@@ -104,9 +104,9 @@
       "min": 1,
       "max": 365,
       "default": 10,
-      "help": "Days of Historydata",
+      "help": "Number of days of history data",
       "type": "number",
-      "label": "Days of Historydata"
+      "label": "Number of days"
     },
     "systemGeoData": {
       "newLine": true,

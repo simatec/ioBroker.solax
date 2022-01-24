@@ -620,6 +620,25 @@ async function resetValues() {
 
 /*************************** End Expert Local Mode **********************/
 
+async function delHistoryStates(days) {
+    const _historyStates = await adapter.getForeignObjectsAsync(`${adapter.namespace}.history.*`, 'state');
+
+    for (const i in _historyStates) {
+        const historyID = _historyStates[i]._id;
+        const historyName = historyID.split('.').pop();
+        const historyNumber = historyName.split('_');
+
+        if (historyNumber[1] > days) {
+            try {
+                await adapter.delObjectAsync(historyID);
+                adapter.log.debug(`Delete old History State "${historyName}"`);
+            } catch (e) {
+                adapter.log.warn();(`Cannot Delete old History State "${historyName}"`);
+            }
+        }
+    }
+}
+
 async function main() {
     let adapterMode = 'cloud';
 
@@ -630,10 +649,10 @@ async function main() {
     const _connectType = await adapter.getStateAsync('info.connectType');
 
     if (_connectType && _connectType.val !== adapterMode) {
-        adapter.log.debug(`Delete old ${_connectType.val} Data Objects`);
+        adapter.log.debug(`Delete old "${_connectType.val}" Data Objects`);
         await adapter.delObjectAsync('data', { recursive: true });
 
-        adapter.log.debug(`Delete old ${_connectType.val} Info Objects`);
+        adapter.log.debug(`Delete old "${_connectType.val}" Info Objects`);
         await adapter.delObjectAsync('info', { recursive: true });
 
         await adapter.setStateAsync('info.connectType', adapterMode, true);
@@ -641,7 +660,8 @@ async function main() {
     await createStates.createdSpecialStates(adapter);
     await createStates.createdInfoStates(adapter, adapterMode);
     await createStates.createdHistoryStates(adapter, adapter.config.historyDays);
-    
+
+    await delHistoryStates(adapter.config.historyDays);
 
     let _isNight = false;
 
