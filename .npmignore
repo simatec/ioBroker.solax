@@ -17,3 +17,5 @@ package-lock.json
 .DS_Store
 .gitignore
 tsconfig.json
+/docs/files
+docs/files
