@@ -65,7 +65,7 @@ Sollte die Version größer 2.033.20 sein, könnt ihr im gleichen Tab über den 
 
 Die Version 2.033.20 könnt ihr euch unter folgenden Link herunterladen:
 
-[Download Pocket Wifi Firmware](https://github.com/squishykid/solax/files/7207711/618.00122.00_Pocket_WIFI_V2.033.20_20190313.usb_.zip)
+[Download Pocket Wifi Firmware](https://github.com/simatec/ioBroker.solax/raw/master/docs/files/618.00122.00_Pocket_WIFI_V2.033.20_20190313.usb.zip)
 
 Die Zip-Datei muss entpackt werden und es muss die Datei mit der Endung ".usb" ausgewählt werden.<br>
 Nun könnt Ihr den Downgrade starten und werdet nach ca. 20-30 Sekunden eine Meldung bekommen, dass das Update erfolgreich war und der Stick neu gestartet wird.
