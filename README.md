@@ -143,8 +143,7 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
-
-### __WORK IN PROGRESS__
+### 0.4.0 (2022-01-25)
 * (simatec) local request for Wifi Pocket Stick added
 * (simatec) Dependencies updated
 * (simatec) test and release updated
