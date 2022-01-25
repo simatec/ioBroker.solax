@@ -408,6 +408,8 @@ async function setData(solaxRequest) {
 
 /*************************** Cloud Mode End **********************/
 
+/*************************** JSON State **************************/
+
 async function createdJSON() {
     return new Promise(async (resolve) => {
         let json = {};
@@ -445,12 +447,15 @@ async function createdJSON() {
 
                 if (num == Object.keys(dataList).length) {
                     await adapter.setStateAsync('data.json', JSON.stringify(json), true);
-                    resolve(json);
+                    // @ts-ignore
+                    resolve();
                 }
             }
         }
     });
 }
+
+/*************************** History **********************/
 
 async function setDayHistory(days) {
     const historyDays = days - 1;
@@ -475,6 +480,25 @@ async function setDayHistory(days) {
         }
     }
     await adapter.setStateAsync('data.yieldtoday', 0, true);
+}
+
+async function delHistoryStates(days) {
+    const _historyStates = await adapter.getForeignObjectsAsync(`${adapter.namespace}.history.*`, 'state');
+
+    for (const i in _historyStates) {
+        const historyID = _historyStates[i]._id;
+        const historyName = historyID.split('.').pop();
+        const historyNumber = historyName.split('_');
+
+        if (historyNumber[1] > days) {
+            try {
+                await adapter.delObjectAsync(historyID);
+                adapter.log.debug(`Delete old History State "${historyName}"`);
+            } catch (e) {
+                adapter.log.warn(); (`Cannot Delete old History State "${historyName}"`);
+            }
+        }
+    }
 }
 
 /*************************** Expert Local Mode **********************/
@@ -622,25 +646,6 @@ async function resetValues() {
 
 /*************************** End Expert Local Mode **********************/
 
-async function delHistoryStates(days) {
-    const _historyStates = await adapter.getForeignObjectsAsync(`${adapter.namespace}.history.*`, 'state');
-
-    for (const i in _historyStates) {
-        const historyID = _historyStates[i]._id;
-        const historyName = historyID.split('.').pop();
-        const historyNumber = historyName.split('_');
-
-        if (historyNumber[1] > days) {
-            try {
-                await adapter.delObjectAsync(historyID);
-                adapter.log.debug(`Delete old History State "${historyName}"`);
-            } catch (e) {
-                adapter.log.warn(); (`Cannot Delete old History State "${historyName}"`);
-            }
-        }
-    }
-}
-
 async function main() {
     let adapterMode = 'cloud';
 
@@ -666,6 +671,7 @@ async function main() {
     await delHistoryStates(adapter.config.historyDays);
 
     let _isNight = false;
+    let configCheck = false;
 
     adapter.log.debug(`Solax is started in ${adapterMode}-mode`);
 
@@ -685,8 +691,9 @@ async function main() {
         case 'cloud':
             if (adapter.config.apiToken && adapter.config.serialNumber) {
                 fillData();
-
+                configCheck = true;
                 const requestInterval = adapter.config.requestInterval || 5;
+
                 adapter.log.debug(`Request Interval: ${requestInterval} minute(s)`);
 
                 requestTimer = setInterval(async () => {
@@ -695,8 +702,6 @@ async function main() {
                         fillData();
                     }
                 }, requestInterval * 60000);
-
-                schedule.scheduleJob('dayHistory', '50 59 23 * * *', async () => await setDayHistory(adapter.config.historyDays));
             } else {
                 adapter.log.warn('system settings cannot be called up. Please check configuration!');
             }
@@ -704,22 +709,24 @@ async function main() {
         case 'local':
             if (adapter.config.hostIP && adapter.config.passwordWifi) {
                 requestLocalAPI();
-
+                configCheck = true;
                 const requestIntervalLocal = adapter.config.requestIntervalLocal || 10;
+
                 adapter.log.debug(`Request Interval: ${requestIntervalLocal} seconds`);
+                adapter.log.debug('Local Request Interval started ...');
 
                 requestTimer = setInterval(async () => {
                     if (!_isNight) {
-                        adapter.log.debug('Local Request started ...');
                         requestLocalAPI();
                     }
                 }, requestIntervalLocal * 1000);
-
-                schedule.scheduleJob('dayHistory', '50 59 23 * * *', async () => await setDayHistory(adapter.config.historyDays));
             } else {
                 adapter.log.warn('system settings cannot be called up. Please check configuration!');
             }
             break;
+    }
+    if (configCheck) {
+        schedule.scheduleJob('dayHistory', '50 59 23 * * *', async () => await setDayHistory(adapter.config.historyDays));
     }
 }
 
