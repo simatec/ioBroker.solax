@@ -467,8 +467,7 @@ async function delHistoryStates(days) {
                 await adapter.delObjectAsync(historyID);
                 adapter.log.debug(`Delete old History State "${historyName}"`);
             } catch (e) {
-                adapter.log.warn();
-                (`Cannot Delete old History State "${historyName}"`);
+                adapter.log.warn(`Cannot Delete old History State "${historyName}"`);
             }
         }
     }
