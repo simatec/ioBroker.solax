@@ -42,14 +42,14 @@ function startAdapter(options) {
 }
 
 async function sleep(ms) {
-    return new Promise(async(resolve) => {
+    return new Promise(async (resolve) => {
         // @ts-ignore
-        timerSleep = setTimeout(async() => resolve(), ms);
+        timerSleep = setTimeout(async () => resolve(), ms);
     });
 }
 
 async function getSystemData() {
-    return new Promise(async(resolve) => {
+    return new Promise(async (resolve) => {
         if (adapter.config.systemGeoData) {
             try {
                 const state = await adapter.getForeignObjectAsync('system.config', 'state');
@@ -93,7 +93,7 @@ function getDate(d) {
 }
 
 async function nightCalc(_isNight) {
-    return new Promise(async(resolve) => {
+    return new Promise(async (resolve) => {
         adapter.log.debug('nightCalc started ...');
 
         try {
@@ -121,7 +121,7 @@ async function nightCalc(_isNight) {
 }
 
 async function sunPos() {
-    return new Promise(async(resolve) => {
+    return new Promise(async (resolve) => {
         let currentPos;
         try {
             currentPos = SunCalc.getPosition(new Date(), latitude, longitude);
@@ -264,7 +264,7 @@ async function setInverterstate(solaxState) {
 let num = 0;
 
 async function requestAPI() {
-    return new Promise(async(resolve) => {
+    return new Promise(async (resolve) => {
         const solaxURL = (`https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
 
         try {
@@ -297,7 +297,7 @@ async function requestAPI() {
 }
 
 async function fillData() {
-    return new Promise(async(resolve) => {
+    return new Promise(async (resolve) => {
         try {
             const solaxRequest = await requestAPI();
 
@@ -348,7 +348,7 @@ async function fillData() {
 }
 
 async function setData(solaxRequest) {
-    return new Promise(async(resolve) => {
+    return new Promise(async (resolve) => {
 
         const list = await adapter.getForeignObjectsAsync(adapter.namespace + '.data.*', 'state');
 
@@ -383,7 +383,7 @@ async function setData(solaxRequest) {
 /*************************** JSON State **************************/
 
 async function createdJSON() {
-    return new Promise(async(resolve) => {
+    return new Promise(async (resolve) => {
         let json = {};
         const infoList = await adapter.getForeignObjectsAsync(adapter.namespace + '.info.*', 'state');
 
@@ -525,7 +525,7 @@ const data_dataPoints = {
 async function requestLocalAPI() {
     try {
         const source = axios.CancelToken.source();
-        requestTimeOut = setTimeout(async() => source.cancel(), 3000);
+        requestTimeOut = setTimeout(async () => source.cancel(), 3000);
 
         const url = `http://${adapter.config.hostIP}:80/?optType=ReadRealTimeData&pwd=${adapter.config.passwordWifi}`;
         const apiData = (await axios.post(url, null, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
@@ -650,7 +650,7 @@ async function main() {
     _isNight = await nightCalc(_isNight);
     await sunPos();
 
-    astroTimer = setInterval(async() => {
+    astroTimer = setInterval(async () => {
         _isNight = await nightCalc(_isNight);
         await sunPos();
         adapter.log.debug('is Night: ' + _isNight);
@@ -667,7 +667,7 @@ async function main() {
 
                 adapter.log.debug(`Request Interval: ${requestInterval} minute(s)`);
 
-                requestTimer = setInterval(async() => {
+                requestTimer = setInterval(async () => {
                     if (!_isNight) {
                         adapter.log.debug('API Request started ...');
                         fillData();
@@ -686,7 +686,7 @@ async function main() {
                 adapter.log.debug(`Request Interval: ${requestIntervalLocal} seconds`);
                 adapter.log.debug('Local Request Interval started ...');
 
-                requestTimer = setInterval(async() => {
+                requestTimer = setInterval(async () => {
                     if (!_isNight) {
                         requestLocalAPI();
                     }
@@ -696,8 +696,9 @@ async function main() {
             }
             break;
     }
+
     if (configCheck) {
-        schedule.scheduleJob('dayHistory', '50 59 23 * * *', async() => await setDayHistory(adapter.config.historyDays));
+        schedule.scheduleJob('dayHistory', '50 59 23 * * *', async () => await setDayHistory(adapter.config.historyDays));
     }
 }
 
