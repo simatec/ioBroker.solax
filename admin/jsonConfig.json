@@ -174,7 +174,7 @@
       "color": "primary",
       "button": true,
       "label": "Readme Expert Settings",
-      "href": "https://github.com/simatec/ioBroker.solax#experteneinstellungen"
+      "href": "https://github.com/simatec/ioBroker.solax/blob/master/README.md#experteneinstellungen"
     }
   }
 }
