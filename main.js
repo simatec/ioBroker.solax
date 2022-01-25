@@ -67,8 +67,8 @@ async function getSystemData() {
                     resolve();
                 }
             } catch (err) {
-                adapter.log.warn('Astro data from the system settings cannot be called up. Please check configuration!')
-                    // @ts-ignore
+                adapter.log.warn('Astro data from the system settings cannot be called up. Please check configuration!');
+                // @ts-ignore
                 resolve();
             }
         } else {
@@ -79,8 +79,8 @@ async function getSystemData() {
                 // @ts-ignore
                 resolve();
             } catch (err) {
-                adapter.log.warn('Astro data from the system settings cannot be called up. Please check configuration!')
-                    // @ts-ignore
+                adapter.log.warn('Astro data from the system settings cannot be called up. Please check configuration!');
+                // @ts-ignore
                 resolve();
             }
         }
