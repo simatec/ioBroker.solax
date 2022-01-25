@@ -20,13 +20,13 @@
 
 **************************************************************************************************************
 
-## Solax Adapter for ioBroker
+### Solax Adapter for ioBroker
 
 **************************************************************************************************************
 
-## Deutsche Dokumentation
+### Deutsche Dokumentation
 
-### Solax Cloud-Verbindung
+#### Solax Cloud-Verbindung
 
 Solax Wechselrichter API-Cloud-Verbindung
 
@@ -34,18 +34,18 @@ Dieser Adapter ruft die Daten deines Wechselrichters vom Hersteller Solax für i
 
 Was dazu benötigt wird, ist ein Konto bei Solax, eine Token-ID und die Seriennummer des Pocket Wifi oder LAN Sticks.
 
-### API-Token
+#### API-Token
 
 <span><img src="docs/en/img/solax_api.png"></span>
 
-### Seriennummer
+#### Seriennummer
 
 <span><img src="docs/en/img/wifi-stick.png"></span>
 
 
-### Experteneinstellungen
+#### Experteneinstellungen
 
-Die lokale Verbindung wird aktuell nur von den Pocket Wifi Sticks unterstützt. LAN-Sticks können nur im Cloud-Modus betrieben werden.
+Die lokale Verbindung wird aktuell nur von dem Pocket Wifi Sticks unterstützt. LAN-Sticks können nur im Cloud-Modus betrieben werden.
 
 Achtung, wer in den Experteneinstellungen den lokalen Modus aktiviert sollte im Vorfeld zwingend die aktuelle Firmwareversion seines Pocket Wifi Sticks prüfen.
 Eine Firmware Version größer 2.30.20 darf der Stick nicht installiert haben, da Solax in höheren Versionen den lokalen Zugriff blockiert und es zu einem Absturz des Wifi Sticks führt.
@@ -55,31 +55,33 @@ Wie man die Firmware Version prüfen kann und ein Downgrade auf die korrekte Ver
 Um die Firmware auf dem Stick zu prüfen, müsst ihr euch mit dem Hotspot des Sticks verbinden.
 Der Name des Hotspots sollte bei euch wie folgt aussehen: `Solax_SWXXXXXXXX`. XXXXXXXX wird durch eure Seriennummer ersetzt.
 
-Wenn ihr mit dem Hotspot verbunden seit, dann geht ihr mit folgender IP-Adresse in euren Browser auf das Webinterface des Wifi-Sticks: `5.8.8.8`
+Wenn ihr mit dem Hotspot verbunden seit, dann geht ihr mit folgender IP-Adresse in euren Browser auf das Webinterface des Wifi-Sticks: `5.8.8.8`\n
 Solltet ihr euer Passwort bei der Ersteinrichtung nicht geändert haben, sind die Standard Login-Daten admin:admin
 
 <span><img src="docs/en/img/webif.png"></span>
 
-Im Webinterface geht ihr auf den Tab "System" und findet dort die aktull installierte Firmware-Version.
+Im Webinterface geht ihr auf den Tab "System" und findet dort die aktull installierte Firmware-Version.\n
 Sollte die Version größer 2.033.20 sein, könnt ihr im gleichen Tab über den Menüpunkt "Update Firmware (.usb)" die korrekte Version flashen.
 
 Die Version 2.033.20 könnt ihr euch unter folgenden Link herunterladen:
 
 [Download Pocket Wifi Firmware](https://github.com/squishykid/solax/files/7207711/618.00122.00_Pocket_WIFI_V2.033.20_20190313.usb_.zip)
 
-Die Zip-Datei muss entpackt werden und es muss die Datei mit der Endung ".usb" ausgewählt werden.
+Die Zip-Datei muss entpackt werden und es muss die Datei mit der Endung ".usb" ausgewählt werden.\n
 Nun könnt Ihr den Downgrade starten und werdet nach ca. 20-30 Sekunden eine Meldung bekommen, dass das Update erfolgreich war und der Stick neu gestartet wird.
 
 Nach erfolgreichen Neustart könnt ihr nun über den Hotspot mit der IP-Adresse `5.8.8.8` oder auch über eure lokale IP in eurem Netzwerk auf den Wifi-Stick zugreifen.
+
+Prüft bitte vor einer Verbindung zu dem Adapter noch einmal, ob der Downgrade erfolgreich war und die korrekte Firmware installiert ist.
 
 Im Adapter müssen die lokale IP-Adresse (nicht die Hotspot IP) und das Passwort des Webinterfaces eingetragen werden und ihr habt nun eine sekundengenaue lokale Analyse eures Wechselrichters
 
 
 **************************************************************************************************************
 
-## English documentation
+### English documentation
 
-### Solax Cloud Connection
+#### Solax Cloud Connection
 
 Solax Inverter API Cloud Connection
 
@@ -87,16 +89,16 @@ This adapter calls the data of your inverter from the manufacturer Solax into th
 
 What you need for this is an account with Solax, your token ID and the serial number of your WiFi module.
 
-### API-Token
+#### API-Token
 
 <span><img src="docs/en/img/solax_api.png"></span>
 
-### serial number
+#### serial number
 
 <span><img src="docs/en/img/wifi-stick.png"></span>
 
 
-### Expert settings
+#### Expert settings
 
 The local connection is currently only supported by the Pocket Wifi Sticks. LAN sticks can only be operated in cloud mode.
 
