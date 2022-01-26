@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "news": {
+      "0.4.1": {
+        "en": "Fix react Translatation",
+        "de": "Reagieren Sie auf die Übersetzung",
+        "ru": "Исправить реагировать Перевод",
+        "pt": "Corrigir a tradução de reação",
+        "nl": "Repareren reageren Vertaling",
+        "fr": "Correction réagir Traduction",
+        "it": "Risolto il problema con la traduzione",
+        "es": "Reparar reaccionar Traducción",
+        "pl": "Napraw reaguj Tłumaczenie",
+        "zh-cn": "修复反应翻译"
+      },
       "0.4.0": {
         "en": "local request for Wifi Pocket Stick added\nDependencies updated\ntest and release updated\nNumber of days of history data added\nExpert-Mode added\nDocu updated\nBugfixes",
         "de": "lokale Anfrage für Wifi Pocket Stick hinzugefügt\nAbhängigkeiten aktualisiert\nTest und Release aktualisiert\nAnzahl der Tage der hinzugefügten Verlaufsdaten\nExperten-Modus hinzugefügt\nDoku aktualisiert\nFehlerbehebung",
@@ -74,18 +86,6 @@
         "es": "Objetos formateados, funciones en espera fijadas, intervalo de consulta modificado, dependencias actualizadas",
         "pl": "Sformatowanie obiektów, naprawienie funkcji oczekujących, zmiana interwału zapytań, aktualizacja zależności",
         "zh-cn": "对象已格式化，等待函数已修复，查询间隔已更改，依赖项已更新"
-      },
-      "0.3.2": {
-        "en": "fix for latest repo",
-        "de": "Fix für latest Repo",
-        "ru": "исправление для последнего репо",
-        "pt": "correção para repo mais recente",
-        "nl": "fix voor nieuwste repo",
-        "fr": "correctif pour le dernier dépôt",
-        "it": "correzione per l'ultimo repository",
-        "es": "corrección para el último repositorio",
-        "pl": "poprawka dla najnowszego repozytorium",
-        "zh-cn": "修复最新的 repo"
       }
     },
     "title": "Solax",
