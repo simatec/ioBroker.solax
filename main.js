@@ -395,7 +395,7 @@ async function createdJSON() {
 
                 const state = await adapter.getStateAsync(`info.${resultID}`);
 
-                if (state && state.val !== null) {
+                if (state && state.val !== undefined) {
                     json[`${resultID}`] = state.val;
                 }
             }
@@ -413,7 +413,7 @@ async function createdJSON() {
 
                 const state = await adapter.getStateAsync(`data.${resultID}`);
 
-                if (state && state.val && resultID != 'json') {
+                if (state && state.val !== null && resultID != 'json') {
                     json[`${resultID}`] = state.val;
                 }
 
@@ -442,7 +442,7 @@ async function setDayHistory(days) {
                 state = await adapter.getStateAsync(`history.yield_${c}_days_ago`);
             }
 
-            if (state && state.val !== null) {
+            if (state && state.val !== undefined) {
                 const _c = c + 1;
                 await adapter.setStateAsync(`history.yield_${_c}_days_ago`, state.val, true);
                 adapter.log.debug(`history yield ${_c} days ago: ${state.val} KW/h`);
