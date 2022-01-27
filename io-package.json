@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "news": {
+      "0.4.2": {
+        "en": "Fix json state",
+        "de": "JSON-Status korrigieren",
+        "ru": "Исправить состояние json",
+        "pt": "Corrigir o estado do json",
+        "nl": "json-status repareren",
+        "fr": "Correction de l'état json",
+        "it": "Correggi lo stato json",
+        "es": "Arreglar el estado json",
+        "pl": "Napraw stan json",
+        "zh-cn": "修复 json 状态"
+      },
       "0.4.1": {
         "en": "Fix react Translatation",
         "de": "Reagieren Sie auf die Übersetzung",
@@ -74,18 +86,6 @@
         "es": "limpieza de código, funciones de espera arregladas",
         "pl": "czyszczenie kodu, naprawiono funkcje oczekiwania",
         "zh-cn": "代码清理，等待功能修复"
-      },
-      "0.3.3": {
-        "en": "Objects formatted, await functions fixed, query interval changed, Dependencies updated",
-        "de": "Objekte formatiert, Wait-Funktionen korrigiert, Abfrageintervall geändert, Abhängigkeiten aktualisiert",
-        "ru": "Отформатированы объекты, исправлены функции ожидания, изменен интервал запроса, обновлены зависимости",
-        "pt": "Objetos formatados, funções de espera corrigidas, intervalo de consulta alterado, Dependências atualizadas",
-        "nl": "Objecten geformatteerd, wachtfuncties vast, query-interval gewijzigd, afhankelijkheden bijgewerkt",
-        "fr": "Objets formatés, fonctions d'attente corrigées, intervalle de requête modifié, dépendances mises à jour",
-        "it": "Oggetti formattati, funzioni di attesa riparate, intervallo di query modificato, dipendenze aggiornate",
-        "es": "Objetos formateados, funciones en espera fijadas, intervalo de consulta modificado, dependencias actualizadas",
-        "pl": "Sformatowanie obiektów, naprawienie funkcji oczekujących, zmiana interwału zapytań, aktualizacja zależności",
-        "zh-cn": "对象已格式化，等待函数已修复，查询间隔已更改，依赖项已更新"
       }
     },
     "title": "Solax",

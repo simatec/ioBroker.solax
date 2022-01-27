@@ -143,8 +143,7 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
-
-### __WORK IN PROGRESS__
+### 0.4.2 (2022-01-27)
 * (simatec) Fix json state
 
 ### 0.4.1 (2022-01-26)
