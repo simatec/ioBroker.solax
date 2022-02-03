@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "news": {
+      "0.4.3": {
+        "en": "refactoring Sourcecode\nDependencies updated\nFix API Request",
+        "de": "Refactoring-Quellcode\nAbhängigkeiten aktualisiert\nAPI-Anfrage behoben",
+        "ru": "рефакторинг исходного кода\nЗависимости обновлены\nИсправить запрос API",
+        "pt": "refatorando o código-fonte\nDependências atualizadas\nCorrigir solicitação de API",
+        "nl": "broncode herstructureren\nAfhankelijkheden bijgewerkt\nAPI-verzoek repareren",
+        "fr": "refactoriser le code source\nDépendances mises à jour\nCorrection de la demande d'API",
+        "it": "refactoring del codice sorgente\nDipendenze aggiornate\nCorreggi la richiesta API",
+        "es": "refactorización del código fuente\nDependencias actualizadas\nReparar solicitud de API",
+        "pl": "refaktoryzacja kodu źródłowego\nZaktualizowano zależności\nNapraw żądanie API",
+        "zh-cn": "重构源代码\n已更新依赖项\n修复 API 请求"
+      },
       "0.4.2": {
         "en": "Fix json state",
         "de": "JSON-Status korrigieren",
@@ -74,18 +86,6 @@
         "es": "funciones de espera / asincrónica arregladas",
         "pl": "Naprawiono funkcje await/async",
         "zh-cn": "等待/异步功能已修复"
-      },
-      "0.3.4": {
-        "en": "code cleanig, await functions fixed",
-        "de": "Code Cleanig, Wait-Funktionen behoben",
-        "ru": "очистка кода, исправлены функции ожидания",
-        "pt": "limpeza de código, funções de espera corrigidas",
-        "nl": "code opschonen, wacht functies vast",
-        "fr": "nettoyage du code, attente des fonctions corrigées",
-        "it": "pulizia del codice, attesa funzioni risolte",
-        "es": "limpieza de código, funciones de espera arregladas",
-        "pl": "czyszczenie kodu, naprawiono funkcje oczekiwania",
-        "zh-cn": "代码清理，等待功能修复"
       }
     },
     "title": "Solax",
