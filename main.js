@@ -17,6 +17,56 @@ let longitude;
 let latitude;
 let timerSleep = 0;
 
+const _inverterType = {
+    1: 'X1-LX',
+    2: 'X-Hybrid',
+    3: 'X1-Hybiyd/Fit',
+    4: 'X1-Boost/Air/Mini',
+    5: 'X3-Hybiyd/Fit',
+    6: 'X3-20K/30K',
+    7: 'X3-MIC/PRO',
+    8: 'X1-Smart',
+    9: 'X1-AC',
+    10: 'A1-Hybrid',
+    11: 'A1-Fit',
+    12: 'A1-Grid',
+    13: 'J1-ESS'
+}
+
+const _inverterStateLocal = {
+    0: 'Wait Mode',
+    1: 'Check Mode',
+    2: 'Normal Mode',
+    3: 'Fault Mode',
+    4: 'Permanent Fault Mode',
+    5: 'Update Mode',
+    6: 'EPS Check Mode',
+    7: 'EPS Mode',
+    8: 'Self-Test Mode',
+    9: 'Idle Mode',
+    10: 'Standby Mode',
+    11: 'Pv Wake Up Bat Mode',
+    12: 'Gen Check Mode',
+    13: 'Gen Run Mode'
+}
+
+const _inverterStateAPI = {
+    100: 'Wait Mode',
+    101: 'Check Mode',
+    102: 'Normal Mode',
+    103: 'Fault Mode',
+    104: 'Permanent Fault Mode',
+    105: 'Update Mode',
+    106: 'EPS Check Mode',
+    107: 'EPS Mode',
+    108: 'Self-Test Mode',
+    109: 'Idle Mode',
+    110: 'Standby Mode',
+    111: 'Pv Wake Up Bat Mode',
+    112: 'Gen Check Mode',
+    113: 'Gen Run Mode'
+}
+
 let adapter;
 const adapterName = require('./package.json').name.split('.').pop();
 
@@ -146,119 +196,6 @@ async function sunPos() {
     });
 }
 
-async function setInverterType(type) {
-    let inverterType = '';
-    switch (type) {
-        case '1':
-            inverterType = 'X1-LX';
-            break;
-        case '2':
-            inverterType = 'X-Hybrid';
-            break;
-        case '3':
-            inverterType = 'X1-Hybiyd/Fit';
-            break;
-        case '4':
-            inverterType = 'X1-Boost/Air/Mini';
-            break;
-        case '5':
-            inverterType = 'X3-Hybiyd/Fit';
-            break;
-        case '6':
-            inverterType = 'X3-20K/30K';
-            break;
-        case '7':
-            inverterType = 'X3-MIC/PRO';
-            break;
-        case '8':
-            inverterType = 'X1-Smart';
-            break;
-        case '9':
-            inverterType = 'X1-AC';
-            break;
-        case '10':
-            inverterType = 'A1-Hybrid';
-            break;
-        case '11':
-            inverterType = 'A1-Fit';
-            break;
-        case '12':
-            inverterType = 'A1-Grid';
-            break;
-        case '13':
-            inverterType = 'J1-ESS';
-            break;
-        default:
-            inverterType = 'unknown';
-    }
-    return (inverterType);
-}
-
-async function setInverterstate(solaxState) {
-    let inverterState = '';
-    switch (solaxState) {
-        case 0:
-        case '100':
-            inverterState = 'Wait Mode';
-            break;
-        case 1:
-        case '101':
-            inverterState = 'Check Mode';
-            break;
-        case 2:
-        case '102':
-            inverterState = 'Normal Mode';
-            break;
-        case 3:
-        case '103':
-            inverterState = 'Fault Mode';
-            break;
-        case 4:
-        case '104':
-            inverterState = 'Permanent Fault Mode';
-            break;
-        case 5:
-        case '105':
-            inverterState = 'Update Mode';
-            break;
-        case 6:
-        case '106':
-            inverterState = 'EPS Check Mode';
-            break;
-        case 7:
-        case '107':
-            inverterState = 'EPS Mode';
-            break;
-        case 8:
-        case '108':
-            inverterState = 'Self-Test Mode';
-            break;
-        case 9:
-        case '109':
-            inverterState = 'Idle Mode';
-            break;
-        case 10:
-        case '110':
-            inverterState = 'Standby Mode';
-            break;
-        case 11:
-        case '111':
-            inverterState = 'Pv Wake Up Bat Mode';
-            break;
-        case 12:
-        case '112':
-            inverterState = 'Gen Check Mode';
-            break;
-        case 13:
-        case '113':
-            inverterState = 'Gen Run Mode';
-            break;
-        default:
-            inverterState = 'unknown';
-    }
-    return (inverterState);
-}
-
 /*************************** Cloud Mode **********************/
 
 let num = 0;
@@ -270,7 +207,7 @@ async function requestAPI() {
         try {
             const solaxRequest = await axios({
                 method: 'get',
-                baseURL: solaxURL,
+                url: solaxURL,
                 timeout: 2000,
                 headers: {
                     'User-Agent': 'axios/0.21.1'
@@ -308,8 +245,8 @@ async function fillData() {
 
                 adapter.log.debug(`solaxRequest: ${JSON.stringify(solaxRequest.data)}`);
 
-                const inverterState = await setInverterstate(solaxRequest.data.result.inverterStatus);
-                const inverterType = await setInverterType(solaxRequest.data.result.inverterType);
+                const inverterState = solaxRequest.data.result.inverterStatus ? _inverterStateAPI[`${solaxRequest.data.result.inverterStatus}`] : 'Offline';
+                const inverterType = solaxRequest.data.result.inverterType ? _inverterType[`${solaxRequest.data.result.inverterType}`] : 'unknown';
 
                 if (solaxRequest.data.success === true) {
                     // set State for inverter informations => success = true
@@ -537,24 +474,24 @@ async function requestLocalAPI() {
         for (const key in apiData) {
             const dataPoint = root_dataPoints[key];
             if (!dataPoint) continue;
-            await setDataPoint(dataPoint, apiData[key])
+            await setDataPoint(dataPoint, apiData[key]);
         }
 
         for (const key in apiData.Data) {
             const dataPoint = data_dataPoints[key];
             if (!dataPoint) continue;
-            let data = apiData.Data[key]
+            let data = apiData.Data[key];
 
             if (key == '68') {
-                data = await setInverterstate(data)
+                data = data ? _inverterStateLocal[`${data}`] : 'Offline';
             }
-            await setDataPoint(dataPoint, data)
+            await setDataPoint(dataPoint, data);
         }
 
         for (const key in apiData.Information) {
             const dataPoint = information_dataPoints[key];
             if (!dataPoint) continue;
-            await setDataPoint(dataPoint, apiData.Information[key])
+            await setDataPoint(dataPoint, apiData.Information[key]);
         }
 
         if (isOnline) {
@@ -608,9 +545,9 @@ async function resetValues() {
         const dataPoint = data_dataPoints[value];
 
         if (value == 68) {
-            await setDataPoint(dataPoint, await setInverterstate(-1))
+            await setDataPoint(dataPoint, 'Offline');
         } else if (value != 8) {
-            await setDataPoint(dataPoint, 0)
+            await setDataPoint(dataPoint, 0);
         }
     }
 }
@@ -632,12 +569,12 @@ async function main() {
 
         adapter.log.debug(`Delete old "${_connectType.val}" Info Objects`);
         await adapter.delObjectAsync('info', { recursive: true });
-
-        await adapter.setStateAsync('info.connectType', adapterMode, true);
     }
     await createStates.createdSpecialStates(adapter);
     await createStates.createdInfoStates(adapter, adapterMode);
     await createStates.createdHistoryStates(adapter, adapter.config.historyDays);
+
+    await adapter.setStateAsync('info.connectType', adapterMode, true);
 
     await delHistoryStates(adapter.config.historyDays);
 
