@@ -18,54 +18,54 @@ let latitude;
 let timerSleep = 0;
 
 const _inverterType = {
-    1: 'X1-LX',
-    2: 'X-Hybrid',
-    3: 'X1-Hybiyd/Fit',
-    4: 'X1-Boost/Air/Mini',
-    5: 'X3-Hybiyd/Fit',
-    6: 'X3-20K/30K',
-    7: 'X3-MIC/PRO',
-    8: 'X1-Smart',
-    9: 'X1-AC',
-    10: 'A1-Hybrid',
-    11: 'A1-Fit',
-    12: 'A1-Grid',
-    13: 'J1-ESS'
-}
+    '1': 'X1-LX',
+    '2': 'X-Hybrid',
+    '3': 'X1-Hybiyd/Fit',
+    '4': 'X1-Boost/Air/Mini',
+    '5': 'X3-Hybiyd/Fit',
+    '6': 'X3-20K/30K',
+    '7': 'X3-MIC/PRO',
+    '8': 'X1-Smart',
+    '9': 'X1-AC',
+    '10': 'A1-Hybrid',
+    '11': 'A1-Fit',
+    '12': 'A1-Grid',
+    '13': 'J1-ESS'
+};
 
 const _inverterStateLocal = {
-    0: 'Wait Mode',
-    1: 'Check Mode',
-    2: 'Normal Mode',
-    3: 'Fault Mode',
-    4: 'Permanent Fault Mode',
-    5: 'Update Mode',
-    6: 'EPS Check Mode',
-    7: 'EPS Mode',
-    8: 'Self-Test Mode',
-    9: 'Idle Mode',
-    10: 'Standby Mode',
-    11: 'Pv Wake Up Bat Mode',
-    12: 'Gen Check Mode',
-    13: 'Gen Run Mode'
-}
+    '0': 'Wait Mode',
+    '1': 'Check Mode',
+    '2': 'Normal Mode',
+    '3': 'Fault Mode',
+    '4': 'Permanent Fault Mode',
+    '5': 'Update Mode',
+    '6': 'EPS Check Mode',
+    '7': 'EPS Mode',
+    '8': 'Self-Test Mode',
+    '9': 'Idle Mode',
+    '10': 'Standby Mode',
+    '11': 'Pv Wake Up Bat Mode',
+    '12': 'Gen Check Mode',
+    '13': 'Gen Run Mode'
+};
 
 const _inverterStateAPI = {
-    100: 'Wait Mode',
-    101: 'Check Mode',
-    102: 'Normal Mode',
-    103: 'Fault Mode',
-    104: 'Permanent Fault Mode',
-    105: 'Update Mode',
-    106: 'EPS Check Mode',
-    107: 'EPS Mode',
-    108: 'Self-Test Mode',
-    109: 'Idle Mode',
-    110: 'Standby Mode',
-    111: 'Pv Wake Up Bat Mode',
-    112: 'Gen Check Mode',
-    113: 'Gen Run Mode'
-}
+    '100': 'Wait Mode',
+    '101': 'Check Mode',
+    '102': 'Normal Mode',
+    '103': 'Fault Mode',
+    '104': 'Permanent Fault Mode',
+    '105': 'Update Mode',
+    '106': 'EPS Check Mode',
+    '107': 'EPS Mode',
+    '108': 'Self-Test Mode',
+    '109': 'Idle Mode',
+    '110': 'Standby Mode',
+    '111': 'Pv Wake Up Bat Mode',
+    '112': 'Gen Check Mode',
+    '113': 'Gen Run Mode'
+};
 
 let adapter;
 const adapterName = require('./package.json').name.split('.').pop();
