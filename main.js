@@ -270,7 +270,7 @@ async function fillData() {
                 await adapter.setStateAsync('info.success', solaxRequest.data.success, true);
 
                 // set State for inverter data
-                await setData(solaxRequest)
+                await setData(solaxRequest);
 
                 await createdJSON();
             } else {
@@ -321,7 +321,7 @@ async function setData(solaxRequest) {
 
 async function createdJSON() {
     return new Promise(async (resolve) => {
-        let json = {};
+        const json = {};
         const infoList = await adapter.getForeignObjectsAsync(adapter.namespace + '.info.*', 'state');
 
         if (infoList) {
@@ -385,7 +385,7 @@ async function setDayHistory(days) {
                 adapter.log.debug(`history yield ${_c} days ago: ${state.val} KW/h`);
             }
         } catch (err) {
-            adapter.log.warn(err)
+            adapter.log.warn(err);
         }
     }
     await adapter.setStateAsync('data.yieldtoday', 0, true);
@@ -539,7 +539,7 @@ async function setDataPoint(dataPoint, data) {
 }
 
 async function resetValues() {
-    const valuesOfReset = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 43, 50, 68]
+    const valuesOfReset = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 43, 50, 68];
 
     for (const value of valuesOfReset) {
         const dataPoint = data_dataPoints[value];
