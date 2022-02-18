@@ -31,7 +31,7 @@ const _inverterType = {
     11: 'A1-Fit',
     12: 'A1-Grid',
     13: 'J1-ESS'
-}
+};
 
 const _inverterStateLocal = {
     0: 'Wait Mode',
@@ -48,7 +48,7 @@ const _inverterStateLocal = {
     11: 'Pv Wake Up Bat Mode',
     12: 'Gen Check Mode',
     13: 'Gen Run Mode'
-}
+};
 
 const _inverterStateAPI = {
     100: 'Wait Mode',
@@ -65,7 +65,7 @@ const _inverterStateAPI = {
     111: 'Pv Wake Up Bat Mode',
     112: 'Gen Check Mode',
     113: 'Gen Run Mode'
-}
+};
 
 let adapter;
 const adapterName = require('./package.json').name.split('.').pop();
@@ -483,7 +483,7 @@ async function requestLocalAPI() {
             let data = apiData.Data[key];
 
             if (key == '68') {
-                data = data ? _inverterStateLocal[`${data}`] : 'Offline';
+                data = data != undefined ? _inverterStateLocal[`${data}`] : 'Offline';
             }
             await setDataPoint(dataPoint, data);
         }
