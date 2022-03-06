@@ -168,7 +168,9 @@
     "expertSettings": false,
     "localConnection": false,
     "countsOfOffline": 5,
-    "historyDays": 7
+    "historyDays": 7,
+    "nightMode": false,
+    "batteryMode": false
   },
   "encryptedNative": [
     "apiToken",
@@ -217,8 +219,7 @@
         "type": "number",
         "read": true,
         "write": false,
-        "unit": "°",
-        "def": ""
+        "unit": "°"
       },
       "native": {}
     },
@@ -231,8 +232,7 @@
         "type": "number",
         "read": true,
         "write": false,
-        "unit": "°",
-        "def": ""
+        "unit": "°"
       },
       "native": {}
     }

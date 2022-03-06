@@ -116,6 +116,14 @@
       "md": 6,
       "lg": 4
     },
+    "nightMode": {
+      "newLine": false,
+      "type": "checkbox",
+      "label": "Query data at night",
+      "sm": 12,
+      "md": 6,
+      "lg": 4
+    },
     "longitude": {
       "newLine": true,
       "hidden": "data.systemGeoData",

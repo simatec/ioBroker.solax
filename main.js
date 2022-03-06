@@ -158,7 +158,7 @@ async function nightCalc(_isNight) {
             const currentTime = getDate();
             adapter.log.debug(`current local Time: ${currentTime}`);
 
-            if (currentTime > nauticalDusk || currentTime < nauticalDawn) {
+            if ((currentTime > nauticalDusk || currentTime < nauticalDawn) && !adapter.config.nightMode) {
                 _isNight = true;
             } else {
                 _isNight = false;
@@ -450,6 +450,12 @@ const data_dataPoints = {
     43: { name: 'data.powernow', description: 'Power Now', type: 'number', unit: 'W', role: 'value.power' }, // 'Power Now': (43, 'W'),
     50: { name: 'data.gridfrequency', description: 'Grid Frequency', type: 'number', unit: 'Hz', role: 'value.power' }, // 'Grid Frequency': (50, 'Hz'),
     68: { name: 'info.inverterStatus', description: 'Inverter Mode', type: 'string', role: 'text' }, // 'Inverter Mode': (68, '')
+    13: { name: 'data.batteryVoltage', description: 'battery voltage', type: 'number', unit: 'V', role: 'value.power' }, // 'Battery DC Voltage'
+    14: { name: 'data.batteryCurrent', description: 'battery current', type: 'number', unit: 'A', role: 'value.power' }, // 'Battery Current
+    15: { name: 'data.batteryPower', description: 'battery power', type: 'number', unit: 'W', role: 'value.power' }, // 'Battery Power
+    16: { name: 'data.batteryTemperature', description: 'battery temperature', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Battery Temperature
+    21: { name: 'data.batteryCapacityRemainig', description: 'battery capacity remainig', type: 'number', unit: 'W', role: 'value.power' }, // 'Battery Capacity Remainig
+
 
     // ssdsd.INV1BATTERYVOLTAGE = apiData.Data[13];
     // ssdsd.INV1BATTERYCURRENT = apiData.Data[14];
