@@ -454,7 +454,7 @@ const data_dataPoints = {
     14: { name: 'data.batteryCurrent', description: 'battery current', type: 'number', unit: 'A', role: 'value.power' }, // 'Battery Current
     15: { name: 'data.batteryPower', description: 'battery power', type: 'number', unit: 'W', role: 'value.power' }, // 'Battery Power
     16: { name: 'data.batteryTemperature', description: 'battery temperature', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Battery Temperature
-    21: { name: 'data.batteryCapacityRemainig', description: 'battery capacity remainig', type: 'number', unit: 'W', role: 'value.power' }, // 'Battery Capacity Remainig
+    21: { name: 'data.batteryCapacityRemainig', description: 'battery capacity remainig', type: 'number', unit: '%', role: 'value.power' }, // 'Battery Capacity Remainig
 
 
     // ssdsd.INV1BATTERYVOLTAGE = apiData.Data[13];
