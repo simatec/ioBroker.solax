@@ -21,5 +21,6 @@
     "latitude": "breedtegraad",
     "longitude": "Lengtegraad",
     "serial Number": "serienummer van communicatiemodule",
-    "solax adapter settings": "Adapterinstellingen voor solax"
+    "solax adapter settings": "Adapterinstellingen voor solax",
+    "Query data at night": "Gegevens 's nachts opvragen"
 }

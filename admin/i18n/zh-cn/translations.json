@@ -21,5 +21,6 @@
     "latitude": "纬度",
     "longitude": "经度",
     "serial Number": "通讯模块序号",
-    "solax adapter settings": "solax 的适配器设置"
+    "solax adapter settings": "solax 的适配器设置",
+    "Query data at night": "夜间查询数据"
 }

@@ -21,5 +21,6 @@
     "latitude": "szerokość",
     "longitude": "długość geograficzna",
     "serial Number": "Numer seryjny modułu komunikacyjnego",
-    "solax adapter settings": "Ustawienia adaptera do solax"
+    "solax adapter settings": "Ustawienia adaptera do solax",
+    "Query data at night": "Odpytywanie danych w nocy"
 }

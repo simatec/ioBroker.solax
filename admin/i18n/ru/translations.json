@@ -21,5 +21,6 @@
     "latitude": "широта",
     "longitude": "долгота",
     "serial Number": "серийный номер коммуникационного модуля",
-    "solax adapter settings": "Настройки адаптера для солакса"
+    "solax adapter settings": "Настройки адаптера для солакса",
+    "Query data at night": "Запросить данные ночью"
 }
