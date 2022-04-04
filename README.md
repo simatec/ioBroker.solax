@@ -143,8 +143,7 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
-
-### __WORK IN PROGRESS__
+### 0.4.5 (2022-04-04)
 * (simatec) Dependencies updated
 * (simatec) small Bugfixes
 

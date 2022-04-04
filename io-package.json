@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.4.4",
+    "version": "0.4.5",
     "news": {
+      "0.4.5": {
+        "en": "Dependencies updated\nsmall Bugfixes",
+        "de": "Abhängigkeiten aktualisiert\nkleine Bugfixes",
+        "ru": "Зависимости обновлены\nмелкие исправления",
+        "pt": "Dependências atualizadas\npequenas correções de bugs",
+        "nl": "Afhankelijkheden bijgewerkt\nkleine bugfixes",
+        "fr": "Dépendances mises à jour\npetites corrections de bogues",
+        "it": "Dipendenze aggiornate\npiccole correzioni di bug",
+        "es": "Dependencias actualizadas\npequeñas correcciones de errores",
+        "pl": "Zaktualizowano zależności\nmałe poprawki",
+        "zh-cn": "已更新依赖项\n小错误修正"
+      },
       "0.4.4": {
         "en": "Dependencies updated\nbattery data for local request added\nnight mode turn on/off added",
         "de": "Abhängigkeiten aktualisiert\nBatteriedaten für lokale Anfrage hinzugefügt\nNachtmodus ein-/ausschalten hinzugefügt",
@@ -74,18 +86,6 @@
         "es": "Dependencias actualizadas\nprueba y lanzamiento actualizado",
         "pl": "Zaktualizowano zależności\nzaktualizowano test i wydanie",
         "zh-cn": "更新了依赖项\n测试和发布更新"
-      },
-      "0.3.6": {
-        "en": "deps fixed",
-        "de": "Tiefen behoben",
-        "ru": "фиксированная глубина",
-        "pt": "deps corrigido",
-        "nl": "dieptes vast",
-        "fr": "deps corrigé",
-        "it": "le quote sono state risolte",
-        "es": "deps fijo",
-        "pl": "naprawiono deps",
-        "zh-cn": "固定"
       }
     },
     "title": "Solax",
