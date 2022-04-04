@@ -143,6 +143,11 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
+
+### __WORK IN PROGRESS__
+* (simatec) Dependencies updated
+* (simatec) small Bugfixes
+
 ### 0.4.4 (2022-03-14)
 * (simatec) Dependencies updated
 * (simatec) battery data for local request added
