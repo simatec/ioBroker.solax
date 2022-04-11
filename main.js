@@ -300,7 +300,7 @@ async function setData(solaxRequest) {
                 if (resultID !== 'yieldtoday' && resultID !== 'yieldtotal' && resultID !== 'batPower') {
                     const state = await adapter.getStateAsync(`data.${resultID}`);
 
-                    if (state && state.val >= 0) {
+                    if ((state && state.val >= 0) || state == null) {
                         await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
                     }
                 }
