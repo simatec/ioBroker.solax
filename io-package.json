@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.4.5",
+    "version": "0.4.6",
     "news": {
+      "0.4.6": {
+        "en": "Fix states",
+        "de": "Zustände beheben",
+        "ru": "Исправить состояния",
+        "pt": "Corrigir estados",
+        "nl": "Statussen herstellen",
+        "fr": "Fixer les états",
+        "it": "Correggi gli stati",
+        "es": "Corregir estados",
+        "pl": "Napraw stany",
+        "zh-cn": "修复状态"
+      },
       "0.4.5": {
         "en": "Dependencies updated\nsmall Bugfixes",
         "de": "Abhängigkeiten aktualisiert\nkleine Bugfixes",
@@ -74,18 +86,6 @@
         "es": "Solicitud local de Wifi Pocket Stick agregada\nDependencias actualizadas\nprueba y versión actualizada\nNúmero de días de datos de historial agregados\nModo experto agregado\ndocumento actualizado\nCorrección de errores",
         "pl": "Dodano lokalne żądanie Wifi Pocket Stick\nZaktualizowano zależności\nzaktualizowano test i wydanie\nLiczba dni dodanych danych historycznych\nDodano tryb eksperta\nZaktualizowano dokument\nPoprawki",
         "zh-cn": "添加了对 Wifi Pocket Stick 的本地请求\n已更新依赖项\n测试和发布更新\n添加历史数据的天数\n添加了专家模式\n文档已更新\nBug修复"
-      },
-      "0.3.7": {
-        "en": "Dependencies updated\ntest and release updated",
-        "de": "Abhängigkeiten aktualisiert\nTest und Release aktualisiert",
-        "ru": "Зависимости обновлены\nтест и выпуск обновлены",
-        "pt": "Dependências atualizadas\nteste e lançamento atualizados",
-        "nl": "Afhankelijkheden bijgewerkt\ntest en release bijgewerkt",
-        "fr": "Dépendances mises à jour\ntest et version mis à jour",
-        "it": "Dipendenze aggiornate\ntest e rilascio aggiornati",
-        "es": "Dependencias actualizadas\nprueba y lanzamiento actualizado",
-        "pl": "Zaktualizowano zależności\nzaktualizowano test i wydanie",
-        "zh-cn": "更新了依赖项\n测试和发布更新"
       }
     },
     "title": "Solax",
