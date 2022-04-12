@@ -473,6 +473,9 @@ async function requestLocalAPI() {
         const url = `http://${adapter.config.hostIP}:80/?optType=ReadRealTimeData&pwd=${adapter.config.passwordWifi}`;
         const apiData = (await axios.post(url, null, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
 
+        // only for Debug
+        adapter.log.silly('apiData: ' + JSON.stringify(apiData));
+
         clearTimeout(requestTimeOut);
         offlineCounter = 0;
         isOnline = true;
