@@ -53,14 +53,14 @@ Eine Firmware Version größer 2.30.20 darf der Stick nicht installiert haben, d
 Wie man die Firmware Version prüfen kann und ein Downgrade auf die korrekte Version hinbekommt, wird hier erklärt.
 
 Um die Firmware auf dem Stick zu prüfen, müsst ihr euch mit dem Hotspot des Sticks verbinden.
-Der Name des Hotspots sollte bei euch wie folgt aussehen: `Solax_SWXXXXXXXX`. XXXXXXXX wird durch eure Seriennummer ersetzt.
+Der Name des Hotspots sollte bei euch wie folgt aussehen: `Solax_SWXXXXXXXX` oder `Wifi_SWXXXXXXXX`. XXXXXXXX wird durch eure Seriennummer ersetzt.
 
 Wenn ihr mit dem Hotspot verbunden seit, dann geht ihr mit folgender IP-Adresse in euren Browser auf das Webinterface des Wifi-Sticks: `5.8.8.8`<br>
 Solltet ihr euer Passwort bei der Ersteinrichtung nicht geändert haben, sind die Standard Login-Daten admin:admin
 
 <span><img src="docs/en/img/webif.png"></span>
 
-Im Webinterface geht ihr auf den Tab "System" und findet dort die aktull installierte Firmware-Version.<br>
+Im Webinterface geht ihr auf den Tab "System" und findet dort die aktuell installierte Firmware-Version.<br>
 Sollte die Version größer 2.033.20 sein, könnt ihr im gleichen Tab über den Menüpunkt "Update Firmware (.usb)" die korrekte Version flashen.
 
 Die Version 2.033.20 könnt ihr euch unter folgenden Link herunterladen:
@@ -73,8 +73,9 @@ Nun könnt Ihr den Downgrade starten und werdet nach ca. 20-30 Sekunden eine Mel
 Nach erfolgreichen Neustart könnt ihr nun über den Hotspot mit der IP-Adresse `5.8.8.8` oder auch über eure lokale IP in eurem Netzwerk auf den Wifi-Stick zugreifen.
 
 Prüft bitte vor einer Verbindung zu dem Adapter noch einmal, ob der Downgrade erfolgreich war und die korrekte Firmware installiert ist.
+Der Stick aktualisiert die Firmware nicht automatisch und ist mit der Version 2.033.20 voll funktionsfähig.
 
-Im Adapter müssen die lokale IP-Adresse (nicht die Hotspot IP) und das Passwort des Webinterfaces eingetragen werden und ihr habt nun eine sekundengenaue lokale Analyse eures Wechselrichters
+Im Adapter müssen die lokale IP-Adresse (nicht die Hotspot IP) und das Passwort des Webinterfaces eingetragen werden, und ihr habt nun eine sekundengenaue lokale Analyse eures Wechselrichters
 
 
 **************************************************************************************************************
@@ -108,7 +109,7 @@ The stick must not have a firmware version greater than 2.30.20 installed, since
 How to check the firmware version and how to downgrade to the correct version is explained here.
 
 To check the firmware on the stick, you have to connect to the stick's hotspot.
-Your hotspot name should look like this: `Solax_SWXXXXXXXX`. XXXXXXXX will be replaced with your serial number.
+Your hotspot name should look like this: `Solax_SWXXXXXXXX` or `Wifi_SWXXXXXXXX`. XXXXXXXX will be replaced with your serial number.
 
 If you are connected to the hotspot, go to the web interface of the Wifi stick in your browser with the following IP address: `5.8.8.8`<br>
 If you did not change your password during the initial setup, the default login data is admin:admin
@@ -128,6 +129,7 @@ Now you can start the downgrade and after about 20-30 seconds you will get a mes
 After a successful restart, you can now access the WiFi stick via the hotspot with the IP address `5.8.8.8` or via your local IP in your network.
 
 Before connecting to the adapter, please check again whether the downgrade was successful and the correct firmware is installed.
+Fortunately the stick does not perform an automatic firmware upgrade and is fully functional with version 2.033.20.
 
 The local IP address (not the hotspot IP) and the password of the web interface must be entered in the adapter and you now have a local analysis of your inverter that is accurate to the second
 
