@@ -470,8 +470,9 @@ async function requestLocalAPI() {
         const source = axios.CancelToken.source();
         requestTimeOut = setTimeout(async () => source.cancel(), 3000);
 
-        const url = `http://${adapter.config.hostIP}:80/?optType=ReadRealTimeData&pwd=${adapter.config.passwordWifi}`;
-        const apiData = (await axios.post(url, null, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
+        const data = `optType=ReadRealTimeData&pwd=${adapter.config.passwordWifi}`;
+        const url = `http://${adapter.config.hostIP}/?${data}`;
+        const apiData = (await axios.post(url, data, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
 
         // only for Debug
         adapter.log.silly('apiData: ' + JSON.stringify(apiData));
