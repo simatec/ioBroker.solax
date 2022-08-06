@@ -415,7 +415,8 @@ async function delHistoryStates(days) {
 let requestTimeOut;
 let offlineCounter = 0;
 let isOnline = false;
-let type = 0
+let version = 0
+let type = 1
 
 const stateCache = [];
 
@@ -510,11 +511,13 @@ async function requestLocalAPI() {
 
         const data = `optType=ReadRealTimeData&pwd=${adapter.config.passwordWifi}`;
         const url = `http://${adapter.config.hostIP}/?${data}`;
-        const apiData = (await axios.post(url, data, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
+
+        const apiData = (await axios.post(url, !version || version == 2 ? null : data, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' }})).data;
 
         clearTimeout(requestTimeOut);
         offlineCounter = 0;
         isOnline = true;
+        version = apiData.ver.split('.')[0]
         type = apiData.type == '5' || apiData.type == '6' || apiData.type == '7' ? 3 : 1
 
         for (const key in apiData) {
@@ -551,6 +554,7 @@ async function requestLocalAPI() {
         }
 
     } catch (e) {
+        version = version == 0 ? -1 : (version == -1 ? 0 : version)
         if (offlineCounter == adapter.config.countsOfOffline) {
             isOnline = false;
             resetValues();
@@ -561,7 +565,7 @@ async function requestLocalAPI() {
 
     if (requestTimeOut) clearTimeout(requestTimeOut);
 
-    await adapter.setStateAsync(`${data_dataPoints[type]['isOnline'].name}`, isOnline, true);
+    await adapter.setStateAsync(data_dataPoints[type]['isOnline'].name, isOnline, true);
 
     await createdJSON();
 }
@@ -593,7 +597,7 @@ async function setDataPoint(dataPoint, data) {
 async function resetValues() {
     const valuesOfReset = {
         1: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 43, 50, 68], 
-        3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 80]
+        3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 80]
     };
 
     for (const value of valuesOfReset[type]) {
