@@ -415,54 +415,92 @@ async function delHistoryStates(days) {
 let requestTimeOut;
 let offlineCounter = 0;
 let isOnline = false;
+let type = 0
+
 const stateCache = [];
 
 //{"type":"X1-Boost-Air-Mini","SN":"XXXXXXXXXX","ver":"2.033.20","Data":[0.3,0,67.1,0,0.3,227.5,11,21,0,0.2,0,21,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49.99,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Information":[0.6,4,"X1-Boost-Air-Mini","XXXXXXXXXX",1,2.15,0,1.35,0]}
+//{"sn":"XXXXXXXXXX","ver":"3.001.03","type":7,"Data":[2339,2341,2308,11,11,12,207,188,213,2676,2624,16,15,414,386,4999,4999,4999,2,18105,0,144,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,8,8000,0,48,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,610,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29392,16381,16,0,2,0,30976,16381,0,0,0,0,29120,16381,0,0,51,0,0,0,0,0,0,0,0,0,14308,16394,29452,16381,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29480,16381,64,0,0,0,0,0,38696,16381,38644,16381,0,0,29504,16381,64,0,0,0,0,0,38696,16381,38644,16381,29528,16381,64,0,0,0,0,0,38696,16381,38644,16381,29537,16381,31580,16381],"Information":[8.000,7,"XXXXXXXXXX",8,1.30,1.02,1.33,1.02,0.00,1]}
 
 const root_dataPoints = {
     type: { name: 'info.inverterType', description: 'Inverter Type', type: 'string', role: 'text' },
-    SN: { name: 'info.sn', description: 'Unique identifier of communication module (Registration No.)', type: 'string', role: 'text' },
+    sn: { name: 'info.sn', description: 'Unique identifier of communication module (Registration No.)', type: 'string', role: 'text' },
     ver: { name: 'info.firmwareVersion', description: 'Firmware of communication module', type: 'string', role: 'text' },
 };
 
 const information_dataPoints = {
-    0: { name: 'info.totalSize', description: 'Total Size of Power', type: 'number', unit: 'kW', role: 'value.power' },
-    3: { name: 'info.inverterSN', description: 'Unique identifier of inverter (Serial No.)', type: 'string', role: 'text' },
+    1: {
+        0: { name: 'info.totalSize', description: 'Total Size of Power', type: 'number', unit: 'kW', role: 'value.power' },
+        3: { name: 'info.inverterSN', description: 'Unique identifier of inverter (Serial No.)', type: 'string', role: 'text' },
+    },
+    3: {
+        0: { name: 'info.totalSize', description: 'Total Size of Power', type: 'number', unit: 'kW', role: 'value.power' },
+        2: { name: 'info.inverterSN', description: 'Unique identifier of inverter (Serial No.)', type: 'string', role: 'text' },
+        4: { name: 'info.dspVersion', description: 'DSP Version', type: 'number', role: 'text' },
+        6: { name: 'info.armVersion', description: 'ARM Version', type: 'number', role: 'text' },
+    }
 };
 
 const data_dataPoints = {
-    isOnline: { name: 'info.online', description: 'Inverter Online', type: 'boolean', role: 'switch' },
-    0: { name: 'data.currentdc1', description: 'PV1 Current', type: 'number', unit: 'A', role: 'value.power' }, // 'PV1 Current': (0, 'A'),
-    1: { name: 'data.currentdc2', description: 'PV2 Current', type: 'number', unit: 'A', role: 'value.power' }, // 'PV2 Current': (1, 'A'),
-    2: { name: 'data.voltagedc1', description: 'PV1 Voltage', type: 'number', unit: 'V', role: 'value.power' }, // 'PV1 Voltage': (2, 'V'),
-    3: { name: 'data.voltagedc2', description: 'PV2 Voltage', type: 'number', unit: 'V', role: 'value.power' }, // 'PV2 Voltage': (3, 'V'),
-    4: { name: 'data.outputcurrent', description: 'Output Current', type: 'number', unit: 'A', role: 'value.power' }, // 'Output Current': (4, 'A'),
-    5: { name: 'data.acvoltage', description: 'AC Voltage', type: 'number', unit: 'V', role: 'value.power' }, // 'AC Voltage': (5, 'V'),
-    6: { name: 'data.acpower', description: 'Inverter AC-Power total', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power': (6, 'W'),
-    7: { name: 'data.inverterTemp', description: 'Inverter Temperature', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Inverter Temperature': (7, '°C'),
-    8: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', unit: 'kWh', role: 'value.power.consumption' }, // 'Today's Energy': (8, 'kWh'),
-    9: { name: 'data.yieldtotal', description: 'Inverter AC-Energy out total', type: 'number', unit: 'kWh', role: 'value.power.consumption' }, // 'Total Energy': (9, 'kWh'),
-    10: { name: 'data.exportedPower', description: 'Exported Power', type: 'number', unit: 'W', role: 'value.power' }, // 'Exported Power': (10, 'W'),
-    11: { name: 'data.powerdc1', description: 'Inverter DC PV power MPPT1', type: 'number', unit: 'W', role: 'value.power' }, // 'PV1 Power': (11, 'W'),
-    12: { name: 'data.powerdc2', description: 'Inverter DC PV power MPPT2', type: 'number', unit: 'W', role: 'value.power' }, // 'PV2 Power': (12, 'W'),
-    41: { name: 'data.totalFeed', description: 'Total Feed-in Energy', type: 'number', unit: 'kWh', role: 'value.power.consumption' }, // 'Total Feed-in Energy': (41, 'kWh'),
-    42: { name: 'data.totalconsumption', description: 'Total Consumption', type: 'number', unit: 'kWh', role: 'value.power.consumption' }, // 'Total Consumption': (42, 'kWh'),
-    43: { name: 'data.powernow', description: 'Power Now', type: 'number', unit: 'W', role: 'value.power' }, // 'Power Now': (43, 'W'),
-    50: { name: 'data.gridfrequency', description: 'Grid Frequency', type: 'number', unit: 'Hz', role: 'value.power' }, // 'Grid Frequency': (50, 'Hz'),
-    68: { name: 'info.inverterStatus', description: 'Inverter Mode', type: 'string', role: 'text' }, // 'Inverter Mode': (68, '')
-    13: { name: 'data.batteryVoltage', description: 'battery voltage', type: 'number', unit: 'V', role: 'value.power' }, // 'Battery DC Voltage'
-    14: { name: 'data.batteryCurrent', description: 'battery current', type: 'number', unit: 'A', role: 'value.power' }, // 'Battery Current
-    15: { name: 'data.batteryPower', description: 'battery power', type: 'number', unit: 'W', role: 'value.power' }, // 'Battery Power
-    16: { name: 'data.batteryTemperature', description: 'battery temperature', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Battery Temperature
-    21: { name: 'data.batteryCapacityRemainig', description: 'battery capacity remainig', type: 'number', unit: '%', role: 'value.power' }, // 'Battery Capacity Remainig
+    1: {
+        isOnline: { name: 'info.online', description: 'Inverter Online', type: 'boolean', role: 'switch' },
+        0: { name: 'data.currentdc1', description: 'PV1 Current', type: 'number', unit: 'A', role: 'value.power' }, // 'PV1 Current': (0, 'A'),
+        1: { name: 'data.currentdc2', description: 'PV2 Current', type: 'number', unit: 'A', role: 'value.power' }, // 'PV2 Current': (1, 'A'),
+        2: { name: 'data.voltagedc1', description: 'PV1 Voltage', type: 'number', unit: 'V', role: 'value.power' }, // 'PV1 Voltage': (2, 'V'),
+        3: { name: 'data.voltagedc2', description: 'PV2 Voltage', type: 'number', unit: 'V', role: 'value.power' }, // 'PV2 Voltage': (3, 'V'),
+        4: { name: 'data.outputcurrent', description: 'Output Current', type: 'number', unit: 'A', role: 'value.power' }, // 'Output Current': (4, 'A'),
+        5: { name: 'data.acvoltage', description: 'AC Voltage', type: 'number', unit: 'V', role: 'value.power' }, // 'AC Voltage': (5, 'V'),
+        6: { name: 'data.acpower', description: 'Inverter AC-Power total', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power': (6, 'W'),
+        7: { name: 'data.inverterTemp', description: 'Inverter Temperature', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Inverter Temperature': (7, '°C'),
+        8: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', unit: 'kWh', role: 'value.power.consumption' }, // 'Today's Energy': (8, 'kWh'),
+        9: { name: 'data.yieldtotal', description: 'Inverter AC-Energy out total', type: 'number', unit: 'kWh', role: 'value.power.consumption' }, // 'Total Energy': (9, 'kWh'),
+        10: { name: 'data.exportedPower', description: 'Exported Power', type: 'number', unit: 'W', role: 'value.power' }, // 'Exported Power': (10, 'W'),
+        11: { name: 'data.powerdc1', description: 'Inverter DC PV power MPPT1', type: 'number', unit: 'W', role: 'value.power' }, // 'PV1 Power': (11, 'W'),
+        12: { name: 'data.powerdc2', description: 'Inverter DC PV power MPPT2', type: 'number', unit: 'W', role: 'value.power' }, // 'PV2 Power': (12, 'W'),
+        41: { name: 'data.totalFeed', description: 'Total Feed-in Energy', type: 'number', unit: 'kWh', role: 'value.power.consumption' }, // 'Total Feed-in Energy': (41, 'kWh'),
+        42: { name: 'data.totalconsumption', description: 'Total Consumption', type: 'number', unit: 'kWh', role: 'value.power.consumption' }, // 'Total Consumption': (42, 'kWh'),
+        43: { name: 'data.powernow', description: 'Power Now', type: 'number', unit: 'W', role: 'value.power' }, // 'Power Now': (43, 'W'),
+        50: { name: 'data.gridfrequency', description: 'Grid Frequency', type: 'number', unit: 'Hz', role: 'value.power' }, // 'Grid Frequency': (50, 'Hz'),
+        68: { name: 'info.inverterStatus', description: 'Inverter Mode', type: 'string', role: 'text' }, // 'Inverter Mode': (68, '')
+        13: { name: 'data.batteryVoltage', description: 'battery voltage', type: 'number', unit: 'V', role: 'value.power' }, // 'Battery DC Voltage'
+        14: { name: 'data.batteryCurrent', description: 'battery current', type: 'number', unit: 'A', role: 'value.power' }, // 'Battery Current
+        15: { name: 'data.batteryPower', description: 'battery power', type: 'number', unit: 'W', role: 'value.power' }, // 'Battery Power
+        16: { name: 'data.batteryTemperature', description: 'battery temperature', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Battery Temperature
+        21: { name: 'data.batteryCapacityRemainig', description: 'battery capacity remainig', type: 'number', unit: '%', role: 'value.power' }, // 'Battery Capacity Remainig
 
 
-    // ssdsd.INV1BATTERYVOLTAGE = apiData.Data[13];
-    // ssdsd.INV1BATTERYCURRENT = apiData.Data[14];
-    // ssdsd.INV1BATTERYPOWER = apiData.Data[15];
-    // ssdsd.INV1BATTERYTEMPERATURE = apiData.Data[16];
-    // ssdsd.INV1BATTERYCAPACITYREMAINING = apiData.Data[21];
+        // ssdsd.INV1BATTERYVOLTAGE = apiData.Data[13];
+        // ssdsd.INV1BATTERYCURRENT = apiData.Data[14];
+        // ssdsd.INV1BATTERYPOWER = apiData.Data[15];
+        // ssdsd.INV1BATTERYTEMPERATURE = apiData.Data[16];
+        // ssdsd.INV1BATTERYCAPACITYREMAINING = apiData.Data[21];
 
+    },
+    3: {
+        isOnline: { name: 'info.online', description: 'Inverter Online', type: 'boolean', role: 'switch' },
+        0: { name: 'data.acvoltage1', description: 'Grid Voltage 1', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 1': (0, 'V'),
+        1: { name: 'data.acvoltage2', description: 'Grid Voltage 2', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 2': (1, 'V'),
+        2: { name: 'data.acvoltage3', description: 'Grid Voltage 3', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 3': (2, 'V'),
+        3: { name: 'data.accurrent1', description: 'Grid Current 1', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current 1': (3, 'A'),
+        4: { name: 'data.accurrent2', description: 'Grid Current 2', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current 2': (4, 'A'),
+        5: { name: 'data.accurrent3', description: 'Grid Current 3', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current 3': (5, 'A'),
+        6: { name: 'data.acpower1', description: 'Grid Power 1', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power 1': (6, 'W'),
+        7: { name: 'data.acpower2', description: 'Grid Power 2', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power 2': (7, 'W'),
+        8: { name: 'data.acpower3', description: 'Grid Power 3', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power 3': (8, 'W'),
+        9: { name: 'data.dcvoltage1', description: 'PV1 Voltage', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'PV1 Voltage': (9, 'V'),
+        10: { name: 'data.dcvoltage2', description: 'PV2 Voltage', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'PV2 Voltage': (10, 'V'),
+        11: { name: 'data.dccurrent1', description: 'PV1 Current', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'PV1 Current': (11, 'A'),
+        12: { name: 'data.dccurrent2', description: 'PV2 Current', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'PV2 Current': (12, 'A'),
+        13: { name: 'data.dcpower1', description: 'PV1 Power', type: 'number', unit: 'W', role: 'value.power' }, // 'PV1 Power': (13, 'W'),
+        14: { name: 'data.dcpower2', description: 'PV2 Power', type: 'number', unit: 'W', role: 'value.power' }, // 'PV2 Power': (14, 'W'),
+        15: { name: 'data.acfrequency1', description: 'Grid Frequency 1', type: 'number', multiplier: 0.01, unit: 'Hz', role: 'value.power' }, // 'Grid Frequency 1': (15, 'Hz'),
+        16: { name: 'data.acfrequency2', description: 'Grid Frequency 2', type: 'number', multiplier: 0.01, unit: 'Hz', role: 'value.power' }, // 'Grid Frequency 2': (16, 'Hz'),
+        17: { name: 'data.acfrequency3', description: 'Grid Frequency 3', type: 'number', multiplier: 0.01, unit: 'Hz', role: 'value.power' }, // 'Grid Frequency 3': (17, 'Hz'),
+        18: { name: 'info.inverterStatus', description: 'Inverter Mode', type: 'string', role: 'text' }, // 'Inverter Mode': (18, '')
+        19: { name: 'data.yieldtotal', description: 'Inverter AC-Energy out total', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Energy': (19, 'kWh'),
+        21: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Today's Energy': (21, 'kWh'),
+        80: { name: 'data.acpower', description: 'Inverter AC-Power now', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power': (80, 'W'),
+    }
 };
 
 async function requestLocalAPI() {
@@ -474,32 +512,36 @@ async function requestLocalAPI() {
         const url = `http://${adapter.config.hostIP}/?${data}`;
         const apiData = (await axios.post(url, data, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
 
-        // only for Debug
-        adapter.log.silly('apiData: ' + JSON.stringify(apiData));
-
         clearTimeout(requestTimeOut);
         offlineCounter = 0;
         isOnline = true;
+        type = apiData.type == '5' || apiData.type == '6' || apiData.type == '7' ? 3 : 1
 
         for (const key in apiData) {
-            const dataPoint = root_dataPoints[key];
+            const dataPoint = root_dataPoints[key.toLowerCase()];
             if (!dataPoint) continue;
-            await setDataPoint(dataPoint, apiData[key]);
+            let data = apiData[key]
+            if (key == 'type' && _inverterType[data]) {
+                data = _inverterType[data];
+            }
+            await setDataPoint(dataPoint, data);
         }
 
         for (const key in apiData.Data) {
-            const dataPoint = data_dataPoints[key];
+            const dataPoint = data_dataPoints[type][key];
             if (!dataPoint) continue;
             let data = apiData.Data[key];
-
-            if (key == '68') {
-                data = data != undefined ? _inverterStateLocal[`${data}`] : 'Offline';
+            if (dataPoint.multiplier) {
+                data = data * dataPoint.multiplier;
+            }
+            if (type == 1 && key == '68' || type == 3 && key == '18') {
+                data = data !== undefined ? _inverterStateLocal[data] : 'Offline';
             }
             await setDataPoint(dataPoint, data);
         }
 
         for (const key in apiData.Information) {
-            const dataPoint = information_dataPoints[key];
+            const dataPoint = information_dataPoints[type][key];
             if (!dataPoint) continue;
             await setDataPoint(dataPoint, apiData.Information[key]);
         }
@@ -519,7 +561,7 @@ async function requestLocalAPI() {
 
     if (requestTimeOut) clearTimeout(requestTimeOut);
 
-    await adapter.setStateAsync(`${data_dataPoints['isOnline'].name}`, isOnline, true);
+    await adapter.setStateAsync(`${data_dataPoints[type]['isOnline'].name}`, isOnline, true);
 
     await createdJSON();
 }
@@ -549,10 +591,13 @@ async function setDataPoint(dataPoint, data) {
 }
 
 async function resetValues() {
-    const valuesOfReset = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 43, 50, 68];
+    const valuesOfReset = {
+        1: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 43, 50, 68], 
+        3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 80]
+    };
 
-    for (const value of valuesOfReset) {
-        const dataPoint = data_dataPoints[value];
+    for (const value of valuesOfReset[type]) {
+        const dataPoint = data_dataPoints[type][value];
 
         if (value == 68) {
             await setDataPoint(dataPoint, 'Offline');
