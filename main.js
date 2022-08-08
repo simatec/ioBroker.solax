@@ -500,6 +500,8 @@ const data_dataPoints = {
         18: { name: 'info.inverterStatus', description: 'Inverter Mode', type: 'string', role: 'text' }, // 'Inverter Mode': (18, '')
         19: { name: 'data.yieldtotal', description: 'Inverter AC-Energy out total', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Energy': (19, 'kWh'),
         21: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Today's Energy': (21, 'kWh'),
+        49: { name: 'data.inverterTemp1', description: 'Inverter Temperature 1', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Inverter Temperature': (49, '°C'),
+        72: { name: 'data.inverterTemp2', description: 'Inverter Temperature 2', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Inverter Temperature': (72, '°C'),
         80: { name: 'data.acpower', description: 'Inverter AC-Power now', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power': (80, 'W'),
     }
 };
