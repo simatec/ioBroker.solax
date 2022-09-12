@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.4.6",
+    "version": "0.5.0",
     "news": {
+      "0.5.0": {
+        "en": "Dependencies updated\nsmall Bugfixes\nAdd support for firmware version 3.001",
+        "de": "Ausgaben aktualisiert\nkleine Bugfixes\nUnterstützung für Firmware Version 3.001 hinzufügen",
+        "ru": "Обновленные зависимости\nнебольшие багфиксы\nДобавить поддержку для версии прошивки 3.001",
+        "pt": "Dependências atualizadas\npequenos bugs\nAdicionar suporte para a versão de firmware 3.001",
+        "nl": "Afhankelijkheid geüpdateerd\nkleine Bugfix\nVoeg steun aan de firmaware versie 3.001",
+        "fr": "Dépendances mises à jour\npetites Bugfixes\nAjouter le support pour le firmware version 3.001",
+        "it": "Dipendenze aggiornate\npiccoli bugfix\nAggiungi supporto per la versione firmware 3.001",
+        "es": "Actualización de las dependencias\npequeños Bugfixes\nAñadir soporte para firmware versión 3.001",
+        "pl": "Zależności\nmały Bugfix\nWsparcie dla wersji 3.001",
+        "zh-cn": "B. 更新的属地\n小额Bugfix\n增加对软件版本3.001的支持"
+      },
       "0.4.6": {
         "en": "Fix states",
         "de": "Zustände beheben",
@@ -74,18 +86,6 @@
         "es": "Reparar reaccionar Traducción",
         "pl": "Napraw reaguj Tłumaczenie",
         "zh-cn": "修复反应翻译"
-      },
-      "0.4.0": {
-        "en": "local request for Wifi Pocket Stick added\nDependencies updated\ntest and release updated\nNumber of days of history data added\nExpert-Mode added\nDocu updated\nBugfixes",
-        "de": "lokale Anfrage für Wifi Pocket Stick hinzugefügt\nAbhängigkeiten aktualisiert\nTest und Release aktualisiert\nAnzahl der Tage der hinzugefügten Verlaufsdaten\nExperten-Modus hinzugefügt\nDoku aktualisiert\nFehlerbehebung",
-        "ru": "добавлен локальный запрос для Wifi Pocket Stick\nЗависимости обновлены\nтест и выпуск обновлены\nКоличество дней добавленных данных истории\nДобавлен экспертный режим\nДокумент обновлен\nИсправление ошибок",
-        "pt": "pedido local para Wifi Pocket Stick adicionado\nDependências atualizadas\nteste e lançamento atualizado\nNúmero de dias de dados do histórico adicionados\nModo especialista adicionado\nDocumento atualizado\nCorreções de bugs",
-        "nl": "lokaal verzoek voor Wifi Pocket Stick toegevoegd\nAfhankelijkheden bijgewerkt\ntest en release bijgewerkt\nAantal dagen aan geschiedenisgegevens toegevoegd\nExpert-modus toegevoegd\nDocu bijgewerkt\nBugfixes",
-        "fr": "demande locale pour Wifi Pocket Stick ajoutée\nDépendances mises à jour\ntest et version mis à jour\nNombre de jours de données d'historique ajoutées\nMode expert ajouté\nDocument mis à jour\nCorrections de bogues",
-        "it": "aggiunta richiesta locale per Wifi Pocket Stick\nDipendenze aggiornate\ntest e rilascio aggiornati\nNumero di giorni di dati cronologici aggiunti\nAggiunta la modalità Esperto\nDocumento aggiornato\nCorrezioni di bug",
-        "es": "Solicitud local de Wifi Pocket Stick agregada\nDependencias actualizadas\nprueba y versión actualizada\nNúmero de días de datos de historial agregados\nModo experto agregado\ndocumento actualizado\nCorrección de errores",
-        "pl": "Dodano lokalne żądanie Wifi Pocket Stick\nZaktualizowano zależności\nzaktualizowano test i wydanie\nLiczba dni dodanych danych historycznych\nDodano tryb eksperta\nZaktualizowano dokument\nPoprawki",
-        "zh-cn": "添加了对 Wifi Pocket Stick 的本地请求\n已更新依赖项\n测试和发布更新\n添加历史数据的天数\n添加了专家模式\n文档已更新\nBug修复"
       }
     },
     "title": "Solax",
