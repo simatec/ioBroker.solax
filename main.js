@@ -202,20 +202,22 @@ let num = 0;
 
 async function requestAPI() {
     return new Promise(async (resolve) => {
-        const solaxURL = (`https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
+        //const solaxURL = (`https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
+        const solaxURL = (` https://www.eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
 
         try {
             const solaxRequest = await axios({
                 method: 'get',
                 url: solaxURL,
-                timeout: 2000,
+                timeout: 5000,
                 headers: {
-                    'User-Agent': 'axios/0.21.1'
+                    'User-Agent': 'axios/0.27.2'
                 },
                 responseType: 'json'
             });
 
             if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === true) {
+                adapter.log.debug(`request-result: ${JSON.stringify(solaxRequest.data)}`)
                 num = 0;
                 resolve(solaxRequest);
             } else if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === false && num <= 5) {
@@ -514,7 +516,9 @@ async function requestLocalAPI() {
         const data = `optType=ReadRealTimeData&pwd=${adapter.config.passwordWifi}`;
         const url = `http://${adapter.config.hostIP}/?${data}`;
 
-        const apiData = (await axios.post(url, !version || version == 2 ? null : data, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' }})).data;
+        const apiData = (await axios.post(url, !version || version == 2 ? null : data, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
+
+        adapter.log.debug(`local request: ${JSON.stringify(apiData)}`)
 
         clearTimeout(requestTimeOut);
         offlineCounter = 0;
@@ -598,7 +602,7 @@ async function setDataPoint(dataPoint, data) {
 
 async function resetValues() {
     const valuesOfReset = {
-        1: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 43, 50, 68], 
+        1: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 43, 50, 68],
         3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 80]
     };
 
