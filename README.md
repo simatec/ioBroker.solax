@@ -48,7 +48,7 @@ Was dazu benötigt wird, ist ein Konto bei Solax, eine Token-ID und die Seriennu
 Die lokale Verbindung wird aktuell nur von dem Pocket Wifi Sticks unterstützt. LAN-Sticks können nur im Cloud-Modus betrieben werden.
 
 Achtung, wer in den Experteneinstellungen den lokalen Modus aktiviert sollte im Vorfeld zwingend die aktuelle Firmwareversion seines Pocket Wifi Sticks prüfen.
-Eine Firmware Version größer 2.30.20 und kleiner als 3.001 darf der Stick nicht installiert haben, da Solax in höheren Versionen den lokalen Zugriff blockiert und es zu einem Absturz des Wifi Sticks führt.
+Eine Firmware Version größer 2.30.20 (Wifi-Pocket V1/V2) und kleiner als 3.001 (Wifi-Pocket V3) darf der Stick nicht installiert haben, da Solax in höheren Versionen den lokalen Zugriff blockiert und es zu einem Absturz des Wifi Sticks führt.
 
 Wie man die Firmware Version prüfen kann und ein Downgrade auf die korrekte Version hinbekommt, wird hier erklärt.
 
@@ -61,7 +61,7 @@ Solltet ihr euer Passwort bei der Ersteinrichtung nicht geändert haben, sind di
 <span><img src="docs/en/img/webif.png"></span>
 
 Im Webinterface geht ihr auf den Tab "System" und findet dort die aktuell installierte Firmware-Version.<br>
-Sollte die Version größer 2.033.20 und kleiner 3.001 sein, könnt ihr im gleichen Tab über den Menüpunkt "Update Firmware (.usb)" die korrekte Version flashen.
+Sollte die Version größer 2.033.20 (Wifi-Pocket V1/V2) und kleiner 3.001 (Wifi-Pocket V3) sein, könnt ihr im gleichen Tab über den Menüpunkt "Update Firmware (.usb)" die korrekte Version flashen.
 
 Die Version 2.033.20 könnt ihr euch unter folgenden Link herunterladen:
 
@@ -104,7 +104,7 @@ What you need for this is an account with Solax, your token ID and the serial nu
 The local connection is currently only supported by the Pocket Wifi Sticks. LAN sticks can only be operated in cloud mode.
 
 Attention, if you activate the local mode in the expert settings, you should check the current firmware version of your Pocket Wifi Stick in advance.<br>
-The stick must not have a firmware version greater than 2.30.20 and smaler than 3.001 installed, since Solax blocks local access in higher versions and causes the Wifi stick to crash.
+The stick must not have a firmware version greater than 2.30.20 (Wifi-Pocket V1/V2) and smaler than 3.001 (Wifi-Pocket V3) installed, since Solax blocks local access in higher versions and causes the Wifi stick to crash.
 
 How to check the firmware version and how to downgrade to the correct version is explained here.
 
@@ -117,7 +117,7 @@ If you did not change your password during the initial setup, the default login 
 <span><img src="docs/en/img/webif.png"></span>
 
 In the web interface you go to the "System" tab and you will find the currently installed firmware version there.<br>
-If the version is greater than 2.033.20 and smaler than 3.001, you can flash the correct version in the same tab via the "Update Firmware (.usb)" menu item.
+If the version is greater than 2.033.20 (Wifi-Pocket V1/V2) and smaler than 3.001 (Wifi-Pocket V3), you can flash the correct version in the same tab via the "Update Firmware (.usb)" menu item.
 
 You can download version 2.033.20 from the following link:
 
