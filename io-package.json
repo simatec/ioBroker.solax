@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "news": {
+      "0.5.1": {
+        "en": "feedin added",
+        "de": "zusatz von futtermitteln",
+        "ru": "feedin добавлено",
+        "pt": "feedin adicionado",
+        "nl": "voedsel toegevoegd",
+        "fr": "feedin added",
+        "it": "feedin aggiunto",
+        "es": "piensos añadidos",
+        "pl": "dodać",
+        "zh-cn": "供餐"
+      },
       "0.5.0": {
         "en": "Dependencies updated\nsmall Bugfixes\nAdd support for firmware version 3.001",
         "de": "Ausgaben aktualisiert\nkleine Bugfixes\nUnterstützung für Firmware Version 3.001 hinzufügen",
@@ -74,18 +86,6 @@
         "es": "Arreglar el estado json",
         "pl": "Napraw stan json",
         "zh-cn": "修复 json 状态"
-      },
-      "0.4.1": {
-        "en": "Fix react Translatation",
-        "de": "Reagieren Sie auf die Übersetzung",
-        "ru": "Исправить реагировать Перевод",
-        "pt": "Corrigir a tradução de reação",
-        "nl": "Repareren reageren Vertaling",
-        "fr": "Correction réagir Traduction",
-        "it": "Risolto il problema con la traduzione",
-        "es": "Reparar reaccionar Traducción",
-        "pl": "Napraw reaguj Tłumaczenie",
-        "zh-cn": "修复反应翻译"
       }
     },
     "title": "Solax",

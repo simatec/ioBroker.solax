@@ -145,7 +145,7 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
-### __WORK IN PROGRESS__
+### 0.5.1 (2022-09-13)
 * (simatec) feedin added
 
 ### 0.5.0 (2022-09-12)
