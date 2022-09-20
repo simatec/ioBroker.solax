@@ -564,23 +564,22 @@ async function requestLocalAPI() {
         const url = `http://${adapter.config.hostIP}/?${data}`;
 
         const apiData = (await axios.post(url, !version || version == 2 ? null : data, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
-
-        adapter.log.debug(`local request: ${JSON.stringify(apiData)}`)
+        adapter.log.debug(`local request: ${JSON.stringify(apiData)}`);
 
         clearTimeout(requestTimeOut);
         offlineCounter = 0;
         isOnline = true;
         version = apiData.ver.split('.')[0]
-
+        
         switch (apiData.type) {
-            case '5':
-            case '6':
-            case '7':
-            case '16':
+            case 5:
+            case 6:
+            case 7:
+            case 16:
                 type = 3;
                 break;
-            case '14':
-            case '15':
+            case 14:
+            case 15:
                 type = 4;
                 break;
             default:
