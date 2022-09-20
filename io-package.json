@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.5.3",
+    "version": "0.5.4",
     "news": {
+      "0.5.4": {
+        "en": "small Bugfixes",
+        "de": "kleine Bugfixes",
+        "ru": "небольшие багфиксы",
+        "pt": "pequenos bugs",
+        "nl": "kleine Bugfix",
+        "fr": "petites Bugfixes",
+        "it": "piccoli bugfix",
+        "es": "pequeños Bugfixes",
+        "pl": "mały Bugfix",
+        "zh-cn": "小额Bugfix"
+      },
       "0.5.3": {
         "en": "Hybrid-G4 added\nsmall Bugfixes\nappveyor test removed\ntravis test removed",
         "de": "Hybrid-G4 hinzugefügt\nkleine Bugfixes\nappvey-test entfernt\ntravis-test entfernt",
@@ -74,18 +86,6 @@
         "es": "Dependencias actualizadas\npequeñas correcciones de errores",
         "pl": "Zaktualizowano zależności\nmałe poprawki",
         "zh-cn": "已更新依赖项\n小错误修正"
-      },
-      "0.4.4": {
-        "en": "Dependencies updated\nbattery data for local request added\nnight mode turn on/off added",
-        "de": "Abhängigkeiten aktualisiert\nBatteriedaten für lokale Anfrage hinzugefügt\nNachtmodus ein-/ausschalten hinzugefügt",
-        "ru": "Зависимости обновлены\nдобавлены данные батареи для локального запроса\nдобавлено включение/выключение ночного режима",
-        "pt": "Dependências atualizadas\ndados da bateria para solicitação local adicionados\nmodo noturno ligar/desligar adicionado",
-        "nl": "Afhankelijkheden bijgewerkt\nbatterijgegevens voor lokaal verzoek toegevoegd\nnachtmodus aan/uit toegevoegd",
-        "fr": "Dépendances mises à jour\ndonnées de batterie pour demande locale ajoutées\nmode nuit activer/désactiver ajouté",
-        "it": "Dipendenze aggiornate\ndati della batteria per richiesta locale aggiunti\nmodalità notte attivazione/disattivazione aggiunta",
-        "es": "Dependencias actualizadas\nSe agregaron datos de batería para solicitud local.\nActivar/desactivar el modo nocturno añadido",
-        "pl": "Zaktualizowano zależności\nDodano dane baterii na żądanie lokalne\ndodano włączanie/wyłączanie trybu nocnego",
-        "zh-cn": "已更新依赖项\n添加了本地请求的电池数据\n添加了夜间模式打开/关闭"
       }
     },
     "title": "Solax",
