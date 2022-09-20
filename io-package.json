@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "news": {
+      "0.5.2": {
+        "en": "Hybrid-G4 added\nsmall Bugfixes\nappveyor test removed\ntravis test removed",
+        "de": "Hybrid-G4 hinzugefügt\nkleine Bugfixes\nappvey-test entfernt\ntravis-test entfernt",
+        "ru": "Hybrid-G4 добавлено\nнебольшие багфиксы\nappveyor тест удален\ntravis тест удален",
+        "pt": "Hybrid-G4 adicionado\npequenos bugs\nteste de appveyor removido\nteste do travis removido",
+        "nl": "Hybrid-G4 toegevoegd\nkleine Bugfix\nappveortest verwijderd\ntravis test verwijderd",
+        "fr": "Hybrid-G4 ajouté\npetites Bugfixes\ntest appveyor enlevé\nessai de travis enlevé",
+        "it": "Hybrid-G4 aggiunto\npiccoli bugfix\nappveyor test rimosso\ntravis test rimosso",
+        "es": "Híbrido-G4 añadido\npequeños Bugfixes\nprueba del appveyor eliminado\nexamen de travis eliminado",
+        "pl": "Hybrid-G4 dodał Hybrid-G4\nmały Bugfix\ntest aplikacji\ntest",
+        "zh-cn": "联 合 国\n小额Bugfix\n吊车试验\n取消试验"
+      },
       "0.5.1": {
         "en": "feedin added",
         "de": "zusatz von futtermitteln",
@@ -74,18 +86,6 @@
         "es": "refactorización del código fuente\nDependencias actualizadas\nReparar solicitud de API",
         "pl": "refaktoryzacja kodu źródłowego\nZaktualizowano zależności\nNapraw żądanie API",
         "zh-cn": "重构源代码\n已更新依赖项\n修复 API 请求"
-      },
-      "0.4.2": {
-        "en": "Fix json state",
-        "de": "JSON-Status korrigieren",
-        "ru": "Исправить состояние json",
-        "pt": "Corrigir o estado do json",
-        "nl": "json-status repareren",
-        "fr": "Correction de l'état json",
-        "it": "Correggi lo stato json",
-        "es": "Arreglar el estado json",
-        "pl": "Napraw stan json",
-        "zh-cn": "修复 json 状态"
       }
     },
     "title": "Solax",
