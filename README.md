@@ -148,6 +148,8 @@ When the adapter crashes or an other Code error happens, this error message that
 ### __WORK IN PROGRESS__
 * (simatec) Hybrid-G4 added
 * (simatec) small Bugfixes
+* (simatec) appveyor test removed
+* (simatec) travis test removed
 
 ### 0.5.1 (2022-09-13)
 * (simatec) feedin added
