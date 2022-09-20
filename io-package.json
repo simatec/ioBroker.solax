@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.5.2",
+    "version": "0.5.3",
     "news": {
+      "0.5.3": {
+        "en": "Hybrid-G4 added\nsmall Bugfixes\nappveyor test removed\ntravis test removed",
+        "de": "Hybrid-G4 hinzugefügt\nkleine Bugfixes\nappvey-test entfernt\ntravis-test entfernt",
+        "ru": "Hybrid-G4 добавлено\nнебольшие багфиксы\nappveyor тест удален\ntravis тест удален",
+        "pt": "Hybrid-G4 adicionado\npequenos bugs\nteste de appveyor removido\nteste do travis removido",
+        "nl": "Hybrid-G4 toegevoegd\nkleine Bugfix\nappveortest verwijderd\ntravis test verwijderd",
+        "fr": "Hybrid-G4 ajouté\npetites Bugfixes\ntest appveyor enlevé\nessai de travis enlevé",
+        "it": "Hybrid-G4 aggiunto\npiccoli bugfix\nappveyor test rimosso\ntravis test rimosso",
+        "es": "Híbrido-G4 añadido\npequeños Bugfixes\nprueba del appveyor eliminado\nexamen de travis eliminado",
+        "pl": "Hybrid-G4 dodał Hybrid-G4\nmały Bugfix\ntest aplikacji\ntest",
+        "zh-cn": "联 合 国\n小额Bugfix\n吊车试验\n取消试验"
+      },
       "0.5.2": {
         "en": "Hybrid-G4 added\nsmall Bugfixes\nappveyor test removed\ntravis test removed",
         "de": "Hybrid-G4 hinzugefügt\nkleine Bugfixes\nappvey-test entfernt\ntravis-test entfernt",
@@ -74,18 +86,6 @@
         "es": "Dependencias actualizadas\nSe agregaron datos de batería para solicitud local.\nActivar/desactivar el modo nocturno añadido",
         "pl": "Zaktualizowano zależności\nDodano dane baterii na żądanie lokalne\ndodano włączanie/wyłączanie trybu nocnego",
         "zh-cn": "已更新依赖项\n添加了本地请求的电池数据\n添加了夜间模式打开/关闭"
-      },
-      "0.4.3": {
-        "en": "refactoring Sourcecode\nDependencies updated\nFix API Request",
-        "de": "Refactoring-Quellcode\nAbhängigkeiten aktualisiert\nAPI-Anfrage behoben",
-        "ru": "рефакторинг исходного кода\nЗависимости обновлены\nИсправить запрос API",
-        "pt": "refatorando o código-fonte\nDependências atualizadas\nCorrigir solicitação de API",
-        "nl": "broncode herstructureren\nAfhankelijkheden bijgewerkt\nAPI-verzoek repareren",
-        "fr": "refactoriser le code source\nDépendances mises à jour\nCorrection de la demande d'API",
-        "it": "refactoring del codice sorgente\nDipendenze aggiornate\nCorreggi la richiesta API",
-        "es": "refactorización del código fuente\nDependencias actualizadas\nReparar solicitud de API",
-        "pl": "refaktoryzacja kodu źródłowego\nZaktualizowano zależności\nNapraw żądanie API",
-        "zh-cn": "重构源代码\n已更新依赖项\n修复 API 请求"
       }
     },
     "title": "Solax",
