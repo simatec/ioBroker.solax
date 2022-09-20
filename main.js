@@ -30,7 +30,17 @@ const _inverterType = {
     10: 'A1-Hybrid',
     11: 'A1-Fit',
     12: 'A1-Grid',
-    13: 'J1-ESS'
+    13: 'J1-ESS',
+    14: 'X3-Hybrid-G4',
+    15: 'X1-Hybrid-G4',
+    16: 'X3-MIC/PRO-G2',
+    17: 'X1-SPT',
+    18: 'X1-Boost/Mini-G4',
+    19: 'A1-HYB-G2',
+    20: 'A1-AC-G2',
+    21: 'A1-SMT-G2',
+    22: 'X3-FTH',
+    23: 'X3-MGA-G2'
 };
 
 const _inverterStateLocal = {
@@ -441,6 +451,10 @@ const information_dataPoints = {
         2: { name: 'info.inverterSN', description: 'Unique identifier of inverter (Serial No.)', type: 'string', role: 'text' },
         4: { name: 'info.dspVersion', description: 'DSP Version', type: 'number', role: 'text' },
         6: { name: 'info.armVersion', description: 'ARM Version', type: 'number', role: 'text' },
+    },
+    4: {
+        0: { name: 'info.totalSize', description: 'Total Size of Power', type: 'number', unit: 'kW', role: 'value.power' },
+        2: { name: 'info.inverterSN', description: 'Unique identifier of inverter (Serial No.)', type: 'string', role: 'text' },
     }
 };
 
@@ -470,15 +484,6 @@ const data_dataPoints = {
         43: { name: 'data.powernow', description: 'Power Now', type: 'number', unit: 'W', role: 'value.power' }, // 'Power Now': (43, 'W'),
         50: { name: 'data.gridfrequency', description: 'Grid Frequency', type: 'number', unit: 'Hz', role: 'value.power' }, // 'Grid Frequency': (50, 'Hz'),
         68: { name: 'info.inverterStatus', description: 'Inverter Mode', type: 'string', role: 'text' }, // 'Inverter Mode': (68, '')
-
-
-
-        // ssdsd.INV1BATTERYVOLTAGE = apiData.Data[13];
-        // ssdsd.INV1BATTERYCURRENT = apiData.Data[14];
-        // ssdsd.INV1BATTERYPOWER = apiData.Data[15];
-        // ssdsd.INV1BATTERYTEMPERATURE = apiData.Data[16];
-        // ssdsd.INV1BATTERYCAPACITYREMAINING = apiData.Data[21];
-
     },
     3: {
         isOnline: { name: 'info.online', description: 'Inverter Online', type: 'boolean', role: 'switch' },
@@ -505,10 +510,48 @@ const data_dataPoints = {
         21: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Today's Energy': (21, 'kWh'),
         49: { name: 'data.inverterTemp1', description: 'Inverter Temperature 1', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Inverter Temperature': (49, '°C'),
         72: { name: 'data.inverterTemp2', description: 'Inverter Temperature 2', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Inverter Temperature': (72, '°C'),
-        74: { name: 'data.feedinpower', description: 'Feed in Power M1', type: 'number', unit: 'W', role: 'value.power' }, // Feed in Power: (561,'W')
+        74: { name: 'data.feedinpower', description: 'Feed in Power M1', type: 'number', minValue: 0, unit: 'W', role: 'value.power' }, // Feed in Power: (561,'W')
         76: { name: 'data.feedinenergy', description: 'Feed in Energy', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power' }, // Feed in Energy: (12.2,'kWh')
         78: { name: 'data.consumeenergy', description: 'Consume Energy', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power' }, // Consume Energy: (7.8,'kWh')
         80: { name: 'data.acpower', description: 'Inverter AC-Power now', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power': (80, 'W'),
+    },
+    4: {
+        isOnline: { name: 'info.online', description: 'Inverter Online', type: 'boolean', role: 'switch' },
+        0: { name: 'data.acvoltage1', description: 'Grid Voltage 1', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 1': (0, 'V'),
+        1: { name: 'data.acvoltage2', description: 'Grid Voltage 2', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 2': (1, 'V'),
+        2: { name: 'data.acvoltage3', description: 'Grid Voltage 3', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 3': (2, 'V'),
+        3: { name: 'data.accurrent1', description: 'Grid Current 1', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current 1': (3, 'A'),
+        4: { name: 'data.accurrent2', description: 'Grid Current 2', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current 2': (4, 'A'),
+        5: { name: 'data.accurrent3', description: 'Grid Current 3', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current 3': (5, 'A'),
+        6: { name: 'data.acpower1', description: 'Grid Power 1', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power 1': (6, 'W'),
+        7: { name: 'data.acpower2', description: 'Grid Power 2', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power 2': (7, 'W'),
+        8: { name: 'data.acpower3', description: 'Grid Power 3', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power 3': (8, 'W'),
+        9: { name: 'data.acpower', description: 'Inverter AC-Power now', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power': (80, 'W'),
+        10: { name: 'data.dcvoltage1', description: 'PV1 Voltage', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'PV1 Voltage': (9, 'V'),
+        11: { name: 'data.dcvoltage2', description: 'PV2 Voltage', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'PV2 Voltage': (10, 'V'),
+        12: { name: 'data.dccurrent1', description: 'PV1 Current', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'PV1 Current': (11, 'A'),
+        13: { name: 'data.dccurrent2', description: 'PV2 Current', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'PV2 Current': (12, 'A'),
+        14: { name: 'data.dcpower1', description: 'PV1 Power', type: 'number', unit: 'W', role: 'value.power' }, // 'PV1 Power': (13, 'W'),
+        15: { name: 'data.dcpower2', description: 'PV2 Power', type: 'number', unit: 'W', role: 'value.power' }, // 'PV2 Power': (14, 'W'),
+        16: { name: 'data.acfrequency1', description: 'Grid Frequency 1', type: 'number', multiplier: 0.01, unit: 'Hz', role: 'value.power' }, // 'Grid Frequency 1': (15, 'Hz'),
+        17: { name: 'data.acfrequency2', description: 'Grid Frequency 2', type: 'number', multiplier: 0.01, unit: 'Hz', role: 'value.power' }, // 'Grid Frequency 2': (16, 'Hz'),
+        18: { name: 'data.acfrequency3', description: 'Grid Frequency 3', type: 'number', multiplier: 0.01, unit: 'Hz', role: 'value.power' }, // 'Grid Frequency 3': (17, 'Hz'),
+        19: { name: 'info.inverterStatus', description: 'Inverter Mode', type: 'string', role: 'text' }, // 'Inverter Mode': (18, ''),
+        34: { name: 'data.feedinpower', description: 'Feed in Power M1', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // Feed in Power: (561,'W'),
+        39: { name: 'data.batteryVoltage', description: 'battery voltage', type: 'number', multiplier: 0.01, unit: 'V', role: 'value.power' }, // 'Battery DC Voltage',
+        40: { name: 'data.batteryCurrent', description: 'battery current', type: 'number', maxValue: 32768, multiplier: 0.01, unit: 'A', role: 'value.power' }, // 'Battery Current,
+        41: { name: 'data.batteryPower', description: 'battery power', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // 'Battery Power,
+        47: { name: 'data.powerConsumer', description: 'Consumer power', type: 'number', unit: 'W', role: 'value.power' }, // 'Consumer Power  ,   
+        68: { name: 'data.yieldtotal', description: 'Inverter AC-Energy out total', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Energy': (19, 'kWh'),
+        70: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Today's Energy': (21, 'kWh'),
+        80: { name: 'data.totalpvenergy', description: 'Total PV Energy', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Consumption': (42, 'kWh'),
+        82: { name: 'data.pvenergy', description: 'PV Energy', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Consumption': (42, 'kWh'),
+        86: { name: 'data.totalFeed', description: 'Total Feed-in Energy', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Feed-in Energy': (41, 'kWh'),
+        88: { name: 'data.totalconsumption', description: 'Total Consumption', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Consumption': (42, 'kWh'),
+        90: { name: 'data.feedinenergy', description: 'Feed in Energy', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power' }, // Feed in Energy: (12.2,'kWh'),
+        92: { name: 'data.consumeenergy', description: 'Consume Energy', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power' }, // Consume Energy: (7.8,'kWh'),
+        103: { name: 'data.batteryCapacityRemainig', description: 'battery capacity remainig', type: 'number', unit: '%', role: 'value.power' }, // 'Battery Capacity Remainig,
+        105: { name: 'data.batteryTemperature', description: 'battery temperature', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Battery Temperature,
     }
 };
 
@@ -528,7 +571,23 @@ async function requestLocalAPI() {
         offlineCounter = 0;
         isOnline = true;
         version = apiData.ver.split('.')[0]
-        type = apiData.type == '5' || apiData.type == '6' || apiData.type == '7' ? 3 : 1
+
+        switch (apiData.type) {
+            case '5':
+            case '6':
+            case '7':
+            case '16':
+                type = 3;
+                break;
+            case '14':
+            case '15':
+                type = 4;
+                break;
+            default:
+                type = 1;
+                break;
+        }
+        //type = apiData.type == '5' || apiData.type == '6' || apiData.type == '7' ? 3 : 1
 
         for (const key in apiData) {
             const dataPoint = root_dataPoints[key.toLowerCase()];
@@ -546,6 +605,9 @@ async function requestLocalAPI() {
             let data = apiData.Data[key];
             if (dataPoint.multiplier) {
                 data = data * dataPoint.multiplier;
+            }
+            if ((dataPoint.maxValue && data > dataPoint.maxValue) || (dataPoint.minValue && data < dataPoint.minValue)) {
+                data = (data - 65536);
             }
             if (type == 1 && key == '68' || type == 3 && key == '18') {
                 data = data !== undefined ? _inverterStateLocal[data] : 'Offline';

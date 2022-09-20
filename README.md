@@ -145,6 +145,10 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
+### __WORK IN PROGRESS__
+* (simatec) Hybrid-G4 added
+* (simatec) small Bugfixes
+
 ### 0.5.1 (2022-09-13)
 * (simatec) feedin added
 
