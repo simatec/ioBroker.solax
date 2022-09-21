@@ -432,9 +432,6 @@ let type = 1
 
 const stateCache = [];
 
-//{"type":"X1-Boost-Air-Mini","SN":"XXXXXXXXXX","ver":"2.033.20","Data":[0.3,0,67.1,0,0.3,227.5,11,21,0,0.2,0,21,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49.99,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Information":[0.6,4,"X1-Boost-Air-Mini","XXXXXXXXXX",1,2.15,0,1.35,0]}
-//{"sn":"XXXXXXXXXX","ver":"3.001.03","type":7,"Data":[2339,2341,2308,11,11,12,207,188,213,2676,2624,16,15,414,386,4999,4999,4999,2,18105,0,144,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,8,8000,0,48,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,610,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29392,16381,16,0,2,0,30976,16381,0,0,0,0,29120,16381,0,0,51,0,0,0,0,0,0,0,0,0,14308,16394,29452,16381,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29480,16381,64,0,0,0,0,0,38696,16381,38644,16381,0,0,29504,16381,64,0,0,0,0,0,38696,16381,38644,16381,29528,16381,64,0,0,0,0,0,38696,16381,38644,16381,29537,16381,31580,16381],"Information":[8.000,7,"XXXXXXXXXX",8,1.30,1.02,1.33,1.02,0.00,1]}
-
 const root_dataPoints = {
     type: { name: 'info.inverterType', description: 'Inverter Type', type: 'string', role: 'text' },
     sn: { name: 'info.sn', description: 'Unique identifier of communication module (Registration No.)', type: 'string', role: 'text' },
@@ -510,7 +507,7 @@ const data_dataPoints = {
         21: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Today's Energy': (21, 'kWh'),
         49: { name: 'data.inverterTemp1', description: 'Inverter Temperature 1', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Inverter Temperature': (49, '°C'),
         72: { name: 'data.inverterTemp2', description: 'Inverter Temperature 2', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Inverter Temperature': (72, '°C'),
-        74: { name: 'data.feedinpower', description: 'Feed in Power M1', type: 'number', minValue: 0, unit: 'W', role: 'value.power' }, // Feed in Power: (561,'W')
+        74: { name: 'data.feedinpower', description: 'Feed in Power M1', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // Feed in Power: (561,'W')
         76: { name: 'data.feedinenergy', description: 'Feed in Energy', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power' }, // Feed in Energy: (12.2,'kWh')
         78: { name: 'data.consumeenergy', description: 'Consume Energy', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power' }, // Consume Energy: (7.8,'kWh')
         80: { name: 'data.acpower', description: 'Inverter AC-Power now', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power': (80, 'W'),
@@ -586,7 +583,6 @@ async function requestLocalAPI() {
                 type = 1;
                 break;
         }
-        //type = apiData.type == '5' || apiData.type == '6' || apiData.type == '7' ? 3 : 1
 
         for (const key in apiData) {
             const dataPoint = root_dataPoints[key.toLowerCase()];
@@ -602,13 +598,16 @@ async function requestLocalAPI() {
             const dataPoint = data_dataPoints[type][key];
             if (!dataPoint) continue;
             let data = apiData.Data[key];
-            if (dataPoint.multiplier) {
-                data = data * dataPoint.multiplier;
-            }
+
             if ((dataPoint.maxValue && data > dataPoint.maxValue) || (dataPoint.minValue && data < dataPoint.minValue)) {
                 data = (data - 65536);
             }
-            if (type == 1 && key == '68' || type == 3 && key == '18') {
+
+            if (dataPoint.multiplier) {
+                data = data * dataPoint.multiplier;
+            }
+            
+            if ((type == 1 && key == '68') || (type == 3 && key == '18') || (type == 4 && key == '19')) {
                 data = data !== undefined ? _inverterStateLocal[data] : 'Offline';
             }
             await setDataPoint(dataPoint, data);
@@ -668,13 +667,14 @@ async function setDataPoint(dataPoint, data) {
 async function resetValues() {
     const valuesOfReset = {
         1: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 43, 50, 68],
-        3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 80]
+        3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 74, 76, 78, 80],
+        4: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 34, 39, 40, 41, 47, 90, 92, 103, 105]
     };
 
     for (const value of valuesOfReset[type]) {
         const dataPoint = data_dataPoints[type][value];
 
-        if (value == 68) {
+        if ((type == 1 && value == '68') || (type == 3 && value == '18') || (type == 4 && value == '19')) {
             await setDataPoint(dataPoint, 'Offline');
         } else if (value != 8) {
             await setDataPoint(dataPoint, 0);
