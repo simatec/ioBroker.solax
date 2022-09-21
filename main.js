@@ -439,24 +439,28 @@ const root_dataPoints = {
 };
 
 const information_dataPoints = {
-    1: {
+    1: { /****************************************** X1 mini *****************************************/
         0: { name: 'info.totalSize', description: 'Total Size of Power', type: 'number', unit: 'kW', role: 'value.power' },
         3: { name: 'info.inverterSN', description: 'Unique identifier of inverter (Serial No.)', type: 'string', role: 'text' },
     },
-    3: {
+    2: { /****************************************** X1 boost *****************************************/
+        0: { name: 'info.totalSize', description: 'Total Size of Power', type: 'number', unit: 'kW', role: 'value.power' },
+        2: { name: 'info.inverterSN', description: 'Unique identifier of inverter (Serial No.)', type: 'string', role: 'text' },
+    },
+    3: { /************************ X3-Hybiyd/Fit / X3-20K/30K / X3-MIC/PRO ****************************/
         0: { name: 'info.totalSize', description: 'Total Size of Power', type: 'number', unit: 'kW', role: 'value.power' },
         2: { name: 'info.inverterSN', description: 'Unique identifier of inverter (Serial No.)', type: 'string', role: 'text' },
         4: { name: 'info.dspVersion', description: 'DSP Version', type: 'number', role: 'text' },
         6: { name: 'info.armVersion', description: 'ARM Version', type: 'number', role: 'text' },
     },
-    4: {
+    4: { /***************************************** X3-Hybrid-G4 ***************************************/
         0: { name: 'info.totalSize', description: 'Total Size of Power', type: 'number', unit: 'kW', role: 'value.power' },
         2: { name: 'info.inverterSN', description: 'Unique identifier of inverter (Serial No.)', type: 'string', role: 'text' },
     }
 };
 
 const data_dataPoints = {
-    1: {
+    1: { /****************************************** X1 mini *****************************************/
         isOnline: { name: 'info.online', description: 'Inverter Online', type: 'boolean', role: 'switch' },
         0: { name: 'data.currentdc1', description: 'PV1 Current', type: 'number', unit: 'A', role: 'value.power' }, // 'PV1 Current': (0, 'A'),
         1: { name: 'data.currentdc2', description: 'PV2 Current', type: 'number', unit: 'A', role: 'value.power' }, // 'PV2 Current': (1, 'A'),
@@ -482,7 +486,27 @@ const data_dataPoints = {
         50: { name: 'data.gridfrequency', description: 'Grid Frequency', type: 'number', unit: 'Hz', role: 'value.power' }, // 'Grid Frequency': (50, 'Hz'),
         68: { name: 'info.inverterStatus', description: 'Inverter Mode', type: 'string', role: 'text' }, // 'Inverter Mode': (68, '')
     },
-    3: {
+    2: { /****************************************** X1 boost *****************************************/
+        isOnline: { name: 'info.online', description: 'Inverter Online', type: 'boolean', role: 'switch' },
+        0: { name: 'data.acvoltage', description: 'AC Voltage', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage': (5, 'V'),
+        1: { name: 'data.outputcurrent', description: 'Output Current', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current': (4, 'A'),
+        2: { name: 'data.acpower', description: 'Inverter AC-Power total', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power': (6, 'W'),
+        3: { name: 'data.voltagedc1', description: 'PV1 Voltage', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'PV1 Voltage': (2, 'V'),
+        4: { name: 'data.voltagedc2', description: 'PV2 Voltage', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'PV2 Voltage': (3, 'V'),
+        5: { name: 'data.currentdc1', description: 'PV1 Current', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'PV1 Current': (0, 'A'),
+        6: { name: 'data.currentdc2', description: 'PV2 Current', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'PV2 Current': (1, 'A'),
+        7: { name: 'data.powerdc1', description: 'Inverter DC PV power MPPT1', type: 'number', unit: 'W', role: 'value.power' }, // 'PV1 Power': (11, 'W'),
+        8: { name: 'data.powerdc2', description: 'Inverter DC PV power MPPT2', type: 'number', unit: 'W', role: 'value.power' }, // 'PV2 Power': (12, 'W'),
+        9: { name: 'data.gridfrequency', description: 'Grid Frequency', type: 'number', multiplier: 0.01, unit: 'Hz', role: 'value.power' }, // 'Grid Frequency': (50, 'Hz'),
+        10: { name: 'info.inverterStatus', description: 'Inverter Mode', type: 'string', role: 'text' }, // 'Inverter Mode': (10, ''),
+        11: { name: 'data.yieldtotal', description: 'Inverter AC-Energy out total', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Energy': (19, 'kWh'),
+        13: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Today's Energy': (21, 'kWh'),
+        39: { name: 'data.inverterTemp', description: 'Inverter Temperature', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Inverter Temperature': (7, '°C'),
+        48: { name: 'data.exportedPower', description: 'Exported Power', type: 'number', unit: 'W', role: 'value.power' }, // 'Exported Power': (10, 'W'),
+        50: { name: 'data.totalFeed', description: 'Total Feed-in Energy', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Feed-in Energy': (41, 'kWh'),
+        52: { name: 'data.totalconsumption', description: 'Total Consumption', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Consumption': (42, 'kWh'),
+    },
+    3: { /****************************************** X3-Hybiyd/Fit / X3-20K/30K / X3-MIC/PRO *****************************************/
         isOnline: { name: 'info.online', description: 'Inverter Online', type: 'boolean', role: 'switch' },
         0: { name: 'data.acvoltage1', description: 'Grid Voltage 1', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 1': (0, 'V'),
         1: { name: 'data.acvoltage2', description: 'Grid Voltage 2', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 2': (1, 'V'),
@@ -512,7 +536,7 @@ const data_dataPoints = {
         78: { name: 'data.consumeenergy', description: 'Consume Energy', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power' }, // Consume Energy: (7.8,'kWh')
         80: { name: 'data.acpower', description: 'Inverter AC-Power now', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power': (80, 'W'),
     },
-    4: {
+    4: { /****************************************** X3-Hybrid-G4 *****************************************/
         isOnline: { name: 'info.online', description: 'Inverter Online', type: 'boolean', role: 'switch' },
         0: { name: 'data.acvoltage1', description: 'Grid Voltage 1', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 1': (0, 'V'),
         1: { name: 'data.acvoltage2', description: 'Grid Voltage 2', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 2': (1, 'V'),
@@ -567,8 +591,11 @@ async function requestLocalAPI() {
         offlineCounter = 0;
         isOnline = true;
         version = apiData.ver.split('.')[0]
-        
+
         switch (apiData.type) {
+            case 4:
+                type = 2;
+                break;
             case 5:
             case 6:
             case 7:
@@ -606,8 +633,8 @@ async function requestLocalAPI() {
             if (dataPoint.multiplier) {
                 data = data * dataPoint.multiplier;
             }
-            
-            if ((type == 1 && key == '68') || (type == 3 && key == '18') || (type == 4 && key == '19')) {
+
+            if ((type == 1 && key == '68') || (type == 3 && key == '18') || (type == 4 && key == '19') || (type == 2 && key == '10')) {
                 data = data !== undefined ? _inverterStateLocal[data] : 'Offline';
             }
             await setDataPoint(dataPoint, data);
@@ -667,6 +694,7 @@ async function setDataPoint(dataPoint, data) {
 async function resetValues() {
     const valuesOfReset = {
         1: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 43, 50, 68],
+        2: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 39, 48, 50, 52],
         3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 74, 76, 78, 80],
         4: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 34, 39, 40, 41, 47, 90, 92, 103, 105]
     };
@@ -674,7 +702,7 @@ async function resetValues() {
     for (const value of valuesOfReset[type]) {
         const dataPoint = data_dataPoints[type][value];
 
-        if ((type == 1 && value == '68') || (type == 3 && value == '18') || (type == 4 && value == '19')) {
+        if ((type == 1 && value == '68') || (type == 3 && value == '18') || (type == 4 && value == '19') || (type == 2 && value == '10')) {
             await setDataPoint(dataPoint, 'Offline');
         } else if (value != 8) {
             await setDataPoint(dataPoint, 0);
