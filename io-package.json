@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.5.5",
+    "version": "0.5.6",
     "news": {
+      "0.5.6": {
+        "en": "local mode for X1 boost added",
+        "de": "lokaler Modus für X1 Boost hinzugefügt",
+        "ru": "локальный режим для X1 boost добавлен",
+        "pt": "modo local para X1 impulso adicionado",
+        "nl": "plaatselijke modus voor X1 boost toegevoegd",
+        "fr": "mode local pour X1 boost ajouté",
+        "it": "modalità locale per aumentare X1",
+        "es": "modo local para el impulso X1 añadido",
+        "pl": "w trybie X1 dodano dodanie do X1 boost",
+        "zh-cn": "当地的X1升温"
+      },
       "0.5.5": {
         "en": "small Bugfixes",
         "de": "kleine Bugfixes",
@@ -74,18 +86,6 @@
         "es": "Actualización de las dependencias\npequeños Bugfixes\nAñadir soporte para firmware versión 3.001",
         "pl": "Zależności\nmały Bugfix\nWsparcie dla wersji 3.001",
         "zh-cn": "B. 更新的属地\n小额Bugfix\n增加对软件版本3.001的支持"
-      },
-      "0.4.6": {
-        "en": "Fix states",
-        "de": "Zustände beheben",
-        "ru": "Исправить состояния",
-        "pt": "Corrigir estados",
-        "nl": "Statussen herstellen",
-        "fr": "Fixer les états",
-        "it": "Correggi gli stati",
-        "es": "Corregir estados",
-        "pl": "Napraw stany",
-        "zh-cn": "修复状态"
       }
     },
     "title": "Solax",
