@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.5.4",
+    "version": "0.5.5",
     "news": {
+      "0.5.5": {
+        "en": "small Bugfixes",
+        "de": "kleine Bugfixes",
+        "ru": "небольшие багфиксы",
+        "pt": "pequenos bugs",
+        "nl": "kleine Bugfix",
+        "fr": "petites Bugfixes",
+        "it": "piccoli bugfix",
+        "es": "pequeños Bugfixes",
+        "pl": "mały Bugfix",
+        "zh-cn": "小额Bugfix"
+      },
       "0.5.4": {
         "en": "small Bugfixes",
         "de": "kleine Bugfixes",
@@ -74,18 +86,6 @@
         "es": "Corregir estados",
         "pl": "Napraw stany",
         "zh-cn": "修复状态"
-      },
-      "0.4.5": {
-        "en": "Dependencies updated\nsmall Bugfixes",
-        "de": "Abhängigkeiten aktualisiert\nkleine Bugfixes",
-        "ru": "Зависимости обновлены\nмелкие исправления",
-        "pt": "Dependências atualizadas\npequenas correções de bugs",
-        "nl": "Afhankelijkheden bijgewerkt\nkleine bugfixes",
-        "fr": "Dépendances mises à jour\npetites corrections de bogues",
-        "it": "Dipendenze aggiornate\npiccole correzioni di bug",
-        "es": "Dependencias actualizadas\npequeñas correcciones de errores",
-        "pl": "Zaktualizowano zależności\nmałe poprawki",
-        "zh-cn": "已更新依赖项\n小错误修正"
       }
     },
     "title": "Solax",
