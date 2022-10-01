@@ -19,7 +19,7 @@
     "url": "https://github.com/simatec/ioBroker.solax"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.6.0",
+    "@iobroker/adapter-core": "^2.6.6",
     "axios": "^0.27.2",
     "node-schedule": "^2.1.0",
     "suncalc2": "^1.8.1"
