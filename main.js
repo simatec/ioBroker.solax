@@ -7,7 +7,7 @@ const schedule = require('node-schedule');
 // @ts-ignore
 const SunCalc = require('suncalc2');
 // @ts-ignore
-const axios = require('axios').default;
+const axios = require('axios');
 
 const createStates = require('./lib/createObjects.js');
 
