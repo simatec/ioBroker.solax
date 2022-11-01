@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.5.6",
+    "version": "0.5.7",
     "news": {
+      "0.5.7": {
+        "en": "Dependencies updated",
+        "de": "Ausgaben aktualisiert",
+        "ru": "Обновленные зависимости",
+        "pt": "Dependências atualizadas",
+        "nl": "Afhankelijkheid geüpdateerd",
+        "fr": "Dépendances mises à jour",
+        "it": "Dipendenze aggiornate",
+        "es": "Actualización de las dependencias",
+        "pl": "Zależności",
+        "uk": "Залежність оновлено",
+        "zh-cn": "B. 更新的属地"
+      },
       "0.5.6": {
         "en": "local mode for X1 boost added",
         "de": "lokaler Modus für X1 Boost hinzugefügt",
@@ -74,18 +87,6 @@
         "es": "piensos añadidos",
         "pl": "dodać",
         "zh-cn": "供餐"
-      },
-      "0.5.0": {
-        "en": "Dependencies updated\nsmall Bugfixes\nAdd support for firmware version 3.001",
-        "de": "Ausgaben aktualisiert\nkleine Bugfixes\nUnterstützung für Firmware Version 3.001 hinzufügen",
-        "ru": "Обновленные зависимости\nнебольшие багфиксы\nДобавить поддержку для версии прошивки 3.001",
-        "pt": "Dependências atualizadas\npequenos bugs\nAdicionar suporte para a versão de firmware 3.001",
-        "nl": "Afhankelijkheid geüpdateerd\nkleine Bugfix\nVoeg steun aan de firmaware versie 3.001",
-        "fr": "Dépendances mises à jour\npetites Bugfixes\nAjouter le support pour le firmware version 3.001",
-        "it": "Dipendenze aggiornate\npiccoli bugfix\nAggiungi supporto per la versione firmware 3.001",
-        "es": "Actualización de las dependencias\npequeños Bugfixes\nAñadir soporte para firmware versión 3.001",
-        "pl": "Zależności\nmały Bugfix\nWsparcie dla wersji 3.001",
-        "zh-cn": "B. 更新的属地\n小额Bugfix\n增加对软件版本3.001的支持"
       }
     },
     "title": "Solax",
