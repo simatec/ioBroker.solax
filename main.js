@@ -212,8 +212,8 @@ let num = 0;
 
 async function requestAPI() {
     return new Promise(async (resolve) => {
-        //const solaxURL = (`https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
-        const solaxURL = (` https://www.eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
+        const solaxURL = (`https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
+        //const solaxURL = (`https://www.eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
 
         try {
             const solaxRequest = await axios({
@@ -309,12 +309,16 @@ async function setData(solaxRequest) {
                 const objectID = resID.split('.');
                 const resultID = objectID[3];
 
-                if (resultID !== 'yieldtoday' && resultID !== 'yieldtotal' && resultID !== 'batPower') {
+                if (resultID !== 'yieldtoday' && resultID !== 'yieldtotal' && resultID !== 'batPower' && resultID !== 'feedinpower') {
                     const state = await adapter.getStateAsync(`data.${resultID}`);
 
                     if ((state && state.val >= 0) || state == null) {
                         await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
                     }
+                }
+
+                if (resultID === 'feedinpower') {
+                    await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
                 }
 
                 if (num == Object.keys(list).length) {
@@ -502,7 +506,7 @@ const data_dataPoints = {
         11: { name: 'data.yieldtotal', description: 'Inverter AC-Energy out total', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Energy': (19, 'kWh'),
         13: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Today's Energy': (21, 'kWh'),
         39: { name: 'data.inverterTemp', description: 'Inverter Temperature', type: 'number', unit: '°C', role: 'value.temperature' }, // 'Inverter Temperature': (7, '°C'),
-        48: { name: 'data.exportedPower', description: 'Exported Power', type: 'number', unit: 'W', role: 'value.power' }, // 'Exported Power': (10, 'W'),
+        48: { name: 'data.exportedPower', description: 'Exported Power', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // 'Exported Power': (10, 'W'),
         50: { name: 'data.totalFeed', description: 'Total Feed-in Energy', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Feed-in Energy': (41, 'kWh'),
         52: { name: 'data.totalconsumption', description: 'Total Consumption', type: 'number', multiplier: 0.01, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Consumption': (42, 'kWh'),
     },
@@ -541,13 +545,13 @@ const data_dataPoints = {
         0: { name: 'data.acvoltage1', description: 'Grid Voltage 1', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 1': (0, 'V'),
         1: { name: 'data.acvoltage2', description: 'Grid Voltage 2', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 2': (1, 'V'),
         2: { name: 'data.acvoltage3', description: 'Grid Voltage 3', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'AC Voltage 3': (2, 'V'),
-        3: { name: 'data.accurrent1', description: 'Grid Current 1', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current 1': (3, 'A'),
-        4: { name: 'data.accurrent2', description: 'Grid Current 2', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current 2': (4, 'A'),
-        5: { name: 'data.accurrent3', description: 'Grid Current 3', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current 3': (5, 'A'),
-        6: { name: 'data.acpower1', description: 'Grid Power 1', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power 1': (6, 'W'),
-        7: { name: 'data.acpower2', description: 'Grid Power 2', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power 2': (7, 'W'),
-        8: { name: 'data.acpower3', description: 'Grid Power 3', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power 3': (8, 'W'),
-        9: { name: 'data.acpower', description: 'Inverter AC-Power now', type: 'number', unit: 'W', role: 'value.power' }, // 'AC Power': (80, 'W'),
+        3: { name: 'data.accurrent1', description: 'Grid Current 1', type: 'number', maxValue: 32768, multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current 1': (3, 'A'),
+        4: { name: 'data.accurrent2', description: 'Grid Current 2', type: 'number', maxValue: 32768, multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current 2': (4, 'A'),
+        5: { name: 'data.accurrent3', description: 'Grid Current 3', type: 'number', maxValue: 32768, multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'Output Current 3': (5, 'A'),
+        6: { name: 'data.acpower1', description: 'Grid Power 1', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // 'AC Power 1': (6, 'W'),
+        7: { name: 'data.acpower2', description: 'Grid Power 2', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // 'AC Power 2': (7, 'W'),
+        8: { name: 'data.acpower3', description: 'Grid Power 3', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // 'AC Power 3': (8, 'W'),
+        9: { name: 'data.acpower', description: 'Inverter AC-Power now', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // 'AC Power': (80, 'W'),
         10: { name: 'data.dcvoltage1', description: 'PV1 Voltage', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'PV1 Voltage': (9, 'V'),
         11: { name: 'data.dcvoltage2', description: 'PV2 Voltage', type: 'number', multiplier: 0.1, unit: 'V', role: 'value.power' }, // 'PV2 Voltage': (10, 'V'),
         12: { name: 'data.dccurrent1', description: 'PV1 Current', type: 'number', multiplier: 0.1, unit: 'A', role: 'value.power' }, // 'PV1 Current': (11, 'A'),
@@ -562,7 +566,7 @@ const data_dataPoints = {
         39: { name: 'data.batteryVoltage', description: 'battery voltage', type: 'number', multiplier: 0.01, unit: 'V', role: 'value.power' }, // 'Battery DC Voltage',
         40: { name: 'data.batteryCurrent', description: 'battery current', type: 'number', maxValue: 32768, multiplier: 0.01, unit: 'A', role: 'value.power' }, // 'Battery Current,
         41: { name: 'data.batteryPower', description: 'battery power', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // 'Battery Power,
-        47: { name: 'data.powerConsumer', description: 'Consumer power', type: 'number', unit: 'W', role: 'value.power' }, // 'Consumer Power  ,   
+        47: { name: 'data.powerConsumer', description: 'Consumer power', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // 'Consumer Power  ,   
         68: { name: 'data.yieldtotal', description: 'Inverter AC-Energy out total', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Energy': (19, 'kWh'),
         70: { name: 'data.yieldtoday', description: 'Inverter AC-Energy out Daily', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Today's Energy': (21, 'kWh'),
         80: { name: 'data.totalpvenergy', description: 'Total PV Energy', type: 'number', multiplier: 0.1, unit: 'kWh', role: 'value.power.consumption' }, // 'Total Consumption': (42, 'kWh'),
