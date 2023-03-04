@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.5.7",
+    "version": "0.6.0",
     "news": {
+      "0.6.0": {
+        "en": "Dependencies updated\nFix URL\nsmall Bugfix",
+        "de": "Ausgaben aktualisiert\nURL herunterladen\nkleiner Bugfix",
+        "ru": "Обновленные зависимости\nFix URL\nнебольшой Bugfix",
+        "pt": "Dependências atualizadas\nCorrigir URL\npequeno Bugfix",
+        "nl": "Afhankelijkheid geüpdateerd\nVertaling:\nkleine Bugfix",
+        "fr": "Dépendances mises à jour\nCorrection URL\npetit Bugfix",
+        "it": "Dipendenze aggiornate\nFissare l'URL\npiccolo Bugfix",
+        "es": "Actualización de las dependencias\nCorregir URL\npequeño Bugfix",
+        "pl": "Zależności\nFix URL\nmały Bug fix",
+        "uk": "Залежність оновлено\nВиправлення URL\nмали",
+        "zh-cn": "B. 更新的属地\nFixURL\nbugfix"
+      },
       "0.5.7": {
         "en": "Dependencies updated",
         "de": "Ausgaben aktualisiert",
@@ -75,18 +88,6 @@
         "es": "Híbrido-G4 añadido\npequeños Bugfixes\nprueba del appveyor eliminado\nexamen de travis eliminado",
         "pl": "Hybrid-G4 dodał Hybrid-G4\nmały Bugfix\ntest aplikacji\ntest",
         "zh-cn": "联 合 国\n小额Bugfix\n吊车试验\n取消试验"
-      },
-      "0.5.1": {
-        "en": "feedin added",
-        "de": "zusatz von futtermitteln",
-        "ru": "feedin добавлено",
-        "pt": "feedin adicionado",
-        "nl": "voedsel toegevoegd",
-        "fr": "feedin added",
-        "it": "feedin aggiunto",
-        "es": "piensos añadidos",
-        "pl": "dodać",
-        "zh-cn": "供餐"
       }
     },
     "title": "Solax",
