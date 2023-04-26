@@ -2,6 +2,8 @@
     "Count of failed queries": "Aantal mislukte zoekopdrachten",
     "Count of failed queries until detected as offline": "Aantal mislukte zoekopdrachten totdat deze als offline worden gedetecteerd",
     "Expert Settings (Please read the Documentation before!)": "Expertinstellingen (lees eerst de documentatie!)",
+    "Firmware Version": "Firmware versie",
+    "Firmware Version Wifi-Stick": "Firmwareversie Wifi-Stick",
     "Get the Token ID from Solax": "Haal de token-ID op van Solax",
     "I have read the warning": "Ik heb de waarschuwing gelezen",
     "I prefer to use the API cloud": "Ik gebruik liever de API cloud",
@@ -10,6 +12,7 @@
     "Number of days": "Aantal dagen",
     "Number of days of history data": "Aantal dagen geschiedenisgegevens",
     "Please confirm!": "Bevestig alstublieft!",
+    "Query data at night": "Gegevens 's nachts opvragen",
     "Readme Expert Settings": "Leesmij-expertinstellingen",
     "Request Interval": "Verzoekinterval",
     "Request Interval (minutes)": "Verzoekinterval (minuten)",
@@ -21,6 +24,5 @@
     "latitude": "breedtegraad",
     "longitude": "Lengtegraad",
     "serial Number": "serienummer van communicatiemodule",
-    "solax adapter settings": "Adapterinstellingen voor solax",
-    "Query data at night": "Gegevens 's nachts opvragen"
+    "solax adapter settings": "Adapterinstellingen voor solax"
 }

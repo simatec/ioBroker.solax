@@ -2,6 +2,8 @@
     "Count of failed queries": "Recuento de consultas fallidas",
     "Count of failed queries until detected as offline": "Recuento de consultas fallidas hasta que se detectan como sin conexión",
     "Expert Settings (Please read the Documentation before!)": "Configuración experta (¡Lea la documentación antes!)",
+    "Firmware Version": "Versión de firmware",
+    "Firmware Version Wifi-Stick": "Versión de firmware Wifi-Stick",
     "Get the Token ID from Solax": "Obtenga la identificación del token de Solax",
     "I have read the warning": "he leido la advertencia",
     "I prefer to use the API cloud": "Prefiero usar la nube API",
@@ -10,6 +12,7 @@
     "Number of days": "Número de días",
     "Number of days of history data": "Número de días de datos de historial",
     "Please confirm!": "¡Por favor confirmar!",
+    "Query data at night": "Consultar datos por la noche",
     "Readme Expert Settings": "Léame Configuración experta",
     "Request Interval": "Intervalo de solicitud",
     "Request Interval (minutes)": "Intervalo de solicitud (minutos)",
@@ -21,6 +24,5 @@
     "latitude": "latitud",
     "longitude": "longitud",
     "serial Number": "Número de serie del módulo de comunicación",
-    "solax adapter settings": "Configuración del adaptador para solax",
-    "Query data at night": "Consultar datos por la noche"
+    "solax adapter settings": "Configuración del adaptador para solax"
 }

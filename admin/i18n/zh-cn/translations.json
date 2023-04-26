@@ -2,6 +2,8 @@
     "Count of failed queries": "失败查询的计数",
     "Count of failed queries until detected as offline": "在检测为脱机之前失败的查询计数",
     "Expert Settings (Please read the Documentation before!)": "专家设置（请先阅读文档！）",
+    "Firmware Version": "固件版本",
+    "Firmware Version Wifi-Stick": "固件版本 Wifi 棒",
     "Get the Token ID from Solax": "从 Solax 获取 Token ID",
     "I have read the warning": "我已阅读警告",
     "I prefer to use the API cloud": "我更喜欢使用 API 云",
@@ -10,6 +12,7 @@
     "Number of days": "天数",
     "Number of days of history data": "历史数据天数",
     "Please confirm!": "请确认！",
+    "Query data at night": "夜间查询数据",
     "Readme Expert Settings": "自述专家设置",
     "Request Interval": "请求间隔",
     "Request Interval (minutes)": "请求间隔（分钟）",
@@ -21,6 +24,5 @@
     "latitude": "纬度",
     "longitude": "经度",
     "serial Number": "通讯模块序号",
-    "solax adapter settings": "solax 的适配器设置",
-    "Query data at night": "夜间查询数据"
+    "solax adapter settings": "solax 的适配器设置"
 }

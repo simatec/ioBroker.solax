@@ -2,6 +2,8 @@
     "Count of failed queries": "Количество неудачных запросов",
     "Count of failed queries until detected as offline": "Подсчет неудачных запросов до тех пор, пока они не будут обнаружены как оффлайн.",
     "Expert Settings (Please read the Documentation before!)": "Экспертные настройки (Пожалуйста, прочитайте документацию перед этим!)",
+    "Firmware Version": "Версия прошивки",
+    "Firmware Version Wifi-Stick": "Версия прошивки Wifi-Stick",
     "Get the Token ID from Solax": "Получите идентификатор токена от Solax",
     "I have read the warning": "я прочитал предупреждение",
     "I prefer to use the API cloud": "Я предпочитаю использовать облако API",
@@ -10,6 +12,7 @@
     "Number of days": "Количество дней",
     "Number of days of history data": "Количество дней данных истории",
     "Please confirm!": "Пожалуйста подтвердите!",
+    "Query data at night": "Запросить данные ночью",
     "Readme Expert Settings": "Экспертные настройки Readme",
     "Request Interval": "Интервал запроса",
     "Request Interval (minutes)": "Интервал запроса (минуты)",
@@ -21,6 +24,5 @@
     "latitude": "широта",
     "longitude": "долгота",
     "serial Number": "серийный номер коммуникационного модуля",
-    "solax adapter settings": "Настройки адаптера для солакса",
-    "Query data at night": "Запросить данные ночью"
+    "solax adapter settings": "Настройки адаптера для солакса"
 }

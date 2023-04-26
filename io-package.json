@@ -157,7 +157,47 @@
       "sentry": {
         "dsn": "https://e2417bfe108541dd89d2d4b2e09703f3@sentry.iobroker.net/133"
       }
-    }
+    },
+    "messages": [
+      {
+        "condition": {
+          "operand": "and",
+          "rules": [
+            "oldVersion<0.7.0",
+            "newVersion>=0.7.0"
+          ]
+        },
+        "title": {
+          "en": "After the update please configure firmware version",
+          "de": "Nach dem Update konfigurieren Sie bitte die Firmware-Version",
+          "ru": "После обновления настройте версию прошивки",
+          "pt": "Após a atualização, configure a versão de firmware",
+          "nl": "Na de update, configigure firmaware versie",
+          "fr": "Après la mise à jour, veuillez configurer la version firmware",
+          "it": "Dopo l'aggiornamento si prega di configurare la versione del firmware",
+          "es": "Después de la actualización configura la versión firmware",
+          "pl": "Po aktualizacji zadowalają wersję oprogramowania configure",
+          "zh-cn": "更新后,请编成定软件版本"
+        },
+        "text": {
+          "en": "After the update, the firmware version of the Wifi stick must be configured for the local query of the inverter. ",
+          "de": "Nach dem Update muss die Firmware-Version des Wifi-Sticks für die lokale Abfrage des Wechselrichters konfiguriert werden.",
+          "ru": "После обновления версия прошивки палки Wifi должна быть настроена для локального запроса инвертора.",
+          "pt": "Após a atualização, a versão de firmware do stick Wifi deve ser configurada para a consulta local do inversor.",
+          "nl": "Na de update, moet de firmaware versie van de Wifi stick in beslag genomen worden voor de lokale zoektocht van de inverter.",
+          "fr": "Après la mise à jour, la version firmware du bâton Wifi doit être configurée pour la requête locale de l'inverter.",
+          "it": "Dopo l'aggiornamento, la versione firmware della chiavetta Wifi deve essere configurata per la query locale dell'inverter.",
+          "es": "Después de la actualización, la versión de firmware del stick Wifi debe configurarse para la consulta local del inverter.",
+          "pl": "Po aktualizacji, wersja oprogramowania naklejki Wifi musi być skonfigurowana dla miejscowego zapytania inwertera.",
+          "zh-cn": "在更新之后,必须对维菲茨的坚实的防备版本进行整修,以防火。."
+        },
+        "level": "warn",
+        "buttons": [
+          "agree",
+          "cancel"
+        ]
+      }
+    ]
   },
   "native": {
     "serialNumber": "",
@@ -172,7 +212,8 @@
     "countsOfOffline": 5,
     "historyDays": 7,
     "nightMode": false,
-    "batteryMode": false
+    "batteryMode": false,
+    "firmwareVersion": 2
   },
   "encryptedNative": [
     "apiToken",

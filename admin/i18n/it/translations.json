@@ -2,6 +2,8 @@
     "Count of failed queries": "Conteggio di query non riuscite",
     "Count of failed queries until detected as offline": "Conteggio delle query non riuscite fino a quando non vengono rilevate come offline",
     "Expert Settings (Please read the Documentation before!)": "Impostazioni avanzate (leggi prima la documentazione!)",
+    "Firmware Version": "Versione del firmware",
+    "Firmware Version Wifi-Stick": "Chiavetta Wi-Fi versione firmware",
     "Get the Token ID from Solax": "Ottieni l'ID token da Solax",
     "I have read the warning": "Ho letto l'avviso",
     "I prefer to use the API cloud": "Preferisco usare il cloud API",
@@ -10,6 +12,7 @@
     "Number of days": "Numero di giorni",
     "Number of days of history data": "Numero di giorni di dati storici",
     "Please confirm!": "Si prega di confermare!",
+    "Query data at night": "Interroga i dati di notte",
     "Readme Expert Settings": "Leggimi Impostazioni avanzate",
     "Request Interval": "Intervallo di richiesta",
     "Request Interval (minutes)": "Intervallo di richiesta (minuti)",
@@ -21,6 +24,5 @@
     "latitude": "latitudine",
     "longitude": "longitudine",
     "serial Number": "seriale Numero del modulo di comunicazione",
-    "solax adapter settings": "Impostazioni dell'adattatore per solax",
-    "Query data at night": "Interroga i dati di notte"
+    "solax adapter settings": "Impostazioni dell'adattatore per solax"
 }

@@ -108,6 +108,25 @@
       "type": "number",
       "label": "Number of days"
     },
+    "firmwareVersion": {
+      "newLine": false,
+      "type": "select",
+      "label": "Firmware Version",
+      "help": "Firmware Version Wifi-Stick",
+      "options": [
+        {
+          "label": "2.xxx.xx",
+          "value": 2
+        },
+        {
+          "label": "3.xxx.xx",
+          "value": 3
+        }
+      ],
+      "sm": 12,
+      "md": 6,
+      "lg": 4
+    },
     "systemGeoData": {
       "newLine": true,
       "type": "checkbox",

@@ -2,6 +2,8 @@
     "Count of failed queries": "Anzahl der fehlgeschlagenen Abfragen",
     "Count of failed queries until detected as offline": "Anzahl der fehlgeschlagenen Abfragen, bis sie als offline erkannt werden",
     "Expert Settings (Please read the Documentation before!)": "Experteneinstellungen (Bitte vorher die Dokumentation lesen!)",
+    "Firmware Version": "Firmware Version",
+    "Firmware Version Wifi-Stick": "Firmware-Version Wifi-Stick",
     "Get the Token ID from Solax": "Holen Sie sich die Token-ID von Solax",
     "I have read the warning": "Ich habe die Warnung gelesen",
     "I prefer to use the API cloud": "Ich bevorzuge die API-Cloud",
@@ -10,6 +12,7 @@
     "Number of days": "Anzahl der Tage",
     "Number of days of history data": "Anzahl der Tage der Historydaten",
     "Please confirm!": "Bitte bestätigen!",
+    "Query data at night": "Nachts Daten abfragen",
     "Readme Expert Settings": "Readme Experteneinstellungen",
     "Request Interval": "Abfrageintervall",
     "Request Interval (minutes)": "Abfrageintervall (Minuten)",
@@ -21,6 +24,5 @@
     "latitude": "Breite",
     "longitude": "Längengrad",
     "serial Number": "Seriennummer des Kommunikationsmoduls",
-    "solax adapter settings": "Adaptereinstellungen für Solax",
-    "Query data at night": "Nachts Daten abfragen"
+    "solax adapter settings": "Adaptereinstellungen für Solax"
 }

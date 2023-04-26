@@ -221,7 +221,7 @@ async function requestAPI() {
                 url: solaxURL,
                 timeout: 5000,
                 headers: {
-                    'User-Agent': 'axios/0.27.2'
+                    'User-Agent': 'axios/1.3.6'
                 },
                 responseType: 'json'
             });
@@ -312,7 +312,7 @@ async function setData(solaxRequest) {
                 if (resultID !== 'yieldtoday' && resultID !== 'yieldtotal' && resultID !== 'batPower' && resultID !== 'feedinpower') {
                     const state = await adapter.getStateAsync(`data.${resultID}`);
 
-                    if ((state && state.val >= 0) || state == null) {
+                    if (state) {
                         await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
                     }
                 }
@@ -431,7 +431,6 @@ async function delHistoryStates(days) {
 let requestTimeOut;
 let offlineCounter = 0;
 let isOnline = false;
-let version = 0
 let type = 1
 
 const stateCache = [];
@@ -581,94 +580,107 @@ const data_dataPoints = {
 };
 
 async function requestLocalAPI() {
-    try {
-        const source = axios.CancelToken.source();
-        requestTimeOut = setTimeout(async () => source.cancel(), 3000);
+    return new Promise(async (resolve, reject) => {
+        try {
+            const cancelToken = axios.CancelToken;
+            const source = cancelToken.source();
 
-        const data = `optType=ReadRealTimeData&pwd=${adapter.config.passwordWifi}`;
-        const url = `http://${adapter.config.hostIP}/?${data}`;
+            let apiData;
 
-        const apiData = (await axios.post(url, !version || version == 2 ? null : data, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
-        adapter.log.debug(`local request: ${JSON.stringify(apiData)}`);
+            requestTimeOut = setTimeout(async () => source.cancel(), 3000);
 
-        clearTimeout(requestTimeOut);
-        offlineCounter = 0;
-        isOnline = true;
-        version = apiData.ver.split('.')[0]
+            const data = `optType=ReadRealTimeData&pwd=${adapter.config.passwordWifi}`;
 
-        switch (apiData.type) {
-            case 4:
-                type = 2;
-                break;
-            case 5:
-            case 6:
-            case 7:
-            case 16:
-                type = 3;
-                break;
-            case 14:
-            case 15:
-                type = 4;
-                break;
-            default:
-                type = 1;
-                break;
-        }
-
-        for (const key in apiData) {
-            const dataPoint = root_dataPoints[key.toLowerCase()];
-            if (!dataPoint) continue;
-            let data = apiData[key]
-            if (key == 'type' && _inverterType[data]) {
-                data = _inverterType[data];
-            }
-            await setDataPoint(dataPoint, data);
-        }
-
-        for (const key in apiData.Data) {
-            const dataPoint = data_dataPoints[type][key];
-            if (!dataPoint) continue;
-            let data = apiData.Data[key];
-
-            if ((dataPoint.maxValue && data > dataPoint.maxValue) || (dataPoint.minValue && data < dataPoint.minValue)) {
-                data = (data - 65536);
+            if (adapter.config.firmwareVersion == 2) {
+                const url = `http://${adapter.config.hostIP}:80/?${data}`;
+                apiData = (await axios.post(url, null, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
+            } else if (adapter.config.firmwareVersion == 3) {
+                const url = `http://${adapter.config.hostIP}`;
+                apiData = (await axios.post(url, data, { cancelToken: source.token })).data;
             }
 
-            if (dataPoint.multiplier) {
-                data = data * dataPoint.multiplier;
+            adapter.log.debug(`local request: ${JSON.stringify(apiData)}`);
+
+            clearTimeout(requestTimeOut);
+            offlineCounter = 0;
+            isOnline = true;
+
+            switch (apiData.type) {
+                case 4:
+                    type = 2;
+                    break;
+                case 5:
+                case 6:
+                case 7:
+                case 16:
+                    type = 3;
+                    break;
+                case 14:
+                case 15:
+                    type = 4;
+                    break;
+                default:
+                    type = 1;
+                    break;
             }
 
-            if ((type == 1 && key == '68') || (type == 3 && key == '18') || (type == 4 && key == '19') || (type == 2 && key == '10')) {
-                data = data !== undefined ? _inverterStateLocal[data] : 'Offline';
+            for (const key in apiData) {
+                const dataPoint = root_dataPoints[key.toLowerCase()];
+                if (!dataPoint) continue;
+                let data = apiData[key]
+                if (key == 'type' && _inverterType[data]) {
+                    data = _inverterType[data];
+                }
+                await setDataPoint(dataPoint, data);
             }
-            await setDataPoint(dataPoint, data);
+
+            for (const key in apiData.Data) {
+                const dataPoint = data_dataPoints[type][key];
+                if (!dataPoint) continue;
+                let data = apiData.Data[key];
+
+                if ((dataPoint.maxValue && data > dataPoint.maxValue) || (dataPoint.minValue && data < dataPoint.minValue)) {
+                    data = (data - 65536);
+                }
+
+                if (dataPoint.multiplier) {
+                    data = data * dataPoint.multiplier;
+                }
+
+                if ((type == 1 && key == '68') || (type == 3 && key == '18') || (type == 4 && key == '19') || (type == 2 && key == '10')) {
+                    data = data !== undefined ? _inverterStateLocal[data] : 'Offline';
+                }
+                await setDataPoint(dataPoint, data);
+            }
+
+            for (const key in apiData.Information) {
+                const dataPoint = information_dataPoints[type][key];
+                if (!dataPoint) continue;
+                await setDataPoint(dataPoint, apiData.Information[key]);
+            }
+
+            if (isOnline) {
+                await adapter.setStateAsync('info.uploadTime', new Date().toString(), true);
+            }
+
+        } catch (e) {
+            if (offlineCounter == adapter.config.countsOfOffline) {
+                isOnline = false;
+                resetValues();
+            } else {
+                offlineCounter++;
+            }
+            reject();
         }
 
-        for (const key in apiData.Information) {
-            const dataPoint = information_dataPoints[type][key];
-            if (!dataPoint) continue;
-            await setDataPoint(dataPoint, apiData.Information[key]);
-        }
+        if (requestTimeOut) clearTimeout(requestTimeOut);
 
-        if (isOnline) {
-            await adapter.setStateAsync('info.uploadTime', new Date().toString(), true);
-        }
+        await adapter.setStateAsync(data_dataPoints[type]['isOnline'].name, isOnline, true);
 
-    } catch (e) {
-        version = version == 0 ? -1 : (version == -1 ? 0 : version)
-        if (offlineCounter == adapter.config.countsOfOffline) {
-            isOnline = false;
-            resetValues();
-        } else {
-            offlineCounter++;
-        }
-    }
-
-    if (requestTimeOut) clearTimeout(requestTimeOut);
-
-    await adapter.setStateAsync(data_dataPoints[type]['isOnline'].name, isOnline, true);
-
-    await createdJSON();
+        await createdJSON();
+        // @ts-ignore
+        resolve();
+    });
 }
 
 async function setDataPoint(dataPoint, data) {
@@ -778,7 +790,7 @@ async function main() {
             break;
         case 'local':
             if (adapter.config.hostIP && adapter.config.passwordWifi) {
-                requestLocalAPI();
+                await requestLocalAPI();
                 configCheck = true;
                 const requestIntervalLocal = adapter.config.requestIntervalLocal || 10;
 
@@ -787,7 +799,9 @@ async function main() {
 
                 requestTimer = setInterval(async () => {
                     if (!_isNight) {
-                        requestLocalAPI();
+                        adapter.log.debug('Start Local Request');
+                        await requestLocalAPI();
+                        adapter.log.debug('End Local Request');
                     }
                 }, requestIntervalLocal * 1000);
             } else {
