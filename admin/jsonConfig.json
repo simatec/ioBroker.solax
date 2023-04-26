@@ -110,6 +110,8 @@
     },
     "firmwareVersion": {
       "newLine": false,
+      "hidden": "!data.localConnection || !data.expertSettings",
+      "disabled": "!data.localConnection",
       "type": "select",
       "label": "Firmware Version",
       "help": "Firmware Version Wifi-Stick",
