@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "news": {
+      "0.7.0": {
+        "en": "Dependencies updated\nConfig for Firmware Version added\nsmall Bugfix",
+        "de": "Ausgaben aktualisiert\nConfig für Firmware Version hinzugefügt\nkleiner Bugfix",
+        "ru": "Обновленные зависимости\nConfig для версии прошивки добавлена\nнебольшой Bugfix",
+        "pt": "Dependências atualizadas\nConfig para Firmware Versão adicionada\npequeno Bugfix",
+        "nl": "Afhankelijkheid geüpdateerd\nConfig for Firmware Version toegevoegd\nkleine Bugfix",
+        "fr": "Dépendances mises à jour\nConfig for Firmware Version ajoutée\npetit Bugfix",
+        "it": "Dipendenze aggiornate\nConfigurazione per Firmware Versione aggiunto\npiccolo Bugfix",
+        "es": "Actualización de las dependencias\nConfig for Firmware Version añadido\npequeño Bugfix",
+        "pl": "Zależności\nOficjalna strona firmy\nmały Bug fix",
+        "uk": "Залежність оновлено\nНалаштування для версії прошивки\nмали",
+        "zh-cn": "B. 更新的属地\nFrmware Version的纤维添加\nbugfix"
+      },
       "0.6.0": {
         "en": "Dependencies updated\nFix URL\nsmall Bugfix",
         "de": "Ausgaben aktualisiert\nURL herunterladen\nkleiner Bugfix",
@@ -66,18 +79,6 @@
         "zh-cn": "小额Bugfix"
       },
       "0.5.3": {
-        "en": "Hybrid-G4 added\nsmall Bugfixes\nappveyor test removed\ntravis test removed",
-        "de": "Hybrid-G4 hinzugefügt\nkleine Bugfixes\nappvey-test entfernt\ntravis-test entfernt",
-        "ru": "Hybrid-G4 добавлено\nнебольшие багфиксы\nappveyor тест удален\ntravis тест удален",
-        "pt": "Hybrid-G4 adicionado\npequenos bugs\nteste de appveyor removido\nteste do travis removido",
-        "nl": "Hybrid-G4 toegevoegd\nkleine Bugfix\nappveortest verwijderd\ntravis test verwijderd",
-        "fr": "Hybrid-G4 ajouté\npetites Bugfixes\ntest appveyor enlevé\nessai de travis enlevé",
-        "it": "Hybrid-G4 aggiunto\npiccoli bugfix\nappveyor test rimosso\ntravis test rimosso",
-        "es": "Híbrido-G4 añadido\npequeños Bugfixes\nprueba del appveyor eliminado\nexamen de travis eliminado",
-        "pl": "Hybrid-G4 dodał Hybrid-G4\nmały Bugfix\ntest aplikacji\ntest",
-        "zh-cn": "联 合 国\n小额Bugfix\n吊车试验\n取消试验"
-      },
-      "0.5.2": {
         "en": "Hybrid-G4 added\nsmall Bugfixes\nappveyor test removed\ntravis test removed",
         "de": "Hybrid-G4 hinzugefügt\nkleine Bugfixes\nappvey-test entfernt\ntravis-test entfernt",
         "ru": "Hybrid-G4 добавлено\nнебольшие багфиксы\nappveyor тест удален\ntravis тест удален",
