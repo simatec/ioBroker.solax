@@ -670,8 +670,6 @@ async function requestLocalAPI() {
             } else {
                 offlineCounter++;
             }
-            // @ts-ignore
-            resolve();
         }
 
         if (requestTimeOut) clearTimeout(requestTimeOut);
