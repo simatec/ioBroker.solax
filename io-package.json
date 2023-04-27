@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.7.1",
+    "version": "0.7.2",
     "news": {
+      "0.7.2": {
+        "en": "small Bugfix",
+        "de": "kleiner Bugfix",
+        "ru": "небольшой Bugfix",
+        "pt": "pequeno Bugfix",
+        "nl": "kleine Bugfix",
+        "fr": "petit Bugfix",
+        "it": "piccolo Bugfix",
+        "es": "pequeño Bugfix",
+        "pl": "mały Bug fix",
+        "uk": "мали",
+        "zh-cn": "bugfix"
+      },
       "0.7.1": {
         "en": "small Bugfix",
         "de": "kleiner Bugfix",
@@ -68,18 +81,6 @@
         "zh-cn": "当地的X1升温"
       },
       "0.5.5": {
-        "en": "small Bugfixes",
-        "de": "kleine Bugfixes",
-        "ru": "небольшие багфиксы",
-        "pt": "pequenos bugs",
-        "nl": "kleine Bugfix",
-        "fr": "petites Bugfixes",
-        "it": "piccoli bugfix",
-        "es": "pequeños Bugfixes",
-        "pl": "mały Bugfix",
-        "zh-cn": "小额Bugfix"
-      },
-      "0.5.4": {
         "en": "small Bugfixes",
         "de": "kleine Bugfixes",
         "ru": "небольшие багфиксы",
