@@ -580,7 +580,7 @@ const data_dataPoints = {
 };
 
 async function requestLocalAPI() {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
         try {
             const cancelToken = axios.CancelToken;
             const source = cancelToken.source();
@@ -670,7 +670,8 @@ async function requestLocalAPI() {
             } else {
                 offlineCounter++;
             }
-            reject();
+            // @ts-ignore
+            resolve();
         }
 
         if (requestTimeOut) clearTimeout(requestTimeOut);
