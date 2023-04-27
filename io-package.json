@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.7.0",
+    "version": "0.7.1",
     "news": {
+      "0.7.1": {
+        "en": "small Bugfix",
+        "de": "kleiner Bugfix",
+        "ru": "небольшой Bugfix",
+        "pt": "pequeno Bugfix",
+        "nl": "kleine Bugfix",
+        "fr": "petit Bugfix",
+        "it": "piccolo Bugfix",
+        "es": "pequeño Bugfix",
+        "pl": "mały Bug fix",
+        "uk": "мали",
+        "zh-cn": "bugfix"
+      },
       "0.7.0": {
         "en": "Dependencies updated\nConfig for Firmware Version added\nsmall Bugfix",
         "de": "Ausgaben aktualisiert\nConfig für Firmware Version hinzugefügt\nkleiner Bugfix",
@@ -77,18 +90,6 @@
         "es": "pequeños Bugfixes",
         "pl": "mały Bugfix",
         "zh-cn": "小额Bugfix"
-      },
-      "0.5.3": {
-        "en": "Hybrid-G4 added\nsmall Bugfixes\nappveyor test removed\ntravis test removed",
-        "de": "Hybrid-G4 hinzugefügt\nkleine Bugfixes\nappvey-test entfernt\ntravis-test entfernt",
-        "ru": "Hybrid-G4 добавлено\nнебольшие багфиксы\nappveyor тест удален\ntravis тест удален",
-        "pt": "Hybrid-G4 adicionado\npequenos bugs\nteste de appveyor removido\nteste do travis removido",
-        "nl": "Hybrid-G4 toegevoegd\nkleine Bugfix\nappveortest verwijderd\ntravis test verwijderd",
-        "fr": "Hybrid-G4 ajouté\npetites Bugfixes\ntest appveyor enlevé\nessai de travis enlevé",
-        "it": "Hybrid-G4 aggiunto\npiccoli bugfix\nappveyor test rimosso\ntravis test rimosso",
-        "es": "Híbrido-G4 añadido\npequeños Bugfixes\nprueba del appveyor eliminado\nexamen de travis eliminado",
-        "pl": "Hybrid-G4 dodał Hybrid-G4\nmały Bugfix\ntest aplikacji\ntest",
-        "zh-cn": "联 合 国\n小额Bugfix\n吊车试验\n取消试验"
       }
     },
     "title": "Solax",
