@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.7.2",
+    "version": "0.7.3",
     "news": {
+      "0.7.3": {
+        "en": "small Bugfix\nX3-Hybrid data added\nDependencies updated",
+        "de": "kleiner Bugfix\nX3-Hybrid Daten hinzugefügt\nAusgaben aktualisiert",
+        "ru": "небольшой Bugfix\nX3-Hybrid данные добавлены\nОбновленные зависимости",
+        "pt": "pequeno Bugfix\nX3-Hybrid dados adicionados\nDependências atualizadas",
+        "nl": "kleine Bugfix\nX3-Hybrid gegevens\nAfhankelijkheid geüpdateerd",
+        "fr": "petit Bugfix\nDonnées X3-Hybrid ajoutées\nDépendances mises à jour",
+        "it": "piccolo Bugfix\nDati X3-Hybrid aggiunti\nDipendenze aggiornate",
+        "es": "pequeño Bugfix\nX3-Hybrid data added\nActualización de las dependencias",
+        "pl": "mały Bug fix\nDane X3Hybrid\nZależności",
+        "uk": "мали\nДодано дані X3-Hybrid\nЗалежність оновлено",
+        "zh-cn": "bugfix\n合并数据\nB. 更新的属地"
+      },
       "0.7.2": {
         "en": "small Bugfix",
         "de": "kleiner Bugfix",
@@ -79,18 +92,6 @@
         "es": "modo local para el impulso X1 añadido",
         "pl": "w trybie X1 dodano dodanie do X1 boost",
         "zh-cn": "当地的X1升温"
-      },
-      "0.5.5": {
-        "en": "small Bugfixes",
-        "de": "kleine Bugfixes",
-        "ru": "небольшие багфиксы",
-        "pt": "pequenos bugs",
-        "nl": "kleine Bugfix",
-        "fr": "petites Bugfixes",
-        "it": "piccoli bugfix",
-        "es": "pequeños Bugfixes",
-        "pl": "mały Bugfix",
-        "zh-cn": "小额Bugfix"
       }
     },
     "title": "Solax",
