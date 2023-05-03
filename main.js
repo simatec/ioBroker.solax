@@ -216,6 +216,7 @@ async function requestAPI() {
         //const solaxURL = (`https://www.eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
 
         try {
+            // @ts-ignore
             const solaxRequest = await axios({
                 method: 'get',
                 url: solaxURL,
@@ -310,9 +311,9 @@ async function setData(solaxRequest) {
                 const resultID = objectID[3];
 
                 if (resultID !== 'yieldtoday' && resultID !== 'yieldtotal' && resultID !== 'batPower' && resultID !== 'feedinpower') {
-                    const state = await adapter.getStateAsync(`data.${resultID}`);
+                    const dataState = await adapter.getStateAsync(`data.${resultID}`);
 
-                    if (state) {
+                    if (dataState || dataState === null) {
                         await adapter.setStateAsync(`data.${resultID}`, solaxRequest.data.result[resultID] ? solaxRequest.data.result[resultID] : 0, true);
                     }
                 }
@@ -561,6 +562,15 @@ const data_dataPoints = {
         17: { name: 'data.acfrequency2', description: 'Grid Frequency 2', type: 'number', multiplier: 0.01, unit: 'Hz', role: 'value.power' }, // 'Grid Frequency 2': (16, 'Hz'),
         18: { name: 'data.acfrequency3', description: 'Grid Frequency 3', type: 'number', multiplier: 0.01, unit: 'Hz', role: 'value.power' }, // 'Grid Frequency 3': (17, 'Hz'),
         19: { name: 'info.inverterStatus', description: 'Inverter Mode', type: 'string', role: 'text' }, // 'Inverter Mode': (18, ''),
+        23: { name: 'data.voltageeps1', description: 'EPS 1 Voltage', type: 'number', multiplier: 0.1, unit: 'W', role: 'value.power' }, // EPS 1 Voltage
+        24: { name: 'data.voltageeps2', description: 'EPS 2 Voltage', type: 'number', multiplier: 0.1, unit: 'W', role: 'value.power' }, // EPS 2 Voltage
+        25: { name: 'data.voltageeps3', description: 'EPS 3 Voltage', type: 'number', multiplier: 0.1, unit: 'W', role: 'value.power' }, // EPS 3 Voltage
+        26: { name: 'data.currenteps1', description: 'EPS 1 Current', type: 'number', maxValue: 32768, multiplier: 0.1, unit: 'W', role: 'value.power' }, // EPS 1 Current
+        27: { name: 'data.currenteps2', description: 'EPS 2 Current', type: 'number', maxValue: 32768, multiplier: 0.1, unit: 'W', role: 'value.power' }, // EPS 2 Current
+        28: { name: 'data.currenteps3', description: 'EPS 3 Current', type: 'number', maxValue: 32768, multiplier: 0.1, unit: 'W', role: 'value.power' }, // EPS 3 Current
+        29: { name: 'data.powereps1', description: 'EPS 1 Power', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // EPS 1 Power
+        30: { name: 'data.powereps2', description: 'EPS 2 Power', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // EPS 2 Power
+        31: { name: 'data.powereps3', description: 'EPS 3 Power', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // EPS 3 Power
         34: { name: 'data.feedinpower', description: 'Feed in Power M1', type: 'number', maxValue: 32768, unit: 'W', role: 'value.power' }, // Feed in Power: (561,'W'),
         39: { name: 'data.batteryVoltage', description: 'battery voltage', type: 'number', multiplier: 0.01, unit: 'V', role: 'value.power' }, // 'Battery DC Voltage',
         40: { name: 'data.batteryCurrent', description: 'battery current', type: 'number', maxValue: 32768, multiplier: 0.01, unit: 'A', role: 'value.power' }, // 'Battery Current,
@@ -582,22 +592,25 @@ const data_dataPoints = {
 async function requestLocalAPI() {
     return new Promise(async (resolve) => {
         try {
+            // @ts-ignore
             const cancelToken = axios.CancelToken;
             const source = cancelToken.source();
+            const _ver = adapter.config.firmwareVersion;
+            const _headers = { 'X-Forwarded-For': '5.8.8.8' };
 
-            let apiData;
+            let _options = { cancelToken: source.token };
+
+            if (_ver === 2) {
+                _options["headers"] = _headers;
+            }
 
             requestTimeOut = setTimeout(async () => source.cancel(), 3000);
 
             const data = `optType=ReadRealTimeData&pwd=${adapter.config.passwordWifi}`;
+            const url = `http://${adapter.config.hostIP}`;
 
-            if (adapter.config.firmwareVersion == 2) {
-                const url = `http://${adapter.config.hostIP}:80/?${data}`;
-                apiData = (await axios.post(url, null, { cancelToken: source.token, headers: { 'X-Forwarded-For': '5.8.8.8' } })).data;
-            } else if (adapter.config.firmwareVersion == 3) {
-                const url = `http://${adapter.config.hostIP}`;
-                apiData = (await axios.post(url, data, { cancelToken: source.token })).data;
-            }
+            // @ts-ignore
+            const apiData = (await axios.post(_ver === 3 ? url : `${url}:80/?${data}`, _ver === 3 ? data : null, _options)).data;
 
             adapter.log.debug(`local request: ${JSON.stringify(apiData)}`);
 
