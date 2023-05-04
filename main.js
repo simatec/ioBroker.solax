@@ -5,7 +5,7 @@ const utils = require('@iobroker/adapter-core');
 // @ts-ignore
 const schedule = require('node-schedule');
 // @ts-ignore
-const SunCalc = require('suncalc2');
+const SunCalc = require('suncalc');
 // @ts-ignore
 const axios = require('axios');
 
