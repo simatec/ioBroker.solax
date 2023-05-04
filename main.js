@@ -87,6 +87,8 @@ function startAdapter(options) {
         ready: main,
 
         unload: (callback) => {
+            adapter.setState('info.connection', false, true);
+
             try {
                 schedule.cancelJob('dayHistory');
                 clearInterval(requestTimer);
@@ -117,7 +119,7 @@ async function getSystemData() {
                 if (state) {
                     longitude = state.common.longitude;
                     latitude = state.common.latitude;
-                    adapter.log.debug('System longitude: ' + state.common.longitude + ' System latitude: ' + state.common.latitude);
+                    adapter.log.debug(`System longitude: ${longitude} | System latitude: ${latitude}`);
                     // @ts-ignore
                     resolve();
 
@@ -135,7 +137,7 @@ async function getSystemData() {
             try {
                 longitude = adapter.config.longitude;
                 latitude = adapter.config.latitude;
-                adapter.log.debug('longitude: ' + adapter.config.longitude + ' latitude: ' + adapter.config.latitude);
+                adapter.log.debug(`longitude: ${longitude} | latitude: ${latitude}`);
                 // @ts-ignore
                 resolve();
             } catch (err) {
@@ -159,16 +161,16 @@ async function nightCalc(_isNight) {
         try {
             const times = SunCalc.getTimes(new Date(), latitude, longitude);
 
-            const nauticalDusk = ('0' + times.nauticalDusk.getHours()).slice(-2) + ':' + ('0' + times.nauticalDusk.getMinutes()).slice(-2);
-            const nauticalDawn = ('0' + times.nauticalDawn.getHours()).slice(-2) + ':' + ('0' + times.nauticalDawn.getMinutes()).slice(-2);
+            const dusk = ('0' + times.dusk.getHours()).slice(-2) + ':' + ('0' + times.dusk.getMinutes()).slice(-2);
+            const dawn = ('0' + times.dawn.getHours()).slice(-2) + ':' + ('0' + times.dawn.getMinutes()).slice(-2);
 
-            adapter.log.debug(`nauticalDusk: ${nauticalDusk}`);
-            adapter.log.debug(`nauticalDawn: ${nauticalDawn}`);
+            adapter.log.debug(`dusk: ${dusk}`);
+            adapter.log.debug(`dawn: ${dawn}`);
 
             const currentTime = getDate();
             adapter.log.debug(`current local Time: ${currentTime}`);
 
-            if ((currentTime > nauticalDusk || currentTime < nauticalDawn) && !adapter.config.nightMode) {
+            if ((currentTime > dusk || currentTime < dawn) && !adapter.config.nightMode) {
                 _isNight = true;
             } else {
                 _isNight = false;
@@ -252,6 +254,8 @@ async function fillData() {
             const solaxRequest = await requestAPI();
 
             if (solaxRequest.data && solaxRequest.data.result) {
+                await adapter.setStateAsync('info.connection', true, true);
+
                 adapter.log.debug('API Request successfully completed');
 
                 await createStates.createdDataStates(solaxRequest.data, adapter);
@@ -287,6 +291,7 @@ async function fillData() {
 
                 await createdJSON();
             } else {
+                await adapter.setStateAsync('info.connection', false, true);
                 adapter.log.debug('SolaX API is currently unavailable');
             }
         } catch (err) {
@@ -617,6 +622,7 @@ async function requestLocalAPI() {
             clearTimeout(requestTimeOut);
             offlineCounter = 0;
             isOnline = true;
+            await adapter.setStateAsync('info.connection', true, true);
 
             switch (apiData.type) {
                 case 4:
@@ -679,6 +685,7 @@ async function requestLocalAPI() {
         } catch (e) {
             if (offlineCounter == adapter.config.countsOfOffline) {
                 isOnline = false;
+                await adapter.setStateAsync('info.connection', false, true);
                 resetValues();
             } else {
                 offlineCounter++;

@@ -147,6 +147,11 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
+### __WORK IN PROGRESS__
+* (simatec) connection state added
+* (simatec) suncalc package added
+* (simatec) change from dawn und dusk calc
+
 ### 0.7.3 (2023-05-03)
 * (simatec) small Bugfix
 * (simatec) X3-Hybrid data added
