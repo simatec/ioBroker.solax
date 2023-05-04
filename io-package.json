@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.7.3",
+    "version": "0.7.4",
     "news": {
+      "0.7.4": {
+        "en": "connection state added\nsuncalc package added\nchange from dawn und dusk calc",
+        "de": "verbindungszustand hinzugefügt\nsuncalc paket hinzugefügt\nänderung von dawn und dusk calc",
+        "ru": "соединение государство добавлено\nsuncalc пакет добавлен\nизменить с рассвета и дуска calc",
+        "pt": "estado de conexão adicionado\npacote suncalc adicionado\nmudança de calcário de amanhecer e crepúsculo",
+        "nl": "verbinding toegevoegd\nsuncalc pakket toegevoegd\nverandering van dageraad stof calc",
+        "fr": "état de connexion ajouté\npaquet suncalc ajouté\nchangement de l'aube und crépuscule calc",
+        "it": "stato di connessione aggiunto\npacchetto suncalc aggiunto\ncambiamento da alba und dusk calc",
+        "es": "estado de conexión añadido\npaquete suncalc añadido\ncambio de la madrugada und",
+        "pl": "dodanie\npakiet słoneczny\nzmiana świtu i zmierzchu",
+        "uk": "додано стан з'єднання\nдодано пакет сонячнихcalc\nзміна з джинсового унду",
+        "zh-cn": "建 议\n日增包\ndawn und duskrickc的改变"
+      },
       "0.7.3": {
         "en": "small Bugfix\nX3-Hybrid data added\nDependencies updated",
         "de": "kleiner Bugfix\nX3-Hybrid Daten hinzugefügt\nAusgaben aktualisiert",
@@ -80,18 +93,6 @@
         "pl": "Zależności",
         "uk": "Залежність оновлено",
         "zh-cn": "B. 更新的属地"
-      },
-      "0.5.6": {
-        "en": "local mode for X1 boost added",
-        "de": "lokaler Modus für X1 Boost hinzugefügt",
-        "ru": "локальный режим для X1 boost добавлен",
-        "pt": "modo local para X1 impulso adicionado",
-        "nl": "plaatselijke modus voor X1 boost toegevoegd",
-        "fr": "mode local pour X1 boost ajouté",
-        "it": "modalità locale per aumentare X1",
-        "es": "modo local para el impulso X1 añadido",
-        "pl": "w trybie X1 dodano dodanie do X1 boost",
-        "zh-cn": "当地的X1升温"
       }
     },
     "title": "Solax",
