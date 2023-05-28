@@ -147,6 +147,11 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
+### __WORK IN PROGRESS__
+* (simatec) X3-MIC/PRO-G2 added
+* (simatec) small Fix
+* (simatec) Dependencies updated
+
 ### 0.7.4 (2023-05-04)
 * (simatec) connection state added
 * (simatec) suncalc package added
