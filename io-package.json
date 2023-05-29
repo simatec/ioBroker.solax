@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.7.4",
+    "version": "0.7.5",
     "news": {
+      "0.7.5": {
+        "en": "X3-MIC/PRO-G2 added\nsmall Fix\nDependencies updated",
+        "de": "X3-MIC/PRO-G2 hinzugefügt\nkleiner Fix\nAusgaben aktualisiert",
+        "ru": "X3-MIC/PRO-G2 добавлено\nнебольшой Fix\nОбновленные зависимости",
+        "pt": "X3-MIC/PRO-G2 adicionado\npequena fixação\nDependências atualizadas",
+        "nl": "X3-MIC/PRO-G2 toegevoegd\nkleine Fix\nAfhankelijkheid geüpdateerd",
+        "fr": "X3-MIC/PRO-G2 ajouté\npetite taille\nDépendances mises à jour",
+        "it": "X3-MIC/PRO-G2 aggiunto\npiccolo fissaggio\nDipendenze aggiornate",
+        "es": "X3-MIC/PRO-G2 añadido\npequeño\nActualización de las dependencias",
+        "pl": "X3M/PRO-G2\nmała\nZależności",
+        "uk": "X3-MIC/PRO-G2 додано\nмали\nЗалежність оновлено",
+        "zh-cn": "X3-M-D/PRO-G2\n小型企业\nB. 更新的属地"
+      },
       "0.7.4": {
         "en": "connection state added\nsuncalc package added\nchange from dawn und dusk calc",
         "de": "verbindungszustand hinzugefügt\nsuncalc paket hinzugefügt\nänderung von dawn und dusk calc",
@@ -80,19 +93,6 @@
         "pl": "Zależności\nFix URL\nmały Bug fix",
         "uk": "Залежність оновлено\nВиправлення URL\nмали",
         "zh-cn": "B. 更新的属地\nFixURL\nbugfix"
-      },
-      "0.5.7": {
-        "en": "Dependencies updated",
-        "de": "Ausgaben aktualisiert",
-        "ru": "Обновленные зависимости",
-        "pt": "Dependências atualizadas",
-        "nl": "Afhankelijkheid geüpdateerd",
-        "fr": "Dépendances mises à jour",
-        "it": "Dipendenze aggiornate",
-        "es": "Actualización de las dependencias",
-        "pl": "Zależności",
-        "uk": "Залежність оновлено",
-        "zh-cn": "B. 更新的属地"
       }
     },
     "title": "Solax",
