@@ -114,7 +114,7 @@ async function getSystemData() {
     return new Promise(async (resolve) => {
         if (adapter.config.systemGeoData) {
             try {
-                const state = await adapter.getForeignObjectAsync('system.config', 'state');
+                const state = await adapter.getForeignObjectAsync('system.config');
 
                 if (state) {
                     longitude = state.common.longitude;
@@ -305,7 +305,7 @@ async function fillData() {
 async function setData(solaxRequest) {
     return new Promise(async (resolve) => {
 
-        const list = await adapter.getForeignObjectsAsync(adapter.namespace + '.data.*', 'state');
+        const list = await adapter.getForeignObjectsAsync(adapter.namespace + '.data.*');
 
         if (list) {
             let num = 0;
@@ -344,7 +344,7 @@ async function setData(solaxRequest) {
 async function createdJSON() {
     return new Promise(async (resolve) => {
         const json = {};
-        const infoList = await adapter.getForeignObjectsAsync(adapter.namespace + '.info.*', 'state');
+        const infoList = await adapter.getForeignObjectsAsync(adapter.namespace + '.info.*');
 
         if (infoList) {
             for (const i in infoList) {
@@ -360,7 +360,7 @@ async function createdJSON() {
             }
         }
 
-        const dataList = await adapter.getForeignObjectsAsync(adapter.namespace + '.data.*', 'state');
+        const dataList = await adapter.getForeignObjectsAsync(adapter.namespace + '.data.*');
 
         if (dataList) {
             let num = 0;
@@ -414,7 +414,7 @@ async function setDayHistory(days) {
 }
 
 async function delHistoryStates(days) {
-    const _historyStates = await adapter.getForeignObjectsAsync(`${adapter.namespace}.history.*`, 'state');
+    const _historyStates = await adapter.getForeignObjectsAsync(`${adapter.namespace}.history.*`);
 
     for (const i in _historyStates) {
         const historyID = _historyStates[i]._id;

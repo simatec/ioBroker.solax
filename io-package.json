@@ -106,6 +106,7 @@
       "it": "Solax",
       "es": "Solax",
       "pl": "Solax",
+      "uk": "Solax",
       "zh-cn": "Solax"
     },
     "desc": {
@@ -118,6 +119,7 @@
       "it": "Solax Inverter API Cloud o Connessione locale",
       "es": "Solax Inverter API Nube o conexión local",
       "pl": "Solax Inverter API Cloud lub połączenie lokalne",
+      "uk": "Solax Inverter API Хмарне або локальне підключення",
       "zh-cn": "Solax 逆变器 API 云或本地连接"
     },
     "authors": [
@@ -147,7 +149,7 @@
     "dataSource": "poll",
     "dependencies": [
       {
-        "js-controller": ">=3.3.0"
+        "js-controller": ">=4.0.0"
       }
     ],
     "globalDependencies": [
