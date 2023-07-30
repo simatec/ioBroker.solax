@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.7.5",
+    "version": "0.7.6",
     "news": {
+      "0.7.6": {
+        "en": "X3-Hybrid-G4 data updated\nDependencies updated\nsmall Bugfix\nUkrainian translation added",
+        "de": "X3-Hybrid-G4 Daten aktualisiert\nAusgaben aktualisiert\nkleiner Bugfix\nDeutsch Übersetzung hinzugefügt",
+        "ru": "Данные X3-Hybrid-G4 обновлены\nОбновленные зависимости\nнебольшой Bugfix\nУкраинский перевод добавлен",
+        "pt": "X3-Hybrid-G4 dados atualizados\nDependências atualizadas\npequeno Bugfix\nTradução ucraniana adicionado",
+        "nl": "X3-Hybrid-G4 data\nAfhankelijkheid geüpdateerd\nkleine Bugfix\nOekraïense vertaling",
+        "fr": "Données X3-Hybrid-G4 mises à jour\nDépendances mises à jour\npetit Bugfix\nTraduction ukrainienne ajoutée",
+        "it": "Dati X3-Hybrid-G4 aggiornati\nDipendenze aggiornate\npiccolo Bugfix\nTraduzione ucraina aggiunto",
+        "es": "Datos X3-Hybrid-G4 actualizados\nActualización de las dependencias\npequeño Bugfix\nTraducción de Ucrania",
+        "pl": "Dane X3-Hybrid-G4\nZależności\nmały Bug fix\nPrzekład ukraiński",
+        "uk": "X3-Hybrid-G4 оновлення\nЗалежність оновлено\nмали\nУкраїнський переклад Додано",
+        "zh-cn": "十、结 论\nB. 更新的属地\nbugfix\n乌克兰译文"
+      },
       "0.7.5": {
         "en": "X3-MIC/PRO-G2 added\nsmall Fix\nDependencies updated",
         "de": "X3-MIC/PRO-G2 hinzugefügt\nkleiner Fix\nAusgaben aktualisiert",
@@ -80,19 +93,6 @@
         "pl": "Zależności\nOficjalna strona firmy\nmały Bug fix",
         "uk": "Залежність оновлено\nНалаштування для версії прошивки\nмали",
         "zh-cn": "B. 更新的属地\nFrmware Version的纤维添加\nbugfix"
-      },
-      "0.6.0": {
-        "en": "Dependencies updated\nFix URL\nsmall Bugfix",
-        "de": "Ausgaben aktualisiert\nURL herunterladen\nkleiner Bugfix",
-        "ru": "Обновленные зависимости\nFix URL\nнебольшой Bugfix",
-        "pt": "Dependências atualizadas\nCorrigir URL\npequeno Bugfix",
-        "nl": "Afhankelijkheid geüpdateerd\nVertaling:\nkleine Bugfix",
-        "fr": "Dépendances mises à jour\nCorrection URL\npetit Bugfix",
-        "it": "Dipendenze aggiornate\nFissare l'URL\npiccolo Bugfix",
-        "es": "Actualización de las dependencias\nCorregir URL\npequeño Bugfix",
-        "pl": "Zależności\nFix URL\nmały Bug fix",
-        "uk": "Залежність оновлено\nВиправлення URL\nмали",
-        "zh-cn": "B. 更新的属地\nFixURL\nbugfix"
       }
     },
     "title": "Solax",

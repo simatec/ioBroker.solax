@@ -147,7 +147,7 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
-### __WORK IN PROGRESS__
+### 0.7.6 (2023-07-30)
 * (simatec) X3-Hybrid-G4 data updated
 * (simatec) Dependencies updated
 * (simatec) small Bugfix
