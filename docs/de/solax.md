@@ -16,7 +16,7 @@
 
 **************************************************************************************************************
 
-**If you like it, please consider a donation:**
+**Wenn Ihnen ioBroker.solax gefällt, denken Sie bitte über eine Spende nach::**
   
 [![paypal](https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif)](https://paypal.me/mk1676)
 

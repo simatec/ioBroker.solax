@@ -131,6 +131,10 @@
       "Photovoltaics",
       "Inverter"
     ],
+    "docs": {
+      "en": "docs/en/solax.md",
+      "de": "docs/de/solax.md"
+    },
     "license": "MIT",
     "platform": "Javascript/Node.js",
     "main": "main.js",
