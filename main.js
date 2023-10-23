@@ -484,8 +484,11 @@ async function requestLocalAPI(root_dataPoints, information_dataPoints, data_dat
                     type = 5;
                     break;
                 case 14:
-                case 15:
+                    //case 15:
                     type = 4;
+                    break;
+                case 15:
+                    type = 6;
                     break;
                 default:
                     type = 1;
@@ -494,7 +497,7 @@ async function requestLocalAPI(root_dataPoints, information_dataPoints, data_dat
 
             for (const key in apiData) {
                 const dataPoint = root_dataPoints[key.toLowerCase()];
-                
+
                 if (!dataPoint) continue;
                 let data = apiData[key]
                 if (key == 'type' && _inverterType[data]) {
@@ -582,7 +585,8 @@ async function resetValues(data_dataPoints) {
         2: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 39, 48, 50, 52],
         3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 74, 76, 78, 80],
         4: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 34, 39, 40, 41, 47, 90, 92, 103, 105],
-        5: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 72, 74, 76, 78,]
+        5: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 72, 74, 76, 78,],
+        6: [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 14, 15, 16, 17, 18, 32, 34, 36],
     };
 
     for (const value of valuesOfReset[type]) {
