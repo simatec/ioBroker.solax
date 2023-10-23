@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.7.7",
+    "version": "0.8.0",
     "news": {
+      "0.8.0": {
+        "en": "X1-Hybrid-G4 added",
+        "de": "X1-Hybrid-G4 hinzugefügt",
+        "ru": "X1-Hybrid-G4 добавлено",
+        "pt": "X1-Hybrid-G4 adicionado",
+        "nl": "X1-Hybrid-G4 toegevoegd",
+        "fr": "X1-Hybrid-G4 ajouté",
+        "it": "X1-Hybrid-G4 aggiunto",
+        "es": "X1-Hybrid-G4 añadido",
+        "pl": "X1Hybrid-G4 dodano do wersji X1-Hybrid-G4",
+        "uk": "X1-Hybrid-G4 додано",
+        "zh-cn": "十1-H 合并4"
+      },
       "0.7.7": {
         "en": "Dependencies updated\nsmall Bugfix",
         "de": "Ausgaben aktualisiert\nkleiner Bugfix",
@@ -69,19 +82,6 @@
         "zh-cn": "bugfix\n合并数据\nB. 更新的属地"
       },
       "0.7.2": {
-        "en": "small Bugfix",
-        "de": "kleiner Bugfix",
-        "ru": "небольшой Bugfix",
-        "pt": "pequeno Bugfix",
-        "nl": "kleine Bugfix",
-        "fr": "petit Bugfix",
-        "it": "piccolo Bugfix",
-        "es": "pequeño Bugfix",
-        "pl": "mały Bug fix",
-        "uk": "мали",
-        "zh-cn": "bugfix"
-      },
-      "0.7.1": {
         "en": "small Bugfix",
         "de": "kleiner Bugfix",
         "ru": "небольшой Bugfix",
