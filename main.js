@@ -484,7 +484,6 @@ async function requestLocalAPI(root_dataPoints, information_dataPoints, data_dat
                     type = 5;
                     break;
                 case 14:
-                    //case 15:
                     type = 4;
                     break;
                 case 15:
