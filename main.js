@@ -77,6 +77,21 @@ const _inverterStateAPI = {
     113: 'Gen Run Mode'
 };
 
+const _wallboxStateLocal = {
+    0: 'Unplugged',
+    1: 'Plugged',
+    2: 'Charging'
+};
+
+const _wallboxChargemodeLocal = {
+    0: 'Stop',
+    1: 'Fast',
+    2: 'Green',
+    3: 'Eco'
+};
+
+
+
 let adapter;
 const adapterName = require('./package.json').name.split('.').pop();
 
@@ -472,6 +487,9 @@ async function requestLocalAPI(root_dataPoints, information_dataPoints, data_dat
             await adapter.setStateAsync('info.connection', true, true);
 
             switch (apiData.type) {
+                case 1:
+                    type = 7;
+                    break;
                 case 4:
                     type = 2;
                     break;
@@ -518,9 +536,20 @@ async function requestLocalAPI(root_dataPoints, information_dataPoints, data_dat
                     data = data * dataPoint.multiplier;
                 }
 
-                if ((type == 1 && key == '68') || (type == 3 && key == '18') || (type == 4 && key == '19') || (type == 2 && key == '10') || (type == 5 && key == '21') || (type == 6 && key == '10')) {
+                if ((type == 1 && key == '68') || (type == 3 && key == '18') || (type == 4 && key == '19') || (type == 2 && key == '10') || (type == 5 && key == '21') || (type == 6 && key == '10') || (type == 7 && key == '10')) {
                     data = data !== undefined ? _inverterStateLocal[data] : 'Offline';
                 }
+
+                // State for Wallbox Type 7
+                if (type == 7 && key == '0') {
+                    data = data !== undefined ? _wallboxStateLocal[data] : 'Offline';
+                }
+
+                // State for chargemode Wallbox Type 7
+                if (type == 7 && key == '1') {
+                    data = data !== undefined ? _wallboxChargemodeLocal[data] : 'Undefined';
+                }
+
                 await setDataPoint(dataPoint, data);
             }
 
@@ -586,12 +615,13 @@ async function resetValues(data_dataPoints) {
         4: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 34, 39, 40, 41, 47, 90, 92, 103, 105],
         5: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 72, 74, 76, 78,],
         6: [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 14, 15, 16, 17, 18, 32, 34, 36],
+        7: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 26, 80],
     };
 
     for (const value of valuesOfReset[type]) {
         const dataPoint = data_dataPoints[type][value];
 
-        if ((type == 1 && value == '68') || (type == 3 && value == '18') || (type == 4 && value == '19') || (type == 2 && value == '10') || (type == 5 && value == '21')) {
+        if ((type == 1 && value == '68') || (type == 3 && value == '18') || (type == 4 && value == '19') || (type == 2 && value == '10') || (type == 5 && value == '21') || (type == 6 && value == '10') || (type == 7 && value == '0')) {
             await setDataPoint(dataPoint, 'Offline');
         } else if (value != 8) {
             await setDataPoint(dataPoint, 0);
