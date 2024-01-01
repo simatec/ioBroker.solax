@@ -518,7 +518,7 @@ async function requestLocalAPI(root_dataPoints, information_dataPoints, data_dat
                     data = data * dataPoint.multiplier;
                 }
 
-                if ((type == 1 && key == '68') || (type == 3 && key == '18') || (type == 4 && key == '19') || (type == 2 && key == '10') || (type == 5 && key == '21')) {
+                if ((type == 1 && key == '68') || (type == 3 && key == '18') || (type == 4 && key == '19') || (type == 2 && key == '10') || (type == 5 && key == '21') || (type == 6 && key == '10')) {
                     data = data !== undefined ? _inverterStateLocal[data] : 'Offline';
                 }
                 await setDataPoint(dataPoint, data);
