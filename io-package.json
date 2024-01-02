@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "news": {
+      "0.9.1": {
+        "en": "Fix Inverter data\nFix Data for X1/X3-EVC Wallbox\nUpdate Docu",
+        "de": "Inverter Daten beheben\nDaten für X1/X3-EVC Wallbox beheben\nUpdate Docu",
+        "ru": "Fix Инверторные данные\nИсправление данных для X1/X3-EVC Wallbox\nОбновление Docu",
+        "pt": "Corrigir dados do Inverter\nCorrigir dados para X1/X3-EVC Wallbox\nAtualização Docu",
+        "nl": "Fix Inverter gegevens\nVertaling:\nUpdate Docu",
+        "fr": "Fix Inverter data\nFix Data for X1/X3-EVC Wallbox\nMettre à jour Docu",
+        "it": "Fissare i dati dell'inverter\nDati di fissaggio per X1/X3-EVC Wallbox\nAggiornamento Docu",
+        "es": "Fijar datos de Inverter\nDatos de fijación para la caja de pared X1/X3-EVC\nActualización Docu",
+        "pl": "Fix Inverter Data\nFix Data for X1/X3 (ang.)\nUpdate Data",
+        "uk": "Фіксувати дані інвертора\nВиправлення даних для X1 / X3-EVC Wallbox\nОновлення Docu",
+        "zh-cn": "固定数据\nX1/X3-EVCW箱的固定数据\n最新资料"
+      },
       "0.9.0": {
         "en": "Cloud URL Check added\nX1/X3-EVC added\nInverter Data for X3-Hybrid-G4 updated\nFix Inverter Data for X1 Hybrid G4\nDependencies updated",
         "de": "Über uns Check hinzugefügt\nX1/X3-EVC hinzugefügt\nInverter Daten für X3-Hybrid-G4 aktualisiert\nFix Inverter Daten für X1 Hybrid G4\nAusgaben aktualisiert",
@@ -80,19 +93,6 @@
         "pl": "dodanie\npakiet słoneczny\nzmiana świtu i zmierzchu",
         "uk": "додано стан з'єднання\nдодано пакет сонячнихcalc\nзміна з джинсового унду",
         "zh-cn": "建 议\n日增包\ndawn und duskrickc的改变"
-      },
-      "0.7.3": {
-        "en": "small Bugfix\nX3-Hybrid data added\nDependencies updated",
-        "de": "kleiner Bugfix\nX3-Hybrid Daten hinzugefügt\nAusgaben aktualisiert",
-        "ru": "небольшой Bugfix\nX3-Hybrid данные добавлены\nОбновленные зависимости",
-        "pt": "pequeno Bugfix\nX3-Hybrid dados adicionados\nDependências atualizadas",
-        "nl": "kleine Bugfix\nX3-Hybrid gegevens\nAfhankelijkheid geüpdateerd",
-        "fr": "petit Bugfix\nDonnées X3-Hybrid ajoutées\nDépendances mises à jour",
-        "it": "piccolo Bugfix\nDati X3-Hybrid aggiunti\nDipendenze aggiornate",
-        "es": "pequeño Bugfix\nX3-Hybrid data added\nActualización de las dependencias",
-        "pl": "mały Bug fix\nDane X3Hybrid\nZależności",
-        "uk": "мали\nДодано дані X3-Hybrid\nЗалежність оновлено",
-        "zh-cn": "bugfix\n合并数据\nB. 更新的属地"
       }
     },
     "title": "Solax",
