@@ -42,7 +42,7 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
-### __WORK IN PROGRESS__
+### 0.9.0 (2024-01-02)
 * (simatec) Cloud URL Check added
 * (simatec) X1/X3-EVC added
 * (simatec) Inverter Data for X3-Hybrid-G4 updated
