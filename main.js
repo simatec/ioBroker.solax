@@ -224,13 +224,43 @@ async function sunPos() {
 }
 
 /*************************** Cloud Mode **********************/
+async function validateURL() {
+    return new Promise(async (resolve, reject) => {
+
+        const cloudURL = {
+            0: 'https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do',
+            1: 'https://www.eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do'
+        }
+
+        for (const url in cloudURL) {
+            let available;
+
+            try {
+                // @ts-ignore
+                available = await axios({
+                    method: 'get',
+                    url: cloudURL[url],
+                    validateStatus: () => true
+                });
+            } catch (err) {
+                adapter.log.warn('Solax Cloud is not available: ' + err);
+                reject(err);
+            }
+            if (available && available.status) {
+                adapter.log.debug('Solax Cloud is available ... Status: ' + available.status);
+                resolve(cloudURL[url]);
+                break;
+            }
+        }
+    });
+}
 
 let num = 0;
 
 async function requestAPI() {
     return new Promise(async (resolve) => {
-        const solaxURL = (`https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
-        //const solaxURL = (`https://www.eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
+        const url = await validateURL();
+        const solaxURL = (`${url}?tokenId=${adapter.config.apiToken}&sn=${adapter.config.serialNumber}`);
 
         try {
             // @ts-ignore

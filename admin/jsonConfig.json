@@ -5,7 +5,7 @@
     "apiToken": {
       "newLine": true,
       "repeat": false,
-      "visible": false,
+      "visible": true,
       "hidden": "data.localConnection && data.expertSettings",
       "disabled": "data.localConnection",
       "sm": 12,
@@ -18,8 +18,6 @@
     },
     "serialNumber": {
       "newLine": false,
-      "repeat": false,
-      "visible": false,
       "hidden": "data.localConnection && data.expertSettings",
       "disabled": "data.localConnection'",
       "sm": 12,
@@ -44,8 +42,6 @@
     },
     "hostIP": {
       "newLine": true,
-      "repeat": false,
-      "visible": false,
       "hidden": "!data.localConnection || !data.expertSettings",
       "disabled": "!data.localConnection",
       "sm": 12,
@@ -58,7 +54,7 @@
     "passwordWifi": {
       "newLine": false,
       "repeat": false,
-      "visible": false,
+      "visible": true,
       "hidden": "!data.localConnection || !data.expertSettings",
       "disabled": "!data.localConnection",
       "sm": 12,
@@ -196,14 +192,14 @@
       "lg": 8
     },
     "_helpLink": {
-      "newLine": true,
-      "hidden": "!data.expertSettings",
       "type": "staticLink",
-      "variant": "outlined",
-      "color": "primary",
+      "hidden": "!data.expertSettings",
       "button": true,
+      "variant": "contained",
+      "icon": "info",
       "label": "Readme Expert Settings",
-      "href": "https://github.com/simatec/ioBroker.solax/blob/master/README.md#experteneinstellungen"
+      "href": "https://github.com/simatec/ioBroker.solax/blob/master/README.md#experteneinstellungen",
+      "newLine": true
     }
   }
 }
