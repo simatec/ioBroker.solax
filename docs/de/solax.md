@@ -76,3 +76,17 @@ Prüft bitte vor einer Verbindung zu dem Adapter noch einmal, ob der Downgrade e
 Der Stick aktualisiert die Firmware nicht automatisch und ist mit der Version 2.033.20 voll funktionsfähig.
 
 Im Adapter müssen die lokale IP-Adresse (nicht die Hotspot IP) und das Passwort des Webinterfaces eingetragen werden, und ihr habt nun eine sekundengenaue lokale Analyse eures Wechselrichters
+
+Aktuell werden im lokalen Modus folgende Umrichter unterstützt:
+
+* X1 mini
+* X1 boost
+* X3-Hybiyd/Fit
+* X3-20K/30K
+* X3-MIC/PRO
+* X3-Hybrid-G4
+* X3-MIC/PRO-G2
+* X1-Hybrid-G4
+* X1/X3-EVC Wallbox
+
+Wer gerne weitere Umrichter integriert haben möchte, sollte die Datenauswertung des lokalen Requests als Issue zur Verfügung stellen.

@@ -72,4 +72,18 @@ After a successful restart, you can now access the WiFi stick via the hotspot wi
 Before connecting to the adapter, please check again whether the downgrade was successful and the correct firmware is installed.
 Fortunately the stick does not perform an automatic firmware upgrade and is fully functional with version 2.033.20.
 
-The local IP address (not the hotspot IP) and the password of the web interface must be entered in the adapter and you now have a local analysis of your inverter that is accurate to the second
+The local IP address (not the hotspot IP) and the password of the web interface must be entered in the adapter and you now have a local analysis of your inverter that is accurate to the second.
+
+The following inverters are currently supported in local mode:
+
+* X1 mini
+* X1 boost
+* X3-Hybiyd/Fit
+* X3-20K/30K
+* X3-MIC/PRO
+* X3-Hybrid-G4
+* X3-MIC/PRO-G2
+* X1-Hybrid-G4
+* X1/X3-EVC Wallbox
+
+If you would like to have other inverters integrated, you should make the data evaluation of the local request available as an issue.
