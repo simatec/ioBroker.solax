@@ -86,8 +86,8 @@ const _wallboxStateLocal = {
 const _wallboxChargemodeLocal = {
     0: 'Stop',
     1: 'Fast',
-    2: 'Green',
-    3: 'Eco'
+    2: 'Eco',
+    3: 'Green'
 };
 
 
