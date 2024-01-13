@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.1",
+    "version": "0.9.2",
     "news": {
+      "0.9.2": {
+        "en": "Fix Data for X1/X3-EVC Wallbox",
+        "de": "Daten für X1/X3-EVC Wallbox beheben",
+        "ru": "Fix Данные для X1/X3-EVC Wallbox",
+        "pt": "Corrigir dados para X1/X3-EVC Wallbox",
+        "nl": "Fix Data voor X1/X3-EVC Wallbox",
+        "fr": "Correction des données pour X1/X3-EVC Wallbox",
+        "it": "Dati di fissaggio per X1/X3-EVC Wallbox",
+        "es": "Datos de fijación para X1/X3-EVC Wallbox",
+        "pl": "Fix Data for X1 / X3-EVC Wallbox",
+        "uk": "Виправлення даних для X1 / X3-EVC Wallbox",
+        "zh-cn": "修复 X1/ X3- EVC 墙盒的数据"
+      },
       "0.9.1": {
         "en": "Fix Inverter data\nFix Data for X1/X3-EVC Wallbox\nUpdate Docu",
         "de": "Inverter Daten beheben\nDaten für X1/X3-EVC Wallbox beheben\nUpdate Docu",
@@ -80,19 +93,6 @@
         "pl": "X3M/PRO-G2\nmała\nZależności",
         "uk": "X3-MIC/PRO-G2 додано\nмали\nЗалежність оновлено",
         "zh-cn": "X3-M-D/PRO-G2\n小型企业\nB. 更新的属地"
-      },
-      "0.7.4": {
-        "en": "connection state added\nsuncalc package added\nchange from dawn und dusk calc",
-        "de": "verbindungszustand hinzugefügt\nsuncalc paket hinzugefügt\nänderung von dawn und dusk calc",
-        "ru": "соединение государство добавлено\nsuncalc пакет добавлен\nизменить с рассвета и дуска calc",
-        "pt": "estado de conexão adicionado\npacote suncalc adicionado\nmudança de calcário de amanhecer e crepúsculo",
-        "nl": "verbinding toegevoegd\nsuncalc pakket toegevoegd\nverandering van dageraad stof calc",
-        "fr": "état de connexion ajouté\npaquet suncalc ajouté\nchangement de l'aube und crépuscule calc",
-        "it": "stato di connessione aggiunto\npacchetto suncalc aggiunto\ncambiamento da alba und dusk calc",
-        "es": "estado de conexión añadido\npaquete suncalc añadido\ncambio de la madrugada und",
-        "pl": "dodanie\npakiet słoneczny\nzmiana świtu i zmierzchu",
-        "uk": "додано стан з'єднання\nдодано пакет сонячнихcalc\nзміна з джинсового унду",
-        "zh-cn": "建 议\n日增包\ndawn und duskrickc的改变"
       }
     },
     "title": "Solax",
