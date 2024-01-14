@@ -42,6 +42,11 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
+### __WORK IN PROGRESS__
+* (simatec) Fix Data for X1/X3-EVC Wallbox
+* (simatec) Fix Inverter data
+* (simatec) Dependencies updated
+
 ### 0.9.2 (2024-01-13)
 * (simatec) Fix Data for X1/X3-EVC Wallbox
 
