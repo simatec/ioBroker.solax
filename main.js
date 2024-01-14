@@ -80,7 +80,8 @@ const _inverterStateAPI = {
 const _wallboxStateLocal = {
     0: 'Unplugged',
     1: 'Plugged',
-    2: 'Charging'
+    2: 'Charging',
+    3: 'Complete'
 };
 
 const _wallboxChargemodeLocal = {
