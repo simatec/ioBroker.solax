@@ -32,9 +32,9 @@
     "@alcalzone/release-script-plugin-iobroker": "^3.7.0",
     "@alcalzone/release-script-plugin-license": "^3.7.0",
     "@iobroker/testing": "^4.1.0",
+    "@iobroker/adapter-dev": "^1.2.0",
     "chai": "^4.3.10",
     "eslint": "^8.56.0",
-    "gulp": "^4.0.2",
     "mocha": "^10.2.0",
     "sinon": "^17.0.1",
     "sinon-chai": "^3.7.0",
@@ -49,7 +49,8 @@
     "release": "release-script",
     "release-patch": "release-script patch --yes",
     "release-minor": "release-script minor --yes",
-    "release-major": "release-script major --yes"
+    "release-major": "release-script major --yes",
+    "translate": "translate-adapter"
   },
   "bugs": {
     "url": "https://github.com/simatec/ioBroker.solax/issues"
