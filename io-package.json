@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.3",
+    "version": "0.9.4",
     "news": {
+      "0.9.4": {
+        "en": "simatec) adapter-dev added\nsimatec) delete Gulp\nData for X1/X3-EVC Wallbox added",
+        "de": "simatec) adapter-dev hinzugefügt\nsimatec) Löschen Gulp\nDaten für X1/X3-EVC Wanddose hinzugefügt",
+        "ru": "simatec) адаптер-dev добавлен\nsimatec) исключить Gulp\nДанные для X1/X3-EVC Wallbox добавлен",
+        "pt": "simatec) adaptador-dev adicionado\nsimatec) delete Gulp\nDados para X1/X3-EVC Caixa de parede adicionada",
+        "nl": "simatec) adapter-dev toegevoegd\nsimatec) verwijderen Gulp\nGegevens voor X1/X3-EVC Wandvak toegevoegd",
+        "fr": "adaptateur-dev ajouté\nsimatec) supprimer Gulp\nDonnées pour X1/X3-EVC Boîte murale ajoutée",
+        "it": "simatec) adattatore-dev aggiunto\nsimatec) delete Gulp\nDati per X1/X3-EVC Wallbox aggiunto",
+        "es": "simatec) adaptador-dev añadido\nsimatec) eliminar Gulp\nDatos para X1/X3-EVC Wallbox añadido",
+        "pl": "simatec) adapter -dev dodany\nsimatec) usunąć Gulp\nDane dotyczące X1 / X3- EVC Name",
+        "uk": "simatec) адаптер додано\nsimatec) видалити Gulp\nДані для X1/X3-EVC Настінна коробка додано",
+        "zh-cn": "simatec) 适配器- dev 添加\nsimatec) 删除 Gulp\nX1/X3-EVC的数据 添加了墙盒"
+      },
       "0.9.3": {
         "en": "Fix Data for X1/X3-EVC Wallbox\nFix Inverter data\nDependencies updated",
         "de": "Daten für X1/X3-EVC Wallbox beheben\nFix Inverter-Daten\nAusgaben aktualisiert",
@@ -80,19 +93,6 @@
         "pl": "Zależności\nmały Bug fix",
         "uk": "Залежність оновлено\nмали",
         "zh-cn": "B. 更新的属地\nbugfix"
-      },
-      "0.7.6": {
-        "en": "X3-Hybrid-G4 data updated\nDependencies updated\nsmall Bugfix\nUkrainian translation added",
-        "de": "X3-Hybrid-G4 Daten aktualisiert\nAusgaben aktualisiert\nkleiner Bugfix\nDeutsch Übersetzung hinzugefügt",
-        "ru": "Данные X3-Hybrid-G4 обновлены\nОбновленные зависимости\nнебольшой Bugfix\nУкраинский перевод добавлен",
-        "pt": "X3-Hybrid-G4 dados atualizados\nDependências atualizadas\npequeno Bugfix\nTradução ucraniana adicionado",
-        "nl": "X3-Hybrid-G4 data\nAfhankelijkheid geüpdateerd\nkleine Bugfix\nOekraïense vertaling",
-        "fr": "Données X3-Hybrid-G4 mises à jour\nDépendances mises à jour\npetit Bugfix\nTraduction ukrainienne ajoutée",
-        "it": "Dati X3-Hybrid-G4 aggiornati\nDipendenze aggiornate\npiccolo Bugfix\nTraduzione ucraina aggiunto",
-        "es": "Datos X3-Hybrid-G4 actualizados\nActualización de las dependencias\npequeño Bugfix\nTraducción de Ucrania",
-        "pl": "Dane X3-Hybrid-G4\nZależności\nmały Bug fix\nPrzekład ukraiński",
-        "uk": "X3-Hybrid-G4 оновлення\nЗалежність оновлено\nмали\nУкраїнський переклад Додано",
-        "zh-cn": "十、结 论\nB. 更新的属地\nbugfix\n乌克兰译文"
       }
     },
     "title": "Solax",

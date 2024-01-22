@@ -42,7 +42,7 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
-### __WORK IN PROGRESS__
+### 0.9.4 (2024-01-22)
 * simatec) adapter-dev added
 * simatec) delete Gulp
 * (Andre-0815-4711) Data for X1/X3-EVC Wallbox added
