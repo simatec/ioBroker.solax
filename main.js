@@ -91,7 +91,11 @@ const _wallboxChargemodeLocal = {
     3: 'Green'
 };
 
-
+const _wallboxPlugStateLocal = {
+    0: 'Not Connected',
+    1: 'Connected',
+    2: 'Charging'
+};
 
 let adapter;
 const adapterName = require('./package.json').name.split('.').pop();
@@ -580,7 +584,12 @@ async function requestLocalAPI(root_dataPoints, information_dataPoints, data_dat
                 if (type == 7 && key == '1') {
                     data = data !== undefined ? _wallboxChargemodeLocal[data] : 'Undefined';
                 }
-
+                
+                // State for chargemode Wallbox Type 7
+                if (type == 7 && key == '26') {
+                    data = data !== undefined ? _wallboxPlugStateLocal[data] : 'Undefined';
+                }
+                
                 await setDataPoint(dataPoint, data);
             }
 
