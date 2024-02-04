@@ -200,6 +200,19 @@
       "label": "Readme Expert Settings",
       "href": "https://github.com/simatec/ioBroker.solax/blob/master/README.md#experteneinstellungen",
       "newLine": true
+    },
+    "_donateTxt": {
+      "type": "staticText",
+      "text": "If you like this project and would like to support its development, you are welcome to leave a donation.",
+      "newLine": true
+    },
+    "_donate": {
+      "type": "staticImage",
+      "tooltip": "PayPal.Me",
+      "noTranslation": true,
+      "href": "https://paypal.me/mk1676",
+      "src": "https://www.paypalobjects.com/webstatic/de_DE/i/de-pp-logo-200px.png",
+      "newLine": true
     }
   }
 }
