@@ -585,12 +585,12 @@ async function requestLocalAPI(root_dataPoints, information_dataPoints, data_dat
                 if (type == 7 && key == '1') {
                     data = data !== undefined ? _wallboxChargemodeLocal[data] : 'Undefined';
                 }
-                
+
                 // State for chargemode Wallbox Type 7
                 if (type == 7 && key == '26') {
                     data = data !== undefined ? _wallboxPlugStateLocal[data] : 'Undefined';
                 }
-                
+
                 await setDataPoint(dataPoint, data);
             }
 

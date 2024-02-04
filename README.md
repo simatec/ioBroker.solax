@@ -44,6 +44,7 @@ When the adapter crashes or an other Code error happens, this error message that
 <!-- ### __WORK IN PROGRESS__ -->
 ### __WORK IN PROGRESS__
 * (simatec) Dependencies updated
+* (simatec) Fix Data for X1/X3-EVC Wallbox
 
 ### 0.9.4 (2024-01-22)
 * (simatec) adapter-dev added
