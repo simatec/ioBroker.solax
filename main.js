@@ -81,7 +81,8 @@ const _wallboxStateLocal = {
     0: 'Unplugged',
     1: 'Plugged',
     2: 'Charging',
-    3: 'Complete'
+    3: 'Complete',
+    4: 'Error'
 };
 
 const _wallboxChargemodeLocal = {
