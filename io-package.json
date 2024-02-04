@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.4",
+    "version": "0.9.5",
     "news": {
+      "0.9.5": {
+        "en": "Dependencies updated\nFix Data for X1/X3-EVC Wallbox",
+        "de": "Ausgaben aktualisiert\nDaten für X1/X3-EVC Wallbox beheben",
+        "ru": "Обновленные данные о зависимостях\nFix Данные для X1/X3-EVC Wallbox",
+        "pt": "Dependências atualizadas\nCorrigir dados para X1/X3-EVC Wallbox",
+        "nl": "Afhankelijkheden bijgewerkt\nFix Data voor X1/X3-EVC Wallbox",
+        "fr": "Dépendances actualisées\nCorrection des données pour X1/X3-EVC Wallbox",
+        "it": "Dipendenze aggiornate\nDati di fissaggio per X1/X3-EVC Wallbox",
+        "es": "Actualización de las dependencias\nDatos de fijación para X1/X3-EVC Wallbox",
+        "pl": "Aktualizacja zależności\nFix Data for X1 / X3-EVC Wallbox",
+        "uk": "Залежність оновлено\nВиправлення даних для X1 / X3-EVC Wallbox",
+        "zh-cn": "更新的依赖关系\n修复 X1/ X3- EVC 墙盒的数据"
+      },
       "0.9.4": {
         "en": "simatec) adapter-dev added\nsimatec) delete Gulp\nData for X1/X3-EVC Wallbox added",
         "de": "simatec) adapter-dev hinzugefügt\nsimatec) Löschen Gulp\nDaten für X1/X3-EVC Wanddose hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "X1Hybrid-G4 dodano do wersji X1-Hybrid-G4",
         "uk": "X1-Hybrid-G4 додано",
         "zh-cn": "十1-H 合并4"
-      },
-      "0.7.7": {
-        "en": "Dependencies updated\nsmall Bugfix",
-        "de": "Ausgaben aktualisiert\nkleiner Bugfix",
-        "ru": "Обновленные зависимости\nнебольшой Bugfix",
-        "pt": "Dependências atualizadas\npequeno Bugfix",
-        "nl": "Afhankelijkheid geüpdateerd\nkleine Bugfix",
-        "fr": "Dépendances mises à jour\npetit Bugfix",
-        "it": "Dipendenze aggiornate\npiccolo Bugfix",
-        "es": "Actualización de las dependencias\npequeño Bugfix",
-        "pl": "Zależności\nmały Bug fix",
-        "uk": "Залежність оновлено\nмали",
-        "zh-cn": "B. 更新的属地\nbugfix"
       }
     },
     "title": "Solax",

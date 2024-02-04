@@ -1,6 +1,6 @@
 {
   "name": "iobroker.solax",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Solax Inverter API Cloud and Local Connection",
   "author": {
     "name": "simatec",
