@@ -23,7 +23,7 @@
 ***
 
 
-#### Solax Cloud Connection
+## Solax Cloud Connection
 
 Solax Inverter API Cloud Connection
 
@@ -31,16 +31,16 @@ This adapter calls the data of your inverter from the manufacturer Solax into th
 
 What you need for this is an account with Solax, your token ID and the serial number of your WiFi module.
 
-#### API-Token
+## API-Token
 
 <span><img src="../img/solax_api.png"></span>
 
-#### serial number
+## serial number
 
 <span><img src="../img/wifi-stick.png"></span>
 
 
-#### Expert settings
+## Expert settings
 
 The local connection is currently only supported by the Pocket Wifi Sticks. LAN sticks can only be operated in cloud mode.
 
