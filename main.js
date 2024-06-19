@@ -234,8 +234,9 @@ async function validateURL() {
     return new Promise(async (resolve, reject) => {
 
         const cloudURL = {
-            0: 'https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do',
-            1: 'https://www.eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do'
+            0: 'https://www.eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do',
+            1: 'https://www.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do',
+            2: 'https://www.eu.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do'
         }
 
         for (const url in cloudURL) {
@@ -275,7 +276,7 @@ async function requestAPI() {
                 url: solaxURL,
                 timeout: 5000,
                 headers: {
-                    'User-Agent': 'axios/1.3.6'
+                    'User-Agent': 'axios/1.7.2'
                 },
                 responseType: 'json'
             });
