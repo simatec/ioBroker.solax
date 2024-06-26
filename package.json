@@ -50,7 +50,9 @@
     "release-patch": "release-script patch --yes",
     "release-minor": "release-script minor --yes",
     "release-major": "release-script major --yes",
-    "translate": "translate-adapter"
+    "translate": "translate-adapter",
+    "dev-server-run": "dev-server run solax",
+    "dev-server-watch": "dev-server watch solax"
   },
   "bugs": {
     "url": "https://github.com/simatec/ioBroker.solax/issues"

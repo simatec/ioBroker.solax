@@ -16,3 +16,6 @@ package-lock.json
 tsconfig.json
 /docs/files
 docs/files
+
+# ioBroker dev-server
+.dev-server/

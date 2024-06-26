@@ -9,3 +9,6 @@ admin/i18n/*/flat.txt
 /lib/*.sh
 .vscode
 .DS_Store
+
+# ioBroker dev-server
+.dev-server/
