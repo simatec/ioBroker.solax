@@ -35,11 +35,11 @@ const _inverterType = {
     15: 'X1-Hybrid-G4',
     16: 'X3-MIC/PRO-G2',
     17: 'X1-SPT',
-    18: 'X1-Boost/Mini-G4',
+    18: 'X1-Boost',
     19: 'A1-HYB-G2',
     20: 'A1-AC-G2',
     21: 'A1-SMT-G2',
-    22: 'X3-FTH',
+    22: 'X1-Mini-G4',
     23: 'X3-MGA-G2'
 };
 
@@ -544,6 +544,10 @@ async function requestLocalAPI(root_dataPoints, information_dataPoints, data_dat
                 case 15:
                     type = 6;
                     break;
+                case 18:
+                case 22:
+                    type = 8;
+                    break;
                 default:
                     type = 1;
                     break;
@@ -573,7 +577,13 @@ async function requestLocalAPI(root_dataPoints, information_dataPoints, data_dat
                     data = data * dataPoint.multiplier;
                 }
 
-                if ((type == 1 && key == '68') || (type == 3 && key == '18') || (type == 4 && key == '19') || (type == 2 && key == '10') || (type == 5 && key == '21') || (type == 6 && key == '10')) {
+                if ((type == 1 && key == '68') ||
+                    (type == 3 && key == '18') ||
+                    (type == 4 && key == '19') ||
+                    (type == 2 && key == '10') ||
+                    (type == 5 && key == '21') ||
+                    (type == 6 && key == '10') ||
+                    (type == 8 && key == '10')) {
                     data = data !== undefined ? _inverterStateLocal[data] : 'Offline';
                 }
 
@@ -658,12 +668,20 @@ async function resetValues(data_dataPoints) {
         5: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 72, 74, 76, 78,],
         6: [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 14, 15, 16, 17, 18, 32, 34, 36],
         7: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 26, 80],
+        8: [0, 1, 2, 3, 4, 5, 8, 9, 10, 13, 14, 21, 73, 74, 76],
     };
 
     for (const value of valuesOfReset[type]) {
         const dataPoint = data_dataPoints[type][value];
 
-        if ((type == 1 && value == '68') || (type == 3 && value == '18') || (type == 4 && value == '19') || (type == 2 && value == '10') || (type == 5 && value == '21') || (type == 6 && value == '10') || (type == 7 && value == '0')) {
+        if ((type == 1 && value == '68') ||
+            (type == 3 && value == '18') ||
+            (type == 4 && value == '19') ||
+            (type == 2 && value == '10') ||
+            (type == 5 && value == '21') ||
+            (type == 6 && value == '10') ||
+            (type == 7 && value == '0') ||
+            (type == 8 && value == '10')) {
             await setDataPoint(dataPoint, 'Offline');
         } else if (value != 8) {
             await setDataPoint(dataPoint, 0);
