@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.7",
+    "version": "0.9.8",
     "news": {
+      "0.9.8": {
+        "en": "Dependencies updated\nX1-Mini G4 added",
+        "de": "Ausgaben aktualisiert\nX1-Mini G4 hinzugefügt",
+        "ru": "Обновленные данные о зависимостях\nX1-Mini G4 добавлен",
+        "pt": "Dependências atualizadas\nX1-Mini G4 adicionado",
+        "nl": "Afhankelijkheden bijgewerkt\nX1-Mini G4 toegevoegd",
+        "fr": "Dépendances actualisées\nX1-Mini G4 ajouté",
+        "it": "Dipendenze aggiornate\nX1-Mini G4 aggiunto",
+        "es": "Actualización de las dependencias\nX1-Mini G4 añadido",
+        "pl": "Aktualizacja zależności\nDodano X1- Mini G4",
+        "uk": "Залежність оновлено\nX1-Mini G4 додано",
+        "zh-cn": "更新的依赖关系\nX1-Mini G4 添加"
+      },
       "0.9.7": {
         "en": "(simatec) Cloud-URL updated\n(simatec) Dependencies updated",
         "de": "(simatec) Cloud-URL aktualisiert\n(simatec) Abhängigkeiten aktualisiert",
@@ -80,19 +93,6 @@
         "pl": "Fix Data for X1 / X3-EVC Wallbox",
         "uk": "Виправлення даних для X1 / X3-EVC Wallbox",
         "zh-cn": "修复 X1/ X3- EVC 墙盒的数据"
-      },
-      "0.9.1": {
-        "en": "Fix Inverter data\nFix Data for X1/X3-EVC Wallbox\nUpdate Docu",
-        "de": "Inverter Daten beheben\nDaten für X1/X3-EVC Wallbox beheben\nUpdate Docu",
-        "ru": "Fix Инверторные данные\nИсправление данных для X1/X3-EVC Wallbox\nОбновление Docu",
-        "pt": "Corrigir dados do Inverter\nCorrigir dados para X1/X3-EVC Wallbox\nAtualização Docu",
-        "nl": "Fix Inverter gegevens\nVertaling:\nUpdate Docu",
-        "fr": "Fix Inverter data\nFix Data for X1/X3-EVC Wallbox\nMettre à jour Docu",
-        "it": "Fissare i dati dell'inverter\nDati di fissaggio per X1/X3-EVC Wallbox\nAggiornamento Docu",
-        "es": "Fijar datos de Inverter\nDatos de fijación para la caja de pared X1/X3-EVC\nActualización Docu",
-        "pl": "Fix Inverter Data\nFix Data for X1/X3 (ang.)\nUpdate Data",
-        "uk": "Фіксувати дані інвертора\nВиправлення даних для X1 / X3-EVC Wallbox\nОновлення Docu",
-        "zh-cn": "固定数据\nX1/X3-EVCW箱的固定数据\n最新资料"
       }
     },
     "titleLang": {
