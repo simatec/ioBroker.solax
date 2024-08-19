@@ -139,7 +139,6 @@
       "type": "free"
     },
     "platform": "Javascript/Node.js",
-    "main": "main.js",
     "icon": "solax.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/simatec/ioBroker.solax/master/admin/solax.png",
@@ -148,7 +147,6 @@
     "mode": "daemon",
     "type": "energy",
     "compact": true,
-    "materialize": true,
     "messagebox": true,
     "stopBeforeUpdate": true,
     "connectionType": "cloud",
@@ -156,7 +154,7 @@
     "tier": 2,
     "dependencies": [
       {
-        "js-controller": ">=4.0.0"
+        "js-controller": ">=5.0.19"
       }
     ],
     "globalDependencies": [
