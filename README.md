@@ -45,6 +45,7 @@ When the adapter crashes or an other Code error happens, this error message that
 ### __WORK IN PROGRESS__
 * (simatec) small fix
 * (simatec) Dependencies updated
+* (simatec) Responsive Design added
 
 ### 0.9.9 (2024-06-27)
 * (simatec) Fix X1-Mini G4
