@@ -42,7 +42,7 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
-### __WORK IN PROGRESS__
+### 0.9.10 (2024-09-17)
 * (simatec) small fix
 * (simatec) Dependencies updated
 * (simatec) Responsive Design added

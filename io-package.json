@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.9",
+    "version": "0.9.10",
     "news": {
+      "0.9.10": {
+        "en": "small fix\nDependencies updated\nResponsive Design added",
+        "de": "kleine fix\nAusgaben aktualisiert\nResponsive Design hinzugefügt",
+        "ru": "небольшое исправление\nОбновленные данные о зависимостях\nResponsive Design",
+        "pt": "pequena correção\nDependências atualizadas\nDesign responsivo adicionado",
+        "nl": "kleine fix\nAfhankelijkheden bijgewerkt\nResponsive Design toegevoegd",
+        "fr": "petite fixation\nDépendances actualisées\nDesign sensible ajouté",
+        "it": "piccola correzione\nDipendenze aggiornate\nResponsive Design aggiunto",
+        "es": "pequeño\nActualización de las dependencias\nDiseño responsable añadido",
+        "pl": "mały fix\nAktualizacja zależności\nDodano projekt odpowiedzialny",
+        "uk": "невелика фіксація\nЗалежність оновлено\nДодано адаптивний дизайн",
+        "zh-cn": "小修补\n更新的依赖关系\n添加响应设计"
+      },
       "0.9.9": {
         "en": "Fix X1-Mini G4",
         "de": "X1-Mini G4",
@@ -80,19 +93,6 @@
         "pl": "simatec) adapter -dev dodany\nsimatec) usunąć Gulp\nDane dotyczące X1 / X3- EVC Name",
         "uk": "simatec) адаптер додано\nsimatec) видалити Gulp\nДані для X1/X3-EVC Настінна коробка додано",
         "zh-cn": "simatec) 适配器- dev 添加\nsimatec) 删除 Gulp\nX1/X3-EVC的数据 添加了墙盒"
-      },
-      "0.9.3": {
-        "en": "Fix Data for X1/X3-EVC Wallbox\nFix Inverter data\nDependencies updated",
-        "de": "Daten für X1/X3-EVC Wallbox beheben\nFix Inverter-Daten\nAusgaben aktualisiert",
-        "ru": "Fix Данные для X1/X3-EVC Wallbox\nFix Inverter data\nОбновленные данные о зависимостях",
-        "pt": "Corrigir dados para X1/X3-EVC Wallbox\nCorrigir dados do Inverter\nDependências atualizadas",
-        "nl": "Fix Data voor X1/X3-EVC Wallbox\nFix Inverter gegevens\nAfhankelijkheden bijgewerkt",
-        "fr": "Correction des données pour X1/X3-EVC Wallbox\nCorrection des données de l'onduleur\nDépendances actualisées",
-        "it": "Dati di fissaggio per X1/X3-EVC Wallbox\nFissare i dati dell'inverter\nDipendenze aggiornate",
-        "es": "Datos de fijación para X1/X3-EVC Wallbox\nFijar datos de Inverter\nActualización de las dependencias",
-        "pl": "Fix Data for X1 / X3-EVC Wallbox\nPopraw dane Invertera\nAktualizacja zależności",
-        "uk": "Виправлення даних для X1 / X3-EVC Wallbox\nФіксувати дані інвертора\nЗалежність оновлено",
-        "zh-cn": "修复 X1/ X3- EVC 墙盒的数据\n修复反转数据\n更新的依赖关系"
       }
     },
     "titleLang": {
