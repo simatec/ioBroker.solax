@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.10",
+    "version": "0.9.11",
     "news": {
+      "0.9.11": {
+        "en": "small Design fix",
+        "de": "kleine Design fix",
+        "ru": "небольшой дизайн",
+        "pt": "pequena correção de design",
+        "nl": "kleine ontwerpfix",
+        "fr": "petit montage",
+        "it": "piccolo Design fix",
+        "es": "pequeño diseño",
+        "pl": "mały design fix",
+        "uk": "маленька фіксація дизайну",
+        "zh-cn": "小设计修正"
+      },
       "0.9.10": {
         "en": "small fix\nDependencies updated\nResponsive Design added",
         "de": "kleine fix\nAusgaben aktualisiert\nResponsive Design hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "Aktualizacja zależności\nFix Data for X1 / X3-EVC Wallbox",
         "uk": "Залежність оновлено\nВиправлення даних для X1 / X3-EVC Wallbox",
         "zh-cn": "更新的依赖关系\n修复 X1/ X3- EVC 墙盒的数据"
-      },
-      "0.9.4": {
-        "en": "simatec) adapter-dev added\nsimatec) delete Gulp\nData for X1/X3-EVC Wallbox added",
-        "de": "simatec) adapter-dev hinzugefügt\nsimatec) Löschen Gulp\nDaten für X1/X3-EVC Wanddose hinzugefügt",
-        "ru": "simatec) адаптер-dev добавлен\nsimatec) исключить Gulp\nДанные для X1/X3-EVC Wallbox добавлен",
-        "pt": "simatec) adaptador-dev adicionado\nsimatec) delete Gulp\nDados para X1/X3-EVC Caixa de parede adicionada",
-        "nl": "simatec) adapter-dev toegevoegd\nsimatec) verwijderen Gulp\nGegevens voor X1/X3-EVC Wandvak toegevoegd",
-        "fr": "adaptateur-dev ajouté\nsimatec) supprimer Gulp\nDonnées pour X1/X3-EVC Boîte murale ajoutée",
-        "it": "simatec) adattatore-dev aggiunto\nsimatec) delete Gulp\nDati per X1/X3-EVC Wallbox aggiunto",
-        "es": "simatec) adaptador-dev añadido\nsimatec) eliminar Gulp\nDatos para X1/X3-EVC Wallbox añadido",
-        "pl": "simatec) adapter -dev dodany\nsimatec) usunąć Gulp\nDane dotyczące X1 / X3- EVC Name",
-        "uk": "simatec) адаптер додано\nsimatec) видалити Gulp\nДані для X1/X3-EVC Настінна коробка додано",
-        "zh-cn": "simatec) 适配器- dev 添加\nsimatec) 删除 Gulp\nX1/X3-EVC的数据 添加了墙盒"
       }
     },
     "titleLang": {
