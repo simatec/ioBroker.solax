@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.11",
+    "version": "0.9.12",
     "news": {
+      "0.9.12": {
+        "en": "Fix for Admin 7.1.5",
+        "de": "Fix für Admin 7.1.5",
+        "ru": "7.1.5",
+        "pt": "Fix para Admin 7.1.5",
+        "nl": "Fix voor Admin 7.1.5",
+        "fr": "Correction pour Admin 7.1.5",
+        "it": "Fissare per Admin 7.1.5",
+        "es": "Corrección para Admin 7.1.5",
+        "pl": "Naprawiono dla Admin 7.1.5",
+        "uk": "Виправлення для адміністратора 7.1.5",
+        "zh-cn": "7.1.5 管理员的固定"
+      },
       "0.9.11": {
         "en": "small Design fix",
         "de": "kleine Design fix",
@@ -80,19 +93,6 @@
         "pl": "mały projekt Fix",
         "uk": "невеликий дизайн виправити",
         "zh-cn": "小设计"
-      },
-      "0.9.5": {
-        "en": "Dependencies updated\nFix Data for X1/X3-EVC Wallbox",
-        "de": "Ausgaben aktualisiert\nDaten für X1/X3-EVC Wallbox beheben",
-        "ru": "Обновленные данные о зависимостях\nFix Данные для X1/X3-EVC Wallbox",
-        "pt": "Dependências atualizadas\nCorrigir dados para X1/X3-EVC Wallbox",
-        "nl": "Afhankelijkheden bijgewerkt\nFix Data voor X1/X3-EVC Wallbox",
-        "fr": "Dépendances actualisées\nCorrection des données pour X1/X3-EVC Wallbox",
-        "it": "Dipendenze aggiornate\nDati di fissaggio per X1/X3-EVC Wallbox",
-        "es": "Actualización de las dependencias\nDatos de fijación para X1/X3-EVC Wallbox",
-        "pl": "Aktualizacja zależności\nFix Data for X1 / X3-EVC Wallbox",
-        "uk": "Залежність оновлено\nВиправлення даних для X1 / X3-EVC Wallbox",
-        "zh-cn": "更新的依赖关系\n修复 X1/ X3- EVC 墙盒的数据"
       }
     },
     "titleLang": {
