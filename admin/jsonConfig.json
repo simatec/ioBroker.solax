@@ -10,7 +10,7 @@
       "disabled": "data.localConnection",
       "xs": 12,
       "sm": 12,
-      "md": 8,
+      "md": 6,
       "lg": 4,
       "xl": 4,
       "help": "Get the Token ID from Solax",
@@ -24,7 +24,7 @@
       "disabled": "data.localConnection'",
       "xs": 12,
       "sm": 12,
-      "md": 8,
+      "md": 6,
       "lg": 4,
       "xl": 4,
       "help": "serial Number",
@@ -52,7 +52,7 @@
       "disabled": "!data.localConnection",
       "xs": 12,
       "sm": 12,
-      "md": 8,
+      "md": 6,
       "lg": 4,
       "xl": 4,
       "help": "Local IP Wifi Pocket Stick",
@@ -168,7 +168,7 @@
       "hidden": "data.systemGeoData",
       "xs": 12,
       "sm": 12,
-      "md": 8,
+      "md": 6,
       "lg": 4,
       "xl": 4,
       "help": "longitude",
@@ -204,8 +204,8 @@
       "xs": 12,
       "sm": 12,
       "md": 6,
-      "lg": 8,
-      "xl": 8
+      "lg": 6,
+      "xl": 6
     },
     "localConnection": {
       "newLine": true,
@@ -223,8 +223,8 @@
       "xs": 12,
       "sm": 12,
       "md": 6,
-      "lg": 8,
-      "xl": 8
+      "lg": 6,
+      "xl": 6
     },
     "_helpLink": {
       "type": "staticLink",
@@ -236,7 +236,10 @@
       "href": "https://github.com/simatec/ioBroker.solax/blob/master/README.md#experteneinstellungen",
       "newLine": true,
       "xs": 12,
-      "sm": 12
+      "sm": 12,
+      "md": 12,
+      "lg": 12,
+      "xl": 12
     },
     "_helpLine2": {
       "newLine": true,
