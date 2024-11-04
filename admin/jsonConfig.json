@@ -12,6 +12,7 @@
       "sm": 12,
       "md": 8,
       "lg": 4,
+      "xl": 4,
       "help": "Get the Token ID from Solax",
       "helpLink": "https://www.eu.solaxcloud.com/#/api",
       "type": "password",
@@ -25,6 +26,7 @@
       "sm": 12,
       "md": 8,
       "lg": 4,
+      "xl": 4,
       "help": "serial Number",
       "type": "text",
       "label": "serial Number"
@@ -37,6 +39,7 @@
       "sm": 12,
       "md": 6,
       "lg": 4,
+      "xl": 4,
       "min": 1,
       "max": 120,
       "help": "Request Interval (minutes)",
@@ -51,6 +54,7 @@
       "sm": 12,
       "md": 8,
       "lg": 4,
+      "xl": 4,
       "help": "Local IP Wifi Pocket Stick",
       "type": "text",
       "label": "Local IP Wifi Pocket Stick"
@@ -65,6 +69,7 @@
       "sm": 12,
       "md": 8,
       "lg": 4,
+      "xl": 4,
       "help": "Webinterface Password Wifi Pocket Stick",
       "type": "password",
       "label": "Webinterface Password Wifi Pocket Stick"
@@ -77,6 +82,7 @@
       "sm": 12,
       "md": 6,
       "lg": 4,
+      "xl": 4,
       "min": 1,
       "max": 3600,
       "default": 10,
@@ -92,6 +98,7 @@
       "sm": 12,
       "md": 6,
       "lg": 4,
+      "xl": 4,
       "min": 1,
       "max": 100,
       "default": 5,
@@ -105,6 +112,7 @@
       "sm": 12,
       "md": 6,
       "lg": 4,
+      "xl": 4,
       "min": 1,
       "max": 365,
       "default": 10,
@@ -132,7 +140,8 @@
       "xs": 12,
       "sm": 12,
       "md": 6,
-      "lg": 4
+      "lg": 4,
+      "xl": 4
     },
     "systemGeoData": {
       "newLine": true,
@@ -141,7 +150,8 @@
       "xs": 12,
       "sm": 12,
       "md": 6,
-      "lg": 4
+      "lg": 4,
+      "xl": 4
     },
     "nightMode": {
       "newLine": false,
@@ -150,7 +160,8 @@
       "xs": 12,
       "sm": 12,
       "md": 6,
-      "lg": 4
+      "lg": 4,
+      "xl": 4
     },
     "longitude": {
       "newLine": true,
@@ -159,6 +170,7 @@
       "sm": 12,
       "md": 8,
       "lg": 4,
+      "xl": 4,
       "help": "longitude",
       "type": "text",
       "label": "longitude"
@@ -170,6 +182,7 @@
       "sm": 12,
       "md": 6,
       "lg": 4,
+      "xl": 4,
       "help": "latitude",
       "type": "text",
       "label": "latitude"
@@ -179,7 +192,10 @@
       "type": "divider",
       "color": "secondary",
       "xs": 12,
-      "sm": 12
+      "sm": 12,
+      "md": 12,
+      "lg": 12,
+      "xl": 12
     },
     "expertSettings": {
       "newLine": true,
@@ -188,7 +204,8 @@
       "xs": 12,
       "sm": 12,
       "md": 6,
-      "lg": 8
+      "lg": 8,
+      "xl": 8
     },
     "localConnection": {
       "newLine": true,
@@ -206,7 +223,8 @@
       "xs": 12,
       "sm": 12,
       "md": 6,
-      "lg": 8
+      "lg": 8,
+      "xl": 8
     },
     "_helpLink": {
       "type": "staticLink",
@@ -225,14 +243,20 @@
       "type": "divider",
       "color": "secondary",
       "xs": 12,
-      "sm": 12
+      "sm": 12,
+      "md": 12,
+      "lg": 12,
+      "xl": 12
     },
     "_donateTxt": {
       "type": "staticText",
       "text": "If you like this project and would like to support its development, you are welcome to leave a donation.",
       "newLine": true,
       "xs": 12,
-      "sm": 12
+      "sm": 12,
+      "md": 12,
+      "lg": 12,
+      "xl": 12
     },
     "_donate": {
       "type": "staticImage",
@@ -244,7 +268,8 @@
       "xs": 7,
       "sm": 3,
       "md": 3,
-      "lg": 1.2
+      "lg": 1.2,
+      "xl": 1.2
     },
     "_githubSponsor": {
       "type": "staticImage",
@@ -255,7 +280,8 @@
       "xs": 5,
       "sm": 2,
       "md": 2,
-      "lg": 0.8
+      "lg": 0.8,
+      "xl": 0.8
     }
   }
 }
