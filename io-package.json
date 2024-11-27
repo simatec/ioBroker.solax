@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.12",
+    "version": "0.9.13",
     "news": {
+      "0.9.13": {
+        "en": "Dependencies updated\nsmall Design fix\nIssue Action added\neslint-config added",
+        "de": "Ausgaben aktualisiert\nkleine Design fix\nAusgabe Aktion hinzugefügt\neslint-config hinzugefügt",
+        "ru": "Обновленные данные о зависимостях\nнебольшой дизайн\nДополнительные меры\nдобавлена eslint-config",
+        "pt": "Dependências atualizadas\npequena correção de design\nAção de problemas adicionada\neslint-config adicionado",
+        "nl": "Afhankelijkheden bijgewerkt\nkleine ontwerpfix\nOnderwerpactie toegevoegd\neslint-config toegevoegd",
+        "fr": "Dépendances actualisées\npetit montage\nMesure à prendre\neslint-config ajouté",
+        "it": "Dipendenze aggiornate\npiccolo Design fix\nAzione di problema aggiunto\neslint-config aggiunto",
+        "es": "Actualización de las dependencias\npequeño diseño\nTema Acción añadido\neslint-config añadido",
+        "pl": "Aktualizacja zależności\nmały design fix\nDodano działanie\neslint- config dodany",
+        "uk": "Залежність оновлено\nмаленька фіксація дизайну\nДодана емісія\neslint-config додано",
+        "zh-cn": "更新的依赖关系\n小设计修正\n添加的问题行动\n添加埃斯林特配置"
+      },
       "0.9.12": {
         "en": "Fix for Admin 7.1.5",
         "de": "Fix für Admin 7.1.5",
@@ -80,19 +93,6 @@
         "pl": "(simatec) Cloud- URL zaktualizowany\n(simatec)",
         "uk": "(Simatec) Cloud-URL оновлений\n(simatec) Залежність оновлено",
         "zh-cn": "(静音) 更新云- URL\n(simatec) 更新的依赖性"
-      },
-      "0.9.6": {
-        "en": "small Design Fix",
-        "de": "kleines Design Fix",
-        "ru": "маленький дизайн Fix",
-        "pt": "pequeno Design Fix",
-        "nl": "kleine ontwerp Fix",
-        "fr": "petite fixation de conception",
-        "it": "piccolo Design Fix",
-        "es": "pequeño diseño fijar",
-        "pl": "mały projekt Fix",
-        "uk": "невеликий дизайн виправити",
-        "zh-cn": "小设计"
       }
     },
     "titleLang": {
