@@ -172,7 +172,7 @@ async function getSystemData() {
 
 function getDate(d) {
     d = d || new Date();
-    return (('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2));
+    return (`${(`0${d.getHours()}`).slice(-2)}:${(`0${d.getMinutes()}`).slice(-2)}`);
 }
 
 async function nightCalc(_isNight) {
@@ -182,8 +182,8 @@ async function nightCalc(_isNight) {
         try {
             const times = SunCalc.getTimes(new Date(), latitude, longitude);
 
-            const dusk = ('0' + times.dusk.getHours()).slice(-2) + ':' + ('0' + times.dusk.getMinutes()).slice(-2);
-            const dawn = ('0' + times.dawn.getHours()).slice(-2) + ':' + ('0' + times.dawn.getMinutes()).slice(-2);
+            const dusk = `${(`0${times.dusk.getHours()}`).slice(-2)}:${(`0${times.dusk.getMinutes()}`).slice(-2)}`;
+            const dawn = `${(`0${times.dawn.getHours()}`).slice(-2)}:${(`0${times.dawn.getMinutes()}`).slice(-2)}`;
 
             adapter.log.debug(`dusk: ${dusk}`);
             adapter.log.debug(`dawn: ${dawn}`);
@@ -218,8 +218,8 @@ async function sunPos() {
         const azimuth = Math.round(10 * currentAzimuth) / 10;
         const altitude = Math.round(10 * currentAltitude) / 10;
 
-        adapter.log.debug('Sun Altitude: ' + altitude + '°');
-        adapter.log.debug('Sun Azimut: ' + azimuth + '°');
+        adapter.log.debug(`Sun Altitude: ${altitude}°`);
+        adapter.log.debug(`Sun Azimut: ${azimuth}°`);
 
         await adapter.setStateAsync('suninfo.Azimut', azimuth, true);
         await adapter.setStateAsync('suninfo.Altitude', altitude, true);
@@ -250,11 +250,11 @@ async function validateURL() {
                     validateStatus: () => true
                 });
             } catch (err) {
-                adapter.log.warn('Solax Cloud is not available: ' + err);
+                adapter.log.warn(`Solax Cloud is not available: ${err}`);
                 reject(err);
             }
             if (available && available.status) {
-                adapter.log.debug('Solax Cloud is available ... Status: ' + available.status);
+                adapter.log.debug(`Solax Cloud is available ... Status: ${available.status}`);
                 resolve(cloudURL[url]);
                 break;
             }
@@ -347,7 +347,7 @@ async function fillData() {
                 adapter.log.debug('SolaX API is currently unavailable');
             }
         } catch (err) {
-            adapter.log.warn('request error: ' + err);
+            adapter.log.warn(`request error: ${err}`);
         }
         // @ts-ignore
         resolve();
@@ -357,7 +357,7 @@ async function fillData() {
 async function setData(solaxRequest) {
     return new Promise(async (resolve) => {
 
-        const list = await adapter.getForeignObjectsAsync(adapter.namespace + '.data.*');
+        const list = await adapter.getForeignObjectsAsync(`${adapter.namespace}.data.*`);
 
         if (list) {
             let num = 0;
@@ -396,7 +396,7 @@ async function setData(solaxRequest) {
 async function createdJSON() {
     return new Promise(async (resolve) => {
         const json = {};
-        const infoList = await adapter.getForeignObjectsAsync(adapter.namespace + '.info.*');
+        const infoList = await adapter.getForeignObjectsAsync(`${adapter.namespace}.info.*`);
 
         if (infoList) {
             for (const i in infoList) {
@@ -412,7 +412,7 @@ async function createdJSON() {
             }
         }
 
-        const dataList = await adapter.getForeignObjectsAsync(adapter.namespace + '.data.*');
+        const dataList = await adapter.getForeignObjectsAsync(`${adapter.namespace}.data.*`);
 
         if (dataList) {
             let num = 0;
@@ -641,16 +641,16 @@ async function setDataPoint(dataPoint, data) {
     // @ts-ignore
     if (!stateCache.includes(dataPoint.name)) {
         await adapter.setObjectNotExistsAsync(dataPointPath, {
-            'type': 'state',
-            'common': {
-                'role': dataPoint.role,
-                'name': dataPoint.description,
-                'type': dataPoint.type,
-                'unit': dataPoint.unit,
-                'read': true,
-                'write': false
+            type: 'state',
+            common: {
+                role: dataPoint.role,
+                name: dataPoint.description,
+                type: dataPoint.type,
+                unit: dataPoint.unit,
+                read: true,
+                write: false
             },
-            'native': {}
+            native: {}
         });
 
         stateCache.push(dataPoint.name);
@@ -727,7 +727,7 @@ async function main() {
     astroTimer = setInterval(async () => {
         _isNight = await nightCalc(_isNight);
         await sunPos();
-        adapter.log.debug('is Night: ' + _isNight);
+        adapter.log.debug(`is Night: ${_isNight}`);
     }, 5 * 60 * 1000);
 
     schedule.cancelJob('dayHistory');
