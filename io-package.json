@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.13",
+    "version": "0.9.14",
     "news": {
+      "0.9.14": {
+        "en": "eslint-config fix\nCode fix\nDependencies updated\nLicense updated",
+        "de": "eslint-config fix\nCode fix\nAusgaben aktualisiert\nLizenz aktualisiert",
+        "ru": "eslint-конфигурация\nКод\nОбновленные данные о зависимостях\nЛицензия",
+        "pt": "eslint-config fix\nCorreção de código\nDependências atualizadas\nLicença atualizada",
+        "nl": "eslint-config fix\nCodefix\nAfhankelijkheden bijgewerkt\nLicentie bijgewerkt",
+        "fr": "fixateur eslint-config\nFixation du code\nDépendances actualisées\nLicence mise à jour",
+        "it": "eslint-config fix\nCodice di correzione\nDipendenze aggiornate\nLicenza aggiornata",
+        "es": "eslint-config fix\nCódigo\nActualización de las dependencias\nLicencia actualizada",
+        "pl": "fix eslint- config\nUstawienie kodu\nAktualizacja zależności\nAktualizacja licencji",
+        "uk": "eslint-config виправити\nВиправлення коду\nЗалежність оновлено\nОновлення ліцензії",
+        "zh-cn": "埃斯林特配置修复\n代码修正\n更新的依赖关系\n许可证更新"
+      },
       "0.9.13": {
         "en": "Dependencies updated\nsmall Design fix\nIssue Action added\neslint-config added",
         "de": "Ausgaben aktualisiert\nkleine Design fix\nAusgabe Aktion hinzugefügt\neslint-config hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "Aktualizacja zależności\nDodano X1- Mini G4",
         "uk": "Залежність оновлено\nX1-Mini G4 додано",
         "zh-cn": "更新的依赖关系\nX1-Mini G4 添加"
-      },
-      "0.9.7": {
-        "en": "(simatec) Cloud-URL updated\n(simatec) Dependencies updated",
-        "de": "(simatec) Cloud-URL aktualisiert\n(simatec) Abhängigkeiten aktualisiert",
-        "ru": "(simatec) Cloud-URL обновил\n(simatec) Обновление зависимостей",
-        "pt": "(simatec) Cloud-URL atualizado\n(simatec) Dependências atualizadas",
-        "nl": "(simatec) Cloud-URL bijgewerkt\nAfhankelijkheden bijgewerkt",
-        "fr": "(simatec) Cloud-URL mise à jour\n(simatec) Dépendances actualisées",
-        "it": "(simatec) Cloud-URL aggiornato\n(simatec) Dipendenze aggiornate",
-        "es": "(simatec) Cloud-URL actualizado\nDependencias actualizadas",
-        "pl": "(simatec) Cloud- URL zaktualizowany\n(simatec)",
-        "uk": "(Simatec) Cloud-URL оновлений\n(simatec) Залежність оновлено",
-        "zh-cn": "(静音) 更新云- URL\n(simatec) 更新的依赖性"
       }
     },
     "titleLang": {
