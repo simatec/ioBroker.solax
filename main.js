@@ -247,6 +247,7 @@ async function validateURL() {
                 available = await axios({
                     method: 'get',
                     url: cloudURL[url],
+                    timeout: 10000,
                     validateStatus: () => true
                 });
             } catch (err) {
@@ -636,27 +637,29 @@ async function requestLocalAPI(root_dataPoints, information_dataPoints, data_dat
 }
 
 async function setDataPoint(dataPoint, data) {
-    const dataPointPath = dataPoint.name;
+    if (dataPoint?.name) {
+        const dataPointPath = dataPoint.name;
 
-    // @ts-ignore
-    if (!stateCache.includes(dataPoint.name)) {
-        await adapter.setObjectNotExistsAsync(dataPointPath, {
-            type: 'state',
-            common: {
-                role: dataPoint.role,
-                name: dataPoint.description,
-                type: dataPoint.type,
-                unit: dataPoint.unit,
-                read: true,
-                write: false
-            },
-            native: {}
-        });
+        // @ts-ignore
+        if (!stateCache.includes(dataPoint.name)) {
+            await adapter.setObjectNotExistsAsync(dataPointPath, {
+                type: 'state',
+                common: {
+                    role: dataPoint.role,
+                    name: dataPoint.description,
+                    type: dataPoint.type,
+                    unit: dataPoint.unit,
+                    read: true,
+                    write: false
+                },
+                native: {}
+            });
 
-        stateCache.push(dataPoint.name);
+            stateCache.push(dataPoint.name);
+        }
+
+        await adapter.setStateAsync(dataPointPath, data, true);
     }
-
-    await adapter.setStateAsync(dataPointPath, data, true);
 }
 
 async function resetValues(data_dataPoints) {
