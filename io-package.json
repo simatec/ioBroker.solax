@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.14",
+    "version": "0.9.15",
     "news": {
+      "0.9.15": {
+        "en": "Fix Request\nCode Fix\nDependencies updated",
+        "de": "Fehlersuche\nCode Fix\nAusgaben aktualisiert",
+        "ru": "Запрос\nКод\nОбновленные данные о зависимостях",
+        "pt": "Pedido de Fixação\nCorrigir código\nDependências atualizadas",
+        "nl": "Fix Request\nCodefix\nAfhankelijkheden bijgewerkt",
+        "fr": "Correction de la requête\nCorrection du code\nDépendances actualisées",
+        "it": "Fissare la richiesta\nCodice\nDipendenze aggiornate",
+        "es": "Solicitud fija\nCódigo\nActualización de las dependencias",
+        "pl": "Napraw wniosek\nPoprawiono kod\nAktualizacja zależności",
+        "uk": "Запит на виправлення\nВиправлення коду\nЗалежність оновлено",
+        "zh-cn": "修复请求\n代码修补\n更新的依赖关系"
+      },
       "0.9.14": {
         "en": "eslint-config fix\nCode fix\nDependencies updated\nLicense updated",
         "de": "eslint-config fix\nCode fix\nAusgaben aktualisiert\nLizenz aktualisiert",
@@ -80,19 +93,6 @@
         "pl": "Fix X1- Mini G4",
         "uk": "Фіксація X1-Mini G4",
         "zh-cn": "修复 X1-Mini G4"
-      },
-      "0.9.8": {
-        "en": "Dependencies updated\nX1-Mini G4 added",
-        "de": "Ausgaben aktualisiert\nX1-Mini G4 hinzugefügt",
-        "ru": "Обновленные данные о зависимостях\nX1-Mini G4 добавлен",
-        "pt": "Dependências atualizadas\nX1-Mini G4 adicionado",
-        "nl": "Afhankelijkheden bijgewerkt\nX1-Mini G4 toegevoegd",
-        "fr": "Dépendances actualisées\nX1-Mini G4 ajouté",
-        "it": "Dipendenze aggiornate\nX1-Mini G4 aggiunto",
-        "es": "Actualización de las dependencias\nX1-Mini G4 añadido",
-        "pl": "Aktualizacja zależności\nDodano X1- Mini G4",
-        "uk": "Залежність оновлено\nX1-Mini G4 додано",
-        "zh-cn": "更新的依赖关系\nX1-Mini G4 添加"
       }
     },
     "titleLang": {
