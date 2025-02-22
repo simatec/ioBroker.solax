@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.15",
+    "version": "0.9.16",
     "news": {
+      "0.9.16": {
+        "en": "Dependencies updated\nsmall fix",
+        "de": "Ausgaben aktualisiert\nkleine fix",
+        "ru": "Обновленные зависимости\nнебольшой ремонт",
+        "pt": "Dependências atualizadas\npequena correção",
+        "nl": "Afhankelijkheden bijgewerkt\nkleine fix",
+        "fr": "Dépendances actualisées\npetite fixation",
+        "it": "Dipendenze aggiornate\npiccola correzione",
+        "es": "Actualización de las dependencias\npequeño",
+        "pl": "Aktualizacja zależności\nmały fix",
+        "uk": "Залежність оновлено\nневелика фіксація",
+        "zh-cn": "更新的依赖关系\n小修补"
+      },
       "0.9.15": {
         "en": "Fix Request\nCode Fix\nDependencies updated",
         "de": "Fehlersuche\nCode Fix\nAusgaben aktualisiert",
@@ -80,19 +93,6 @@
         "pl": "mały fix\nAktualizacja zależności\nDodano projekt odpowiedzialny",
         "uk": "невелика фіксація\nЗалежність оновлено\nДодано адаптивний дизайн",
         "zh-cn": "小修补\n更新的依赖关系\n添加响应设计"
-      },
-      "0.9.9": {
-        "en": "Fix X1-Mini G4",
-        "de": "X1-Mini G4",
-        "ru": "Fix X1-Mini G4",
-        "pt": "Fix X1-Mini G4",
-        "nl": "Fix X1-Mini G4",
-        "fr": "Correction de X1-Mini G4",
-        "it": "Fissare X1-Mini G4",
-        "es": "Fijar X1-Mini G4",
-        "pl": "Fix X1- Mini G4",
-        "uk": "Фіксація X1-Mini G4",
-        "zh-cn": "修复 X1-Mini G4"
       }
     },
     "titleLang": {
