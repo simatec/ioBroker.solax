@@ -225,7 +225,9 @@
     "historyDays": 7,
     "nightMode": false,
     "batteryMode": false,
-    "firmwareVersion": 2
+    "firmwareVersion": 2,
+    "apiToken": "",
+    "passwordWifi": ""
   },
   "encryptedNative": [
     "apiToken",
