@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.16",
+    "version": "0.9.17",
     "news": {
+      "0.9.17": {
+        "en": "Dependencies updated\nCleaned up code\nmigrated to json5",
+        "de": "Ausgaben aktualisiert\nGesäuberter Code\nzu json5 migriert",
+        "ru": "Обновленные зависимости\nОчистить код\nиммиграция в json5",
+        "pt": "Dependências atualizadas\nLimpe o código\nmigrado para json5",
+        "nl": "Afhankelijkheden bijgewerkt\nCode opgeruimd\ngemigreerd naar json5",
+        "fr": "Dépendances actualisées\nCode nettoyé\nmigré vers json5",
+        "it": "Dipendenze aggiornate\nPulito codice\nmigrato a json5",
+        "es": "Actualización de las dependencias\nCódigo de limpieza\nmigrated to json5",
+        "pl": "Aktualizacja zależności\nOczyszczony kod\nmigrant do json5",
+        "uk": "Залежність оновлено\nПрибрати код\nмігрований в json5",
+        "zh-cn": "更新的依赖关系\n清理代码\n迁移到json5"
+      },
       "0.9.16": {
         "en": "Dependencies updated\nsmall fix",
         "de": "Ausgaben aktualisiert\nkleine fix",
@@ -80,19 +93,6 @@
         "pl": "mały design fix",
         "uk": "маленька фіксація дизайну",
         "zh-cn": "小设计修正"
-      },
-      "0.9.10": {
-        "en": "small fix\nDependencies updated\nResponsive Design added",
-        "de": "kleine fix\nAusgaben aktualisiert\nResponsive Design hinzugefügt",
-        "ru": "небольшое исправление\nОбновленные данные о зависимостях\nResponsive Design",
-        "pt": "pequena correção\nDependências atualizadas\nDesign responsivo adicionado",
-        "nl": "kleine fix\nAfhankelijkheden bijgewerkt\nResponsive Design toegevoegd",
-        "fr": "petite fixation\nDépendances actualisées\nDesign sensible ajouté",
-        "it": "piccola correzione\nDipendenze aggiornate\nResponsive Design aggiunto",
-        "es": "pequeño\nActualización de las dependencias\nDiseño responsable añadido",
-        "pl": "mały fix\nAktualizacja zależności\nDodano projekt odpowiedzialny",
-        "uk": "невелика фіксація\nЗалежність оновлено\nДодано адаптивний дизайн",
-        "zh-cn": "小修补\n更新的依赖关系\n添加响应设计"
       }
     },
     "titleLang": {
