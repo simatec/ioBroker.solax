@@ -45,6 +45,7 @@ When the adapter crashes or an other Code error happens, this error message that
 ### __WORK IN PROGRESS__
 * (simatec) Dependencies updated
 * (simatec) Cleaned up code
+* (simatec) migrated to json5
  
 ### 0.9.16 (2025-02-22)
 * (simatec) Dependencies updated
