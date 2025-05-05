@@ -15,7 +15,6 @@ let requestTimer;
 let astroTimer;
 let longitude;
 let latitude;
-let timerSleep = 0;
 
 const _inverterType = {
     1: 'X1-LX',
@@ -114,7 +113,6 @@ function startAdapter(options) {
                 schedule.cancelJob('dayHistory');
                 clearInterval(requestTimer);
                 clearInterval(astroTimer);
-                clearTimeout(timerSleep);
                 clearTimeout(requestTimeOut);
                 callback();
             } catch (e) {
@@ -122,13 +120,6 @@ function startAdapter(options) {
             }
         },
     }));
-}
-
-async function sleep(ms) {
-    return new Promise(async (resolve) => {
-        // @ts-ignore
-        timerSleep = setTimeout(async () => resolve(), ms);
-    });
 }
 
 async function getSystemData() {
@@ -288,7 +279,7 @@ async function requestAPI() {
                 resolve(solaxRequest);
             } else if (solaxRequest.data && solaxRequest.data.result && solaxRequest.data.success === false && num <= 5) {
                 num++;
-                await sleep(5000);
+                await adapter.delay(5000);
                 return await fillData();
             } else if (num > 5) {
                 adapter.log.debug(`${num} request attempts were started: ${solaxRequest.data.result ? solaxRequest.data.result : ''}`)
@@ -381,7 +372,7 @@ async function setData(solaxRequest) {
                 }
 
                 if (num == Object.keys(list).length) {
-                    await sleep(1000);
+                    await adapter.delay(1000);
                     // @ts-ignore
                     resolve();
                 }
