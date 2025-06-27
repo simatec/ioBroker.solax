@@ -42,7 +42,7 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
-### __WORK IN PROGRESS__
+### 0.9.18 (2025-06-27)
 * (simatec) Code fix
 * (simatec) Dependencies updated
 * (simatec) Ready for NodeJS 24.x

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.17",
+    "version": "0.9.18",
     "news": {
+      "0.9.18": {
+        "en": "Code fix\nDependencies updated\nReady for NodeJS 24.x",
+        "de": "Code fix\nAusgaben aktualisiert\nBereit für NodeJS 24.x",
+        "ru": "Исправление кода\nОбновленные зависимости\nГотовность к NodeJS 24.x",
+        "pt": "Correcção de código\nDependências atualizadas\nPronto para NodeJS 24.x",
+        "nl": "Codefix\nAfhankelijkheden bijgewerkt\nKlaar voor NodeJS 24.x",
+        "fr": "Fixation du code\nDépendances actualisées\nPrêt pour NodeJS 24.x",
+        "it": "Codice di correzione\nDipendenze aggiornate\nPronti per NodeJS 24.x",
+        "es": "Código\nActualización de las dependencias\nListo para NodeJS 24.x",
+        "pl": "Ustawienie kodu\nAktualizacja zależności\nGotowy do NodeJS 24.x",
+        "uk": "Виправлення коду\nЗалежність оновлено\nГотовий для NodeJS 24.x",
+        "zh-cn": "代码修正\n更新的依赖关系\n准备进入节点JS 24.x"
+      },
       "0.9.17": {
         "en": "Dependencies updated\nCleaned up code\nmigrated to json5",
         "de": "Ausgaben aktualisiert\nGesäuberter Code\nzu json5 migriert",
@@ -80,19 +93,6 @@
         "pl": "Naprawiono dla Admin 7.1.5",
         "uk": "Виправлення для адміністратора 7.1.5",
         "zh-cn": "7.1.5 管理员的固定"
-      },
-      "0.9.11": {
-        "en": "small Design fix",
-        "de": "kleine Design fix",
-        "ru": "небольшой дизайн",
-        "pt": "pequena correção de design",
-        "nl": "kleine ontwerpfix",
-        "fr": "petit montage",
-        "it": "piccolo Design fix",
-        "es": "pequeño diseño",
-        "pl": "mały design fix",
-        "uk": "маленька фіксація дизайну",
-        "zh-cn": "小设计修正"
       }
     },
     "titleLang": {
