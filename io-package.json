@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.18",
+    "version": "0.9.19",
     "news": {
+      "0.9.19": {
+        "en": "Dependencies updated\nUpdate API URL",
+        "de": "Ausgaben aktualisiert\nAPI URL aktualisieren",
+        "ru": "Обновленные зависимости\nОбновление API URL",
+        "pt": "Dependências atualizadas\nAtualizar URL da API",
+        "nl": "Afhankelijkheden bijgewerkt\nAPI-URL bijwerken",
+        "fr": "Dépendances actualisées\nMettre à jour l'URL de l'API",
+        "it": "Dipendenze aggiornate\nAggiornamento URL API",
+        "es": "Actualización de las dependencias\nActualizar URL de API",
+        "pl": "Aktualizacja zależności\nAktualizuj adres API",
+        "uk": "Залежність оновлено\nОновлення URL API",
+        "zh-cn": "更新的依赖关系\n更新 API URL"
+      },
       "0.9.18": {
         "en": "Code fix\nDependencies updated\nReady for NodeJS 24.x",
         "de": "Code fix\nAusgaben aktualisiert\nBereit für NodeJS 24.x",
@@ -80,19 +93,6 @@
         "pl": "Aktualizacja zależności\nmały design fix\nDodano działanie\neslint- config dodany",
         "uk": "Залежність оновлено\nмаленька фіксація дизайну\nДодана емісія\neslint-config додано",
         "zh-cn": "更新的依赖关系\n小设计修正\n添加的问题行动\n添加埃斯林特配置"
-      },
-      "0.9.12": {
-        "en": "Fix for Admin 7.1.5",
-        "de": "Fix für Admin 7.1.5",
-        "ru": "7.1.5",
-        "pt": "Fix para Admin 7.1.5",
-        "nl": "Fix voor Admin 7.1.5",
-        "fr": "Correction pour Admin 7.1.5",
-        "it": "Fissare per Admin 7.1.5",
-        "es": "Corrección para Admin 7.1.5",
-        "pl": "Naprawiono dla Admin 7.1.5",
-        "uk": "Виправлення для адміністратора 7.1.5",
-        "zh-cn": "7.1.5 管理员的固定"
       }
     },
     "titleLang": {
