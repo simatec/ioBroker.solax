@@ -14,7 +14,7 @@
       lg: 4,
       xl: 4,
       help: 'Get the Token ID from Solax',
-      helpLink: 'https://www.eu.solaxcloud.com/#/api',
+      helpLink: 'https://global.solaxcloud.com/blue/#/ecosystem',
       type: 'password',
       label: 'Token ID',
     },
