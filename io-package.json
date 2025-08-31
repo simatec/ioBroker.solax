@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.19",
+    "version": "0.9.20",
     "news": {
+      "0.9.20": {
+        "en": "Dependencies updated",
+        "de": "Ausgaben aktualisiert",
+        "ru": "Обновленные зависимости",
+        "pt": "Dependências atualizadas",
+        "nl": "Afhankelijkheden bijgewerkt",
+        "fr": "Dépendances actualisées",
+        "it": "Dipendenze aggiornate",
+        "es": "Actualización de las dependencias",
+        "pl": "Aktualizacja zależności",
+        "uk": "Залежність оновлено",
+        "zh-cn": "更新的依赖关系"
+      },
       "0.9.19": {
         "en": "Dependencies updated\nUpdate API URL",
         "de": "Ausgaben aktualisiert\nAPI URL aktualisieren",
@@ -80,19 +93,6 @@
         "pl": "fix eslint- config\nUstawienie kodu\nAktualizacja zależności\nAktualizacja licencji",
         "uk": "eslint-config виправити\nВиправлення коду\nЗалежність оновлено\nОновлення ліцензії",
         "zh-cn": "埃斯林特配置修复\n代码修正\n更新的依赖关系\n许可证更新"
-      },
-      "0.9.13": {
-        "en": "Dependencies updated\nsmall Design fix\nIssue Action added\neslint-config added",
-        "de": "Ausgaben aktualisiert\nkleine Design fix\nAusgabe Aktion hinzugefügt\neslint-config hinzugefügt",
-        "ru": "Обновленные данные о зависимостях\nнебольшой дизайн\nДополнительные меры\nдобавлена eslint-config",
-        "pt": "Dependências atualizadas\npequena correção de design\nAção de problemas adicionada\neslint-config adicionado",
-        "nl": "Afhankelijkheden bijgewerkt\nkleine ontwerpfix\nOnderwerpactie toegevoegd\neslint-config toegevoegd",
-        "fr": "Dépendances actualisées\npetit montage\nMesure à prendre\neslint-config ajouté",
-        "it": "Dipendenze aggiornate\npiccolo Design fix\nAzione di problema aggiunto\neslint-config aggiunto",
-        "es": "Actualización de las dependencias\npequeño diseño\nTema Acción añadido\neslint-config añadido",
-        "pl": "Aktualizacja zależności\nmały design fix\nDodano działanie\neslint- config dodany",
-        "uk": "Залежність оновлено\nмаленька фіксація дизайну\nДодана емісія\neslint-config додано",
-        "zh-cn": "更新的依赖关系\n小设计修正\n添加的问题行动\n添加埃斯林特配置"
       }
     },
     "titleLang": {
