@@ -7,7 +7,7 @@ admin/i18n/*/flat.txt
 /lib/*.bat
 /lib/*.log
 /lib/*.sh
-.vscode
+.commitinfo
 .DS_Store
 
 # ioBroker dev-server
