@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.20",
+    "version": "0.9.21",
     "news": {
+      "0.9.21": {
+        "en": "dependencies updated",
+        "de": "aktualisierte abhängigkeiten",
+        "ru": "обновленные зависимости",
+        "pt": "dependências atualizadas",
+        "nl": "afhankelijkheden bijgewerkt",
+        "fr": "dépendances mises à jour",
+        "it": "dipendenze aggiornate",
+        "es": "dependencias actualizadas",
+        "pl": "zaktualizowane zależności",
+        "uk": "оновлені залежності",
+        "zh-cn": "更新依赖关系"
+      },
       "0.9.20": {
         "en": "Dependencies updated",
         "de": "Ausgaben aktualisiert",
@@ -80,19 +93,6 @@
         "pl": "Napraw wniosek\nPoprawiono kod\nAktualizacja zależności",
         "uk": "Запит на виправлення\nВиправлення коду\nЗалежність оновлено",
         "zh-cn": "修复请求\n代码修补\n更新的依赖关系"
-      },
-      "0.9.14": {
-        "en": "eslint-config fix\nCode fix\nDependencies updated\nLicense updated",
-        "de": "eslint-config fix\nCode fix\nAusgaben aktualisiert\nLizenz aktualisiert",
-        "ru": "eslint-конфигурация\nКод\nОбновленные данные о зависимостях\nЛицензия",
-        "pt": "eslint-config fix\nCorreção de código\nDependências atualizadas\nLicença atualizada",
-        "nl": "eslint-config fix\nCodefix\nAfhankelijkheden bijgewerkt\nLicentie bijgewerkt",
-        "fr": "fixateur eslint-config\nFixation du code\nDépendances actualisées\nLicence mise à jour",
-        "it": "eslint-config fix\nCodice di correzione\nDipendenze aggiornate\nLicenza aggiornata",
-        "es": "eslint-config fix\nCódigo\nActualización de las dependencias\nLicencia actualizada",
-        "pl": "fix eslint- config\nUstawienie kodu\nAktualizacja zależności\nAktualizacja licencji",
-        "uk": "eslint-config виправити\nВиправлення коду\nЗалежність оновлено\nОновлення ліцензії",
-        "zh-cn": "埃斯林特配置修复\n代码修正\n更新的依赖关系\n许可证更新"
       }
     },
     "titleLang": {
