@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.21",
+    "version": "0.9.22",
     "news": {
+      "0.9.22": {
+        "en": "Fix License\ndependencies updated",
+        "de": "Lizenz für das Festlegen\naktualisierte abhängigkeiten",
+        "ru": "Лицензия Fix\nобновленные зависимости",
+        "pt": "Licença de correção\ndependências atualizadas",
+        "nl": "Fix Licentie\nafhankelijkheden bijgewerkt",
+        "fr": "Correction de la licence\ndépendances mises à jour",
+        "it": "Fissare la licenza\ndipendenze aggiornate",
+        "es": "Fijar licencia\ndependencias actualizadas",
+        "pl": "Napraw licencję\nzaktualizowane zależności",
+        "uk": "Документація\nоновлені залежності",
+        "zh-cn": "修补许可证\n更新依赖关系"
+      },
       "0.9.21": {
         "en": "dependencies updated",
         "de": "aktualisierte abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "Aktualizacja zależności\nmały fix",
         "uk": "Залежність оновлено\nневелика фіксація",
         "zh-cn": "更新的依赖关系\n小修补"
-      },
-      "0.9.15": {
-        "en": "Fix Request\nCode Fix\nDependencies updated",
-        "de": "Fehlersuche\nCode Fix\nAusgaben aktualisiert",
-        "ru": "Запрос\nКод\nОбновленные данные о зависимостях",
-        "pt": "Pedido de Fixação\nCorrigir código\nDependências atualizadas",
-        "nl": "Fix Request\nCodefix\nAfhankelijkheden bijgewerkt",
-        "fr": "Correction de la requête\nCorrection du code\nDépendances actualisées",
-        "it": "Fissare la richiesta\nCodice\nDipendenze aggiornate",
-        "es": "Solicitud fija\nCódigo\nActualización de las dependencias",
-        "pl": "Napraw wniosek\nPoprawiono kod\nAktualizacja zależności",
-        "uk": "Запит на виправлення\nВиправлення коду\nЗалежність оновлено",
-        "zh-cn": "修复请求\n代码修补\n更新的依赖关系"
       }
     },
     "titleLang": {
