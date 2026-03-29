@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.22",
+    "version": "0.9.23",
     "news": {
+      "0.9.23": {
+        "en": "dependencies updated",
+        "de": "aktualisierte abhängigkeiten",
+        "ru": "обновленные зависимости",
+        "pt": "dependências atualizadas",
+        "nl": "afhankelijkheden bijgewerkt",
+        "fr": "dépendances mises à jour",
+        "it": "dipendenze aggiornate",
+        "es": "dependencias actualizadas",
+        "pl": "zaktualizowane zależności",
+        "uk": "оновлені залежності",
+        "zh-cn": "更新依赖关系"
+      },
       "0.9.22": {
         "en": "Fix License\ndependencies updated",
         "de": "Lizenz für das Festlegen\naktualisierte abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "Aktualizacja zależności\nOczyszczony kod\nmigrant do json5",
         "uk": "Залежність оновлено\nПрибрати код\nмігрований в json5",
         "zh-cn": "更新的依赖关系\n清理代码\n迁移到json5"
-      },
-      "0.9.16": {
-        "en": "Dependencies updated\nsmall fix",
-        "de": "Ausgaben aktualisiert\nkleine fix",
-        "ru": "Обновленные зависимости\nнебольшой ремонт",
-        "pt": "Dependências atualizadas\npequena correção",
-        "nl": "Afhankelijkheden bijgewerkt\nkleine fix",
-        "fr": "Dépendances actualisées\npetite fixation",
-        "it": "Dipendenze aggiornate\npiccola correzione",
-        "es": "Actualización de las dependencias\npequeño",
-        "pl": "Aktualizacja zależności\nmały fix",
-        "uk": "Залежність оновлено\nневелика фіксація",
-        "zh-cn": "更新的依赖关系\n小修补"
       }
     },
     "titleLang": {
