@@ -291,6 +291,8 @@ When the adapter crashes or an other Code error happens, this error message that
 ### 0.1.0 (02.06.2021)
 * (simatec) first beta
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 MIT License
 
