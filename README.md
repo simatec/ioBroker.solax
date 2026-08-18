@@ -42,6 +42,11 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
+### __WORK IN PROGRESS__
+(simatec) dependencies updated
+(simatec) many small fixes
+(simatec) End of Life for Node20
+
 ### 0.9.23 (2026-03-29)
 * (simatec) dependencies updated
 
@@ -290,6 +295,8 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ### 0.1.0 (02.06.2021)
 * (simatec) first beta
+
+[Older changelogs can be found there](CHANGELOG_OLD.md)
 
 ## License
 MIT License

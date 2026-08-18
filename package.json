@@ -20,22 +20,23 @@
     "url": "https://github.com/simatec/ioBroker.solax"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^3.3.2",
-    "axios": "^1.14.0",
+    "@iobroker/adapter-core": "^3.4.3",
+    "axios": "^1.19.0",
     "node-schedule": "^2.1.1",
-    "suncalc": "^1.9.0"
+    "suncalc": "^2.0.1"
   },
   "devDependencies": {
-    "@alcalzone/release-script": "^5.2.0",
+    "@alcalzone/release-script": "^5.2.1",
     "@alcalzone/release-script-plugin-iobroker": "^5.2.0",
-    "@alcalzone/release-script-plugin-license": "^5.2.0",
+    "@alcalzone/release-script-plugin-license": "^5.2.2",
     "@alcalzone/release-script-plugin-manual-review": "^5.2.0",
     "@iobroker/adapter-dev": "^1.5.0",
     "@iobroker/eslint-config": "^2.3.4",
-    "@iobroker/testing": "^5.3.0"
+    "@iobroker/testing": "^5.3.0",
+    "@tsconfig/node20": "^20.1.10"
   },
   "main": "main.js",
   "files": [
@@ -57,7 +58,8 @@
     "www/",
     "io-package.json",
     "LICENSE",
-    "main.js"
+    "main.js",
+    "!CHANGELOG_OLD.md"
   ],
   "scripts": {
     "test": "npm run test:package && npm run test:unit",
