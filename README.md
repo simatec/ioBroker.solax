@@ -42,7 +42,7 @@ When the adapter crashes or an other Code error happens, this error message that
 
 ## Changelog
 <!-- ### __WORK IN PROGRESS__ -->
-### __WORK IN PROGRESS__
+### 1.0.0 (2026-08-18)
 (simatec) dependencies updated
 (simatec) many small fixes
 (simatec) End of Life for Node20

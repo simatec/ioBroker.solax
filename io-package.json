@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "solax",
-    "version": "0.9.23",
+    "version": "1.0.0",
     "news": {
+      "1.0.0": {
+        "en": "(simatec) dependencies updated\n(simatec) many small fixes\n(simatec) End of Life for Node20",
+        "de": "(simatec) Abhängigkeiten aktualisiert\n(simatec) viele kleine Korrekturen\n(simatec) Lebenszyklusende für Node20",
+        "ru": "(simatec) зависимости обновлены\n(Simatec) множество мелких исправлений\n(simatec) Прекращение поддержки Node20",
+        "pt": "(simatec) dependências atualizadas\n(simatec) muitas pequenas correções\n(simatec) Fim da vida útil do Node20",
+        "nl": "(simatec) afhankelijkheden bijgewerkt\n(Simatec) veel kleine reparaties\n(simatec) Einde levenscyclus voor Node20",
+        "fr": "(simatec) dépendances mises à jour\n(simatec) de nombreuses petites corrections\n(simatec) Fin de vie du Node20",
+        "it": "Dipendenze (simatec) aggiornate\n(simatec) molte piccole correzioni\n(simatec) Fine del ciclo di vita per Node20",
+        "es": "(simatec) dependencias actualizadas\n(simatec) muchas pequeñas correcciones\n(simatec) Fin del ciclo de vida de Node20",
+        "pl": "(simatec) zależności zaktualizowane\n(simatec) wiele drobnych poprawek\n(simatec) Koniec cyklu życia Node20",
+        "uk": "(simatec) залежності оновлено\n(simatec) багато дрібних виправлень\n(simatec) Кінець терміну служби Node20",
+        "zh-cn": "(simatec) 依赖项已更新\n(simatec) 许多小的修复\n(simatec) Node20 生命周期结束"
+      },
       "0.9.23": {
         "en": "dependencies updated",
         "de": "aktualisierte abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "Ustawienie kodu\nAktualizacja zależności\nGotowy do NodeJS 24.x",
         "uk": "Виправлення коду\nЗалежність оновлено\nГотовий для NodeJS 24.x",
         "zh-cn": "代码修正\n更新的依赖关系\n准备进入节点JS 24.x"
-      },
-      "0.9.17": {
-        "en": "Dependencies updated\nCleaned up code\nmigrated to json5",
-        "de": "Ausgaben aktualisiert\nGesäuberter Code\nzu json5 migriert",
-        "ru": "Обновленные зависимости\nОчистить код\nиммиграция в json5",
-        "pt": "Dependências atualizadas\nLimpe o código\nmigrado para json5",
-        "nl": "Afhankelijkheden bijgewerkt\nCode opgeruimd\ngemigreerd naar json5",
-        "fr": "Dépendances actualisées\nCode nettoyé\nmigré vers json5",
-        "it": "Dipendenze aggiornate\nPulito codice\nmigrato a json5",
-        "es": "Actualización de las dependencias\nCódigo de limpieza\nmigrated to json5",
-        "pl": "Aktualizacja zależności\nOczyszczony kod\nmigrant do json5",
-        "uk": "Залежність оновлено\nПрибрати код\nмігрований в json5",
-        "zh-cn": "更新的依赖关系\n清理代码\n迁移到json5"
       }
     },
     "titleLang": {
